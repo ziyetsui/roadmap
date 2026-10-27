@@ -725,7 +725,7 @@ claude mcp remove demo
 <li>版本约束：Postgres "起码算支持 16 以上吧"。[00:17:27]</li>
 </ol>
 <p>看完他没有自己动手改，而是把意见写进下一条提示词 P2，和"让 Codex review"合在一起发，见<a href="#section-step-6">步骤 6</a>。v1.1 的修订历史列出了这一轮吸收的意见：只留 query，扩充安全规则，置信度阈值 70、最多重试 2 次，只读角色，并发要求，错误码，负面测试用例。<span class="source-markers">[<a class="source-ref" id="cite-o8-15" href="#source-o8">O8</a>]</span></p>
-<p>换成你自己的项目时，口述按上面七部分组织，review 按上面五样看，可以直接套<a href="#template-t1">模板 T1</a>。</p>
+<p>换成你自己的项目时，口述按上面七部分组织，review 按上面五样看，可以直接套<a href="#template-t1">模板 T1</a>。套到 video-mcp 上的口述草稿见<a href="#appendix-f-prd">附录 F</a>。</p>
 </div></details>
 <details class="manual-section" id="section-step-5" open><summary><span class="section-title">步骤 5 用 Deep Research 选库</span></summary><div class="section-body">
 <p>讲者坦白 Python 生态他不熟，所以不靠记忆选库，而是让 Deep Research 先列出候选和理由，他再拍板。这一步可以在 PRD 生成的同时在浏览器里做。</p>
@@ -1489,6 +1489,10 @@ claude -p &quot;用 pg-mcp 的 query 工具回答：数据库有多少用户？&
 }
 </code></pre>
 <p><code>replicate_plan</code> 的 <code>content_type</code> 为 <code>video</code> 时，<code>plan</code> 换成按镜头排的分镜：每个镜头写时长、口播和画面。</p>
+<h3 id="appendix-f-prd">套用 PRD 骨架口述 video-mcp 的需求（草稿）</h3>
+<p>下面把<a href="#section-step-4">步骤 4</a> 的七部分骨架（<a href="#template-t1">模板 T1</a>）套到 video-mcp 上，演示口述大概是什么样子。它是助手写的草稿：工具划分沿用本附录上面的四个场景，都没确认过；按 video-mcp 的 <code>specs/index.md</code>，正式的 PRD 要等 M0 的 <code>run-report.md</code> 出来，以 M0 的结论为准重新口述。[<a href="#source-o13">O13</a>]</p>
+<pre><code class="language-text">主要的需求是在 Python 下面创建一个内容拆解与复刻的 mcp：用户给一份广告主 brief，然后 mcp server 返回召回到的参考内容清单，或者返回某条内容的拆解结果和按 brief 复刻的稿子。内容有两类，视频和图文笔记，流程一样，只有转文本这一步不同。mcp 启动的时候，应该读取〔可用的平台与账号配置〕和〔本地固定样本集〕。然后根据 brief 去〔平台〕召回候选内容，按相关度排序；之后取素材并转成文本：视频用 ASR 出逐字稿，图文用正文加图片 OCR；转文本前要校验平台名、内容 ID、下载地址和本地路径，只写指定的输出目录；取不到素材或转写失败时返回错误码和一句给模型看的处理建议。这里也可以把 brief、拆解结果和复刻稿交给〔模型〕确认是否贴合 brief。最后根据用户的选择返回召回清单、拆解结果还是复刻稿。根据这些需求帮我构建一个详细的需求文档，先不要着急去做设计，等我 review 完这个需求文档之后我们再来讨论设计，文档放在 ./specs/〔编号〕-video-mcp-prd.md 文件中。</code></pre>
+<p>review 时，步骤 4 的第 4 样（工具清单）在这里对应的问题是：四个场景是不是都要做成 MCP 工具。按上面“课程做法在 video-mcp 里对应什么”的初判，拆解和复刻主要靠模型判断，适合先做成 Skill 试；召回和转文本要调外部接口、跑本地模型，再决定用 MCP 还是 CLI。</p>
 <h3>迁移前要先回答的问题</h3>
 <ul>
 <li><strong>四个能力各用 MCP、CLI 还是 Skill</strong>：用<a href="#template-t7">模板 T7</a> 逐个判断。转文本可能要跑几分钟，也可以做成命令行工具，由 Skill 说明怎么调用；召回要持有平台接口的密钥和缓存，更接近 MCP 的场景。以上是助手初判，未经你确认。</li>
@@ -1574,8 +1578,8 @@ claude -p &quot;用 pg-mcp 的 query 工具回答：数据库有多少用户？&
 </tr>
 <tr id="source-o13" class="source-entry">
 <td>O13</td>
-<td>video-mcp 项目文件：<code>pyproject.toml</code>、<code>.python-version</code>、<code>specs/0002-m0-delivery-plan.md</code>，以及 ai-tools 的 <code>AGENTS.md</code> 调研命名规范</td>
-<td>用于：Python 3.13 与 <code>mcp[cli]</code>、M0 排期与本周冲突、视频与图文流程、survey 命名。缺口：附录 F 的接口约定是助手草稿，未经你确认 <a class="source-backref" href="#cite-o13-1">回到正文</a></td>
+<td>video-mcp 项目文件：<code>pyproject.toml</code>、<code>.python-version</code>、<code>specs/0002-m0-delivery-plan.md</code>、<code>specs/0003-prd-prompt-guide.md</code>，以及 ai-tools 的 <code>AGENTS.md</code> 调研命名规范</td>
+<td>用于：Python 3.13 与 <code>mcp[cli]</code>、M0 排期与本周冲突、视频与图文流程、survey 命名。缺口：附录 F 的接口约定和 PRD 口述草稿都是助手草稿，未经你确认 <a class="source-backref" href="#cite-o13-1">回到正文</a></td>
 </tr>
 </tbody>
 </table></div>

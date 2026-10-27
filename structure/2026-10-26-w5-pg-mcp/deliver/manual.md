@@ -333,7 +333,7 @@ P1 只写"要做什么"，不写"怎么做"。你口述时只要把主流程说�
 
 看完他没有自己动手改，而是把意见写进下一条提示词 P2，和"让 Codex review"合在一起发，见[步骤 6](#section-step-6)。v1.1 的修订历史列出了这一轮吸收的意见：只留 query，扩充安全规则，置信度阈值 70、最多重试 2 次，只读角色，并发要求，错误码，负面测试用例。[[O8](#source-o8)]
 
-换成你自己的项目时，口述按上面七部分组织，review 按上面五样看，可以直接套[模板 T1](#template-t1)。
+换成你自己的项目时，口述按上面七部分组织，review 按上面五样看，可以直接套[模板 T1](#template-t1)。套到 video-mcp 上的口述草稿见[附录 F](#appendix-f-prd)。
 
 <a id="section-step-5"></a>
 ## 步骤 5 用 Deep Research 选库
@@ -1042,6 +1042,16 @@ codex exec -s read-only -C 〔练习目录〕/my-pg-mcp -o 〔review 输出文�
 
 `replicate_plan` 的 `content_type` 为 `video` 时，`plan` 换成按镜头排的分镜：每个镜头写时长、口播和画面。
 
+### 套用 PRD 骨架口述 video-mcp 的需求（草稿） {#appendix-f-prd}
+
+下面把[步骤 4](#section-step-4) 的七部分骨架（[模板 T1](#template-t1)）套到 video-mcp 上，演示口述大概是什么样子。它是助手写的草稿：工具划分沿用本附录上面的四个场景，都没确认过；按 video-mcp 的 `specs/index.md`，正式的 PRD 要等 M0 的 `run-report.md` 出来，以 M0 的结论为准重新口述。[[O13](#source-o13)]
+
+```text
+主要的需求是在 Python 下面创建一个内容拆解与复刻的 mcp：用户给一份广告主 brief，然后 mcp server 返回召回到的参考内容清单，或者返回某条内容的拆解结果和按 brief 复刻的稿子。内容有两类，视频和图文笔记，流程一样，只有转文本这一步不同。mcp 启动的时候，应该读取〔可用的平台与账号配置〕和〔本地固定样本集〕。然后根据 brief 去〔平台〕召回候选内容，按相关度排序；之后取素材并转成文本：视频用 ASR 出逐字稿，图文用正文加图片 OCR；转文本前要校验平台名、内容 ID、下载地址和本地路径，只写指定的输出目录；取不到素材或转写失败时返回错误码和一句给模型看的处理建议。这里也可以把 brief、拆解结果和复刻稿交给〔模型〕确认是否贴合 brief。最后根据用户的选择返回召回清单、拆解结果还是复刻稿。根据这些需求帮我构建一个详细的需求文档，先不要着急去做设计，等我 review 完这个需求文档之后我们再来讨论设计，文档放在 ./specs/〔编号〕-video-mcp-prd.md 文件中。
+```
+
+review 时，步骤 4 的第 4 样（工具清单）在这里对应的问题是：四个场景是不是都要做成 MCP 工具。按上面“课程做法在 video-mcp 里对应什么”的初判，拆解和复刻主要靠模型判断，适合先做成 Skill 试；召回和转文本要调外部接口、跑本地模型，再决定用 MCP 还是 CLI。
+
 ### 迁移前要先回答的问题
 
 - **四个能力各用 MCP、CLI 还是 Skill**：用[模板 T7](#template-t7) 逐个判断。转文本可能要跑几分钟，也可以做成命令行工具，由 Skill 说明怎么调用；召回要持有平台接口的密钥和缓存，更接近 MCP 的场景。以上是助手初判，未经你确认。
@@ -1068,7 +1078,7 @@ codex exec -s read-only -C 〔练习目录〕/my-pg-mcp -o 〔review 输出文�
 | <a id="source-o10"></a>O10 | 课程测试数据，课程仓库 `w5/pg-mcp/fixtures/`（Makefile、TEST_RESULTS.md、TEST_QUERIES.md、README.md） | 用于：Makefile 默认 PGUSER=postgres 与各 target、三库实测数字与修复记录、抽查查询返回 8、测试问题分级。缺口：本次未建库，数字取自 TEST_RESULTS.md。[回到正文](#cite-o10-1) |
 | <a id="source-o11"></a>O11 | 课程仓库 Skills：`.claude/skills/pg-data/`（SKILL.md 与 3 个 reference）、`.claude/skills/site-slides/SKILL.md` | 用于：frontmatter、安全规则、重试与置信度、多租户提示、文件行数。缺口：Skill 未实际运行。[回到正文](#cite-o11-1) |
 | <a id="source-o12"></a>O12 | 本机只读检查，2026-10-26 18:30，`_raw/local-env-check.txt` 与 `_raw/claude-mcp-add-help.txt` | 用于：Postgres 在运行、只有 ziye 角色、三库不存在、工具版本、`claude mcp add` 的 `-e`、`-s` 与 `--` 写法。缺口：只读检查，未改动数据库。[回到正文](#cite-o12-1) |
-| <a id="source-o13"></a>O13 | video-mcp 项目文件：`pyproject.toml`、`.python-version`、`specs/0002-m0-delivery-plan.md`，以及 ai-tools 的 `AGENTS.md` 调研命名规范 | 用于：Python 3.13 与 `mcp[cli]`、M0 排期与本周冲突、视频与图文流程、survey 命名。缺口：附录 F 的接口约定是助手草稿，未经你确认。[回到正文](#cite-o13-1) |
+| <a id="source-o13"></a>O13 | video-mcp 项目文件：`pyproject.toml`、`.python-version`、`specs/0002-m0-delivery-plan.md`、`specs/0003-prd-prompt-guide.md`，以及 ai-tools 的 `AGENTS.md` 调研命名规范 | 用于：Python 3.13 与 `mcp[cli]`、M0 排期与本周冲突、视频与图文流程、survey 命名。缺口：附录 F 的接口约定和 PRD 口述草稿都是助手草稿，未经你确认。[回到正文](#cite-o13-1) |
 
 阻断缺口：G1 本机缺 `postgres` 角色，G2 OpenAI key 未知，G3 课程要求 Python 3.14 与 video-mcp 的 3.13 不同，G4 与 video-mcp M0 时间冲突，G5 讲者的 codex review skill 不在仓库，G6 课程文档里的错误入口与配置。都写在开头"阻碍完成的缺口"，并在受影响的步骤里就地说明。
 
