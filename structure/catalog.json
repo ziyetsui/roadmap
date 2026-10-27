@@ -1,0 +1,83 @@
+[
+  {
+    "episode": "2026-10-26-agent-course-m0",
+    "slug": "agent-course-m0",
+    "title": "Agent 课程总手册：落到 video-mcp M0（图文 + 视频）",
+    "status": "needs-review",
+    "html": "agent-project-manual.html",
+    "pdf": "agent-project-manual.pdf",
+    "md": "agent-project-manual.md"
+  },
+  {
+    "episode": "2026-10-26-tcf-canada-french-pr",
+    "slug": "tcf-canada-french-pr",
+    "title": "TCF Canada 法语移民实战手册：从零基础到登陆",
+    "status": "needs-qc",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-26-w4-codebase-reading",
+    "slug": "w4-codebase-reading",
+    "title": "w4 操作手册：用 AI 读懂大型代码库并生成架构文档",
+    "status": "needs-review",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-26-w5-pg-mcp",
+    "slug": "w5-pg-mcp",
+    "title": "w5 操作手册：设计并实现 Postgres MCP、测试与个性化 Skills",
+    "status": "needs-review",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-26-w6-agent-loop",
+    "slug": "w6-agent-loop",
+    "title": "w6 操作手册：看清 Coding Agent 调用链路并自己写一个 Agent",
+    "status": "needs-review",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-26-wechat-store-0to1",
+    "slug": "wechat-store-0to1",
+    "title": "视频号小店从 0 到 1：开店、上架、发视频到出第一单",
+    "status": "needs-qc",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-27-pm-to-agent-engineer",
+    "slug": "pm-to-agent-engineer",
+    "title": "AI 产品经理转 Agent 工程师：求职实战手册",
+    "status": "needs-qc",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-27-ruc-cs-equivalent-master",
+    "slug": "ruc-cs-equivalent-master",
+    "title": "人大同等学力申硕（计算机）实战手册：从报名到拿学位",
+    "status": "needs-qc",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-27-x-ai-30day",
+    "slug": "x-ai-30day",
+    "title": "X 中文 AI 自媒体：30 天起号实战手册",
+    "status": "delivered",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
+  }
+]

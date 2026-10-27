@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<rect x="0" y="0" width="1200" height="675" fill="#ffffff"/>
+<text x="600" y="52" fill="#222222" font-family="sans-serif" font-size="30" font-weight="bold" text-anchor="middle">w4 三天路线：12 份架构文档</text>
+<text x="600" y="88" fill="#555555" font-family="sans-serif" font-size="18" text-anchor="middle">全景 → 专题 → 目录 → 集成 → 换仓库 → 回源码核对（每天 10:00–19:00，午休 12:30–13:30）</text>
+<rect x="30" y="115" width="360" height="56" rx="10" fill="#2f6f9f"/>
+<text x="210" y="152" fill="#ffffff" font-family="sans-serif" font-size="24" font-weight="bold" text-anchor="middle">周一 · Codex 全景</text>
+<rect x="30" y="190" width="360" height="96" rx="8" fill="#f5f7fa" stroke="#2f6f9f" stroke-width="2"/>
+<text x="48" y="222" fill="#2f6f9f" font-family="sans-serif" font-size="20" font-weight="bold">10:00–12:00</text>
+<text x="48" y="250" fill="#222222" font-family="sans-serif" font-size="19">核缺口 · 步骤 1 读码方法</text>
+<text x="48" y="275" fill="#222222" font-family="sans-serif" font-size="19">步骤 2 拉取两个仓库</text>
+<rect x="30" y="302" width="360" height="96" rx="8" fill="#f5f7fa" stroke="#2f6f9f" stroke-width="2"/>
+<text x="48" y="334" fill="#2f6f9f" font-family="sans-serif" font-size="20" font-weight="bold">13:30–15:30</text>
+<text x="48" y="362" fill="#222222" font-family="sans-serif" font-size="19">步骤 3 三个 agent</text>
+<text x="48" y="387" fill="#222222" font-family="sans-serif" font-size="19">写架构文档并对比</text>
+<rect x="30" y="414" width="360" height="96" rx="8" fill="#f5f7fa" stroke="#2f6f9f" stroke-width="2"/>
+<text x="48" y="446" fill="#2f6f9f" font-family="sans-serif" font-size="20" font-weight="bold">15:30–16:45</text>
+<text x="48" y="474" fill="#222222" font-family="sans-serif" font-size="19">步骤 4 修 mermaid 图</text>
+<text x="48" y="499" fill="#222222" font-family="sans-serif" font-size="19">步骤 5 插画（可选）</text>
+<rect x="30" y="526" width="360" height="96" rx="8" fill="#f5f7fa" stroke="#2f6f9f" stroke-width="2"/>
+<text x="48" y="558" fill="#2f6f9f" font-family="sans-serif" font-size="20" font-weight="bold">16:45–19:00</text>
+<text x="48" y="586" fill="#222222" font-family="sans-serif" font-size="19">步骤 6 事件循环</text>
+<text x="48" y="611" fill="#222222" font-family="sans-serif" font-size="19">步骤 7 工具调用（并行）</text>
+<polygon points="394,395 416,410 394,425" fill="#999999"/>
+<rect x="420" y="115" width="360" height="56" rx="10" fill="#7a5c99"/>
+<text x="600" y="152" fill="#ffffff" font-family="sans-serif" font-size="24" font-weight="bold" text-anchor="middle">周二 · Codex 深挖</text>
+<rect x="420" y="190" width="360" height="96" rx="8" fill="#f5f7fa" stroke="#7a5c99" stroke-width="2"/>
+<text x="438" y="222" fill="#7a5c99" font-family="sans-serif" font-size="20" font-weight="bold">10:00–11:00</text>
+<text x="438" y="250" fill="#222222" font-family="sans-serif" font-size="19">读完步骤 6、7 并验收</text>
+<rect x="420" y="302" width="360" height="96" rx="8" fill="#f5f7fa" stroke="#7a5c99" stroke-width="2"/>
+<text x="438" y="334" fill="#7a5c99" font-family="sans-serif" font-size="20" font-weight="bold">11:00–12:30</text>
+<text x="438" y="362" fill="#222222" font-family="sans-serif" font-size="19">步骤 8 commit 历史</text>
+<rect x="420" y="414" width="360" height="96" rx="8" fill="#f5f7fa" stroke="#7a5c99" stroke-width="2"/>
+<text x="438" y="446" fill="#7a5c99" font-family="sans-serif" font-size="20" font-weight="bold">13:30–16:45</text>
+<text x="438" y="474" fill="#222222" font-family="sans-serif" font-size="19">步骤 9 apply_patch</text>
+<text x="438" y="499" fill="#222222" font-family="sans-serif" font-size="19">步骤 10 集成指南</text>
+<rect x="420" y="526" width="360" height="96" rx="8" fill="#f5f7fa" stroke="#7a5c99" stroke-width="2"/>
+<text x="438" y="558" fill="#7a5c99" font-family="sans-serif" font-size="20" font-weight="bold">16:45–19:00</text>
+<text x="438" y="586" fill="#222222" font-family="sans-serif" font-size="19">步骤 15 核对 Codex 文档</text>
+<polygon points="784,395 806,410 784,425" fill="#999999"/>
+<rect x="810" y="115" width="360" height="56" rx="10" fill="#3f8a5a"/>
+<text x="990" y="152" fill="#ffffff" font-family="sans-serif" font-size="24" font-weight="bold" text-anchor="middle">周三 · open-notebook</text>
+<rect x="810" y="190" width="360" height="96" rx="8" fill="#f5f7fa" stroke="#3f8a5a" stroke-width="2"/>
+<text x="828" y="222" fill="#3f8a5a" font-family="sans-serif" font-size="20" font-weight="bold">10:00–11:15</text>
+<text x="828" y="250" fill="#222222" font-family="sans-serif" font-size="19">看第 4 讲前段</text>
+<text x="828" y="275" fill="#222222" font-family="sans-serif" font-size="19">步骤 11 粗读仓库</text>
+<rect x="810" y="302" width="360" height="96" rx="8" fill="#f5f7fa" stroke="#3f8a5a" stroke-width="2"/>
+<text x="828" y="334" fill="#3f8a5a" font-family="sans-serif" font-size="20" font-weight="bold">11:15–14:45</text>
+<text x="828" y="362" fill="#222222" font-family="sans-serif" font-size="19">步骤 12 SurrealDB 调研</text>
+<text x="828" y="387" fill="#222222" font-family="sans-serif" font-size="19">步骤 13 架构文档（并行）</text>
+<rect x="810" y="414" width="360" height="96" rx="8" fill="#f5f7fa" stroke="#3f8a5a" stroke-width="2"/>
+<text x="828" y="446" fill="#3f8a5a" font-family="sans-serif" font-size="20" font-weight="bold">14:45–16:30</text>
+<text x="828" y="474" fill="#222222" font-family="sans-serif" font-size="19">步骤 14 三个专题并行</text>
+<text x="828" y="499" fill="#222222" font-family="sans-serif" font-size="19">worker · SurrealDB · podcast</text>
+<rect x="810" y="526" width="360" height="96" rx="8" fill="#f5f7fa" stroke="#3f8a5a" stroke-width="2"/>
+<text x="828" y="558" fill="#3f8a5a" font-family="sans-serif" font-size="20" font-weight="bold">16:30–19:00</text>
+<text x="828" y="586" fill="#222222" font-family="sans-serif" font-size="19">步骤 15 核对 · 收尾</text>
+<text x="600" y="660" fill="#777777" font-family="sans-serif" font-size="15" text-anchor="middle">教学示意 · 2026-10-26 · 时段为助手建议，“并行”指两个或三个窗口同时跑</text>
+</svg>

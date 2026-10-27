@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+<rect x="0" y="0" width="1200" height="720" fill="#ffffff"/>
+<text x="40" y="56" font-family="sans-serif" font-size="30" font-weight="bold" fill="#1f2937">从资格证到学位证：三类考试并行，两条时限</text>
+<text x="40" y="90" font-family="sans-serif" font-size="17" fill="#6b7280">资格证 4 年内考完全部考试；考完后 1.5 年内完成论文认定。任何一条超时，本次申请作废（含已过的考试）</text>
+<rect x="40" y="140" width="230" height="150" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+<text x="56" y="172" font-family="sans-serif" font-size="19" font-weight="bold" fill="#1d4ed8">① 资格证</text>
+<text x="56" y="200" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 2：交材料</text>
+<text x="56" y="224" font-family="sans-serif" font-size="16" fill="#1f2937">春季 ≈5 月交 → 9 月生效</text>
+<text x="56" y="248" font-family="sans-serif" font-size="16" fill="#1f2937">秋季 ≈11 月交 → 次年 3 月</text>
+<text x="56" y="272" font-family="sans-serif" font-size="15" fill="#b91c1c">审核合格即开始计 4 年</text>
+<rect x="40" y="320" width="230" height="110" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+<text x="56" y="352" font-family="sans-serif" font-size="19" font-weight="bold" fill="#1d4ed8">② 信息平台注册</text>
+<text x="56" y="380" font-family="sans-serif" font-size="16" fill="#1f2937">+ 现场信息采集</text>
+<text x="56" y="404" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 3：有效期内一次</text>
+<line x1="155" y1="290" x2="155" y2="318" stroke="#6b7280" stroke-width="2.5"/><polygon points="155,318 150.3,306.9 159.7,306.9" fill="#6b7280"/>
+<rect x="300" y="120" width="550" height="330" rx="10" fill="#f0fdf4" stroke="#10b981" stroke-width="2"/>
+<text x="306" y="150" font-family="sans-serif" font-size="18" font-weight="bold" fill="#047857">③ 资格证有效期 4 年内：三类考试都要过（没有先后顺序）</text>
+<rect x="306" y="170" width="528" height="80" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+<text x="320" y="198" font-family="sans-serif" font-size="16" font-weight="bold" fill="#047857">国考（每年 5 月第三个周日，4 年约 4 次机会）</text>
+<text x="320" y="226" font-family="sans-serif" font-size="16" fill="#1f2937">英语 + 计算机综合（数学 40 + 五选二各 30）· 步骤 5、6</text>
+<rect x="306" y="262" width="528" height="80" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+<text x="320" y="290" font-family="sans-serif" font-size="16" font-weight="bold" fill="#047857">题库考（每学期一次，4 年约 8 次机会）</text>
+<text x="320" y="318" font-family="sans-serif" font-size="16" fill="#1f2937">中特 + 3 门专业课，北京 / 深圳 / 苏州选一 · 步骤 7</text>
+<rect x="306" y="354" width="528" height="80" rx="10" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+<text x="320" y="382" font-family="sans-serif" font-size="16" font-weight="bold" fill="#047857">非题库考（学院组织，每学期一轮）</text>
+<text x="320" y="410" font-family="sans-serif" font-size="16" fill="#1f2937">其余课程，线下闭卷 · 步骤 8</text>
+<line x1="270" y1="215" x2="298" y2="215" stroke="#6b7280" stroke-width="2.5"/><polygon points="298,215 286.9,219.7 286.9,210.3" fill="#6b7280"/>
+<line x1="270" y1="375" x2="298" y2="330" stroke="#6b7280" stroke-width="2.5"/><polygon points="298,330 296.1,341.9 288.2,336.9" fill="#6b7280"/>
+<rect x="290" y="480" width="560" height="90" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+<text x="306" y="510" font-family="sans-serif" font-size="17" font-weight="bold" fill="#b45309">小论文（可与考试同时做，答辩前必须见刊）· 步骤 9</text>
+<text x="306" y="540" font-family="sans-serif" font-size="16" fill="#1f2937">公开发行期刊，≥3500 字，重复率低于 7%，刊号可查</text>
+<rect x="890" y="120" width="270" height="330" rx="10" fill="#fdf2f8" stroke="#db2777" stroke-width="2"/>
+<text x="906" y="152" font-family="sans-serif" font-size="18" font-weight="bold" fill="#be185d">④ 论文阶段（≤18 个月）</text>
+<text x="906" y="184" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 10</text>
+<text x="906" y="210" font-family="sans-serif" font-size="16" fill="#1f2937">考完 1 年内提交论文</text>
+<text x="906" y="236" font-family="sans-serif" font-size="16" fill="#1f2937">≥2 万字，中文摘要 ≥2000 字</text>
+<text x="906" y="262" font-family="sans-serif" font-size="16" fill="#1f2937">≥3 位评阅（1 位校外）</text>
+<text x="906" y="288" font-family="sans-serif" font-size="16" fill="#1f2937">每位评阅 70 分以上</text>
+<text x="906" y="330" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 11</text>
+<text x="906" y="356" font-family="sans-serif" font-size="16" fill="#1f2937">提交后半年内答辩</text>
+<text x="906" y="382" font-family="sans-serif" font-size="16" fill="#1f2937">答辩委员 ≥5 人</text>
+<text x="906" y="420" font-family="sans-serif" font-size="16" font-weight="bold" fill="#be185d">⑤ 学位委员会审议授位</text>
+<line x1="850" y1="285" x2="888" y2="285" stroke="#6b7280" stroke-width="2.5"/><polygon points="888,285 876.9,289.7 876.9,280.3" fill="#6b7280"/>
+<line x1="850" y1="525" x2="1025" y2="452" stroke="#f59e0b" stroke-width="2.5"/><polygon points="1025,452 1016.6,460.6 1013.0,451.9" fill="#f59e0b"/>
+<rect x="40" y="610" width="1120" height="80" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+<text x="56" y="642" font-family="sans-serif" font-size="17" font-weight="bold" fill="#b91c1c">红线：4 年内没考完 → 资格证作废，已过科目一起作废，要重新报名（步骤 4）</text>
+<text x="56" y="672" font-family="sans-serif" font-size="16" fill="#b91c1c">考完后 1.5 年内没完成论文认定 → 本次申请无效（含全部考试）；评阅、答辩首次未过可修改，间隔 6 个月以上再申请</text>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<rect x="0" y="0" width="1200" height="675" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
+<text x="40" y="52" font-family="sans-serif" font-size="28" font-weight="bold" fill="#153249" text-anchor="start">MCP 工具描述常驻上下文，Skill 用到才加载</text>
+<text x="40" y="88" font-family="sans-serif" font-size="18" font-weight="normal" fill="#55707f" text-anchor="start">讲者第 1 讲口述的数字；上下文窗口按 200K token 计</text>
+<text x="40" y="170" font-family="sans-serif" font-size="17" font-weight="normal" fill="#153249" text-anchor="start">Playwright MCP（讲者实测）</text>
+<rect x="300" y="140" width="800" height="44" rx="6" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<rect x="300" y="140" width="57.6" height="44" rx="6" fill="#3784aa" stroke="#3784aa" stroke-width="2"/>
+<text x="369.6" y="169" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">14.4K，约 7.2%</text>
+<text x="40" y="250" font-family="sans-serif" font-size="17" font-weight="normal" fill="#153249" text-anchor="start">GitHub MCP（93 个工具）</text>
+<rect x="300" y="220" width="800" height="44" rx="6" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<rect x="300" y="220" width="220.0" height="44" rx="6" fill="#7a5ea8" stroke="#7a5ea8" stroke-width="2"/>
+<text x="532.0" y="249" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">约 55K，超过 25%</text>
+<text x="40" y="330" font-family="sans-serif" font-size="17" font-weight="normal" fill="#153249" text-anchor="start">两个 MCP 合计</text>
+<rect x="300" y="300" width="800" height="44" rx="6" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<rect x="300" y="300" width="277.6" height="44" rx="6" fill="#b4523a" stroke="#b4523a" stroke-width="2"/>
+<text x="589.6" y="329" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">约 69K</text>
+<text x="40" y="410" font-family="sans-serif" font-size="17" font-weight="normal" fill="#153249" text-anchor="start">再加系统提示与系统工具</text>
+<rect x="300" y="380" width="800" height="44" rx="6" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<rect x="300" y="380" width="560.0" height="44" rx="6" fill="#8a8f94" stroke="#8a8f94" stroke-width="2"/>
+<text x="872.0" y="409" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">约 137K–140K，近 70%</text>
+<text x="300" y="464" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="start">0</text>
+<text x="1100" y="464" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">200K</text>
+<rect x="40" y="500" width="1120" height="120" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="64" y="538" font-family="sans-serif" font-size="18" font-weight="bold" fill="#153249" text-anchor="start">Skill：平时每个只在上下文里放一小段描述（name 加 description）</text>
+<text x="64" y="572" font-family="sans-serif" font-size="16" font-weight="normal" fill="#153249" text-anchor="start">Claude 决定要用时才读整份 SKILL.md，文档里引用的 reference 再按需读取（第 5 讲 [00:13:11]）</text>
+<text x="64" y="602" font-family="sans-serif" font-size="16" font-weight="normal" fill="#153249" text-anchor="start">subagent 调 MCP 能隔离运行时的交互，但省不了加载时的占用（第 1 讲 [00:26:42]）</text>
+<text x="1160" y="655" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">教学示意 · 依据第 1 讲 [00:04:43]、[00:20:16]–[00:21:28] · 2026-10-26</text>
+</svg>

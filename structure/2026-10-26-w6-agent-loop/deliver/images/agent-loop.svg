@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<rect x="0" y="0" width="1200" height="675" fill="#ffffff"/>
+<text x="60" y="62" font-family="sans-serif" font-size="30" font-weight="bold" fill="#1f2937">一次 agent loop：模型决定调什么，本地负责执行</text>
+<rect x="60" y="120" width="250" height="110" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+<text x="84" y="165" font-family="sans-serif" font-size="22" font-weight="bold" fill="#1d4ed8">① 用户输入</text>
+<text x="84" y="200" font-family="sans-serif" font-size="17" fill="#374151">如"帮我构建某功能"</text>
+<rect x="400" y="100" width="400" height="150" rx="12" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2"/>
+<text x="424" y="145" font-family="sans-serif" font-size="22" font-weight="bold" fill="#6d28d9">② 发给模型的整包上下文</text>
+<text x="424" y="180" font-family="sans-serif" font-size="17" fill="#374151">system prompt + 工具定义 + 全部历史</text>
+<text x="424" y="210" font-family="sans-serif" font-size="17" fill="#374151">（第 2 讲实测：system 约 12k，历史约 8k）</text>
+<rect x="890" y="120" width="250" height="110" rx="12" fill="#fefce8" stroke="#eab308" stroke-width="2"/>
+<text x="914" y="165" font-family="sans-serif" font-size="22" font-weight="bold" fill="#a16207">③ 模型回复</text>
+<text x="914" y="200" font-family="sans-serif" font-size="17" fill="#374151">要调工具，还是给结果？</text>
+<rect x="890" y="360" width="250" height="120" rx="12" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+<text x="914" y="405" font-family="sans-serif" font-size="22" font-weight="bold" fill="#15803d">④ 本地执行工具</text>
+<text x="914" y="440" font-family="sans-serif" font-size="17" fill="#374151">搜代码、读文件、跑命令</text>
+<rect x="400" y="360" width="400" height="120" rx="12" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+<text x="424" y="405" font-family="sans-serif" font-size="22" font-weight="bold" fill="#15803d">⑤ 结果追加进历史</text>
+<text x="424" y="440" font-family="sans-serif" font-size="17" fill="#374151">按调用 ID 对上，再回到 ②</text>
+<rect x="890" y="540" width="250" height="90" rx="12" fill="#fff1f2" stroke="#f43f5e" stroke-width="2"/>
+<text x="914" y="580" font-family="sans-serif" font-size="22" font-weight="bold" fill="#be123c">⑥ 不再调工具</text>
+<text x="914" y="612" font-family="sans-serif" font-size="17" fill="#374151">返回总结，循环结束</text>
+<line x1="310" y1="175" x2="388" y2="175" stroke="#6b7280" stroke-width="3"/>
+<polygon points="398,175 384,167 384,183" fill="#6b7280"/>
+<line x1="800" y1="175" x2="878" y2="175" stroke="#6b7280" stroke-width="3"/>
+<polygon points="888,175 874,167 874,183" fill="#6b7280"/>
+<line x1="1015" y1="230" x2="1015" y2="348" stroke="#6b7280" stroke-width="3"/>
+<polygon points="1015,358 1007,344 1023,344" fill="#6b7280"/>
+<text x="1030" y="300" font-family="sans-serif" font-size="16" fill="#6b7280">要调工具</text>
+<line x1="890" y1="420" x2="812" y2="420" stroke="#6b7280" stroke-width="3"/>
+<polygon points="802,420 816,412 816,428" fill="#6b7280"/>
+<line x1="600" y1="360" x2="600" y2="262" stroke="#6b7280" stroke-width="3"/>
+<polygon points="600,252 592,266 608,266" fill="#6b7280"/>
+<line x1="1140" y1="175" x2="1170" y2="175" stroke="#6b7280" stroke-width="3"/>
+<line x1="1170" y1="175" x2="1170" y2="585" stroke="#6b7280" stroke-width="3"/>
+<line x1="1170" y1="585" x2="1152" y2="585" stroke="#6b7280" stroke-width="3"/>
+<polygon points="1142,585 1156,577 1156,593" fill="#6b7280"/>
+<text x="60" y="540" font-family="sans-serif" font-size="17" fill="#374151">每转一圈，历史就多两类消息：上一轮模型的回复、工具结果。</text>
+<text x="60" y="570" font-family="sans-serif" font-size="17" fill="#374151">所以上下文越来越长；课程的 spec 用 maxSteps（默认 200）兜底，</text>
+<text x="60" y="600" font-family="sans-serif" font-size="17" fill="#374151">simple-agent 代码里的默认值是 100。</text>
+</svg>

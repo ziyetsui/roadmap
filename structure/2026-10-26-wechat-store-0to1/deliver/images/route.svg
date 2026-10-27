@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<rect x="0" y="0" width="1200" height="675" fill="#ffffff"/>
+<text x="50" y="58" font-family="sans-serif" font-size="30" font-weight="bold" fill="#1f2937">6 周路线：资质线和内容线同时走</text>
+<text x="50" y="92" font-family="sans-serif" font-size="18" fill="#6b7280">只用周一到周三；备案等待期间不停更视频。时间是助手建议，审核时长以平台实际为准</text>
+<text x="50" y="150" font-family="sans-serif" font-size="20" font-weight="bold" fill="#1d4ed8">资质线</text>
+<text x="50" y="330" font-family="sans-serif" font-size="20" font-weight="bold" fill="#047857">内容线</text>
+<text x="50" y="510" font-family="sans-serif" font-size="20" font-weight="bold" fill="#b45309">卡住时</text>
+<rect x="150" y="120" width="170" height="110" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+<text x="164" y="150" font-family="sans-serif" font-size="17" font-weight="bold" fill="#1d4ed8">第 1 周</text>
+<text x="164" y="178" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 1 核资格</text>
+<text x="164" y="202" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 2 执照</text>
+<text x="164" y="224" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 3 发起备案</text>
+<rect x="335" y="120" width="170" height="110" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+<text x="349" y="150" font-family="sans-serif" font-size="17" font-weight="bold" fill="#1d4ed8">第 2 周</text>
+<text x="349" y="178" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 5 定商品</text>
+<text x="349" y="202" font-family="sans-serif" font-size="16" fill="#1f2937">等备案、补证书</text>
+<rect x="520" y="120" width="170" height="110" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+<text x="534" y="150" font-family="sans-serif" font-size="17" font-weight="bold" fill="#1d4ed8">第 3 周</text>
+<text x="534" y="178" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 8 开店</text>
+<text x="534" y="202" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 9 申请类目</text>
+<rect x="705" y="120" width="170" height="110" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+<text x="719" y="150" font-family="sans-serif" font-size="17" font-weight="bold" fill="#1d4ed8">第 4 周</text>
+<text x="719" y="178" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 10 主图详情</text>
+<text x="719" y="202" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 11 上架</text>
+<rect x="150" y="300" width="725" height="90" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+<text x="164" y="332" font-family="sans-serif" font-size="17" font-weight="bold" fill="#047857">第 1 周起持续：步骤 4 建号 → 步骤 6 定内容边界 → 步骤 7 每周固定发视频</text>
+<text x="164" y="362" font-family="sans-serif" font-size="16" fill="#1f2937">目标是攒粉丝和找出有人问“怎么学”的选题；这条线不依赖开店，等审核时也能做</text>
+<rect x="890" y="300" width="270" height="270" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+<text x="904" y="332" font-family="sans-serif" font-size="17" font-weight="bold" fill="#b45309">出单线｜第 5–6 周</text>
+<text x="904" y="364" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 12 商品接到视频号</text>
+<text x="904" y="392" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 13 带货视频</text>
+<text x="904" y="420" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 14 7 天测试</text>
+<text x="904" y="448" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 15 接住第一单</text>
+<text x="904" y="476" font-family="sans-serif" font-size="16" fill="#1f2937">步骤 16 复盘</text>
+<line x1="875" y1="175" x2="1020" y2="295" stroke="#9ca3af" stroke-width="2"/>
+<line x1="875" y1="345" x2="888" y2="345" stroke="#9ca3af" stroke-width="2"/>
+<rect x="150" y="440" width="725" height="130" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="2"/>
+<text x="164" y="472" font-family="sans-serif" font-size="17" font-weight="bold" fill="#374151">卡住时怎么办</text>
+<text x="164" y="502" font-family="sans-serif" font-size="16" fill="#1f2937">证书或备案没下来：资质线停在步骤 9 前，内容线照常；第 6 周仍没下来就按步骤 16 重排</text>
+<text x="164" y="530" font-family="sans-serif" font-size="16" fill="#1f2937">类目被拒：按驳回原因补材料再提，不换成不相符的类目硬上</text>
+<text x="164" y="558" font-family="sans-serif" font-size="16" fill="#1f2937">粉丝不到挂车门槛：先走“视频 → 头像 → 主页商品”的长路径</text>
+<text x="50" y="640" font-family="sans-serif" font-size="15" fill="#6b7280">教学示意｜依据本手册步骤清单与 O1–O3、S10；制作于 2026-10-26；不代表任何平台界面</text>
+</svg>

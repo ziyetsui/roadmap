@@ -1,0 +1,18 @@
+# Publish only reviewed delivery assets and the site build instructions.
+/*
+!/.gitignore
+!/README.md
+!/scripts/
+/scripts/*
+!/scripts/build-pages.py
+!/.github/
+/.github/*
+!/.github/workflows/
+!/.github/workflows/pages.yml
+!/structure/
+/structure/*
+!/structure/catalog.json
+!/structure/*/
+/structure/*/*
+!/structure/*/deliver/
+**/.DS_Store

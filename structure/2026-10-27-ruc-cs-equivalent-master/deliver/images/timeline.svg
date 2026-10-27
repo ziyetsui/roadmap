@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640">
+<rect x="0" y="0" width="1200" height="640" fill="#ffffff"/>
+<text x="40" y="56" font-family="sans-serif" font-size="28" font-weight="bold" fill="#1f2937">示例：2026 年秋季交材料（2027 年 3 月生效批次）的考试窗口</text>
+<text x="40" y="88" font-family="sans-serif" font-size="16" fill="#6b7280">按 2025 秋季通知和历次选考通知的规律推算；2026 秋季通知尚未发布，实际以学院和研究生院通知为准</text>
+<line x1="120" y1="130" x2="120" y2="560" stroke="#e5e7eb" stroke-width="1"/>
+<text x="126" y="124" font-family="sans-serif" font-size="18" font-weight="bold" fill="#374151">2026</text>
+<line x1="320" y1="130" x2="320" y2="560" stroke="#e5e7eb" stroke-width="1"/>
+<text x="326" y="124" font-family="sans-serif" font-size="18" font-weight="bold" fill="#374151">2027</text>
+<line x1="520" y1="130" x2="520" y2="560" stroke="#e5e7eb" stroke-width="1"/>
+<text x="526" y="124" font-family="sans-serif" font-size="18" font-weight="bold" fill="#374151">2028</text>
+<line x1="720" y1="130" x2="720" y2="560" stroke="#e5e7eb" stroke-width="1"/>
+<text x="726" y="124" font-family="sans-serif" font-size="18" font-weight="bold" fill="#374151">2029</text>
+<line x1="920" y1="130" x2="920" y2="560" stroke="#e5e7eb" stroke-width="1"/>
+<text x="926" y="124" font-family="sans-serif" font-size="18" font-weight="bold" fill="#374151">2030</text>
+<line x1="1120" y1="130" x2="1120" y2="560" stroke="#e5e7eb" stroke-width="1"/>
+<text x="1126" y="124" font-family="sans-serif" font-size="18" font-weight="bold" fill="#374151">2031</text>
+<text x="40" y="180" font-family="sans-serif" font-size="16" font-weight="bold" fill="#1d4ed8">资格证</text>
+<rect x="287" y="160" width="67" height="30" rx="6" fill="#bfdbfe"/>
+<text x="276.6666666666667" y="212" font-family="sans-serif" font-size="14" fill="#1d4ed8">交材料 → 生效</text>
+<rect x="353" y="160" width="800" height="30" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="603.3333333333334" y="181" font-family="sans-serif" font-size="15" fill="#1d4ed8">有效期约 4 年（计时从审核合格起）</text>
+<text x="40" y="262" font-family="sans-serif" font-size="16" font-weight="bold" fill="#7c3aed">信息采集</text>
+<circle cx="317" cy="256" r="9" fill="#7c3aed"/>
+<text x="330.6666666666667" y="262" font-family="sans-serif" font-size="14" fill="#7c3aed">12 月注册 / 12–1 月现场确认（一次）</text>
+<text x="40" y="340" font-family="sans-serif" font-size="16" font-weight="bold" fill="#047857">国考</text>
+<circle cx="395" cy="334" r="11" fill="#10b981"/>
+<text x="373.0" y="368" font-family="sans-serif" font-size="14" fill="#047857">2027-05</text>
+<circle cx="595" cy="334" r="11" fill="#10b981"/>
+<text x="573.0" y="368" font-family="sans-serif" font-size="14" fill="#047857">2028-05</text>
+<circle cx="795" cy="334" r="11" fill="#10b981"/>
+<text x="773.0" y="368" font-family="sans-serif" font-size="14" fill="#047857">2029-05</text>
+<circle cx="995" cy="334" r="11" fill="#10b981"/>
+<text x="973.0" y="368" font-family="sans-serif" font-size="14" fill="#047857">2030-05</text>
+<text x="420.0" y="314" font-family="sans-serif" font-size="14" fill="#047857">3 月报名 · 5 月第三个周日考 · 8–9 月出分</text>
+<text x="40" y="430" font-family="sans-serif" font-size="16" font-weight="bold" fill="#b45309">题库考</text>
+<rect x="359" y="416" width="16" height="22" rx="3" fill="#f59e0b"/>
+<rect x="472" y="416" width="16" height="22" rx="3" fill="#f59e0b"/>
+<rect x="559" y="416" width="16" height="22" rx="3" fill="#f59e0b"/>
+<rect x="672" y="416" width="16" height="22" rx="3" fill="#f59e0b"/>
+<rect x="759" y="416" width="16" height="22" rx="3" fill="#f59e0b"/>
+<rect x="872" y="416" width="16" height="22" rx="3" fill="#f59e0b"/>
+<rect x="959" y="416" width="16" height="22" rx="3" fill="#f59e0b"/>
+<rect x="1072" y="416" width="16" height="22" rx="3" fill="#f59e0b"/>
+<text x="320.0" y="470" font-family="sans-serif" font-size="14" fill="#b45309">每学期一次，共约 8 次（北京考点：春季 3–4 月、秋季 10 月底 / 11 月初）</text>
+<text x="40" y="520" font-family="sans-serif" font-size="16" font-weight="bold" fill="#be185d">论文</text>
+<rect x="653" y="502" width="300" height="28" rx="6" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+<text x="661.3333333333333" y="522" font-family="sans-serif" font-size="14" fill="#be185d">若 2028 年全部考完：18 个月内完成论文认定</text>
+<rect x="40" y="570" width="1120" height="54" rx="10" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+<text x="56" y="603" font-family="sans-serif" font-size="15" fill="#b91c1c">教学示意，2026-10-27 依据 O11、O15、O18、O24 的规律推算；“最后一次”以选考通知里点名的批次为准</text>
+</svg>

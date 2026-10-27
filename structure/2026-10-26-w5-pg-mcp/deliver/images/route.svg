@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<rect x="0" y="0" width="1200" height="675" rx="0" fill="#f4f7fa" stroke="#f4f7fa" stroke-width="2"/>
+<text x="40" y="48" font-family="sans-serif" font-size="26" font-weight="bold" fill="#153249" text-anchor="start">w5 三天流程：周一判断与写文档，周二实现与测试，周三接入、Skill 与作业</text>
+<rect x="40" y="72" width="360" height="40" rx="8" fill="#dbe8f1" stroke="#dbe8f1" stroke-width="2"/>
+<text x="220.0" y="99" font-family="sans-serif" font-size="19" font-weight="bold" fill="#153249" text-anchor="middle">周一（10:00–19:00）</text>
+<rect x="40" y="124" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="54" y="151" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 0 准备工具和练习目录</text>
+<text x="388" y="151" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">45 分</text>
+<rect x="40" y="173" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="54" y="200" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 1 判断 MCP、CLI、Skill</text>
+<text x="388" y="200" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">60 分</text>
+<rect x="40" y="222" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="54" y="249" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 2 建三个测试库</text>
+<text x="388" y="249" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">75 分</text>
+<rect x="40" y="271" width="360" height="22" rx="6" fill="#e9eef2" stroke="#e9eef2" stroke-width="2"/>
+<text x="220.0" y="287" font-family="sans-serif" font-size="13" font-weight="normal" fill="#55707f" text-anchor="middle">午休 13:00–14:00</text>
+<rect x="40" y="301" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="54" y="328" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 3 FastMCP 最小 demo</text>
+<text x="388" y="328" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">45 分</text>
+<rect x="40" y="350" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="54" y="377" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 4 写 PRD，先不做设计</text>
+<text x="388" y="377" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">45 分</text>
+<rect x="40" y="399" width="360" height="42" rx="8" fill="#fdebd3" stroke="#e0a458" stroke-width="2"/>
+<text x="54" y="426" font-family="sans-serif" font-size="16" font-weight="normal" fill="#153249" text-anchor="start">步骤 5 Deep Research 选库</text>
+<text x="388" y="426" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">45 分</text>
+<rect x="40" y="448" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="54" y="475" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 6 review，收敛到 query</text>
+<text x="388" y="475" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">45 分</text>
+<rect x="40" y="497" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="54" y="524" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 7 设计与 CLAUDE.md</text>
+<text x="388" y="524" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">60 分</text>
+<rect x="40" y="546" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="54" y="573" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 8 review 设计并叫停</text>
+<text x="388" y="573" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">60 分</text>
+<rect x="420" y="72" width="360" height="40" rx="8" fill="#dbe8f1" stroke="#dbe8f1" stroke-width="2"/>
+<text x="600.0" y="99" font-family="sans-serif" font-size="19" font-weight="bold" fill="#153249" text-anchor="middle">周二（10:00–19:00）</text>
+<rect x="420" y="124" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="434" y="151" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 9 实施计划与 review</text>
+<text x="768" y="151" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">60 分</text>
+<rect x="420" y="173" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="434" y="200" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 10 实现 Phase 0–4</text>
+<text x="768" y="200" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">120 分</text>
+<rect x="420" y="222" width="360" height="42" rx="8" fill="#fdebd3" stroke="#e0a458" stroke-width="2"/>
+<text x="434" y="249" font-family="sans-serif" font-size="16" font-weight="normal" fill="#153249" text-anchor="start">步骤 11 测试计划与题集</text>
+<text x="768" y="249" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">并行</text>
+<rect x="420" y="271" width="360" height="22" rx="6" fill="#e9eef2" stroke="#e9eef2" stroke-width="2"/>
+<text x="600.0" y="287" font-family="sans-serif" font-size="13" font-weight="normal" fill="#55707f" text-anchor="middle">午休 13:00–14:00</text>
+<rect x="420" y="301" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="434" y="328" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 12 实现 Phase 5–10</text>
+<text x="768" y="328" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">120 分</text>
+<rect x="420" y="350" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="434" y="377" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 13 code review</text>
+<text x="768" y="377" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">60 分</text>
+<rect x="420" y="399" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="434" y="426" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 14 接入课程现成版本</text>
+<text x="768" y="426" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">120 分</text>
+<rect x="800" y="72" width="360" height="40" rx="8" fill="#dbe8f1" stroke="#dbe8f1" stroke-width="2"/>
+<text x="980.0" y="99" font-family="sans-serif" font-size="19" font-weight="bold" fill="#153249" text-anchor="middle">周三（10:00–19:00）</text>
+<rect x="800" y="124" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="814" y="151" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 14 接入你的版本</text>
+<text x="1148" y="151" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">60 分</text>
+<rect x="800" y="173" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="814" y="200" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 15 pg-data Skill 与对比</text>
+<text x="1148" y="200" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">120 分</text>
+<rect x="800" y="222" width="360" height="22" rx="6" fill="#e9eef2" stroke="#e9eef2" stroke-width="2"/>
+<text x="980.0" y="238" font-family="sans-serif" font-size="13" font-weight="normal" fill="#55707f" text-anchor="middle">午休 13:00–14:00</text>
+<rect x="800" y="252" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="814" y="279" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">步骤 16 课后作业一项</text>
+<text x="1148" y="279" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">120 分</text>
+<rect x="800" y="301" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="814" y="328" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">附录 F 迁移草稿或缓冲</text>
+<text x="1148" y="328" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">90 分</text>
+<rect x="800" y="350" width="360" height="42" rx="8" fill="#ffffff" stroke="#cad9e5" stroke-width="2"/>
+<text x="814" y="377" font-family="sans-serif" font-size="16" font-weight="bold" fill="#153249" text-anchor="start">复盘：对照课程 0001–0008</text>
+<text x="1148" y="377" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">90 分</text>
+<polygon points="400,300 414,310 400,320" fill="#3784aa"/>
+<polygon points="780,300 794,310 780,320" fill="#3784aa"/>
+<rect x="40" y="628" width="22" height="18" rx="4" fill="#fdebd3" stroke="#e0a458" stroke-width="2"/>
+<text x="70" y="643" font-family="sans-serif" font-size="15" font-weight="normal" fill="#153249" text-anchor="start">浅橙色：与主线同时段，在第二个 Claude Code 窗口里并行</text>
+<text x="1160" y="643" font-family="sans-serif" font-size="14" font-weight="normal" fill="#55707f" text-anchor="end">教学示意 · 助手建议的时间安排 · 2026-10-26</text>
+</svg>

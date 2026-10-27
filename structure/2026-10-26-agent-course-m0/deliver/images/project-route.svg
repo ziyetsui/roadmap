@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<rect x="0" y="0" width="1200" height="675" fill="#fffdf8"/>
+<text x="30" y="56" font-family="sans-serif" font-size="30" fill="#203137">M0 三天：视频与图文走同一条流水线</text>
+<rect x="30" y="80" width="1140" height="44" rx="10" fill="#eef2f3"/>
+<text x="600" y="109" font-family="sans-serif" font-size="19" text-anchor="middle" fill="#203137">步骤 1–2（贯穿）：运行目录 · 真实样本 · 工具契约 · 停止与预算 · events.jsonl</text>
+<rect x="30" y="165" width="165" height="290" rx="12" fill="#dceee8"/>
+<text x="112.5" y="275" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#1c655c">步骤 3</text>
+<text x="112.5" y="303" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">brief</text>
+<text x="112.5" y="331" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">规范化</text>
+<text x="112.5" y="359" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">硬约束单列</text>
+<rect x="220" y="165" width="165" height="290" rx="12" fill="#dceee8"/>
+<text x="302.5" y="275" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#1c655c">步骤 4</text>
+<text x="302.5" y="303" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">扩词 +</text>
+<text x="302.5" y="331" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">多路召回</text>
+<text x="302.5" y="359" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">视频 + 图文</text>
+<text x="410" y="156" font-family="sans-serif" font-size="18" fill="#9a4b16">视频轨</text>
+<text x="410" y="316" font-family="sans-serif" font-size="18" fill="#2f5d9a">图文轨</text>
+<rect x="410" y="165" width="165" height="120" rx="12" fill="#fbe9dc"/>
+<text x="492.5" y="204" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#1c655c">步骤 5</text>
+<text x="492.5" y="232" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">去重排序</text>
+<text x="492.5" y="260" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">Top 20</text>
+<rect x="600" y="165" width="165" height="120" rx="12" fill="#fbe9dc"/>
+<text x="682.5" y="204" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#1c655c">步骤 6</text>
+<text x="682.5" y="232" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">下载 + ASR</text>
+<text x="682.5" y="260" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">逐字稿</text>
+<rect x="790" y="165" width="165" height="120" rx="12" fill="#fbe9dc"/>
+<text x="872.5" y="204" font-family="sans-serif" font-size="17" text-anchor="middle" fill="#1c655c">步骤 7</text>
+<text x="872.5" y="231" font-family="sans-serif" font-size="19" text-anchor="middle" fill="#203137">拆解：钩子</text>
+<text x="872.5" y="258" font-family="sans-serif" font-size="19" text-anchor="middle" fill="#203137">结构 卖点 表达</text>
+<rect x="410" y="325" width="165" height="130" rx="12" fill="#e1eaf7"/>
+<text x="492.5" y="369" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#1c655c">步骤 5</text>
+<text x="492.5" y="397" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">去重排序</text>
+<text x="492.5" y="425" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">Top N（待定）</text>
+<rect x="600" y="325" width="165" height="130" rx="12" fill="#e1eaf7"/>
+<text x="682.5" y="370" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#1c655c">步骤 6</text>
+<text x="682.5" y="396" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#203137">全部图片 + 正文</text>
+<text x="682.5" y="422" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#203137">+ OCR 文本稿</text>
+<rect x="790" y="325" width="165" height="130" rx="12" fill="#e1eaf7"/>
+<text x="872.5" y="369" font-family="sans-serif" font-size="17" text-anchor="middle" fill="#1c655c">步骤 7</text>
+<text x="872.5" y="396" font-family="sans-serif" font-size="19" text-anchor="middle" fill="#203137">同一框架拆解</text>
+<text x="872.5" y="423" font-family="sans-serif" font-size="19" text-anchor="middle" fill="#203137">+ 图序与封面</text>
+<rect x="985" y="165" width="185" height="130" rx="12" fill="#dceee8"/>
+<text x="1077.5" y="209" font-family="sans-serif" font-size="17" text-anchor="middle" fill="#1c655c">步骤 8</text>
+<text x="1077.5" y="236" font-family="sans-serif" font-size="19" text-anchor="middle" fill="#203137">复刻方案</text>
+<text x="1077.5" y="263" font-family="sans-serif" font-size="19" text-anchor="middle" fill="#203137">视频脚本 / 图文</text>
+<rect x="985" y="325" width="185" height="130" rx="12" fill="#dceee8"/>
+<text x="1077.5" y="370" font-family="sans-serif" font-size="16" text-anchor="middle" fill="#1c655c">步骤 9</text>
+<text x="1077.5" y="396" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#203137">人工验收</text>
+<text x="1077.5" y="422" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#203137">run-report 两轨分计</text>
+<line x1="195" y1="310" x2="210" y2="310" stroke="#52646a" stroke-width="3"/>
+<polygon points="220,310 208,303 208,317" fill="#52646a"/>
+<line x1="385" y1="225" x2="400" y2="225" stroke="#52646a" stroke-width="3"/>
+<polygon points="410,225 398,218 398,232" fill="#52646a"/>
+<line x1="385" y1="390" x2="400" y2="390" stroke="#52646a" stroke-width="3"/>
+<polygon points="410,390 398,383 398,397" fill="#52646a"/>
+<line x1="575" y1="225" x2="590" y2="225" stroke="#52646a" stroke-width="3"/>
+<polygon points="600,225 588,218 588,232" fill="#52646a"/>
+<line x1="765" y1="225" x2="780" y2="225" stroke="#52646a" stroke-width="3"/>
+<polygon points="790,225 778,218 778,232" fill="#52646a"/>
+<line x1="955" y1="225" x2="975" y2="225" stroke="#52646a" stroke-width="3"/>
+<polygon points="985,225 973,218 973,232" fill="#52646a"/>
+<line x1="575" y1="390" x2="590" y2="390" stroke="#52646a" stroke-width="3"/>
+<polygon points="600,390 588,383 588,397" fill="#52646a"/>
+<line x1="765" y1="390" x2="780" y2="390" stroke="#52646a" stroke-width="3"/>
+<polygon points="790,390 778,383 778,397" fill="#52646a"/>
+<polyline points="955,390 970,390 970,262 975,262" fill="none" stroke="#52646a" stroke-width="3"/>
+<polygon points="985,262 973,255 973,269" fill="#52646a"/>
+<line x1="1077" y1="295" x2="1077" y2="315" stroke="#52646a" stroke-width="3"/>
+<polygon points="1077,325 1070,313 1084,313" fill="#52646a"/>
+<rect x="30" y="485" width="735" height="80" rx="10" fill="#f3efe4"/>
+<text x="397.5" y="517" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">D1 周一 10:00–19:00</text>
+<text x="397.5" y="548" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#52646a">brief → 召回 → 排序 → 素材与文本稿</text>
+<rect x="790" y="485" width="165" height="80" rx="10" fill="#f3efe4"/>
+<text x="872.5" y="517" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">D2 周二</text>
+<text x="872.5" y="548" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#52646a">拆解 · 画廊 · 抽查</text>
+<rect x="985" y="485" width="185" height="80" rx="10" fill="#f3efe4"/>
+<text x="1077.5" y="517" font-family="sans-serif" font-size="20" text-anchor="middle" fill="#203137">D3 周三</text>
+<text x="1077.5" y="548" font-family="sans-serif" font-size="18" text-anchor="middle" fill="#52646a">复刻 · 成品 · 报告</text>
+<text x="30" y="625" font-family="sans-serif" font-size="18" fill="#52646a">教学示意 · 依据 specs/0002 §1、§4 · 时间段取自 0002，图文轨分工为助手建议 · 图文验收数字待定（0002 未规定）</text>
+</svg>

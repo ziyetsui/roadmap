@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<rect x="0" y="0" width="1200" height="675" fill="#ffffff"/>
+<text x="60" y="62" font-family="sans-serif" font-size="30" font-weight="bold" fill="#1f2937">w6 三天路线：先看懂，再观察，最后自己写</text>
+<text x="60" y="98" font-family="sans-serif" font-size="18" fill="#6b7280">周一到周三 10:00–19:00，每天 8 小时投入 + 1 小时午休；时间是助手建议</text>
+<rect x="60" y="130" width="340" height="420" rx="14" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+<text x="84" y="172" font-family="sans-serif" font-size="24" font-weight="bold" fill="#1d4ed8">周一｜第 1 讲 + 开工</text>
+<text x="84" y="214" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 1 工作副本与环境</text>
+<text x="84" y="250" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 2 SDK 六层与权限</text>
+<text x="84" y="286" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 3 读 system prompt</text>
+<text x="84" y="322" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 4 上下文成本</text>
+<text x="84" y="358" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 5 vendors + 先要方案</text>
+<text x="84" y="394" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 6 日志插件</text>
+<text x="84" y="470" font-family="sans-serif" font-size="17" fill="#374151">产物：分层笔记、</text>
+<text x="84" y="498" font-family="sans-serif" font-size="17" fill="#374151">第一份 JSONL 日志</text>
+<rect x="430" y="130" width="340" height="420" rx="14" fill="#f0fdf4" stroke="#22c55e" stroke-width="2"/>
+<text x="454" y="172" font-family="sans-serif" font-size="24" font-weight="bold" fill="#15803d">周二｜第 2 讲</text>
+<text x="454" y="214" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 7 写 design doc，</text>
+<text x="454" y="244" font-family="sans-serif" font-size="19" fill="#1f2937">生成并迭代可视化器</text>
+<text x="454" y="286" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 8 用可视化器读一次</text>
+<text x="454" y="316" font-family="sans-serif" font-size="19" fill="#1f2937">完整的 agent loop</text>
+<text x="454" y="470" font-family="sans-serif" font-size="17" fill="#374151">产物：能打开日志的可视化器、</text>
+<text x="454" y="498" font-family="sans-serif" font-size="17" fill="#374151">一页 agent loop 笔记</text>
+<rect x="800" y="130" width="340" height="420" rx="14" fill="#fff7ed" stroke="#f97316" stroke-width="2"/>
+<text x="824" y="172" font-family="sans-serif" font-size="24" font-weight="bold" fill="#c2410c">周三｜第 3 讲</text>
+<text x="824" y="214" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 9 先写 spec，做对照</text>
+<text x="824" y="250" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 10 按 spec 实现 SDK</text>
+<text x="824" y="286" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 11 不调模型验工具层</text>
+<text x="824" y="322" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 12 跑 4 个 example</text>
+<text x="824" y="358" font-family="sans-serif" font-size="19" fill="#1f2937">步骤 13 换 GPT-5 与</text>
+<text x="824" y="388" font-family="sans-serif" font-size="19" fill="#1f2937">Responses API，装 Context7</text>
+<text x="824" y="470" font-family="sans-serif" font-size="17" fill="#374151">产物：能跑的 simple-agent、</text>
+<text x="824" y="498" font-family="sans-serif" font-size="17" fill="#374151">执行记录表</text>
+<polygon points="424,340 404,330 404,350" fill="#9ca3af"/>
+<polygon points="794,340 774,330 774,350" fill="#9ca3af"/>
+<rect x="60" y="578" width="1080" height="60" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="1.5"/>
+<text x="84" y="616" font-family="sans-serif" font-size="18" fill="#374151">先不做：codereview-agent（仓库有、视频未讲）、迁移到 video-mcp（课外扩展）——都在附录，三天后再看</text>
+</svg>

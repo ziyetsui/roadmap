@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<rect x="0" y="0" width="1200" height="675" fill="#ffffff"/>
+<text x="50" y="58" font-family="sans-serif" font-size="30" font-weight="bold" fill="#1f2937">买家怎么从一条视频走到下单</text>
+<text x="50" y="92" font-family="sans-serif" font-size="18" fill="#6b7280">短路径要挂车权限；没有时走长路径，每一环都要提前摆好</text>
+<text x="50" y="160" font-family="sans-serif" font-size="20" font-weight="bold" fill="#047857">短路径</text>
+<rect x="160" y="125" width="220" height="70" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+<text x="180" y="168" font-family="sans-serif" font-size="18" fill="#1f2937">刷到你的视频</text>
+<line x1="380" y1="160" x2="440" y2="160" stroke="#6b7280" stroke-width="3"/><polygon points="440,150 460,160 440,170" fill="#6b7280"/>
+<rect x="465" y="125" width="260" height="70" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+<text x="485" y="168" font-family="sans-serif" font-size="18" fill="#1f2937">点视频里的商品链接</text>
+<line x1="725" y1="160" x2="785" y2="160" stroke="#6b7280" stroke-width="3"/><polygon points="785,150 805,160 785,170" fill="#6b7280"/>
+<rect x="810" y="125" width="200" height="70" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+<text x="830" y="168" font-family="sans-serif" font-size="18" fill="#1f2937">商品页 → 下单</text>
+<text x="50" y="320" font-family="sans-serif" font-size="20" font-weight="bold" fill="#b45309">长路径</text>
+<rect x="160" y="285" width="190" height="70" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+<text x="178" y="328" font-family="sans-serif" font-size="18" fill="#1f2937">刷到你的视频</text>
+<line x1="350" y1="320" x2="385" y2="320" stroke="#6b7280" stroke-width="3"/><polygon points="385,310 405,320 385,330" fill="#6b7280"/>
+<rect x="410" y="285" width="190" height="70" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+<text x="428" y="328" font-family="sans-serif" font-size="18" fill="#1f2937">看评论/结尾提示</text>
+<line x1="600" y1="320" x2="635" y2="320" stroke="#6b7280" stroke-width="3"/><polygon points="635,310 655,320 635,330" fill="#6b7280"/>
+<rect x="660" y="285" width="190" height="70" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+<text x="678" y="328" font-family="sans-serif" font-size="18" fill="#1f2937">点头像进主页</text>
+<line x1="850" y1="320" x2="885" y2="320" stroke="#6b7280" stroke-width="3"/><polygon points="885,310 905,320 885,330" fill="#6b7280"/>
+<rect x="910" y="285" width="240" height="70" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="2"/>
+<text x="928" y="328" font-family="sans-serif" font-size="18" fill="#1f2937">看到商品 → 下单</text>
+<rect x="160" y="400" width="990" height="190" rx="10" fill="#f9fafb" stroke="#d1d5db" stroke-width="2"/>
+<text x="180" y="435" font-family="sans-serif" font-size="19" font-weight="bold" fill="#374151">每条视频发出后自己走一遍，检查 4 处</text>
+<text x="180" y="470" font-family="sans-serif" font-size="17" fill="#1f2937">1. 视频里说的课程名 = 商品标题里的课程名，不出现第二个说法</text>
+<text x="180" y="502" font-family="sans-serif" font-size="17" fill="#1f2937">2. 主页简介第一行就告诉人去哪里买（不写微信号）</text>
+<text x="180" y="534" font-family="sans-serif" font-size="17" fill="#1f2937">3. 主页商品第一个就是视频说的那门课</text>
+<text x="180" y="566" font-family="sans-serif" font-size="17" fill="#1f2937">4. 换一个微信号看评论区，确认你的引导评论别人看得到</text>
+<text x="50" y="640" font-family="sans-serif" font-size="15" fill="#6b7280">教学示意｜依据 S6 自在（2026-06）与航海手册 S10（2026-08）的做法整理；制作于 2026-10-26；不代表平台界面</text>
+</svg>
