@@ -12,6 +12,7 @@
 - **数字的性质**：12k、81.7k、200 步这类数字是讲者在录课时屏幕上看到或口头说的，不是你环境里的保证值；模型名（gpt-5-mini、gpt-5-codex）是课程代码里写死的历史配置。
 - **跑过和没跑过的要分开看**：本次只在临时副本里跑了不调模型的部分（安装、测试、类型检查、工具直调、缺 key 报错），结果写在本次核实记录 [[O9](#source-o9)]。所有调用模型的步骤本次都没跑，手册不承诺你会得到和讲者一样的输出。
 - **模板里的〔〕是虚构占位**，用之前换成你自己的内容。
+- **每一步的“讲者原始提示词”**：讲者存档过的照课程仓库 `.chats/w6.md` 原文摘录（步骤 10、附录 G）；其余来自逐字稿，原样摘录、不改错字，并注明明显的转写错误；没有提示词的步骤也写明。要直接套用，用附录 D 整理过的模板。
 - **几个反复出现的词**：agent loop 指“模型决定调哪个工具、本地执行、把结果连同历史再发给模型”这样一圈圈转下去的过程；spec 指写代码前的设计文档；system prompt 是每次请求最前面那段角色和规则说明；token 是模型计费的文字单位；hook 指“某件事发生前后，让外部代码插进来处理”的扩展点；MCP 是让 agent 接入外部工具服务的标准协议；JSONL 是每行一个 JSON 对象的文本文件。
 
 <a id="section-roadmap"></a>
@@ -152,6 +153,10 @@ opencode --version
 - [ ] `.env` 写好且被忽略
 - [ ] OpenCode 能回复 `hello`
 
+#### 讲者原始提示词
+
+这一步讲者没有给 agent 发提示词。装 oh-my-opencode 时，他把它的安装说明直接贴给 OpenCode 让它自己装，视频里没有念说明的内容（第 1 讲 14:49–16:26）[[O1](#source-o1)]。
+
 #### 讲者做法与数字
 
 - 讲者用 OpenCode 时配了 Claude（订阅）、Gemini 和 GPT-5 Codex（API key），主力是 Claude；还推荐配合 oh-my-opencode 一起用，安装方式是把它的说明贴给 OpenCode 让它自己装（第 1 讲 14:49–16:26）[[O1](#source-o1)]。
@@ -169,11 +174,21 @@ opencode --version
 3. 写清权限的三种做法和代价：逐次审批（安全，但每次等你批准，几分钟的事被拉长）；yolo 模式（给 agent 和你同样的权限，可能误删文件或数据库）；sandbox（给最大权限，但只在一个隔离的“壳”里操作，云上给每个 agent 一个单独的 sandbox pod）[[O1](#source-o1)]。
 4. 为 video-mcp 选一种并写一句理由。hook 在这里指“agent 做某件事之前或之后，让你的应用插进来决定允许还是拒绝”，也写进笔记 [[O1](#source-o1)]。
 
+下图按讲者第 1 讲画完的结构图重画：左边用户应用经 SDK 接口层进入 Agent Loop；中间是 Session 层（context、对话历史）和工具层（内建工具、工具执行、外部工具）；右边 LLM 抽象层对接 OpenAI、Claude、Qwen、Kimi 等模型；底部是权限控制 / hooks / 日志，再往下连到系统 sandbox。[[O1](#source-o1)]
+
+![Agent SDK 六层结构示意：用户应用经接口层进入 agent loop，旁边是 session 层、工具层、LLM 抽象层与多家模型，底部是权限控制 / hooks / 日志和系统 sandbox](images/agent-sdk-six-layers-diagram.png)
+
+图注：教学示意，2026-10-28 依据第 1 讲 00:58–12:45 的讲解和讲者在 12:40 画完的结构图重画，层次与名称照原图，各层说明来自讲解；不是视频截图。
+
 **做完的标准**：笔记里六层各有一句话说明；权限三种做法各写了代价；video-mcp 的选择写了理由，例如“生成文件只写到项目的 output 目录，所以选 sandbox 式目录限制”。
 
 - [ ] 六层各有一句说明
 - [ ] 三种权限做法各写了代价
 - [ ] video-mcp 的权限选择和理由
+
+#### 讲者原始提示词
+
+这一步是讲者讲解 Agent SDK 结构图，没有给 agent 发提示词。
 
 #### 讲者做法与数字
 
@@ -200,6 +215,18 @@ system prompt 是每次请求最前面那段“你是谁、该怎么做”的说
 - [ ] 笔记回答了上面三个问题
 - [ ] 记下“60% 来自工具及其描述”对 video-mcp 的含义
 
+#### 讲者原始提示词
+
+原样摘录，不改错字。逐字稿是机器转写：` / ` 是转写的分段，`……` 是省略的讲解；代码块下方注明明显的转写错误。
+
+第 1 讲 19:45–19:59，讲者在 Codex 源码目录里让 agent 写分析文档 [[O1](#source-o1)]：
+
+```text
+让他查看Codex的实现 / 找出所有system prompt和工具调用相关的prompt / 撰写文档介绍 / 放在点learnings下面标示化 / ASCII的图表帮助理解
+```
+
+“点learnings”即 `.learnings` 目录；“标示化”是转写错误，原意不明。整理后的版本见 [模板 T1](#template-t1)。
+
 #### 讲者做法与数字
 
 - 讲者的建议：用 Claude 系列模型写代码，用 Codex 做 review。他的解释是同一个模型审自己写的代码“遵循着同样的思路”，不容易找到问题（第 1 讲 34:26–35:17）[[O1](#source-o1)]。
@@ -222,6 +249,10 @@ agent 每转一圈都把整段历史再发一遍。这一步把讲者给的成�
 
 - [ ] 记下 81.7k、80%–90% 缓存、autocompact 也花钱这三点
 - [ ] 3 条规则各配一个 video-mcp 场景
+
+#### 讲者原始提示词
+
+这一步是讲者讲解上下文成本，没有给 agent 发提示词。
 
 #### 讲者做法与数字
 
@@ -257,6 +288,18 @@ git status   # 期望：看不到 vendors/
 - [ ] `vendors/opencode` 有源码且被忽略
 - [ ] 拿到方案，agent 没有动手改代码
 - [ ] 方案里点名了 4 个 hook
+
+#### 讲者原始提示词
+
+原样摘录，不改错字。逐字稿是机器转写：` / ` 是转写的分段，`……` 是省略的讲解；代码块下方注明明显的转写错误。
+
+第 2 讲 13:31–14:53，讲者让 Claude Code 先出方案 [[O2](#source-o2)]：
+
+```text
+查看 / 查看,vendors,opencode,原码 / 如何最方便的获得opencode / 每次像 / 像 / 发送的包含 / 完整内容的输入 / 输出 / 最好是有 / hook, plugin,什么的 / 避免我直接修改原码 / 先不要 / 转线 / 告诉我方案
+```
+
+“原码”是源码；“转线”是转写错误，按上下文是“写代码”；14:00–14:07 的“每次像 / 像”处有漏字。整理后的版本见 [模板 T2](#template-t2)。
 
 #### 讲者做法与数字
 
@@ -295,6 +338,38 @@ head -c 400 "$(ls -t logs/*.jsonl | head -1)"
 - [ ] 至少 2 个自己的 JSONL
 - [ ] 区分出主任务日志和标题生成日志
 
+#### 讲者原始提示词
+
+原样摘录，不改错字。逐字稿是机器转写：` / ` 是转写的分段，`……` 是省略的讲解；代码块下方注明明显的转写错误。
+
+第 2 讲 17:12–20:33，选定方案一后落地 [[O2](#source-o2)]：
+
+```text
+来使用方案一 / 啊注意 / 将内容写入 / …… / 注意一次完整的对话 / 用户输入 / 最后得到完整的结果 / 内容放在同一个JsonL里,新的内容append进去。 / 不同的对话使用不同的JSON-L / …… / 请补获 / system prompt / 请补获每个turn的完成 / 完成 / 输入和完整输出 / 脚本放在 / 点 / 它叫啥?plugins / logconversation.ts / 然后部署确保代码的更确性 / 然后部署输出内容放在点
+```
+
+“补获”是捕获，“更确性”是正确性；最后的“点”后面没念完，课程代码输出在 `./logs`。整理后的版本见 [模板 T3](#template-t3)。
+
+第 2 讲 25:39–27:10 追加约束，28:25–28:30 看完计划后确认 [[O2](#source-o2)]：
+
+```text
+如果用 session id / 这样这次要 / 一个 session 里多次对话 / 都放一个文件 / 能不能 / 再加一个简单的ID / 比如UUID前几位 / 每次得到 / …… / 但是他应该能理解每次得到Result的时候
+
+可以 / 请 / 构建
+```
+
+“告诉我你的计划，先不要修改”这句逐字稿里没有转写出来，讲者在 27:14 说“我们让 agent 告诉一下我们他想怎么样去做”。整理后的版本见 [模板 T4](#template-t4)。
+
+第 2 讲 31:28 与 32:17–32:36，插件装好后在 OpenCode 里问的两句 [[O2](#source-o2)]：
+
+```text
+刚前有哪些skills
+
+帮我更新 / 嗯 / 是其更 / 加 / 符合 / ts best practice
+```
+
+“刚前”是“当前”；第二句漏了宾语，按上下文是 `CLAUDE.md`。
+
 #### 讲者做法与数字
 
 - 一条消息生成了三四个日志文件。讲者打开后发现其中一个的 system 是“You are a title generator. You output ONLY a thread title”，另一些是后台 subagent（第 2 讲 32:56–34:06）[[O2](#source-o2)]。这是正常现象，见 [案例卡 5](#case-5)。
@@ -327,6 +402,42 @@ npm run dev     # 终端会打印本地地址，用浏览器打开后选择 logs
 - [ ] 可视化器能打开自己生成的日志
 - [ ] 至少按草图重做过一次布局
 
+#### 讲者原始提示词
+
+原样摘录，不改错字。逐字稿是机器转写：` / ` 是转写的分段，`……` 是省略的讲解；代码块下方注明明显的转写错误。
+
+第 2 讲 34:35–41:26，读日志并做可视化器（讲者边说边从别的项目拷样式文件，中间的操作讲解已省略）[[O2](#source-o2)]：
+
+```text
+读取 / 当前到此下的文件 / 一行 / 就是一个JSON / …… / 分析其 / schema / 帮我勾结一个 / schema / 一个前端可视化APP / 用户打开一个JSON-L文件 / 你可以將其很好的分文別在一個頁面中展示 / 不同,看下 / 等节 / 数目 / 注意使用spotbar来控制区域长度 / 文字内容使用 / markdown render / 来渲染 / …… / 然后参照 / 点visualizer / styles / 参照 / 应该是使用 / 使用 / Global使用 / Styles Global CSS / 构建一个 / React App / 放在 Visualizer 下 / 根据这些需求,先撰写一个Design Dock放在第二个SPEC下 / 然后完整实现
+```
+
+“当前到此下”按上下文是 `./logs` 下；“勾结”是构建；“spotbar”是 scrollbar；“Design Dock”是 design doc；“第二个SPEC”是 `./specs`。这一条里没有“使用中文输出”，讲者事后才发现忘了（第 2 讲 43:51–44:07）。整理后的版本见 [模板 T5](#template-t5)。
+
+第 2 讲 59:56–1:01:08 升级依赖，1:49:49–1:50:03 纠正依赖装错位置 [[O2](#source-o2)]：
+
+```text
+把所有的升级到最新版本 / …… / npm check update / 我将升级到 / 按钮的 / 而且 / react / 19
+
+diff / 应该加到内部的package / 外面的没有用
+```
+
+迭代时逐条提的需求（第 2 讲，每做完一轮说一次 `commit the code`，如 1:23:05）[[O2](#source-o2)]：
+
+```text
+让其作为 / 一个单独的和user assistant评级的 / section / 有自己的图标 / 和颜色    （1:19:18–1:19:45）
+
+ToHistory我们也应该让它是倒序吧 / ToHistory应该也 / 和时间倒排 / 最新的最上面    （1:32:37–1:32:59）
+
+只需要再edit / 这次 / 使用即可 / 其他不需要    （1:38:18–1:38:45）
+
+to do / write input / output / 应该转示成to do的样子    （1:39:10–1:39:20）
+
+每次切换到下一个 / 下一个 / Ten 10 / 2 / 自动展开最新的 / 图和chat history都scroll到最上面 / System Prompt默认全都展开    （1:44:17–1:45:04）
+```
+
+“评级”是平级；“ToHistory”是 Tool History；“Ten”是 turn。布局是讲者边画草图边说的，逐字稿只留下零散的词，例如 49:22“我们给它做成就是左右结构的”、53:03“然后底下我们可以放一个status bar”。整理后的清单见 [模板 T6](#template-t6)。
+
 #### 讲者做法与数字
 
 - 讲者把 `design-tokens.css` 写成了少一个 s 的 `design-token`，模型就“想当然”地自己生成了一套 token，讲者删掉重来（第 2 讲 45:42–48:15）[[O2](#source-o2)]。课程仓库里的 `visualizer-design.md` 第 174 行至今还写着 `design-token.css` [[O9](#source-o9)]。见 [案例卡 2](#case-2)。
@@ -357,6 +468,10 @@ npm run dev     # 终端会打印本地地址，用浏览器打开后选择 logs
 - [ ] 找到至少 3 个只有工具调用的轮次
 - [ ] 一句话写出 agent loop
 
+#### 讲者原始提示词
+
+这一步是讲者用可视化器读日志，没有给 agent 发提示词。
+
 #### 讲者做法与数字
 
 - 讲者看到第一轮“system prompt 就有 12k，chat history 才 8k”（第 2 讲 1:12:13–1:12:19）；system prompt 默认展开后，看到了被注入的 `CLAUDE.md`，“很长 11K”（第 2 讲 1:46:11–1:46:45）[[O2](#source-o2)]。
@@ -383,6 +498,20 @@ npm run dev     # 终端会打印本地地址，用浏览器打开后选择 logs
 - [ ] 对照笔记写出至少 3 处差异
 - [ ] 定下 video-mcp 的 spec 来源
 
+#### 讲者原始提示词
+
+原样摘录，不改错字。逐字稿是机器转写：` / ` 是转写的分段，`……` 是省略的讲解；代码块下方注明明显的转写错误。
+
+“读过源码”的那份 spec：讲者说生成过程“我就不跟大家演示了”，没有原始提示词 [[O3](#source-o3)]；[模板 T7](#template-t7) 是课程侧手册补写的。
+
+第 3 讲 20:04–21:22，在空目录里做无参考的对照实验 [[O3](#source-o3)]：
+
+```text
+帮我构建一个 / 实验性质的 / 简单单完整的 / simple / simple agent / …… / 可以完成 / 完成多部的agent loop root / 就是用ThinkUltraHard搁建一个TypeScript的Design放在第二 / agent design dmd / 使用中文输出
+```
+
+“多部”是多步；“root”按上下文是“如图”（讲者同时贴了 agent loop 示意图）；“搁建”是构建；“放在第二 / agent design dmd”是放在 `./agent-design.md`。整理后的版本见 [模板 T8](#template-t8)。
+
 #### 讲者做法与数字
 
 - “最有价值的是什么？是这个 spec”；数据结构、接口、流程都清楚之后，“LM 来完成这个代码本身其实就只是工作量的问题”，所以要把大量时间花在把 spec 做好并认真 review 上（第 3 讲 19:03–24:34）[[O3](#source-o3)]。
@@ -408,6 +537,24 @@ npm run dev     # 终端会打印本地地址，用浏览器打开后选择 logs
 - [ ] `my-agent` 测试通过
 - [ ] 类型检查通过
 - [ ] 与课程成品的差异写进对照笔记
+
+#### 讲者原始提示词
+
+原样摘录，不改错字。逐字稿是机器转写：` / ` 是转写的分段，`……` 是省略的讲解；代码块下方注明明显的转写错误。
+
+这一条有讲者的存档原文。第 3 讲 11:01 讲者说“这里 instructions”，是照着课程仓库的 `.chats/w6.md` 念的（文件标题就是 `# instructions`，“simple agent 构建”一节和 `simple-agent` 代码在同一次提交 57894dd 进入仓库）。下面照原文摘录，错别字未改 [[O8](#source-o8)]：
+
+```text
+基于 @specs/w6/0001-simple-agent-design.md 的规范，使用 openai 构建一个 agent sdk，提供 agent 的核心功能，用户可以很方便地为 agent 添加自定义工具和 mcp。完成构建后，确保所有实现否符合 design spec，并提供几个 example 来展示如何使用（包含至少一个使用 mcp 的例子）。
+```
+
+实现过程中追加的一句（第 3 讲 17:16，逐字稿原样；“apps”按上下文是依赖）[[O3](#source-o3)]：
+
+```text
+确保所有apps使用最新版本
+```
+
+整理后的版本见 [模板 T9](#template-t9)。
 
 #### 讲者做法与数字
 
@@ -477,6 +624,10 @@ for (const call of cases) {
 - [ ] 记下“defineTool 不做运行时校验”
 - [ ] 想好 video-mcp 的工具在哪一层校验参数
 
+#### 讲者原始提示词
+
+这一步是本手册补的，视频里没有，没有讲者提示词。
+
 #### 讲者做法与数字
 
 - 视频里没有这一步；讲者展示的 `custom-tools` 示例里，天气和搜索都是“simulate 一下”的模拟数据（第 3 讲 32:52–33:21）[[O3](#source-o3)]。输出像真数据，不代表接了真接口。
@@ -511,6 +662,18 @@ cat /private/tmp/test.txt
 - [ ] mcp 跑通，记下了自我恢复的过程
 - [ ] system prompt 里有“不要询问确认”
 
+#### 讲者原始提示词
+
+原样摘录，不改错字。逐字稿是机器转写：` / ` 是转写的分段，`……` 是省略的讲解；代码块下方注明明显的转写错误。
+
+第 3 讲 31:44–31:57，让 Claude Code 代跑全部 example [[O3](#source-o3)]：
+
+```text
+测试所有 / example / 确保 / 他们 / 都正常 / 运行 / 我已经 / Page好,OpenAI API key了
+```
+
+“Page好”是配好。整理后的版本见 [模板 T10](#template-t10)。讲者在 system prompt 里加的“do not ask for confirmation”是改代码，不是发给 agent 的提示词。
+
 #### 讲者做法与数字
 
 - “这是 mcp 的 14 个工具”（第 3 讲 36:07）；Mac 下 `/tmp` 是 `/private/tmp`，所以“access denied”（第 3 讲 36:50–36:58）[[O3](#source-o3)]。
@@ -536,6 +699,18 @@ agent 写的代码常常用旧版本的库和旧模型名。讲者遇到的正�
 - [ ] 改为 Responses API，`call_id` 对应正确
 - [ ] 4 个 example 重新跑通
 - [ ] Context7 装好或标明未装原因
+
+#### 讲者原始提示词
+
+原样摘录，不改错字。逐字稿是机器转写：` / ` 是转写的分段，`……` 是省略的讲解；代码块下方注明明显的转写错误。
+
+第 3 讲 42:28–43:03，换成 gpt-5-mini 报错后 [[O3](#source-o3)]：
+
+```text
+出错了,请修复 / 如果你 / open ai最新model是gpt5G以上 / 不要用gpt4欧 / 然后gpt5使用response api / 请查阅更新代码
+```
+
+“gpt5G”是 GPT-5，“gpt4欧”是 GPT-4o，“response api”是 Responses API。整理后的版本见 [模板 T11](#template-t11)。
 
 #### 讲者做法与数字
 
@@ -765,7 +940,7 @@ think ultra hard。构建一个 TypeScript 的 design 放在 ./agent-design.md�
 并提供几个简单的 example 来展示如何使用，要包含至少一个使用 MCP 的例子。
 ```
 
-课程仓库的会话记录里也留有一版同义的提示词 [[O8](#source-o8)]。
+讲者念的是课程仓库会话记录里的这一条，原文见 [步骤 10 的讲者原始提示词](#section-step10) [[O8](#source-o8)]。
 
 <a id="template-t10"></a>
 ### 模板 T10｜端到端验证（第 3 讲 31:44–31:57）
@@ -837,6 +1012,50 @@ think ultra hard。构建一个 TypeScript 的 design 放在 ./agent-design.md�
 - 再按 0003 写代码，依赖 `simple-agent`，写完按几个场景运行测试。
 - 最后用 Codex review skill 审查代码，结果写进 0004（课程目录里没有这份文件）。这与讲者“用 Claude 写、用 Codex review”的观点一致 [[O1](#source-o1)]。
 
+#### 讲者原始提示词
+
+下面 4 条是课程仓库 `.chats/w6.md` 的原文，按顺序摘录，错别字和中英混写都未改 [[O8](#source-o8)]。视频没有讲这部分。
+
+**1. 写 system prompt**（“system prompt”一节）：
+
+```text
+based on @specs/w6/prompts/codex.txt and @specs/w6/prompts/reviewer.txt think hard, we want to generate a system prompt for
+./w6/codereview-agent which is based on @w6/simple-agent/. The codereview agent will only have read file / write file / git command tool so make sure system prompt don't mention unexisting stuff. And make sure system prompt focused on code review but have all the good parts of @specs/w6/prompts/codex.txt. Write the prompts down to ./w6/codereview-agent/prompts/system.md. Think ultra hard.
+```
+
+**2. 写设计文档 0003**（“构建 codereview agent design spec”一节）：
+
+```text
+根据 ./w6/codereview-agent/prompts/system.md 文档，以及 ./w6/simple-agent 代码，构建一个 codereview agent。它包含这些工具：
+
+- read file：读取当前目录下某个文件的内容
+- write file：写入当前目录下某个文件的内容
+- git command：执行 git 命令，尤其是可以根据用户的各种需求，找到合适的 git diff，包括不限于：branch diff, unstaged diff, staged diff, commit diff, pull request diff, 等等
+- gh command：执行 gh 命令，尤其是可以根据用户的各种需求，找到合适的 gh 命令，包括不限于：pr view, pr diff, 等等
+
+这些工具的使用方法，相关的例子要更新在 system.md 中，这样 LLM 可以很方便地使用这些工具。
+
+用户可以这样使用 codereview agent：
+
+- 帮我 review 当前 branch 新代码
+- 帮我 review commit 13bad5 之后的代码
+- 帮我 review pull request 12 的代码
+
+仔细考虑这些需求，构建一个 solid 的设计文档，文档放在 ./specs/w6/0003-codereview-agent-design.md 文件中。design doc 输出中文。
+```
+
+**3. 写代码**（“构建 codereview agent 代码”一节）：
+
+```text
+根据 ./specs/w6/0003-codereview-agent-design.md 文档，构建一个 codereview agent 的代码（使用 ./w6/simple-agent 作为 dependency），代码放在 ./w6/codereview-agent 目录下。代码要完整实现 design spec，符合其要求。实现完成后请根据几个场景运行测试，确保它正常工作。
+```
+
+**4. Codex review**（“codex review”一节）：
+
+```text
+使用 codex review skill 对 ./w6/codereview-agent 代码进行 review，确保代码符合 ./specs/w6/0003-codereview-agent-design.md 的设计。将 rewiew 结果写在 ./specs/w6/0004-codereview-agent-codex-review.md 文件中。
+```
+
 **怎么跑**（未在本次运行；需要 key，审 PR 还需 `gh auth login`）：
 
 ```bash
@@ -888,5 +1107,5 @@ npx tsx ~/w6-practice/codereview-agent/src/cli.ts "帮我 review 当前的改动
 | <a id="source-o5"></a>O5 | 课程代码 `w6/simple-agent/`：`package.json`、`src/index.ts`、`src/tool/registry.ts`、`src/tool/executor.ts`、`src/llm/client.ts`、`src/agent/agent.ts`、`examples/*.ts` | 已读。用于脚本名、Node 版本要求、key 读取方式、工具层行为、Responses API 改动后的代码、默认模型。本次在副本里跑了测试、类型检查和工具直调，见 O9。[回到正文](#section-conditions) |
 | <a id="source-o6"></a>O6 | 课程代码 `w6/opencode-introspection/`：`opencode.json`、`plugins/log-conversation.ts`、`visualizer/`、`logs/`（13 个文件）、`specs/visualizer-design.md` | 已读插件、配置、可视化器 `package.json` 和 design doc；日志只列了文件名，统计数字引用 O4。本次未运行 OpenCode 和可视化器。[回到正文](#section-step5) |
 | <a id="source-o7"></a>O7 | 课程 spec `w6/specs/`：`0001-simple-agent-design.md`、`0002-simple-agent-design-backup.md`、`0003-codereview-agent-design.md`、`prompts/codex.txt`、`prompts/reviewer.txt` | 0001、0002 读了结构与 loop 段落（含 `maxSteps ?? 200`、`ToolManager`）；0003 与两份提示词读了章节结构。用于步骤 3、9 与附录 G。[回到正文](#section-step3) |
-| <a id="source-o8"></a>O8 | 课程代码 `w6/codereview-agent/` 与仓库会话记录 `.chats/w6.md` | 会话记录全文已读，用于附录 G 的做法顺序和模板 T9 的对照；codereview-agent 代码读了 `package.json`、`src/agent.ts`、`src/cli.ts`。视频未讲这部分。[回到正文](#section-step1) |
+| <a id="source-o8"></a>O8 | 课程代码 `w6/codereview-agent/` 与仓库会话记录 `.chats/w6.md` | 会话记录全文已读，用于附录 G 的做法顺序、模板 T9 的对照，以及步骤 10 和附录 G 的“讲者原始提示词”原文（2026-10-28 摘录）；其中“simple agent 构建”一条讲者在第 3 讲照着念过，其余 4 条视频未讲；codereview-agent 代码读了 `package.json`、`src/agent.ts`、`src/cli.ts`，这部分视频未讲。[回到正文](#section-step1) |
 | <a id="source-o9"></a>O9 | 本次核实记录 `_raw/verify/verify-log.md`（2026-10-26，助手在会话临时目录的副本中执行；macOS，Node v24.14.0，npm 11.9.0） | 实际执行：`npm ci`、`npm test`（6 通过）、`typecheck`（退出码 0）、工具直调 4 例、`defineZodTool` 参数结构、缺 key 报错、`.env` 导出、`which opencode`（未找到）、`npm view opencode-ai version`（1.19.4）、`git ls-remote` OpenCode 仓库。未执行：任何模型调用、OpenCode、可视化器、MCP 示例。这不是真实新手试用。[回到正文](#section-intro) |
