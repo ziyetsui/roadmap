@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#ffffff"/>
+  <text x="600" y="52" font-family="sans-serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#1f2937">一次工具调用的路线（stdio 本机连接）</text>
+  <g>
+    <rect x="60" y="270" width="190" height="110" rx="14" fill="#eef2ff" stroke="#4f46e5" stroke-width="3"/>
+    <text font-family="sans-serif" text-anchor="middle" x="155" y="318" font-size="24" font-weight="bold" fill="#1e1b4b">用户</text>
+    <text font-family="sans-serif" text-anchor="middle" x="155" y="350" font-size="18" fill="#374151">在 CLI 里提问</text>
+    <rect x="330" y="250" width="220" height="150" rx="14" fill="#f0fdf4" stroke="#16a34a" stroke-width="3"/>
+    <text font-family="sans-serif" text-anchor="middle" x="440" y="300" font-size="24" font-weight="bold" fill="#14532d">你的应用</text>
+    <text font-family="sans-serif" text-anchor="middle" x="440" y="332" font-size="18" fill="#374151">main.py 聊天程序</text>
+    <text font-family="sans-serif" text-anchor="middle" x="440" y="360" font-size="18" fill="#374151">内含 MCP 客户端</text>
+    <rect x="345" y="470" width="190" height="96" rx="14" fill="#fff7ed" stroke="#ea580c" stroke-width="3"/>
+    <text font-family="sans-serif" text-anchor="middle" x="440" y="512" font-size="24" font-weight="bold" fill="#7c2d12">Claude</text>
+    <text font-family="sans-serif" text-anchor="middle" x="440" y="544" font-size="18" fill="#374151">决定调用哪个工具</text>
+    <rect x="660" y="250" width="220" height="150" rx="14" fill="#fdf2f8" stroke="#db2777" stroke-width="3"/>
+    <text font-family="sans-serif" text-anchor="middle" x="770" y="300" font-size="24" font-weight="bold" fill="#831843">MCP 服务器</text>
+    <text font-family="sans-serif" text-anchor="middle" x="770" y="332" font-size="18" fill="#374151">mcp_server.py</text>
+    <text font-family="sans-serif" text-anchor="middle" x="770" y="360" font-size="18" fill="#374151">工具 / 资源 / 提示</text>
+    <rect x="970" y="270" width="190" height="110" rx="14" fill="#f3f4f6" stroke="#6b7280" stroke-width="3"/>
+    <text font-family="sans-serif" text-anchor="middle" x="1065" y="318" font-size="24" font-weight="bold" fill="#111827">外部服务</text>
+    <text font-family="sans-serif" text-anchor="middle" x="1065" y="350" font-size="18" fill="#374151">课程里是 docs 字典</text>
+  </g>
+  <g stroke="#374151" stroke-width="3" fill="none">
+    <line x1="250" y1="325" x2="322" y2="325"/>
+    <line x1="550" y1="290" x2="652" y2="290"/>
+    <line x1="660" y1="360" x2="558" y2="360"/>
+    <line x1="880" y1="325" x2="962" y2="325"/>
+    <line x1="420" y1="400" x2="420" y2="462"/>
+    <line x1="460" y1="470" x2="460" y2="408"/>
+  </g>
+  <g fill="#374151">
+    <polygon points="330,325 318,318 318,332"/>
+    <polygon points="660,290 648,283 648,297"/>
+    <polygon points="550,360 562,353 562,367"/>
+    <polygon points="970,325 958,318 958,332"/>
+    <polygon points="420,470 413,458 427,458"/>
+    <polygon points="460,400 453,412 467,412"/>
+  </g>
+  <g fill="#1f2937">
+    <text font-family="sans-serif" font-size="17" fill="#1f2937" x="601" y="230" text-anchor="middle">① ListToolsRequest  ④ CallToolRequest</text>
+    <text font-family="sans-serif" font-size="17" fill="#1f2937" x="770" y="430" text-anchor="middle">② ListToolsResult  ⑤ CallToolResult</text>
+    <text font-family="sans-serif" font-size="17" fill="#1f2937" x="300" y="440" text-anchor="end">③ 问题 + 工具列表发给 Claude</text>
+    <text font-family="sans-serif" font-size="17" fill="#1f2937" x="300" y="475" text-anchor="end">⑥ 工具结果交回 Claude</text>
+  </g>
+  <text x="600" y="630" font-family="sans-serif" font-size="16" fill="#6b7280" text-anchor="middle">教学示意，2026-10-27 依据课程 L2 流程描述绘制；资源、提示的往返见步骤 6、7</text>
+</svg>

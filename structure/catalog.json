@@ -79,5 +79,14 @@
     "html": "manual.html",
     "pdf": "manual.pdf",
     "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-27-mcp-intro-academy",
+    "slug": "mcp-intro-academy",
+    "title": "MCP 入门实战手册：用 Python 写出自己的 MCP 服务器与客户端",
+    "status": "needs-qc",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
   }
 ]
