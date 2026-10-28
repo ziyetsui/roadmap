@@ -287,6 +287,16 @@ claude mcp remove demo
 4. 对照检查 PRD：用户输入有问题、可选的库名、返回 SQL 还是结果三项；缓存范围有表、视图、类型、索引；有允许与禁止的语句清单；有结果确认的阈值和重试次数；有错误码；有验收标准与反面用例。可以拿课程的 0001 当参考答案。[[O7](#source-o7)、[O8](#source-o8)]
 5. 把 PRD 里多出来的工具名记下来。课程第一版里有 list_databases、describe_table、refresh_schema，讲者看完说"我觉得这些东西都不需要，它有一个 query 就可以了"[00:16:31]–[00:16:43]，下一步删。[[O2](#source-o2)]
 
+#### 讲者原文提示词
+
+逐字摘自课程仓库 `.chats/w5.md`（讲者与模型的对话记录）。路径里的 `./specs/w5/`、`./w5/pg-mcp` 按你的练习目录改。
+
+第 5 行：
+
+```text
+主要的需求是在Python下面创建一个Postgres的mcp：用户可以给特定自然语言描述的查询的需求，然后mcp server 根据结果来返回一个SQL或者返回这个查询的结果。mcp的服务器在启动的时候，应该读取它都有哪些可以访问的数据库，并且缓存这些数据库的schema：了解每一个数据库下面都有哪些 table/view/types/index 等等，然后根据这些信息以及用户的输入去调用OpenAI的大模型（gpt-5-mini）来生成 SQL。之后mcp server应该来校验这个sql只允许查询的语句然后测试这个sql确保它能够执行并且返回有意义的结果：这里也可以把用户的输入生成的sql以及返回的结果的一部分调用openai来确认这样可以确保它的结果是不是有意义。最后根据用户的输入是返回SQL还是返回SQL查询之后的结果来返回相应的内容根据这些需求帮我构建一个详细的需求文档，先不要著急去做设计，等我review完这个需求文档之后呢我们再来讨论设计，文档放在 ./specs/w5/0001-pg-mcp-prd.md 文件中。
+```
+
 **做完的标准**：PRD 已 commit；上面 6 项逐项标了有或无；多余的工具名列在运行记录里。
 
 - [ ] PRD 已生成并 commit
@@ -373,6 +383,16 @@ P1 只写"要做什么"，不写"怎么做"。你口述时只要把主流程说�
 4. 挑出讲者认可的意见吸收进去：强制使用只读角色；返回一个置信度，低于 70 就自动重新生成 SQL。[00:26:13]–[00:27:11] [[O2](#source-o2)] review 输出成英文时，在提示里写明"输出中文"，讲者说 Codex "有时候 follow 这个指令 follow 的不是特别的好"[00:52:18]。[[O2](#source-o2)]
 5. commit，修订记录里写清这一版改了什么。
 
+#### 讲者原文提示词
+
+逐字摘自课程仓库 `.chats/w5.md`（讲者与模型的对话记录）。路径里的 `./specs/w5/`、`./w5/pg-mcp` 按你的练习目录改。
+
+第 9 行：
+
+```text
+commit code; 然后，接口目前只需要 query 即可，其它意义不大；另外调用 codex review skill 让 codex review 这个需求文档，并更新
+```
+
 **做完的标准**：工具表只有 query 一行，参数是 question、可选的 database、可选的 return_type；修订记录列出了吸收的 review 意见。可对照课程 0001 第 185–189 行。[[O8](#source-o8)]
 
 - [ ] review 文件已生成
@@ -394,6 +414,16 @@ P1 只写"要做什么"，不写"怎么做"。你口述时只要把主流程说�
 4. 看有没有做得过度复杂。讲者觉得把列、外键各做一个数据模型"可能做的有点过于麻烦了"，他原本只想把库结构导出成几个 markdown 文件；这次判断"目前这个还好"，但说复杂度太高就"应该去纠正它"。[00:37:07]–[00:38:18] [[O2](#source-o2)]
 5. 重启 Claude Code 让 CLAUDE.md 生效，然后 commit。[00:44:35] [[O2](#source-o2)]
 
+#### 讲者原文提示词
+
+逐字摘自课程仓库 `.chats/w5.md`（讲者与模型的对话记录）。路径里的 `./specs/w5/`、`./w5/pg-mcp` 按你的练习目录改。
+
+第 13 行：
+
+```text
+根据 ./specs/w5/0001-pg-mcp-prd.md 文档，使用 FastMCP、Asyncpg、SQLGlot、Pydantic以及openai 构建 pg-mcp 的设计文档，文档放在 ./specs/w5/0002-pg-mcp-design.md 文件中。
+```
+
 **做完的标准**：0002 里有技术栈、架构图、分层、项目目录树和安全设计；CLAUDE.md 写了 SOLID、DRY 和测试要求；重启后在新会话里问"这个项目的编码规范是什么"，它能复述出来。
 
 - [ ] 0002 已生成
@@ -411,6 +441,16 @@ P1 只写"要做什么"，不写"怎么做"。你口述时只要把主流程说�
 2. 判断理由：逐条问"一个本机自己用的 MCP，现在缺这一条会出错吗"。讲者的取舍是：认证和授权是生产环境的问题，本地使用不是问题；查询结果不限制行数导致的拒绝服务"确实是一个存在的问题"；敏感数据发给外部模型是生产环境要考虑的。[00:46:28]–[00:46:54] [[O2](#source-o2)]
 3. 反例：如果把 pglast 二次校验、OAuth、数据脱敏、审计全加进设计，"就会使得整个项目过度的复杂"；一个产品不可能一开始就实现所有东西。[00:40:20]–[00:43:28] [[O2](#source-o2)]
 4. 下一动作：发叫停指令（[R2，据口述还原](#prompt-r2)）：避免过度设计，先不考虑这些，回滚设计改动，把 review 结果存进 0003。再把暂缓的条目逐条抄进待办，[步骤 16](#section-step-16) 选作业时用。[[O2](#source-o2)、[O7](#source-o7)]
+
+#### 讲者原文提示词
+
+逐字摘自课程仓库 `.chats/w5.md`（讲者与模型的对话记录）。路径里的 `./specs/w5/`、`./w5/pg-mcp` 按你的练习目录改。
+
+第 17 行：
+
+```text
+使用 sub agent 调用 codex review skill 让 codex review ./specs/w5/0002-pg-mcp-design.md 文件。之后仔细阅读 review 的结果，思考是否合理，然后相应地更新 ./specs/w5/0002-pg-mcp-design.md 文件。
+```
 
 **做完的标准**：0003 存在，含评分和按严重程度分级的条目；0002 的修订记录里没有"按 review 扩展"的新版本；待办清单列出了暂缓条目和暂缓理由。
 
@@ -438,6 +478,16 @@ P1 只写"要做什么"，不写"怎么做"。你口述时只要把主流程说�
 4. 决定要不要先改计划：0005 指出缺少确定的测试数据库和种子数据，你在步骤 2 已经有了，可以让 agent 在 0004 里写明用这三个库。课程侧手册还建议，想省后面的返工，就先按 0005 的高优先级意见改 0004 再实现。[[O7](#source-o7)、[O8](#source-o8)]
 5. commit。
 
+#### 讲者原文提示词
+
+逐字摘自课程仓库 `.chats/w5.md`（讲者与模型的对话记录）。路径里的 `./specs/w5/`、`./w5/pg-mcp` 按你的练习目录改。
+
+第 21 行：
+
+```text
+根据 ./specs/w5/0002-pg-mcp-design.md 文档，构建 pg-mcp 的实现计划，think ultra hard，文档放在 ./specs/w5/0004-pg-mcp-impl-plan.md 文件中。之后调用 codex review skill 让 codex review ./specs/w5/0004-pg-mcp-impl-plan.md 文件，并构建 ./specs/w5/0005-pg-mcp-impl-plan-review.md 文件。
+```
+
 **做完的标准**：0004 有 11 个 phase 和依赖关系；0005 有结论和问题清单；你在运行记录里写下"按 0005 改或不改、为什么"。
 
 - [ ] 0004 已生成
@@ -456,6 +506,16 @@ P1 只写"要做什么"，不写"怎么做"。你口述时只要把主流程说�
 3. 跑 `uv run pytest`。讲者遇到 14 个失败，都和 SQLGlot 有关（新版本对 EXPLAIN 等语句的解析方式变了）。他先追问 agent "为什么这么做"，再选了 agent 给的方案二，理由是"我最初的想法就是有一个简单的 parser，然后允许它去运行 select 就好了"。[00:14:25]–[00:18:27] [[O3](#source-o3)、[O7](#source-o7)]
 4. 修剩下的失败：把异步函数的测试替身从 MagicMock 改成 AsyncMock；限流相关那一条是测试用例本身写错了。[00:20:38]–[00:21:32] [[O3](#source-o3)]
 5. 让 agent 自己连 blog_small 验证数据库那部分，不只跑单元测试；全部通过后 commit、push，再清空上下文，准备下一段。[00:08:37]、[00:23:19] [[O3](#source-o3)]
+
+#### 讲者原文提示词
+
+逐字摘自课程仓库 `.chats/w5.md`（讲者与模型的对话记录）。路径里的 `./specs/w5/`、`./w5/pg-mcp` 按你的练习目录改。
+
+第 25 行：
+
+```text
+根据 ./specs/w5/0004-pg-mcp-impl-plan.md 和 ./specs/w5/0002-pg-mcp-design.md 文档，使用 sub agent 完整实现 pg-mcp phase 0-4。代码放在 ./w5/pg-mcp 下。
+```
 
 **做完的标准**：`uv run pytest tests/unit` 全部通过；`pyproject.toml` 依赖里有 `fastmcp`；运行记录里有一次连 blog_small 成功的输出。
 
@@ -482,6 +542,28 @@ P1 只写"要做什么"，不写"怎么做"。你口述时只要把主流程说�
 3. 生成测试问题集：发[据口述还原的 R3](#prompt-r3)，根据 fixtures 生成 `TEST_QUERIES.md`，问题从简单到复杂。[00:25:42] [[O3](#source-o3)] 课程版本按库分 Level 1–4，另有安全和歧义测试，可直接拿来对照。[[O10](#source-o10)]
 4. 可选：练"让 agent 自己准备测试数据"。发[讲者原文 P8](#prompt-p8) 和 [P9](#prompt-p9)，让它生成三份建库 SQL 和 Makefile 并自己建库测试。在提示里加一句"库名统一加 my_ 前缀"，否则可能覆盖步骤 2 的课程库（助手建议）。[[O3](#source-o3)、[O6](#source-o6)]
 
+#### 讲者原文提示词
+
+逐字摘自课程仓库 `.chats/w5.md`（讲者与模型的对话记录）。路径里的 `./specs/w5/`、`./w5/pg-mcp` 按你的练习目录改。
+
+第 33 行：
+
+```text
+根据 ./specs/w5/0004-pg-mcp-impl-plan.md 和 ./specs/w5/0002-pg-mcp-design.md 文档，构建 pg-mcp 的测试计划，think ultra hard，文档放在 ./specs/w5/0007-pg-mcp-test-plan.md 文件中。之后调用 codex review skill 让 codex review ./specs/w5/0007-pg-mcp-test-plan.md 文件，并构建 ./specs/w5/0008-pg-mcp-test-plan-review.md 文件。
+```
+
+第 37 行：
+
+```text
+根据 @specs/w5/0001-pg-mcp-prd.md 在 ./w5/pg-mcp/fixtures 下构建三个有意义的数据库，分别有少量，中等量级，以及大量的 table/view/types/index 等schema，且有足够多的数据。生成这三个数据库的 sql 文件，并构建 Makefile 来重建这些测试数据库。
+```
+
+第 39 行：
+
+```text
+commit 然后你来建立和测试这几个数据库确保可用
+```
+
 **做完的标准**：0007、0008 已 commit；占位测试的处理方式已定；TEST_QUERIES 里每个库至少有 3 道简单题和 1 道复杂题。
 
 - [ ] 0007、0008 已生成
@@ -500,6 +582,16 @@ P1 只写"要做什么"，不写"怎么做"。你口述时只要把主流程说�
 3. 全量测试还剩几个失败时，发"修复所有的 test failure 和 warning"。[00:35:53] [[O3](#source-o3)]
 4. 检查集成测试是否真的在测：课程代码里很多用例写成"只有 success 为真才检查结果"，查询失败时照样算通过，例如 `tests/integration/test_full_flow.py` 第 25–43 行。[[O7](#source-o7)] 把这类用例列出来，不把"集成测试通过"当成端到端已验证。
 5. commit。
+
+#### 讲者原文提示词
+
+逐字摘自课程仓库 `.chats/w5.md`（讲者与模型的对话记录）。路径里的 `./specs/w5/`、`./w5/pg-mcp` 按你的练习目录改。
+
+第 27 行：
+
+```text
+根据 ./specs/w5/0004-pg-mcp-impl-plan.md 和 ./specs/w5/0002-pg-mcp-design.md 文档，使用 sub agent 完整实现 pg-mcp phase 5-10。代码放在 ./w5/pg-mcp 下。
+```
 
 **做完的标准**：`uv run pytest` 的结果写进运行记录；条件断言的用例已列出；`uv run ruff check .` 跑过并记下错误数。
 
@@ -523,6 +615,16 @@ P1 只写"要做什么"，不写"怎么做"。你口述时只要把主流程说�
 2. 读结论：讲者转述 Codex 的意见，说实现"还是非常 solid 的"，有些东西还没完成，但"并不影响功能"，比如多数据库支持。[00:30:06]–[00:30:19] [[O4](#source-o4)] 课程侧手册把这句记作"非常 sparse"，与逐字稿不同，以回看视频为准。[[O7](#source-o7)]
 3. 抽查 review 是否可信：运行 `uv run ruff check .`，看它报的 F811（同一个方法定义了两次）能不能对上 0006 里的"重复方法定义"。这是课程侧手册作者核过的做法，本次未运行。[[O7](#source-o7)]
 4. 把 High 级别的两条记进待办：指定的 database 实际不生效，所有查询都跑在默认库上，可能跨库泄露；blocked_tables、blocked_columns、allow_explain 没法配置。[[O8](#source-o8)]
+
+#### 讲者原文提示词
+
+逐字摘自课程仓库 `.chats/w5.md`（讲者与模型的对话记录）。路径里的 `./specs/w5/`、`./w5/pg-mcp` 按你的练习目录改。
+
+第 29 行：
+
+```text
+提交，使用 sub agent调用 codex review skill 让 codex review 整个代码，看其是否符合 /specs/w5/0002-pg-mcp-design.md 和 ./specs/w5/0004-pg-mcp-impl-plan.md。把 review 结果写到 ./specs/w5/0006-pg-mcp-code-review.md 文件中。
+```
 
 **做完的标准**：0006 已 commit；两条 High 进了待办；至少有一条发现你自己在代码里找到了对应位置。
 
@@ -561,6 +663,22 @@ claude -p "用 pg-mcp 的 query 工具回答：数据库有多少用户？" --al
 ```
 
 `claude mcp add` 默认的 local 范围和 `-s project` 范围都只在当前目录生效，project 范围还会把 key 写进目录里的 `.mcp.json`，提交代码时容易带出去。[[O12](#source-o12)] 跑通后可以把 DATABASE_USER 换成步骤 2 的只读账号再测一遍。
+
+#### 讲者原文提示词
+
+逐字摘自课程仓库 `.chats/w5.md`（讲者与模型的对话记录）。路径里的 `./specs/w5/`、`./w5/pg-mcp` 按你的练习目录改。
+
+第 43 行：
+
+```text
+对于 @w5/pg-mcp，将这个 mcp 添加到 claude code 中，打开一个 claude code headless cli 选择 @w5/pg-mcp/fixtures/TEST_QUERIES.md 下面的某些 query，运行，查看是否调用这个 mcp，结果是否符合预期
+```
+
+第 45 行：
+
+```text
+直接用本地的 `uvx --refresh --from /Users/tchen/projects/mycode/bootcamp/ai/w5/pg-mcp pg-mcp` 来运行 mcp server
+```
 
 **做完的标准**：`/mcp` 显示 pg-mcp 已连接；课程版本与你的版本各有不少于 5 题的记录（问题、生成的 SQL、结果、是否符合预期）；删除请求被拒绝；排错记录写了现象、原因和处理。
 
@@ -605,6 +723,22 @@ claude -p "用 pg-mcp 的 query 工具回答：数据库有多少用户？" --al
 3. 发送[讲者原文 P14](#prompt-p14)，并补两句讲者口头强调的话："放在当前项目的 .claude/skills/pg-data 下"，以及"并行探索三个库，各自生成文件"。[00:23:01]、[00:30:52]、[00:31:44] [[O5](#source-o5)、[O6](#source-o6)] P14 里写死了 psql 用 postgres/postgres 登录；步骤 2 走的是做法 B 就改成你的用户。
 4. 检查结构：name 是 pg-data；description 点名三个库；有安全规则（只允许 SELECT，禁止写操作、pg_sleep、改配置等）；工作流里用 psql 执行，失败最多重试 3 次；置信度低于 7 分就重新生成；多租户库要求按 organization_id 过滤。[[O11](#source-o11)]
 5. 对比：在 saas_crm_large 上用 Skill 和 MCP 各问同样三题：哪些产品最常出现在成交的商机里；比较各位销售代表的业绩；计算每个客户的总价值。记进[模板 T9](#template-t9)。[[O5](#source-o5)]
+
+#### 讲者原文提示词
+
+逐字摘自课程仓库 `.chats/w5.md`（讲者与模型的对话记录）。路径里的 `./specs/w5/`、`./w5/pg-mcp` 按你的练习目录改。
+
+第 49–55 行：
+
+```text
+在当前项目下创建一个新的 skill，要求：
+
+1. 首先通过 psql (localhost:5432, postgres, postgres) 探索这几个数据库：blog_small、ecommerce_medium、saas_crm_large，了解它们都有哪些 table/view/types/index 等等，每个数据库一个 md 文件，作为 skill 的 reference。
+2. 用户可以给特定自然语言描述的查询的需求，skill 根据用户输入找到相应的数据库的 reference 文件，然后根据这些信息以及用户的输入来生成正确的 SQL。SQL只允许查询语句，不能有任何的写操作，不能有任何安全漏洞比如 SQL 注入，不能有任何危险的操作比如 sleep，不能有任何的敏感信息比如 API Key 等。
+3. 使用 psql 测试这个 SQL 确保它能够执行并且返回有意义的结果。如果执行失败，则深度思考，重新生成 SQL，回到第 3 步。
+4. 把用户的输入，生成的 SQL，以及返回的结果的一部分进行分析来确认结果是不是有意义，根据分析打个分数。10分非常 confident，0分非常不 confident。如果小于 7 分，则深度思考，重新生成 SQL，回到第 3 步。
+5. 最后根据用户的输入是返回 SQL 还是返回 SQL 查询之后的结果（默认）来返回相应的内容
+```
 
 **做完的标准**：四个文件都在；新会话里直接用大白话提问能自动触发 pg-data；对比表 3 行，每行有两边的 SQL、结果、速度感受和差异。
 
