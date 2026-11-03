@@ -198,6 +198,15 @@ mkdir -p specs/w4 && touch specs/w4/instructions.md
 仔细阅读 ./vendors/codex 的代码，撰写一个详细的架构分析文档，如需图表，使用 mermaid chart。文档放在: ./specs/w4/codex-arch-by-codex.md
 ```
 
+<a id="inline-template-w4-01"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+仔细阅读〔仓库代码目录〕，撰写详细的架构分析文档，梳理入口、模块职责、关键调用和数据流。如需图表，使用 Mermaid 并配文字说明。文档保存到〔架构文档路径〕。
+```
+
 **做完的标准**：`specs/w4/` 下有 3 份 `codex-arch-by-*.md`；对比表每一列都填了，并写下一句“以哪份为主、为什么”。
 
 - [ ] 3 份架构文档已生成
@@ -270,6 +279,16 @@ mermaid 是一种用文本写流程图、时序图的语法，几乎每份文档
 帮我梳理 codex 代码处理事件循环的部分，详细解读当用户发起一个任务后，codex 是如何分解处理这个任务，并不断自我迭代，最终完成整个任务。这个过程中发生了什么，codex 如何决定任务完成还是未完成需要继续迭代。如果需要，可以用 mermaid chart 来辅助说明。写入 ./specs/w4/codex-event-loop.md
 ```
 
+<a id="inline-template-w4-02"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+梳理〔仓库名〕代码中处理〔任务或事件循环子系统〕的部分。详细解读用户发起〔任务类型〕后，系统如何分解处理、持续迭代，并最终完成任务；说明完成与继续迭代的判断条件。
+需要时用 Mermaid 辅助说明，写入〔专题文档路径〕。
+```
+
 **做完的标准**：你能不看文档，口头走一遍“修复 bug 并运行测试”这个例子的 4 个 turn：读文件、打补丁、跑测试、模型看到测试通过后不再调工具，任务结束[[O2](#source-o2) 00:20:45–00:22:11]。
 
 - [ ] `codex-event-loop.md` 已生成并修好图
@@ -298,6 +317,16 @@ mermaid 是一种用文本写流程图、时序图的语法，几乎每份文档
 帮我梳理 codex 代码处理工具调用的部分，详细解读 codex 是如何知道有哪些工具可以调用，如何选择工具，如何调用工具，如何处理工具的返回结果，如何决定工具调用是否成功等等。如果需要，可以用 mermaid chart 来辅助说明。写入 ./specs/w4/codex-tool-call.md
 ```
 
+<a id="inline-template-w4-03"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+梳理〔仓库名〕代码中处理工具调用的部分，详细解读工具如何被发现、如何选择、如何调用、如何处理返回结果，以及如何判断调用成功。
+需要时用 Mermaid 辅助说明，写入〔工具调用专题路径〕。
+```
+
 **做完的标准**：你能说出一个 MCP 工具从发现到被调用的过程（每个 MCP server 起一个子进程，工具注册后才能分发）[[O2](#source-o2) 00:27:26–00:27:50]，并指出哪类工具不能并行、为什么。
 
 - [ ] `codex-tool-call.md` 已生成并修好图
@@ -323,6 +352,15 @@ mermaid 是一种用文本写流程图、时序图的语法，几乎每份文档
 
 ```text
 查看 repo 的所有 commit history，梳理其代码变更的脉络，必要时辅以 mermaid chart。 写入 ./specs/w4/codex-changes-by-claude.md
+```
+
+<a id="inline-template-w4-04"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+查看〔仓库路径〕的所有 commit history，梳理代码变更的脉络、关键阶段和设计演进，必要时用 Mermaid 辅助说明。写入〔历史演进文档路径〕。
 ```
 
 **做完的标准**：文档开头写明分析了多少提交、从哪天开始；你在笔记里写下这个数字的统计口径（只算主分支，还是所有分支）。
@@ -357,6 +395,16 @@ git -C vendors/codex checkout 6eeaf46ac136f6ea0352641a5daea5006195e09f
 帮我梳理 ./vendors/codex 的 apply_patch 工具，详细解读 apply_patch 工具的原理，如何使用，如何实现，如何测试等等。以及 apply_patch 工具的代码是如何跟 codex 其他部分集成的，另外我注意到 apply_patch_tool_instructions.md 文件，这个文件是做什么的，如何跟 apply_patch crate 打交道。如果需要，可以用 mermaid chart 来辅助说明。写入 ./specs/w4/codex-apply-patch.md
 ```
 
+<a id="inline-template-w4-05"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+梳理〔仓库目录〕中的〔目标工具或模块〕，详细解读其原理、使用方式、实现与测试，以及它如何与仓库其他部分集成。
+另外解释〔工具说明文件路径〕的作用，以及它如何与〔核心模块〕配合。需要时用 Mermaid 辅助说明，写入〔模块分析文档路径〕。
+```
+
 **做完的标准**：你能写出一个最小的补丁例子（Begin Patch、Add File、End Patch），并说出 instructions.md 是怎么进到模型 prompt 里的。
 
 - [ ] `vendors/codex` 已切回 `6eeaf46`
@@ -385,6 +433,15 @@ git -C vendors/codex checkout 6eeaf46ac136f6ea0352641a5daea5006195e09f
 
 ```text
 如果我要把 apply_patch 工具集成到我自己的项目中，我需要做哪些工作，如何做等等。如果需要，可以用 mermaid chart 来辅助说明。写入 ./specs/w4/codex-apply-patch-integration.md
+```
+
+<a id="inline-template-w4-06"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+如果要将〔目标工具或模块〕集成到〔自己的项目与运行环境〕中，需要做哪些工作、每一步如何实施？请说明依赖、接入方式、调用接口及验证步骤，需要时用 Mermaid 辅助说明。写入〔集成指南路径〕。
 ```
 
 **做完的标准**：你写下一句判断：“如果我要用，选 L〔几〕，理由是〔……〕”。讲者的判断是大部分时候 L1 或 L2 就够了[[O3](#source-o3) 00:24:02–00:24:09]。
@@ -467,6 +524,15 @@ git -C vendors/open-notebook log --oneline -20
 仔细阅读 ./vendors/open-notebook 的代码，撰写一个详细的架构分析文档，如需图表，使用 mermaid chart。文档放在: ./specs/w4/open-notebook-arch-design.md
 ```
 
+<a id="inline-template-w4-07"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+仔细阅读〔仓库代码目录〕，撰写详细的架构分析文档，梳理入口、模块职责、关键调用和数据流。如需图表，使用 Mermaid 并配文字说明。文档保存到〔架构文档路径〕。
+```
+
 **做完的标准**：文档里的版本号和 `pyproject.toml` 一致；`instructions.md` 里新增了 3 条追问。
 
 - [ ] `open-notebook-arch-design.md` 已生成并修好图
@@ -495,12 +561,39 @@ git -C vendors/open-notebook log --oneline -20
 帮我详细介绍 surrealdb 跟 worker 之间是如何交互的，撰写 ./specs/w4/open-notebook-worker.md
 ```
 
+<a id="inline-template-w4-08"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+详细介绍〔项目名〕中〔数据库或消息存储〕与〔后台执行组件〕如何交互，追踪任务提交、存储、领取、执行与状态回写的过程。写入〔交互专题文档路径〕。
+```
+
 ```text
 帮我详细介绍 open-notebook 如何使用 Surrealdb，如何定义存放在 surrealdb 中的数据，如何定义图结构，app 和 surrealdb 如何交互，撰写 ./specs/w4/open-notebook-surrealdb.md
 ```
 
+<a id="inline-template-w4-09"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+详细介绍〔项目名〕如何使用〔数据库名称〕：如何定义与存储数据、如何定义〔关系或图结构〕，以及应用如何与数据库交互。结合实际代码解释数据模型与调用链，写入〔数据库专题文档路径〕。
+```
+
 ```text
 帮我详细介绍 open-notebook 如何生成 podcast，如何使用数据库中的数据，如何定义 podcast 的结构，如何生成 podcast，撰写 ./specs/w4/open-notebook-podcast.md
+```
+
+<a id="inline-template-w4-10"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+详细介绍〔项目名〕如何生成〔目标内容类型〕：如何使用数据库中的数据、如何定义内容结构，以及如何完成各生成阶段。沿真实调用链说明输入、处理与产物，写入〔生成流程文档路径〕。
 ```
 
 **做完的标准**：三份文档齐全、图能渲染；你能不看代码讲出“上传一个 source 到生成一期 podcast”中间经过了哪些命令和表。

@@ -13,9 +13,12 @@
 - [w1 实战手册：用 AI 从需求到交付项目管理工具](https://ziyetsui.github.io/roadmap/w1-project-alpha/)
 - [数据库查询工具实战手册：从 Spec Kit 到 PostgreSQL 与 MySQL](https://ziyetsui.github.io/roadmap/w2-db-query/)
 - [RaFlow 实战手册：用 Claude Code 构建语音输入 App](https://ziyetsui.github.io/roadmap/w3-raflow/)
+- [w4 操作手册：用 AI 读懂大型代码库并生成架构文档](https://ziyetsui.github.io/roadmap/w4-codebase-reading/)
+- [w5 操作手册：设计并实现 Postgres MCP、测试与个性化 Skills](https://ziyetsui.github.io/roadmap/w5-pg-mcp/)
+- [w6 操作手册：看清 Coding Agent 调用链路并自己写一个 Agent](https://ziyetsui.github.io/roadmap/w6-agent-loop/)
 - [GenSlides 实战手册：从产品规划到 AI 图片幻灯片](https://ziyetsui.github.io/roadmap/w7-genslides/)
 
-每本提供在线阅读、PDF、Markdown、课程自动转写稿与配套模板。W7 包含新增的竞品与技术可行性调研模板。
+W1–W7 的每处原提示词下方均配有对应的抽象模板，替换〔〕后即可用于自己的项目。提供在线阅读、PDF、Markdown 和配套文件；未展示或不可读的原输入保留既有边界。
 
 ## 更新与发布
 

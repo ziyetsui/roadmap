@@ -200,7 +200,7 @@
 <h2>阅读说明</h2>
 <p class="notice">手册类型：定制版</p>
 <p>这份手册按陈天 AI 训练营第 6 周的三讲视频编排：第 1 讲讲 Agent 的结构和 Codex / OpenCode 的提示词，第 2 讲用 OpenCode 插件抓下每一轮发给模型的完整内容并做成可视化工具，第 3 讲先写设计文档（spec），再让 Claude Code 写出一个最小的 Agent SDK（<code>simple-agent</code>）。主线 13 个步骤都能在视频里找到对应时间点；视频没讲、只在仓库里有的 <code>codereview-agent</code> 放在附录，并标明“仓库有、视频未讲”。</p>
-<ul><li><strong>先看路线图</strong>，再按天打开对应步骤。讲者原话、数字、案例卡、提示词模板、不做清单都在附录，正文用链接跳过去。</li><li><strong>来源编号</strong>：方括号里的 O1–O3 是三讲逐字稿，O4 是课程目录里已有的课程手册，O5–O8 是课程代码与 spec，O9 是本次核实记录。点编号跳到文末，再点“回到正文”返回。逐字稿是机器转写，错字多；本手册引用提示词时按上下文改了错字，并给出讲次、时间和行号，方便回查。</li><li><strong>数字的性质</strong>：12k、81.7k、200 步这类数字是讲者在录课时屏幕上看到或口头说的，不是你环境里的保证值；模型名（gpt-5-mini、gpt-5-codex）是课程代码里写死的历史配置。</li><li><strong>跑过和没跑过的要分开看</strong>：本次只在临时副本里跑了不调模型的部分（安装、测试、类型检查、工具直调、缺 key 报错），结果写在本次核实记录 <span class="source-markers">[<a class="source-ref" id="cite-o9-1" href="#source-o9">O9</a>]</span>。所有调用模型的步骤本次都没跑，手册不承诺你会得到和讲者一样的输出。</li><li><strong>模板里的〔〕是虚构占位</strong>，用之前换成你自己的内容。</li><li><strong>每一步的“讲者原始提示词”</strong>：讲者存档过的照课程仓库 <code>.chats/w6.md</code> 原文摘录（步骤 10、附录 G）；其余来自逐字稿，原样摘录、不改错字，并注明明显的转写错误；没有提示词的步骤也写明。要直接套用，用附录 D 整理过的模板。</li><li><strong>几个反复出现的词</strong>：agent loop 指“模型决定调哪个工具、本地执行、把结果连同历史再发给模型”这样一圈圈转下去的过程；spec 指写代码前的设计文档；system prompt 是每次请求最前面那段角色和规则说明；token 是模型计费的文字单位；hook 指“某件事发生前后，让外部代码插进来处理”的扩展点；MCP 是让 agent 接入外部工具服务的标准协议；JSONL 是每行一个 JSON 对象的文本文件。</li></ul>
+<ul><li><strong>先看路线图</strong>，再按天打开对应步骤。讲者原话、数字、案例卡、提示词模板、不做清单都在附录，正文用链接跳过去。</li><li><strong>来源编号</strong>：方括号里的 O1–O3 是三讲逐字稿，O4 是课程目录里已有的课程手册，O5–O8 是课程代码与 spec，O9 是本次核实记录。点编号跳到文末，再点“回到正文”返回。逐字稿是机器转写，错字多；本手册引用提示词时按上下文改了错字，并给出讲次、时间和行号，方便回查。</li><li><strong>数字的性质</strong>：12k、81.7k、200 步这类数字是讲者在录课时屏幕上看到或口头说的，不是你环境里的保证值；模型名（gpt-5-mini、gpt-5-codex）是课程代码里写死的历史配置。</li><li><strong>跑过和没跑过的要分开看</strong>：本次只在临时副本里跑了不调模型的部分（安装、测试、类型检查、工具直调、缺 key 报错），结果写在本次核实记录 <span class="source-markers">[<a class="source-ref" id="cite-o9-1" href="#source-o9">O9</a>]</span>。所有调用模型的步骤本次都没跑，手册不承诺你会得到和讲者一样的输出。</li><li><strong>模板里的〔〕是虚构占位</strong>，用之前换成你自己的内容。</li><li><strong>每一步的“讲者原始提示词”</strong>：讲者存档过的照课程仓库 <code>.chats/w6.md</code> 原文摘录（步骤 10、附录 G）；其余来自逐字稿，原样摘录、不改错字，并注明明显的转写错误；没有提示词的步骤也写明。每条已摘录的输入下方紧邻放置可套用模板，替换〔〕后使用；附录 D 的模板仍保留供查阅。</li><li><strong>几个反复出现的词</strong>：agent loop 指“模型决定调哪个工具、本地执行、把结果连同历史再发给模型”这样一圈圈转下去的过程；spec 指写代码前的设计文档；system prompt 是每次请求最前面那段角色和规则说明；token 是模型计费的文字单位；hook 指“某件事发生前后，让外部代码插进来处理”的扩展点；MCP 是让 agent 接入外部工具服务的标准协议；JSONL 是每行一个 JSON 对象的文本文件。</li></ul>
 <h2 id="section-roadmap">3 天路线图</h2>
 <div class="table-wrap"><table><thead><tr><th>天</th><th>这一天做什么</th><th>点开对应章节</th></tr></thead><tbody><tr><td>周一：第 1 讲 + 开工</td><td>建工作副本、装环境；按六层拆 Agent SDK；读 Codex / OpenCode 的提示词；想清上下文成本；建观察项目、做日志插件</td><td><a href="#section-step1">步骤 1 环境</a> · <a href="#section-step2">步骤 2 六层</a> · <a href="#section-step3">步骤 3 提示词</a> · <a href="#section-step4">步骤 4 上下文</a> · <a href="#section-step5">步骤 5 vendors</a> · <a href="#section-step6">步骤 6 插件</a></td></tr><tr><td>周二：第 2 讲</td><td>让 agent 写 design doc 并做出可视化器，按自己的草图迭代；用它读完一次完整的 agent loop</td><td><a href="#section-step7">步骤 7 可视化器</a> · <a href="#section-step8">步骤 8 读 loop</a></td></tr><tr><td>周三：第 3 讲</td><td>先写 spec 并做有无参考源码的对照；按 spec 实现 SDK；不调模型验工具层；跑 4 个 example；换到 GPT-5 和 Responses API</td><td><a href="#section-step9">步骤 9 spec</a> · <a href="#section-step10">步骤 10 实现</a> · <a href="#section-step11">步骤 11 工具层</a> · <a href="#section-step12">步骤 12 example</a> · <a href="#section-step13">步骤 13 换 API</a></td></tr></tbody></table></div>
 <p>每段的用时和产物见 <a href="#section-schedule">三天时间表</a>。</p>
@@ -271,6 +271,10 @@ opencode --version</code></pre>
 <p>原样摘录，不改错字。逐字稿是机器转写：<code> / </code> 是转写的分段，<code>……</code> 是省略的讲解；代码块下方注明明显的转写错误。</p>
 <p>第 1 讲 19:45–19:59，讲者在 Codex 源码目录里让 agent 写分析文档 <span class="source-markers">[<a class="source-ref" id="cite-o1-p2" href="#source-o1">O1</a>]</span>：</p>
 <pre><code class="language-text">让他查看Codex的实现 / 找出所有system prompt和工具调用相关的prompt / 撰写文档介绍 / 放在点learnings下面标示化 / ASCII的图表帮助理解</code></pre>
+<h5 id="w6-inline-template-01">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">查看〔源码目录／项目名〕的实现，找出所有 system prompt 和工具调用相关的 prompt。撰写分析文档到〔学习文档目录〕，介绍各类提示词的职责、来源及调用关系，用〔ASCII 图表／指定图示形式〕帮助理解。
+</code></pre>
 <p>“点learnings”即 <code>.learnings</code> 目录；“标示化”是转写错误，原意不明。整理后的版本见 <a href="#template-t1">模板 T1</a>。</p>
 <h4>讲者做法与数字</h4>
 <ul><li>讲者的建议：用 Claude 系列模型写代码，用 Codex 做 review。他的解释是同一个模型审自己写的代码“遵循着同样的思路”，不容易找到问题（第 1 讲 34:26–35:17）<span class="source-markers">[<a class="source-ref" id="cite-o1-15" href="#source-o1">O1</a>]</span>。</li><li>skills 目录在各工具里位置不同：Codex 只找自己的，Claude 只找 <code>.claude</code> 下的。讲者的办法是建一个公共 <code>.skills</code> 目录，再软链成各工具的 skills 目录（第 1 讲 41:53–42:29）<span class="source-markers">[<a class="source-ref" id="cite-o1-16" href="#source-o1">O1</a>]</span>。</li><li>OpenCode 的 <code>todowrite</code> 工具描述一项就有 160 多行（第 1 讲 46:27–46:41）；讲者认为 LSP（编辑器用来查符号定义和引用的语言服务）查符号比 grep 高效（第 1 讲 18:01–19:12）<span class="source-markers">[<a class="source-ref" id="cite-o1-17" href="#source-o1">O1</a>]</span>。</li></ul>
@@ -304,6 +308,10 @@ git status   # 期望：看不到 vendors/</code></pre>
 <p>原样摘录，不改错字。逐字稿是机器转写：<code> / </code> 是转写的分段，<code>……</code> 是省略的讲解；代码块下方注明明显的转写错误。</p>
 <p>第 2 讲 13:31–14:53，讲者让 Claude Code 先出方案 <span class="source-markers">[<a class="source-ref" id="cite-o2-p1" href="#source-o2">O2</a>]</span>：</p>
 <pre><code class="language-text">查看 / 查看,vendors,opencode,原码 / 如何最方便的获得opencode / 每次像 / 像 / 发送的包含 / 完整内容的输入 / 输出 / 最好是有 / hook, plugin,什么的 / 避免我直接修改原码 / 先不要 / 转线 / 告诉我方案</code></pre>
+<h5 id="w6-inline-template-02">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">查看〔源码目录〕，研究如何获得〔目标 Agent〕每次发给模型的完整输入与完整输出。优先查找〔hooks、plugin 等扩展机制〕，避免直接修改源码；先不要写代码，告诉我可选方案、各自限制与推荐理由。
+</code></pre>
 <p>“原码”是源码；“转线”是转写错误，按上下文是“写代码”；14:00–14:07 的“每次像 / 像”处有漏字。整理后的版本见 <a href="#template-t2">模板 T2</a>。</p>
 <h4>讲者做法与数字</h4>
 <ul><li>讲者等了“差不多两分钟”拿到三个方案：一是插件系统（推荐），二是配置里的 experimental hook，三是打开最详细的 debug 日志（第 2 讲 15:26–16:59）<span class="source-markers">[<a class="source-ref" id="cite-o2-8" href="#source-o2">O2</a>]</span>。</li><li>OpenCode 官方插件文档里没写 chat 相关的事件，讲者的结论是“这个文档不是特别的好”，以源码为准（第 2 讲 22:23–22:57）<span class="source-markers">[<a class="source-ref" id="cite-o2-9" href="#source-o2">O2</a>]</span>。</li><li>克隆地址是本次用 <code>git ls-remote</code> 确认能访问的 OpenCode 仓库，讲者没念地址 <span class="source-markers">[<a class="source-ref" id="cite-o9-8" href="#source-o9">O9</a>]</span>。</li></ul>
@@ -325,16 +333,30 @@ head -c 400 "$(ls -t logs/*.jsonl | head -1)"</code></pre>
 <p>原样摘录，不改错字。逐字稿是机器转写：<code> / </code> 是转写的分段，<code>……</code> 是省略的讲解；代码块下方注明明显的转写错误。</p>
 <p>第 2 讲 17:12–20:33，选定方案一后落地 <span class="source-markers">[<a class="source-ref" id="cite-o2-p2" href="#source-o2">O2</a>]</span>：</p>
 <pre><code class="language-text">来使用方案一 / 啊注意 / 将内容写入 / …… / 注意一次完整的对话 / 用户输入 / 最后得到完整的结果 / 内容放在同一个JsonL里,新的内容append进去。 / 不同的对话使用不同的JSON-L / …… / 请补获 / system prompt / 请补获每个turn的完成 / 完成 / 输入和完整输出 / 脚本放在 / 点 / 它叫啥?plugins / logconversation.ts / 然后部署确保代码的更确性 / 然后部署输出内容放在点</code></pre>
+<h5 id="w6-inline-template-03">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">采用〔已选定的日志方案〕，将从用户输入到最终结果的一次完整对话写到同一个 JSONL 文件，新内容追加，不同对话分文件。捕获 system prompt 及每个 turn 的完整输入输出。脚本放在〔插件脚本路径〕，日志输出到〔日志目录〕；完成实现、注册与部署，验证记录正确。
+</code></pre>
 <p>“补获”是捕获，“更确性”是正确性；最后的“点”后面没念完，课程代码输出在 <code>./logs</code>。整理后的版本见 <a href="#template-t3">模板 T3</a>。</p>
 <p>第 2 讲 25:39–27:10 追加约束，28:25–28:30 看完计划后确认 <span class="source-markers">[<a class="source-ref" id="cite-o2-p3" href="#source-o2">O2</a>]</span>：</p>
 <pre><code class="language-text">如果用 session id / 这样这次要 / 一个 session 里多次对话 / 都放一个文件 / 能不能 / 再加一个简单的ID / 比如UUID前几位 / 每次得到 / …… / 但是他应该能理解每次得到Result的时候
 
 可以 / 请 / 构建</code></pre>
+<h5 id="w6-inline-template-04">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">第一轮：在〔会话 ID〕之外增加〔短对话 ID 生成规则〕，使同一 session 的多次完整对话分文件；每次得到〔最终结果事件〕后为下一次对话生成新 ID。先说明计划及边界，不修改代码。
+第二轮（审阅计划后发送）：按〔已确认的计划版本〕实现并验证文件分组与追加行为。
+</code></pre>
 <p>“告诉我你的计划，先不要修改”这句逐字稿里没有转写出来，讲者在 27:14 说“我们让 agent 告诉一下我们他想怎么样去做”。整理后的版本见 <a href="#template-t4">模板 T4</a>。</p>
 <p>第 2 讲 31:28 与 32:17–32:36，插件装好后在 OpenCode 里问的两句 <span class="source-markers">[<a class="source-ref" id="cite-o2-p4" href="#source-o2">O2</a>]</span>：</p>
 <pre><code class="language-text">刚前有哪些skills
 
 帮我更新 / 嗯 / 是其更 / 加 / 符合 / ts best practice</code></pre>
+<h5 id="w6-inline-template-05">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">输入一：列出〔当前项目／会话〕可以使用的 Skills，说明各自用途。
+输入二：更新〔项目规则文件路径〕，使其更符合〔语言／工具链〕的最佳实践，结合〔项目现状与质量要求〕完善规则。
+</code></pre>
 <p>“刚前”是“当前”；第二句漏了宾语，按上下文是 <code>CLAUDE.md</code>。</p>
 <h4>讲者做法与数字</h4>
 <ul><li>一条消息生成了三四个日志文件。讲者打开后发现其中一个的 system 是“You are a title generator. You output ONLY a thread title”，另一些是后台 subagent（第 2 讲 32:56–34:06）<span class="source-markers">[<a class="source-ref" id="cite-o2-15" href="#source-o2">O2</a>]</span>。这是正常现象，见 <a href="#case-5">案例卡 5</a>。</li><li>讲者结尾在另一个目录启动 OpenCode 输入 hello，新日志是空的，当时没查出原因，只提到内存吃紧（第 2 讲 1:52:06–1:52:39）<span class="source-markers">[<a class="source-ref" id="cite-o2-16" href="#source-o2">O2</a>]</span>，见 <a href="#case-6">案例卡 6</a>。</li><li>课程仓库留下了 13 个日志文件，最大约 29 MB；没有 OpenCode 时可直接用它们 <span class="source-markers">[<a class="source-ref" id="cite-o4-4" href="#source-o4">O4</a>、<a class="source-ref" id="cite-o6-5" href="#source-o6">O6</a>]</span>。</li></ul>
@@ -353,11 +375,20 @@ npm run dev     # 终端会打印本地地址，用浏览器打开后选择 logs
 <p>原样摘录，不改错字。逐字稿是机器转写：<code> / </code> 是转写的分段，<code>……</code> 是省略的讲解；代码块下方注明明显的转写错误。</p>
 <p>第 2 讲 34:35–41:26，读日志并做可视化器（讲者边说边从别的项目拷样式文件，中间的操作讲解已省略）<span class="source-markers">[<a class="source-ref" id="cite-o2-p5" href="#source-o2">O2</a>]</span>：</p>
 <pre><code class="language-text">读取 / 当前到此下的文件 / 一行 / 就是一个JSON / …… / 分析其 / schema / 帮我勾结一个 / schema / 一个前端可视化APP / 用户打开一个JSON-L文件 / 你可以將其很好的分文別在一個頁面中展示 / 不同,看下 / 等节 / 数目 / 注意使用spotbar来控制区域长度 / 文字内容使用 / markdown render / 来渲染 / …… / 然后参照 / 点visualizer / styles / 参照 / 应该是使用 / 使用 / Global使用 / Styles Global CSS / 构建一个 / React App / 放在 Visualizer 下 / 根据这些需求,先撰写一个Design Dock放在第二个SPEC下 / 然后完整实现</code></pre>
+<h5 id="w6-inline-template-06">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">读取〔日志目录〕的 JSONL 文件，每行一个 JSON，先分析 schema。构建前端可视化 app，让用户打开文件后在同一页面按 turn 展示输入输出。使用滚动条控制区域长度，正文用 Markdown 渲染；复用〔设计 tokens 文件路径〕和〔全局样式路径〕。将〔前端框架〕项目放在〔应用目录〕，先写 design doc 到〔spec 路径〕，再完整实现。
+</code></pre>
 <p>“当前到此下”按上下文是 <code>./logs</code> 下；“勾结”是构建；“spotbar”是 scrollbar；“Design Dock”是 design doc；“第二个SPEC”是 <code>./specs</code>。这一条里没有“使用中文输出”，讲者事后才发现忘了（第 2 讲 43:51–44:07）。整理后的版本见 <a href="#template-t5">模板 T5</a>。</p>
 <p>第 2 讲 59:56–1:01:08 升级依赖，1:49:49–1:50:03 纠正依赖装错位置 <span class="source-markers">[<a class="source-ref" id="cite-o2-p6" href="#source-o2">O2</a>]</span>：</p>
 <pre><code class="language-text">把所有的升级到最新版本 / …… / npm check update / 我将升级到 / 按钮的 / 而且 / react / 19
 
 diff / 应该加到内部的package / 外面的没有用</code></pre>
+<h5 id="w6-inline-template-07">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">输入一：检查〔应用包目录〕的依赖，使用〔依赖检查工具〕升级到〔目标版本策略〕，包括〔重点框架及目标版本〕；执行构建和测试验证兼容性。
+输入二：〔依赖名〕应安装到〔实际使用它的子包 package 路径〕，请修正装在〔错误包目录〕的位置，并验证导入和构建。
+</code></pre>
 <p>迭代时逐条提的需求（第 2 讲，每做完一轮说一次 <code>commit the code</code>，如 1:23:05）<span class="source-markers">[<a class="source-ref" id="cite-o2-p7" href="#source-o2">O2</a>]</span>：</p>
 <pre><code class="language-text">让其作为 / 一个单独的和user assistant评级的 / section / 有自己的图标 / 和颜色    （1:19:18–1:19:45）
 
@@ -368,6 +399,15 @@ ToHistory我们也应该让它是倒序吧 / ToHistory应该也 / 和时间倒�
 to do / write input / output / 应该转示成to do的样子    （1:39:10–1:39:20）
 
 每次切换到下一个 / 下一个 / Ten 10 / 2 / 自动展开最新的 / 图和chat history都scroll到最上面 / System Prompt默认全都展开    （1:44:17–1:45:04）</code></pre>
+<h5 id="w6-inline-template-08">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">逐条迭代，每轮验证后提交〔本轮改动〕：
+1. 将〔消息类别〕作为与〔已有角色类别〕平级的独立 section，使用〔图标〕和〔颜色〕。
+2. 让〔工具历史区域〕按〔时间字段〕倒序，最新项在上。
+3. 〔差异展示能力〕只用于〔指定工具／场景〕，其余不使用。
+4. 将〔待办工具名〕的输入输出渲染成待办列表。
+5. 切换〔turn／步骤〕后自动展开最新〔工具项〕，将〔图形区域〕与〔聊天历史〕滚动到顶部；默认展开〔系统提示区域〕。
+</code></pre>
 <p>“评级”是平级；“ToHistory”是 Tool History；“Ten”是 turn。布局是讲者边画草图边说的，逐字稿只留下零散的词，例如 49:22“我们给它做成就是左右结构的”、53:03“然后底下我们可以放一个status bar”。整理后的清单见 <a href="#template-t6">模板 T6</a>。</p>
 <h4>讲者做法与数字</h4>
 <ul><li>讲者把 <code>design-tokens.css</code> 写成了少一个 s 的 <code>design-token</code>，模型就“想当然”地自己生成了一套 token，讲者删掉重来（第 2 讲 45:42–48:15）<span class="source-markers">[<a class="source-ref" id="cite-o2-22" href="#source-o2">O2</a>]</span>。课程仓库里的 <code>visualizer-design.md</code> 第 174 行至今还写着 <code>design-token.css</code> <span class="source-markers">[<a class="source-ref" id="cite-o9-9" href="#source-o9">O9</a>]</span>。见 <a href="#case-2">案例卡 2</a>。</li><li>design doc 生成成了英文，讲者说忘了要求中文，“一定要强制告诉它”（第 2 讲 43:51–44:07）<span class="source-markers">[<a class="source-ref" id="cite-o2-23" href="#source-o2">O2</a>]</span>。</li><li>讲者感叹“这么简单一个任务已经写了 2000 行的代码”，并说没有 coding agent 时，看日志这种事“看一下就完事了”，现在构建代码成本非常低，值得做成工具（第 2 讲 1:01:43–1:02:14）<span class="source-markers">[<a class="source-ref" id="cite-o2-24" href="#source-o2">O2</a>]</span>。</li><li>整个项目讲者“几乎没有看它的代码，也没有去写一行代码”（第 2 讲 1:49:19–1:49:26）<span class="source-markers">[<a class="source-ref" id="cite-o2-25" href="#source-o2">O2</a>]</span>。</li></ul>
@@ -395,6 +435,10 @@ to do / write input / output / 应该转示成to do的样子    （1:39:10–1:3
 <p>“读过源码”的那份 spec：讲者说生成过程“我就不跟大家演示了”，没有原始提示词 <span class="source-markers">[<a class="source-ref" id="cite-o3-p1" href="#source-o3">O3</a>]</span>；<a href="#template-t7">模板 T7</a> 是课程侧手册补写的。</p>
 <p>第 3 讲 20:04–21:22，在空目录里做无参考的对照实验 <span class="source-markers">[<a class="source-ref" id="cite-o3-p2" href="#source-o3">O3</a>]</span>：</p>
 <pre><code class="language-text">帮我构建一个 / 实验性质的 / 简单单完整的 / simple / simple agent / …… / 可以完成 / 完成多部的agent loop root / 就是用ThinkUltraHard搁建一个TypeScript的Design放在第二 / agent design dmd / 使用中文输出</code></pre>
+<h5 id="w6-inline-template-09">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">构建一个实验性的〔Agent 类型〕设计，使用〔实现语言〕，支持〔示意图／需求说明〕中的多步 agent loop。深入思考核心数据结构、接口、工具调用和循环终止条件，将 design doc 保存到〔设计文档路径〕，使用〔输出语言〕。本轮先写设计。
+</code></pre>
 <p>“多部”是多步；“root”按上下文是“如图”（讲者同时贴了 agent loop 示意图）；“搁建”是构建；“放在第二 / agent design dmd”是放在 <code>./agent-design.md</code>。整理后的版本见 <a href="#template-t8">模板 T8</a>。</p>
 <h4>讲者做法与数字</h4>
 <ul><li>“最有价值的是什么？是这个 spec”；数据结构、接口、流程都清楚之后，“LM 来完成这个代码本身其实就只是工作量的问题”，所以要把大量时间花在把 spec 做好并认真 review 上（第 3 讲 19:03–24:34）<span class="source-markers">[<a class="source-ref" id="cite-o3-9" href="#source-o3">O3</a>]</span>。</li><li>对照版本的问题：消息有 <code>role</code> 字段，讲者说“这个定义不错”；但它用的是 Anthropic SDK，讲者的解释是生成它的是 Anthropic 的模型，会倾向用自家 SDK；<code>Registry</code> 下面挂 <code>Executor</code> 一次执行一大堆工具，“这个的设计就不那么好”；工具结果的 role 写成了 user，讲者说应该是 assistant 这边的事、“跟 user 没有关系”（第 3 讲 27:42–31:33）<span class="source-markers">[<a class="source-ref" id="cite-o3-10" href="#source-o3">O3</a>]</span>。课程把它存为 <code>specs/0002-simple-agent-design-backup.md</code>，里面确实是 <code>ToolManager</code> 类 <span class="source-markers">[<a class="source-ref" id="cite-o7-4" href="#source-o7">O7</a>]</span>。</li><li>spec 0001 的 loop 写的是 <code>config.maxSteps ?? 200</code>；实际代码 <code>simple-agent</code> 的默认值是 100 <span class="source-markers">[<a class="source-ref" id="cite-o7-5" href="#source-o7">O7</a>、<a class="source-ref" id="cite-o9-10" href="#source-o9">O9</a>]</span>。</li><li><code>CLAUDE.md</code> 怎么写：针对一门语言写清工具链（用最新版）、async、类型设计和常用框架；写好一份后让 Claude 上网找 best practice 来打磨，再据此生成其他语言的版本（第 3 讲 24:57–26:43）<span class="source-markers">[<a class="source-ref" id="cite-o3-11" href="#source-o3">O3</a>]</span>。</li></ul>
@@ -409,8 +453,16 @@ to do / write input / output / 应该转示成to do的样子    （1:39:10–1:3
 <p>原样摘录，不改错字。逐字稿是机器转写：<code> / </code> 是转写的分段，<code>……</code> 是省略的讲解；代码块下方注明明显的转写错误。</p>
 <p>这一条有讲者的存档原文。第 3 讲 11:01 讲者说“这里 instructions”，是照着课程仓库的 <code>.chats/w6.md</code> 念的（文件标题就是 <code># instructions</code>，“simple agent 构建”一节和 <code>simple-agent</code> 代码在同一次提交 57894dd 进入仓库）。下面照原文摘录，错别字未改 <span class="source-markers">[<a class="source-ref" id="cite-o8-p1" href="#source-o8">O8</a>]</span>：</p>
 <pre><code class="language-text">基于 @specs/w6/0001-simple-agent-design.md 的规范，使用 openai 构建一个 agent sdk，提供 agent 的核心功能，用户可以很方便地为 agent 添加自定义工具和 mcp。完成构建后，确保所有实现否符合 design spec，并提供几个 example 来展示如何使用（包含至少一个使用 mcp 的例子）。</code></pre>
+<h5 id="w6-inline-template-10">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">基于〔设计 spec 路径〕，使用〔模型调用 SDK〕构建〔Agent SDK 名〕，提供〔核心功能列表〕，让用户方便地添加自定义工具与 MCP。实现后逐项核对 spec，并提供〔示例场景列表〕展示用法，其中包含〔MCP 示例要求〕。代码放在〔项目目录〕。
+</code></pre>
 <p>实现过程中追加的一句（第 3 讲 17:16，逐字稿原样；“apps”按上下文是依赖）<span class="source-markers">[<a class="source-ref" id="cite-o3-p3" href="#source-o3">O3</a>]</span>：</p>
 <pre><code class="language-text">确保所有apps使用最新版本</code></pre>
+<h5 id="w6-inline-template-11">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">检查〔项目／子包范围〕的所有依赖，按〔目标版本策略〕更新；核对官方文档中的兼容要求，运行〔测试、类型检查及构建命令〕，修复升级造成的问题。
+</code></pre>
 <p>整理后的版本见 <a href="#template-t9">模板 T9</a>。</p>
 <h4>讲者做法与数字</h4>
 <ul><li>讲者还自己在终端跑了 <code>npm install</code>“帮它加快进度”（第 3 讲 18:01–18:11）<span class="source-markers">[<a class="source-ref" id="cite-o3-17" href="#source-o3">O3</a>]</span>。</li><li>写完后讲者用代码统计工具看了一眼：约“2000 行的代码，那不算少了”（第 3 讲 48:32–48:39）<span class="source-markers">[<a class="source-ref" id="cite-o3-18" href="#source-o3">O3</a>]</span>。课程侧手册核实 src、tests、examples 合计约 2000 行 <span class="source-markers">[<a class="source-ref" id="cite-o4-11" href="#source-o4">O4</a>]</span>。</li><li>讲者最后提交时的信息是 <code>feature: support simple agent with typescript</code>（第 3 讲 49:15–49:21）<span class="source-markers">[<a class="source-ref" id="cite-o3-19" href="#source-o3">O3</a>]</span>。</li></ul>
@@ -480,6 +532,10 @@ cat /private/tmp/test.txt</code></pre>
 <p>原样摘录，不改错字。逐字稿是机器转写：<code> / </code> 是转写的分段，<code>……</code> 是省略的讲解；代码块下方注明明显的转写错误。</p>
 <p>第 3 讲 31:44–31:57，让 Claude Code 代跑全部 example <span class="source-markers">[<a class="source-ref" id="cite-o3-p4" href="#source-o3">O3</a>]</span>：</p>
 <pre><code class="language-text">测试所有 / example / 确保 / 他们 / 都正常 / 运行 / 我已经 / Page好,OpenAI API key了</code></pre>
+<h5 id="w6-inline-template-12">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">测试〔项目目录〕下所有〔示例目录／入口列表〕，确保它们正常运行。所需〔模型服务凭据〕已通过〔本地配置位置〕配置；逐项记录命令、实际结果和失败原因到〔验证记录路径〕，未执行项明确注明。
+</code></pre>
 <p>“Page好”是配好。整理后的版本见 <a href="#template-t10">模板 T10</a>。讲者在 system prompt 里加的“do not ask for confirmation”是改代码，不是发给 agent 的提示词。</p>
 <h4>讲者做法与数字</h4>
 <ul><li>“这是 mcp 的 14 个工具”（第 3 讲 36:07）；Mac 下 <code>/tmp</code> 是 <code>/private/tmp</code>，所以“access denied”（第 3 讲 36:50–36:58）<span class="source-markers">[<a class="source-ref" id="cite-o3-25" href="#source-o3">O3</a>]</span>。</li><li>讲者加的那句原话是“do not ask for confirmation”（第 3 讲 39:40）<span class="source-markers">[<a class="source-ref" id="cite-o3-26" href="#source-o3">O3</a>]</span>。</li><li>streaming 示例等了很久才结束（第 3 讲 46:53–47:23）<span class="source-markers">[<a class="source-ref" id="cite-o3-27" href="#source-o3">O3</a>]</span>；课程侧手册推测是推理模型首个 token 慢 <span class="source-markers">[<a class="source-ref" id="cite-o4-13" href="#source-o4">O4</a>]</span>。</li><li>缺 key 时的报错本次已核实：<code>OpenAIError: Missing credentials</code> <span class="source-markers">[<a class="source-ref" id="cite-o9-17" href="#source-o9">O9</a>]</span>。</li></ul>
@@ -494,6 +550,10 @@ cat /private/tmp/test.txt</code></pre>
 <p>原样摘录，不改错字。逐字稿是机器转写：<code> / </code> 是转写的分段，<code>……</code> 是省略的讲解；代码块下方注明明显的转写错误。</p>
 <p>第 3 讲 42:28–43:03，换成 gpt-5-mini 报错后 <span class="source-markers">[<a class="source-ref" id="cite-o3-p5" href="#source-o3">O3</a>]</span>：</p>
 <pre><code class="language-text">出错了,请修复 / 如果你 / open ai最新model是gpt5G以上 / 不要用gpt4欧 / 然后gpt5使用response api / 请查阅更新代码</code></pre>
+<h5 id="w6-inline-template-13">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">〔项目目录〕运行〔示例入口〕出现〔错误现象／日志位置〕，请修复。按〔官方文档来源〕核对〔目标模型及版本范围〕与〔目标 API〕，替换〔旧模型／旧 API〕调用，同步更新消息结构及工具调用结果对应关系，然后重跑〔验证场景〕。
+</code></pre>
 <p>“gpt5G”是 GPT-5，“gpt4欧”是 GPT-4o，“response api”是 Responses API。整理后的版本见 <a href="#template-t11">模板 T11</a>。</p>
 <h4>讲者做法与数字</h4>
 <ul><li>讲者看到 agent 改动后的反应是“改动这么大的吗”（第 3 讲 44:57–45:02），跑 example 时又报了一个看不懂的错，讲者随后发现是 ID 字段被改成了 call ID（逐字稿转写成“code ID”，第 3 讲 46:07–46:24）<span class="source-markers">[<a class="source-ref" id="cite-o3-33" href="#source-o3">O3</a>]</span>。</li><li>讲者说 agent 靠 web search 找到 Responses API 的用法，“花的时间还是有点长”；装了 Context7 就能“一步到位”找到最新文档；即使没有，“只是慢一点，可能中间会多几个 turn”（第 3 讲 50:50–52:19）<span class="source-markers">[<a class="source-ref" id="cite-o3-34" href="#source-o3">O3</a>]</span>。见 <a href="#case-7">案例卡 7</a>。</li><li>GPT-5 不接受某些旧参数，讲者只说“有一些 parameter 已经不支持了”（第 3 讲 43:15）<span class="source-markers">[<a class="source-ref" id="cite-o3-35" href="#source-o3">O3</a>]</span>；课程代码只在显式配置时才传 <code>temperature</code> <span class="source-markers">[<a class="source-ref" id="cite-o5-11" href="#source-o5">O5</a>]</span>。</li></ul>
@@ -613,6 +673,10 @@ think ultra hard。构建一个 TypeScript 的 design 放在 ./agent-design.md�
 <p><strong>1. 写 system prompt</strong>（“system prompt”一节）：</p>
 <pre><code class="language-text">based on @specs/w6/prompts/codex.txt and @specs/w6/prompts/reviewer.txt think hard, we want to generate a system prompt for
 ./w6/codereview-agent which is based on @w6/simple-agent/. The codereview agent will only have read file / write file / git command tool so make sure system prompt don't mention unexisting stuff. And make sure system prompt focused on code review but have all the good parts of @specs/w6/prompts/codex.txt. Write the prompts down to ./w6/codereview-agent/prompts/system.md. Think ultra hard.</code></pre>
+<h5 id="w6-inline-template-14">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">基于〔参考 system prompt 路径〕与〔reviewer prompt 路径〕，为依赖〔Agent SDK 路径〕的〔审查 Agent 项目〕生成 system prompt，保存到〔输出 prompt 路径〕。聚焦〔审查目标〕，吸收参考中的有效规则；工具能力只写〔实际已实现的工具清单〕，不得提及不存在的能力。
+</code></pre>
 <p><strong>2. 写设计文档 0003</strong>（“构建 codereview agent design spec”一节）：</p>
 <pre><code class="language-text">根据 ./w6/codereview-agent/prompts/system.md 文档，以及 ./w6/simple-agent 代码，构建一个 codereview agent。它包含这些工具：
 
@@ -630,10 +694,22 @@ think ultra hard。构建一个 TypeScript 的 design 放在 ./agent-design.md�
 - 帮我 review pull request 12 的代码
 
 仔细考虑这些需求，构建一个 solid 的设计文档，文档放在 ./specs/w6/0003-codereview-agent-design.md 文件中。design doc 输出中文。</code></pre>
+<h5 id="w6-inline-template-15">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">根据〔system prompt 路径〕与〔基础 Agent SDK 代码目录〕，设计〔审查 Agent 名〕。工具包括〔文件读取工具及目录边界〕、〔文件写入工具及目录边界〕、〔版本控制命令工具与 diff 范围〕和〔代码托管 CLI 工具及支持的查询〕。将工具用法与示例更新到 system prompt。覆盖“审查〔目标分支〕的新代码”“审查〔起始提交〕之后的代码”“审查〔PR 编号〕的代码”等场景，形成完整设计文档到〔设计文档路径〕，使用〔输出语言〕。
+</code></pre>
 <p><strong>3. 写代码</strong>（“构建 codereview agent 代码”一节）：</p>
 <pre><code class="language-text">根据 ./specs/w6/0003-codereview-agent-design.md 文档，构建一个 codereview agent 的代码（使用 ./w6/simple-agent 作为 dependency），代码放在 ./w6/codereview-agent 目录下。代码要完整实现 design spec，符合其要求。实现完成后请根据几个场景运行测试，确保它正常工作。</code></pre>
+<h5 id="w6-inline-template-16">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">根据〔设计文档路径〕完整实现〔审查 Agent 项目〕，以〔基础 Agent SDK 目录／包名〕作为依赖，代码放到〔输出代码目录〕。逐项核对设计要求，实现后按〔分支、提交与 PR 等测试场景〕运行测试，记录实际结果。
+</code></pre>
 <p><strong>4. Codex review</strong>（“codex review”一节）：</p>
 <pre><code class="language-text">使用 codex review skill 对 ./w6/codereview-agent 代码进行 review，确保代码符合 ./specs/w6/0003-codereview-agent-design.md 的设计。将 rewiew 结果写在 ./specs/w6/0004-codereview-agent-codex-review.md 文件中。</code></pre>
+<h5 id="w6-inline-template-17">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">使用〔独立代码评审工具／模型〕评审〔代码目录〕，逐项核对〔设计文档路径〕。将发现的问题、证据位置、影响及修复建议保存到〔评审结果路径〕，注明未验证的范围。
+</code></pre>
 <p><strong>怎么跑</strong>（未在本次运行；需要 key，审 PR 还需 <code>gh auth login</code>）：</p>
 <pre><code class="language-bash">cd ~/w6-practice/simple-agent &amp;&amp; npm run build      # codereview-agent 依赖 simple-agent 的 dist/
 cd ~/w6-practice/codereview-agent &amp;&amp; npm install

@@ -12,7 +12,7 @@
 - **数字的性质**：12k、81.7k、200 步这类数字是讲者在录课时屏幕上看到或口头说的，不是你环境里的保证值；模型名（gpt-5-mini、gpt-5-codex）是课程代码里写死的历史配置。
 - **跑过和没跑过的要分开看**：本次只在临时副本里跑了不调模型的部分（安装、测试、类型检查、工具直调、缺 key 报错），结果写在本次核实记录 [[O9](#source-o9)]。所有调用模型的步骤本次都没跑，手册不承诺你会得到和讲者一样的输出。
 - **模板里的〔〕是虚构占位**，用之前换成你自己的内容。
-- **每一步的“讲者原始提示词”**：讲者存档过的照课程仓库 `.chats/w6.md` 原文摘录（步骤 10、附录 G）；其余来自逐字稿，原样摘录、不改错字，并注明明显的转写错误；没有提示词的步骤也写明。要直接套用，用附录 D 整理过的模板。
+- **每一步的“讲者原始提示词”**：讲者存档过的照课程仓库 `.chats/w6.md` 原文摘录（步骤 10、附录 G）；其余来自逐字稿，原样摘录、不改错字，并注明明显的转写错误；没有提示词的步骤也写明。每条已摘录的输入下方紧邻放置可套用模板，替换〔〕后使用；附录 D 的模板仍保留供查阅。
 - **几个反复出现的词**：agent loop 指“模型决定调哪个工具、本地执行、把结果连同历史再发给模型”这样一圈圈转下去的过程；spec 指写代码前的设计文档；system prompt 是每次请求最前面那段角色和规则说明；token 是模型计费的文字单位；hook 指“某件事发生前后，让外部代码插进来处理”的扩展点；MCP 是让 agent 接入外部工具服务的标准协议；JSONL 是每行一个 JSON 对象的文本文件。
 
 <a id="section-roadmap"></a>
@@ -225,6 +225,14 @@ system prompt 是每次请求最前面那段“你是谁、该怎么做”的说
 让他查看Codex的实现 / 找出所有system prompt和工具调用相关的prompt / 撰写文档介绍 / 放在点learnings下面标示化 / ASCII的图表帮助理解
 ```
 
+##### 可套用模板 {#w6-inline-template-01}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+查看〔源码目录／项目名〕的实现，找出所有 system prompt 和工具调用相关的 prompt。撰写分析文档到〔学习文档目录〕，介绍各类提示词的职责、来源及调用关系，用〔ASCII 图表／指定图示形式〕帮助理解。
+```
+
 “点learnings”即 `.learnings` 目录；“标示化”是转写错误，原意不明。整理后的版本见 [模板 T1](#template-t1)。
 
 #### 讲者做法与数字
@@ -299,6 +307,14 @@ git status   # 期望：看不到 vendors/
 查看 / 查看,vendors,opencode,原码 / 如何最方便的获得opencode / 每次像 / 像 / 发送的包含 / 完整内容的输入 / 输出 / 最好是有 / hook, plugin,什么的 / 避免我直接修改原码 / 先不要 / 转线 / 告诉我方案
 ```
 
+##### 可套用模板 {#w6-inline-template-02}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+查看〔源码目录〕，研究如何获得〔目标 Agent〕每次发给模型的完整输入与完整输出。优先查找〔hooks、plugin 等扩展机制〕，避免直接修改源码；先不要写代码，告诉我可选方案、各自限制与推荐理由。
+```
+
 “原码”是源码；“转线”是转写错误，按上下文是“写代码”；14:00–14:07 的“每次像 / 像”处有漏字。整理后的版本见 [模板 T2](#template-t2)。
 
 #### 讲者做法与数字
@@ -348,6 +364,14 @@ head -c 400 "$(ls -t logs/*.jsonl | head -1)"
 来使用方案一 / 啊注意 / 将内容写入 / …… / 注意一次完整的对话 / 用户输入 / 最后得到完整的结果 / 内容放在同一个JsonL里,新的内容append进去。 / 不同的对话使用不同的JSON-L / …… / 请补获 / system prompt / 请补获每个turn的完成 / 完成 / 输入和完整输出 / 脚本放在 / 点 / 它叫啥?plugins / logconversation.ts / 然后部署确保代码的更确性 / 然后部署输出内容放在点
 ```
 
+##### 可套用模板 {#w6-inline-template-03}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+采用〔已选定的日志方案〕，将从用户输入到最终结果的一次完整对话写到同一个 JSONL 文件，新内容追加，不同对话分文件。捕获 system prompt 及每个 turn 的完整输入输出。脚本放在〔插件脚本路径〕，日志输出到〔日志目录〕；完成实现、注册与部署，验证记录正确。
+```
+
 “补获”是捕获，“更确性”是正确性；最后的“点”后面没念完，课程代码输出在 `./logs`。整理后的版本见 [模板 T3](#template-t3)。
 
 第 2 讲 25:39–27:10 追加约束，28:25–28:30 看完计划后确认 [[O2](#source-o2)]：
@@ -358,6 +382,15 @@ head -c 400 "$(ls -t logs/*.jsonl | head -1)"
 可以 / 请 / 构建
 ```
 
+##### 可套用模板 {#w6-inline-template-04}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+第一轮：在〔会话 ID〕之外增加〔短对话 ID 生成规则〕，使同一 session 的多次完整对话分文件；每次得到〔最终结果事件〕后为下一次对话生成新 ID。先说明计划及边界，不修改代码。
+第二轮（审阅计划后发送）：按〔已确认的计划版本〕实现并验证文件分组与追加行为。
+```
+
 “告诉我你的计划，先不要修改”这句逐字稿里没有转写出来，讲者在 27:14 说“我们让 agent 告诉一下我们他想怎么样去做”。整理后的版本见 [模板 T4](#template-t4)。
 
 第 2 讲 31:28 与 32:17–32:36，插件装好后在 OpenCode 里问的两句 [[O2](#source-o2)]：
@@ -366,6 +399,15 @@ head -c 400 "$(ls -t logs/*.jsonl | head -1)"
 刚前有哪些skills
 
 帮我更新 / 嗯 / 是其更 / 加 / 符合 / ts best practice
+```
+
+##### 可套用模板 {#w6-inline-template-05}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+输入一：列出〔当前项目／会话〕可以使用的 Skills，说明各自用途。
+输入二：更新〔项目规则文件路径〕，使其更符合〔语言／工具链〕的最佳实践，结合〔项目现状与质量要求〕完善规则。
 ```
 
 “刚前”是“当前”；第二句漏了宾语，按上下文是 `CLAUDE.md`。
@@ -412,6 +454,14 @@ npm run dev     # 终端会打印本地地址，用浏览器打开后选择 logs
 读取 / 当前到此下的文件 / 一行 / 就是一个JSON / …… / 分析其 / schema / 帮我勾结一个 / schema / 一个前端可视化APP / 用户打开一个JSON-L文件 / 你可以將其很好的分文別在一個頁面中展示 / 不同,看下 / 等节 / 数目 / 注意使用spotbar来控制区域长度 / 文字内容使用 / markdown render / 来渲染 / …… / 然后参照 / 点visualizer / styles / 参照 / 应该是使用 / 使用 / Global使用 / Styles Global CSS / 构建一个 / React App / 放在 Visualizer 下 / 根据这些需求,先撰写一个Design Dock放在第二个SPEC下 / 然后完整实现
 ```
 
+##### 可套用模板 {#w6-inline-template-06}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+读取〔日志目录〕的 JSONL 文件，每行一个 JSON，先分析 schema。构建前端可视化 app，让用户打开文件后在同一页面按 turn 展示输入输出。使用滚动条控制区域长度，正文用 Markdown 渲染；复用〔设计 tokens 文件路径〕和〔全局样式路径〕。将〔前端框架〕项目放在〔应用目录〕，先写 design doc 到〔spec 路径〕，再完整实现。
+```
+
 “当前到此下”按上下文是 `./logs` 下；“勾结”是构建；“spotbar”是 scrollbar；“Design Dock”是 design doc；“第二个SPEC”是 `./specs`。这一条里没有“使用中文输出”，讲者事后才发现忘了（第 2 讲 43:51–44:07）。整理后的版本见 [模板 T5](#template-t5)。
 
 第 2 讲 59:56–1:01:08 升级依赖，1:49:49–1:50:03 纠正依赖装错位置 [[O2](#source-o2)]：
@@ -420,6 +470,15 @@ npm run dev     # 终端会打印本地地址，用浏览器打开后选择 logs
 把所有的升级到最新版本 / …… / npm check update / 我将升级到 / 按钮的 / 而且 / react / 19
 
 diff / 应该加到内部的package / 外面的没有用
+```
+
+##### 可套用模板 {#w6-inline-template-07}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+输入一：检查〔应用包目录〕的依赖，使用〔依赖检查工具〕升级到〔目标版本策略〕，包括〔重点框架及目标版本〕；执行构建和测试验证兼容性。
+输入二：〔依赖名〕应安装到〔实际使用它的子包 package 路径〕，请修正装在〔错误包目录〕的位置，并验证导入和构建。
 ```
 
 迭代时逐条提的需求（第 2 讲，每做完一轮说一次 `commit the code`，如 1:23:05）[[O2](#source-o2)]：
@@ -434,6 +493,19 @@ ToHistory我们也应该让它是倒序吧 / ToHistory应该也 / 和时间倒�
 to do / write input / output / 应该转示成to do的样子    （1:39:10–1:39:20）
 
 每次切换到下一个 / 下一个 / Ten 10 / 2 / 自动展开最新的 / 图和chat history都scroll到最上面 / System Prompt默认全都展开    （1:44:17–1:45:04）
+```
+
+##### 可套用模板 {#w6-inline-template-08}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+逐条迭代，每轮验证后提交〔本轮改动〕：
+1. 将〔消息类别〕作为与〔已有角色类别〕平级的独立 section，使用〔图标〕和〔颜色〕。
+2. 让〔工具历史区域〕按〔时间字段〕倒序，最新项在上。
+3. 〔差异展示能力〕只用于〔指定工具／场景〕，其余不使用。
+4. 将〔待办工具名〕的输入输出渲染成待办列表。
+5. 切换〔turn／步骤〕后自动展开最新〔工具项〕，将〔图形区域〕与〔聊天历史〕滚动到顶部；默认展开〔系统提示区域〕。
 ```
 
 “评级”是平级；“ToHistory”是 Tool History；“Ten”是 turn。布局是讲者边画草图边说的，逐字稿只留下零散的词，例如 49:22“我们给它做成就是左右结构的”、53:03“然后底下我们可以放一个status bar”。整理后的清单见 [模板 T6](#template-t6)。
@@ -510,6 +582,14 @@ to do / write input / output / 应该转示成to do的样子    （1:39:10–1:3
 帮我构建一个 / 实验性质的 / 简单单完整的 / simple / simple agent / …… / 可以完成 / 完成多部的agent loop root / 就是用ThinkUltraHard搁建一个TypeScript的Design放在第二 / agent design dmd / 使用中文输出
 ```
 
+##### 可套用模板 {#w6-inline-template-09}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+构建一个实验性的〔Agent 类型〕设计，使用〔实现语言〕，支持〔示意图／需求说明〕中的多步 agent loop。深入思考核心数据结构、接口、工具调用和循环终止条件，将 design doc 保存到〔设计文档路径〕，使用〔输出语言〕。本轮先写设计。
+```
+
 “多部”是多步；“root”按上下文是“如图”（讲者同时贴了 agent loop 示意图）；“搁建”是构建；“放在第二 / agent design dmd”是放在 `./agent-design.md`。整理后的版本见 [模板 T8](#template-t8)。
 
 #### 讲者做法与数字
@@ -548,10 +628,26 @@ to do / write input / output / 应该转示成to do的样子    （1:39:10–1:3
 基于 @specs/w6/0001-simple-agent-design.md 的规范，使用 openai 构建一个 agent sdk，提供 agent 的核心功能，用户可以很方便地为 agent 添加自定义工具和 mcp。完成构建后，确保所有实现否符合 design spec，并提供几个 example 来展示如何使用（包含至少一个使用 mcp 的例子）。
 ```
 
+##### 可套用模板 {#w6-inline-template-10}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+基于〔设计 spec 路径〕，使用〔模型调用 SDK〕构建〔Agent SDK 名〕，提供〔核心功能列表〕，让用户方便地添加自定义工具与 MCP。实现后逐项核对 spec，并提供〔示例场景列表〕展示用法，其中包含〔MCP 示例要求〕。代码放在〔项目目录〕。
+```
+
 实现过程中追加的一句（第 3 讲 17:16，逐字稿原样；“apps”按上下文是依赖）[[O3](#source-o3)]：
 
 ```text
 确保所有apps使用最新版本
+```
+
+##### 可套用模板 {#w6-inline-template-11}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+检查〔项目／子包范围〕的所有依赖，按〔目标版本策略〕更新；核对官方文档中的兼容要求，运行〔测试、类型检查及构建命令〕，修复升级造成的问题。
 ```
 
 整理后的版本见 [模板 T9](#template-t9)。
@@ -672,6 +768,14 @@ cat /private/tmp/test.txt
 测试所有 / example / 确保 / 他们 / 都正常 / 运行 / 我已经 / Page好,OpenAI API key了
 ```
 
+##### 可套用模板 {#w6-inline-template-12}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+测试〔项目目录〕下所有〔示例目录／入口列表〕，确保它们正常运行。所需〔模型服务凭据〕已通过〔本地配置位置〕配置；逐项记录命令、实际结果和失败原因到〔验证记录路径〕，未执行项明确注明。
+```
+
 “Page好”是配好。整理后的版本见 [模板 T10](#template-t10)。讲者在 system prompt 里加的“do not ask for confirmation”是改代码，不是发给 agent 的提示词。
 
 #### 讲者做法与数字
@@ -708,6 +812,14 @@ agent 写的代码常常用旧版本的库和旧模型名。讲者遇到的正�
 
 ```text
 出错了,请修复 / 如果你 / open ai最新model是gpt5G以上 / 不要用gpt4欧 / 然后gpt5使用response api / 请查阅更新代码
+```
+
+##### 可套用模板 {#w6-inline-template-13}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+〔项目目录〕运行〔示例入口〕出现〔错误现象／日志位置〕，请修复。按〔官方文档来源〕核对〔目标模型及版本范围〕与〔目标 API〕，替换〔旧模型／旧 API〕调用，同步更新消息结构及工具调用结果对应关系，然后重跑〔验证场景〕。
 ```
 
 “gpt5G”是 GPT-5，“gpt4欧”是 GPT-4o，“response api”是 Responses API。整理后的版本见 [模板 T11](#template-t11)。
@@ -1023,6 +1135,14 @@ based on @specs/w6/prompts/codex.txt and @specs/w6/prompts/reviewer.txt think ha
 ./w6/codereview-agent which is based on @w6/simple-agent/. The codereview agent will only have read file / write file / git command tool so make sure system prompt don't mention unexisting stuff. And make sure system prompt focused on code review but have all the good parts of @specs/w6/prompts/codex.txt. Write the prompts down to ./w6/codereview-agent/prompts/system.md. Think ultra hard.
 ```
 
+##### 可套用模板 {#w6-inline-template-14}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+基于〔参考 system prompt 路径〕与〔reviewer prompt 路径〕，为依赖〔Agent SDK 路径〕的〔审查 Agent 项目〕生成 system prompt，保存到〔输出 prompt 路径〕。聚焦〔审查目标〕，吸收参考中的有效规则；工具能力只写〔实际已实现的工具清单〕，不得提及不存在的能力。
+```
+
 **2. 写设计文档 0003**（“构建 codereview agent design spec”一节）：
 
 ```text
@@ -1044,16 +1164,40 @@ based on @specs/w6/prompts/codex.txt and @specs/w6/prompts/reviewer.txt think ha
 仔细考虑这些需求，构建一个 solid 的设计文档，文档放在 ./specs/w6/0003-codereview-agent-design.md 文件中。design doc 输出中文。
 ```
 
+##### 可套用模板 {#w6-inline-template-15}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+根据〔system prompt 路径〕与〔基础 Agent SDK 代码目录〕，设计〔审查 Agent 名〕。工具包括〔文件读取工具及目录边界〕、〔文件写入工具及目录边界〕、〔版本控制命令工具与 diff 范围〕和〔代码托管 CLI 工具及支持的查询〕。将工具用法与示例更新到 system prompt。覆盖“审查〔目标分支〕的新代码”“审查〔起始提交〕之后的代码”“审查〔PR 编号〕的代码”等场景，形成完整设计文档到〔设计文档路径〕，使用〔输出语言〕。
+```
+
 **3. 写代码**（“构建 codereview agent 代码”一节）：
 
 ```text
 根据 ./specs/w6/0003-codereview-agent-design.md 文档，构建一个 codereview agent 的代码（使用 ./w6/simple-agent 作为 dependency），代码放在 ./w6/codereview-agent 目录下。代码要完整实现 design spec，符合其要求。实现完成后请根据几个场景运行测试，确保它正常工作。
 ```
 
+##### 可套用模板 {#w6-inline-template-16}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+根据〔设计文档路径〕完整实现〔审查 Agent 项目〕，以〔基础 Agent SDK 目录／包名〕作为依赖，代码放到〔输出代码目录〕。逐项核对设计要求，实现后按〔分支、提交与 PR 等测试场景〕运行测试，记录实际结果。
+```
+
 **4. Codex review**（“codex review”一节）：
 
 ```text
 使用 codex review skill 对 ./w6/codereview-agent 代码进行 review，确保代码符合 ./specs/w6/0003-codereview-agent-design.md 的设计。将 rewiew 结果写在 ./specs/w6/0004-codereview-agent-codex-review.md 文件中。
+```
+
+##### 可套用模板 {#w6-inline-template-17}
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+使用〔独立代码评审工具／模型〕评审〔代码目录〕，逐项核对〔设计文档路径〕。将发现的问题、证据位置、影响及修复建议保存到〔评审结果路径〕，注明未验证的范围。
 ```
 
 **怎么跑**（未在本次运行；需要 key，审 PR 还需 `gh auth login`）：

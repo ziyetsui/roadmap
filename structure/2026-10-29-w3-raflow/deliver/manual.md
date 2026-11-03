@@ -578,6 +578,17 @@ clipboard.inject_via_clipboard先存旧值、写新值；auto_paste=false时跳�
 
 ````
 
+<a id="inline-template-w3-01"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+参照〔已有命令定义路径〕的结构，深入分析并创建面向〔语言与代码类型〕的代码审查命令，保存到〔命令目录〕。
+审查范围包括架构与设计最佳实践、接口清晰度、扩展性、KISS、DRY、YAGNI、SOLID，以及〔需要检查的设计模式〕。
+函数规模以〔行数上限〕、参数数量以〔数量上限〕为项目约定；结合实际职责分析，不只按数字下结论。
+```
+
 画面核对：只有输入部分、标题或对应结果画面，未逐屏覆盖长日志/所有最终文本；全文以原文件逐字保留。
 
 <a id="prompt-p02"></a>
@@ -592,6 +603,16 @@ clipboard.inject_via_clipboard先存旧值、写新值；auto_paste=false时跳�
 
 ````
 
+<a id="inline-template-w3-02"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+请〔架构专家 Agent〕仔细查看〔后端代码目录〕的架构。由于新增〔外部系统或存储类型〕，需要重新考虑整体设计。
+设计一套稳定接口，让以后添加〔同类实现〕时尽量无需修改已有调用代码，符合开放封闭原则与 SOLID。说明接口边界、现有实现如何迁移，以及新增实现的接入步骤。
+```
+
 画面核对：只有输入部分、标题或对应结果画面，未逐屏覆盖长日志/所有最终文本；全文以原文件逐字保留。
 
 <a id="prompt-p03"></a>
@@ -604,6 +625,15 @@ clipboard.inject_via_clipboard先存旧值、写新值；auto_paste=false时跳�
 将 @specs/w3/raflow/0001-spec.md 的内容组织成格式正确的 markdown 文件，不要丢失任何内容
 
 ````
+
+<a id="inline-template-w3-03"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+将〔原始需求文件路径〕的内容组织成格式正确的 Markdown 文件，输出到〔目标文件路径〕。保留所有内容与限制，只调整结构和排版；整理后核对有没有遗漏。
+```
 
 画面核对：只有输入部分、标题或对应结果画面，未逐屏覆盖长日志/所有最终文本；全文以原文件逐字保留。
 
@@ -620,6 +650,16 @@ clipboard.inject_via_clipboard先存旧值、写新值；auto_paste=false时跳�
 
 ````
 
+<a id="inline-template-w3-04"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+根据〔需求文件路径〕，系统检索并核实设计需要的信息，尤其核对〔依赖名称与版本要求〕及相应 API。
+构建详细设计文档，保存到〔设计文档路径〕，使用〔输出语言〕。用 Mermaid 绘制架构、设计、组件与流程图，并逐图说明；标明核实依据与尚未确定的部分。
+```
+
 画面核对：只有输入部分、标题或对应结果画面，未逐屏覆盖长日志/所有最终文本；全文以原文件逐字保留。
 
 对应真实帧：[l05-design-input.png](images/l05-design-input.png)。
@@ -634,6 +674,16 @@ clipboard.inject_via_clipboard先存旧值、写新值；auto_paste=false时跳�
 根据 @specs/w3/raflow/0002-design.md 和 ./specs/w3/raflow/0003-implementation-plan.md 文件中的设计，完整实现 phase 1。
 
 ````
+
+<a id="inline-template-w3-05"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+根据〔设计文档路径〕和〔实现计划路径〕中的设计，完整实现〔阶段编号或名称〕。
+先确认这一阶段的范围与验收标准，按计划完成所需模块和连接，记录实际改动与验证结果；未完成或未运行的检查单列。
+```
 
 画面核对：只有输入部分、标题或对应结果画面，未逐屏覆盖长日志/所有最终文本；全文以原文件逐字保留。
 
@@ -828,6 +878,18 @@ thread caused non-unwinding panic. aborting.
 
 ````
 
+<a id="inline-template-w3-06"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+在〔操作系统与运行环境〕中，执行〔触发动作或热键〕后，〔应用〕发生闪退。
+期望行为：〔预期结果〕。以下是从启动到崩溃的完整日志与堆栈：
+〔原始日志与堆栈〕
+请先定位首个错误及其回调/线程/异步运行时上下文，追踪触发链路，说明根因后做最小修复，并验证同一动作不再崩溃。
+```
+
 画面核对：只有输入部分、标题或对应结果画面，未逐屏覆盖长日志/所有最终文本；全文以原文件逐字保留。
 
 对应真实帧：[l06-phase-input.png](images/l06-phase-input.png) · [l06-error-inputs.png](images/l06-error-inputs.png)。
@@ -870,6 +932,18 @@ thread caused non-unwinding panic. aborting.
 ```
 
 ````
+
+<a id="inline-template-w3-07"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+执行〔录音或流式处理操作〕时出现大量缓冲区相关错误。
+环境与音频参数：〔设备采样率、声道、回调块大小〕。
+完整日志：〔原始错误日志〕。
+请分别检查缓冲池耗尽、输入块大小不匹配、消费者处理速度与回收路径，给出有依据的修复，并用〔复现步骤〕验证。
+```
 
 画面核对：只有输入部分、标题或对应结果画面，未逐屏覆盖长日志/所有最终文本；全文以原文件逐字保留。
 
@@ -914,6 +988,17 @@ thread caused non-unwinding panic. aborting.
 ```
 
 ````
+
+<a id="inline-template-w3-08"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+上次修复后，〔缓冲池或队列〕仍有问题，而且在〔实时结果界面〕看不到〔预期转写或处理结果〕。
+上次改动：〔改动与版本〕。本轮完整日志：〔原始日志〕。
+请沿采集、缓冲、消费、发送、结果接收和界面更新逐层排查，区分数据丢弃与结果未显示的原因，修复后分别验证两条问题。
+```
 
 画面核对：只有输入部分、标题或对应结果画面，未逐屏覆盖长日志/所有最终文本；全文以原文件逐字保留。
 
@@ -987,6 +1072,17 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
 ````
 
+<a id="inline-template-w3-09"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+本轮出现新的连接错误，怀疑与 TLS 配置有关。触发操作：〔操作步骤〕；环境与依赖版本：〔版本信息〕。
+完整错误与上下文：〔原始日志〕。
+请核对 TLS provider、依赖特性和初始化顺序，先以日志与代码确认根因，再修改相应配置或初始化逻辑，验证握手与后续连接状态。
+```
+
 画面核对：只有输入部分、标题或对应结果画面，未逐屏覆盖长日志/所有最终文本；全文以原文件逐字保留。
 
 对应真实帧：[l06-tls-input.png](images/l06-tls-input.png)。
@@ -1001,6 +1097,17 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 现在通过 websocket 发送的间隔是多少？我们是不是可以收集 500ms 或者1s 的内容再去转译？另外，overlay window 没有意义，我是想把内容直接写到当前活跃窗口 focus 的元素中，如果是 input 则直接插入，不是就写到剪切板，用户可以手工插入
 
 ````
+
+<a id="inline-template-w3-10"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+请先确认〔实时传输模块〕当前发送间隔及其配置位置。评估累积〔批次时长〕内容后再发送给〔转写服务〕的方案，并说明延迟与吞吐取舍。
+输出策略调整为：结果写入当前活跃窗口的焦点元素；若〔目标可编辑条件〕成立则直接插入，否则写入剪贴板，由用户手工粘贴。
+明确批次、停止时剩余内容、焦点判断与失败回退如何衔接，并验证〔目标应用与输入场景〕。
+```
 
 画面核对：本条全文在对应帧可见；跨版本空白仍以文件为准。
 
@@ -1017,6 +1124,16 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
 ````
 
+<a id="inline-template-w3-11"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+在〔音频处理链路〕中使用〔降噪库或算法〕处理噪声，以改善〔转写或识别任务〕结果。
+先核对该库要求的采样率、帧大小与输入格式，说明接入位置及不足帧处理，再用〔安静/噪声对照样本〕比较处理前后的结果。
+```
+
 画面核对：本条全文在对应帧可见；跨版本空白仍以文件为准。
 
 对应真实帧：[l06-output-input.png](images/l06-output-input.png) · [l06-final-instructions.png](images/l06-final-instructions.png)。
@@ -1032,6 +1149,16 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
 ````
 
+<a id="inline-template-w3-12"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+将〔转写或生成服务〕的输出配置为〔目标语言或字形〕。请查阅〔服务名称〕的 API 文档，确认相关参数与支持边界，再把设置沿界面、配置和请求传递到服务。
+同时把〔结果悬浮窗口〕调整为〔目标尺寸或可显示内容要求〕，验证〔语言样本与长内容样本〕的显示效果。
+```
+
 画面核对：本条全文在对应帧可见；跨版本空白仍以文件为准。
 
 对应真实帧：[l06-final-instructions.png](images/l06-final-instructions.png)。
@@ -1046,6 +1173,16 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 仔细阅读目前 ./w3/raflow 的代码，think ultra hard，构建一个更新的 design doc，放在 ./specs/w3/raflow/0004-design.md 文件中，输出为中文，使用 mermaid 绘制架构，设计，组件，流程等图表并详细说明。
 ````
 
+<a id="inline-template-w3-13"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+仔细阅读〔当前项目代码目录〕，深入分析当前实现，构建更新的设计文档，保存到〔目标文档路径〕，使用〔输出语言〕。
+用 Mermaid 绘制架构、设计、组件与流程图，并详细说明。以实际代码为依据，区分已实现行为、历史设计和待验证方案。
+```
+
 画面核对：只有输入部分、标题或对应结果画面，未逐屏覆盖长日志/所有最终文本；全文以原文件逐字保留。
 
 对应真实帧：[l06-implemented-architecture.png](images/l06-implemented-architecture.png)。
@@ -1055,6 +1192,17 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
 这些是操作命令/短输入，不冒充项目需求长prompt。第1讲：`/model`、`/context`、`What skills do I have`、天气问题；第2讲：`/clear`、`/agents`、Agent选择；第3讲：`/deep-code-review`加目标目录、`@agent-py-arch`加目标任务。命令是否仍存在以你安装版本帮助为准；上下文截图可见前两项，其他口述/屏幕证据不宣称每个字节均已穷尽。
 
+<a id="inline-template-w3-c01"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+请列出当前环境中我可用的〔能力类型，如 Skills〕及其用途。
+需要代码审查时，调用〔审查命令名〕，目标为〔代码目录〕；需要架构分析时，调用〔专家 Agent 名〕并说明〔目标任务、范围与期望输出〕。
+运行前通过〔本机帮助或能力列表〕核对命令和 Agent 是否存在。
+```
+
 <a id="prompt-v01"></a>
 ### V01 创建Python架构Agent
 
@@ -1062,6 +1210,16 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
 ```text
 你是一个 Python 开发的资深系统级工程师，可以进行优雅的架构设计，遵循Python 哲学，并对并发异步web/grpc/数据库/大数据处理有深刻的理解
+```
+
+<a id="inline-template-w3-14"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+你是〔目标语言〕开发的资深系统工程师，擅长优雅的架构设计，遵循〔该语言的设计哲学与项目规范〕，并深入理解〔并发、异步、协议、存储与数据处理领域〕。
+在〔目标项目与任务范围〕中运用这些能力，给出清晰的架构分析与设计建议。
 ```
 
 对应画面：[l02-agent-input-complete.png](images/l02-agent-input-complete.png)。
@@ -1075,6 +1233,16 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 仔细阅读 ./site 代码，看哪些地方缺图片（或者使用图片效果更好），使用 ai image skill 生成图片，保存到 ./site/public/images/ 目录下，并在需要图片的页面中引用。如果不是需要特别风格的图片，尽量生成 ghibli 风格的图片。
 ```
 
+<a id="inline-template-w3-15"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+仔细阅读〔站点代码目录〕，找出缺少图片或配图能明显改善表达的页面。
+使用〔图像生成 Skill〕生成图片，保存到〔静态图片目录〕，并在相应页面引用。默认采用〔通用视觉风格〕；有特殊风格要求的页面按〔页面要求〕处理。
+```
+
 对应画面：[l03-site-skill-prompt.png](images/l03-site-skill-prompt.png)。
 
 <a id="prompt-v03"></a>
@@ -1086,6 +1254,15 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 write this as a whole in ./specs/w3/0001-code-review.md
 ```
 
+<a id="inline-template-w3-16"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+将〔本轮完整审查结果或指定上下文〕完整写入〔报告文件路径〕。保留全部分析、问题与建议，不以摘要替代全文；完成后核对文件内容是否完整。
+```
+
 对应画面：[l03-review-input.png](images/l03-review-input.png)。
 
 <a id="prompt-v04"></a>
@@ -1095,6 +1272,17 @@ write this as a whole in ./specs/w3/0001-code-review.md
 
 ```text
 帮我探索 elevenlabs 实时 transcribe API (scribe v2 realtime) 的 typescript 例子，并帮我构思如何实现一个类似 Wispr Flow 的工具。要求： app 使用 tauri 2 实现，app 打开后，常驻 systray，用户使用 "cmd+shift+\" hotkey 可以开启或者停止 transcribing. 从 scribe v2 api 获得的文本插入到当前 active app 的光标的位置（如果当前光标位置不可输入，那么就在停止 transcribing 时，把内容拷贝到剪贴板，用户可以粘贴到想要的地方。
+```
+
+<a id="inline-template-w3-17"></a>
+##### 可套用模板
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+探索〔实时语音 API 与模型版本〕的〔目标语言〕示例，并构思一个类似〔参考产品或交互目标〕的工具。
+应用使用〔桌面框架与版本〕，启动后常驻〔系统托盘位置〕，用户通过〔热键组合〕开始或停止实时转写。
+从 API 得到的文本插入当前活跃应用的光标位置；若光标处不可输入，则在停止转写时将完整内容写入剪贴板，供用户粘贴。说明 API 接入、状态切换与输出回退如何实现。
 ```
 
 对应画面：[l05-research-prompt.png](images/l05-research-prompt.png)。

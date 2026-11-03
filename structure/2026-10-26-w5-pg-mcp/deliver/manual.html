@@ -200,7 +200,7 @@
         <h2>阅读说明</h2>
 <p>这份手册按陈天训练营第 5 周五讲的顺序，把讲者做 pg-mcp 的全过程拆成 17 个步骤（步骤 0–16），让你在周一到周三亲手走一遍：先判断什么时候该用 MCP，再用 PRD、设计、实施计划一路驱动 agent 写出服务，测试、接入 Claude Code，最后把同一能力改写成 Skill 做对比。骨架来自课程仓库里已有的课程侧手册（步骤 0–18），这里合并、调了顺序，并补上逐字稿里的原话和时间戳。<span class="source-markers">[<a class="source-ref" id="cite-o7-1" href="#source-o7">O7</a>]</span></p>
 <ul>
-<li><strong>先看路线图</strong>，再按天打开对应步骤。讲者的 prompt 原文、可套用模板、案例卡和"不做什么"都放在附录，步骤里点链接过去。</li>
+<li><strong>先看路线图</strong>，再按天打开对应步骤。每个有提示词的步骤，都在示例下方放了可套用模板，替换〔〕中的占位内容即可复制使用。附录保留讲者 prompt 原文、常用模板、案例卡和"不做什么"，可按步骤里的链接查阅。</li>
 <li><strong>来源编号</strong>：方括号里的 O1–O13 都是本地材料（O 表示本地课程与项目文件，本手册没有站内帖子）。O1–O5 是五讲逐字稿，正文写的 <code>[00:04:43]</code> 这类时间戳对应原视频，可以回看。点编号跳到文末，再点"回到正文"返回。</li>
 <li><strong>逐字稿是机器转写</strong>：本地 Whisper 自动识别，没有人工校对，专名常被识别成近音词（例如"Cloud Code"实为 Claude Code，"circle"实为 SQL）。手册里引用的数字和原话按上下文纠正过错字；拿不准的地方标了"需回听"。<span class="source-markers">[<a class="source-ref" id="cite-o1-1" href="#source-o1">O1</a>]</span></li>
 <li><strong>讲者的数字是他那一次的结果</strong>：代码行数、测试数、用时都来自逐字稿或课程侧手册作者的本机核对，你重做时会不同，不能当成标准答案。</li>
@@ -603,6 +603,27 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO pg_mcp_readonly;
 <pre><code class="language-bash">psql -h localhost -U pg_mcp_readonly -d blog_small -c &quot;BEGIN; DELETE FROM posts; ROLLBACK;&quot;
 psql -h localhost -U pg_mcp_readonly -d blog_small -c &quot;SELECT COUNT(*) FROM posts WHERE status = 'published';&quot;
 </code></pre>
+<h4>讲者原文提示词</h4>
+<p>逐字摘自课程仓库 <code>.chats/w5.md</code>。讲者是让 agent 从零生成 fixtures（第 37 行），再让它自己建库自测（第 39 行）；本步直接复用课程的 fixtures，所以只用得上第二条。<span class="source-markers">[<a class="source-ref" id="cite-o6-18" href="#source-o6">O6</a>]</span></p>
+<p>第 37 行（同<a href="#prompt-p8">P8</a>）：</p>
+<pre><code class="language-text">根据 @specs/w5/0001-pg-mcp-prd.md 在 ./w5/pg-mcp/fixtures 下构建三个有意义的数据库，分别有少量，中等量级，以及大量的 table/view/types/index 等schema，且有足够多的数据。生成这三个数据库的 sql 文件，并构建 Makefile 来重建这些测试数据库。
+</code></pre>
+<h5 id="w5-inline-template-01">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">根据〔PRD 路径〕，在〔fixtures 目录〕构建〔规模层级列表〕的有意义测试数据库，覆盖〔表、视图、类型、索引与业务关系〕及〔各层数据量要求〕。生成各库 SQL 和用于重建的〔构建脚本〕，写明库名与验证方法。
+</code></pre>
+<p>第 39 行（同<a href="#prompt-p9">P9</a>）：</p>
+<pre><code class="language-text">commit 然后你来建立和测试这几个数据库确保可用
+</code></pre>
+<h5 id="w5-inline-template-02">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">提交〔本轮测试数据文件〕，使用〔本地连接配置〕建立〔目标测试数据库列表〕并测试可用性。执行〔建库命令〕与〔验证命令〕，核对〔结构、类型、索引和数据量〕，记录实际结果及失败原因到〔验证记录路径〕。
+</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>助手按 P9 和本步骤的动作写的，交给 agent 一次做完建库、核对和只读账号。〔〕里是虚构占位，登录用户按上面做法 A 或 B 二选一。</p>
+<pre><code class="language-text">〔练习目录〕/pg-mcp-ref/fixtures 下已有三个测试库的 SQL 和 Makefile。你来建立和测试这几个数据库确保可用：先运行 pg_isready 确认服务；登录用户用〔postgres/postgres，或 PGUSER=$(whoami) PGDATABASE=postgres〕；依次运行 make create-all、make test-all、make info，把三个库的表、视图、枚举类型和行数与 TEST_RESULTS.md 对照，不一致的列出来。然后建只读账号 pg_mcp_readonly，授权三个库的 SELECT，用 BEGIN; DELETE FROM posts; ROLLBACK; 验证写操作被拒绝。不要修改 fixtures 下的 SQL 文件，出错先停下告诉我。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：<code>make test-all</code> 三行数字与上面一致；只读账号执行 DELETE 报 permission denied；<code>SELECT COUNT(*) FROM posts WHERE status = 'published'</code> 返回 8。<span class="source-markers">[<a class="source-ref" id="cite-o10-6" href="#source-o10">O10</a>]</span></p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-2-1"><span>三个库已建好，数字对得上</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-2-2"><span>只读账号建好，写操作被拒绝</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-2-3"><span>抽查查询返回 8</span></label></li></ul>
 
@@ -630,6 +651,19 @@ uv run python main.py
 claude mcp add demo -- uv --directory 〔练习目录绝对路径〕/my-pg-mcp run python main.py
 claude mcp remove demo
 </code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>讲者这一步没有发提示词：<code>uv add fastmcp</code> 是手敲的，接入是在 Cursor 的 New MCP Server 里点的。下面两条是助手写的，让 Claude Code 代做；〔〕里是虚构占位。<span class="source-markers">[<a class="source-ref" id="cite-o2-42" href="#source-o2">O2</a>]</span></p>
+<p>第一条，建 demo 并注册：</p>
+<pre><code class="language-text">在当前目录用 uv init 初始化项目，uv add fastmcp，写一个 main.py：用 FastMCP 建一个名为 demo 的 server，注册一个 add(a: int, b: int) -&gt; int 工具，不管输入是什么都固定返回 42，以 stdio 方式运行。然后用 claude mcp add demo -- uv --directory 〔练习目录绝对路径〕/my-pg-mcp run python main.py 把它加进 Claude Code。除了 main.py 和 uv 生成的文件，不要写别的文件。
+</code></pre>
+<p>第二条，重启 Claude Code、<code>/mcp</code> 看到 demo 已连接后再发：</p>
+<pre><code class="language-text">用 demo 的 add 工具算 1+2，告诉我工具返回的原始值。
+</code></pre>
+<h5 id="w5-inline-extra-3">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">使用〔MCP 服务名〕的〔工具名〕，传入〔测试参数〕，告诉我工具返回的原始值，并与〔预期返回值〕对照，确认实际调用了该工具。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：<code>/mcp</code> 里出现 demo 且已连接；调用返回 42；删除后列表里没有 demo。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-3-1"><span>本地能以 stdio 方式启动</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-3-2"><span>Claude Code 调用返回 42</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-3-3"><span>demo 已删除</span></label></li></ul>
 
@@ -654,6 +688,18 @@ claude mcp remove demo
 <p>逐字摘自课程仓库 <code>.chats/w5.md</code>（讲者与模型的对话记录）。路径里的 <code>./specs/w5/</code>、<code>./w5/pg-mcp</code> 按你的练习目录改。</p>
 <p>第 5 行：</p>
 <pre><code class="language-text">主要的需求是在Python下面创建一个Postgres的mcp：用户可以给特定自然语言描述的查询的需求，然后mcp server 根据结果来返回一个SQL或者返回这个查询的结果。mcp的服务器在启动的时候，应该读取它都有哪些可以访问的数据库，并且缓存这些数据库的schema：了解每一个数据库下面都有哪些 table/view/types/index 等等，然后根据这些信息以及用户的输入去调用OpenAI的大模型（gpt-5-mini）来生成 SQL。之后mcp server应该来校验这个sql只允许查询的语句然后测试这个sql确保它能够执行并且返回有意义的结果：这里也可以把用户的输入生成的sql以及返回的结果的一部分调用openai来确认这样可以确保它的结果是不是有意义。最后根据用户的输入是返回SQL还是返回SQL查询之后的结果来返回相应的内容根据这些需求帮我构建一个详细的需求文档，先不要著急去做设计，等我review完这个需求文档之后呢我们再来讨论设计，文档放在 ./specs/w5/0001-pg-mcp-prd.md 文件中。</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>换成自己的项目时套这个骨架（同<a href="#template-t1">模板 T1</a>，〔〕里是虚构占位）。①–⑦ 对应下文拆出的七部分，发送时可以删掉编号；第 ④ 段"失败怎么办"是助手加的建议，讲者原文没有。</p>
+<pre><code class="language-text">① 主要的需求是在〔语言/平台〕下面创建一个〔项目类型〕：
+② 用户可以给〔输入〕，然后〔服务〕返回〔输出 A〕或者〔输出 B〕。
+③ 服务启动的时候，应该〔读取/缓存什么〕：了解〔具体范围，逐项列出〕。
+④ 然后根据这些信息以及用户的输入〔第一步做什么〕。之后应该校验〔什么，只允许什么〕，然后〔试跑/测试什么〕，确保〔什么算有意义的结果〕；〔每一步失败时怎么办〕。
+⑤ 这里也可以把〔输入、中间产物、部分结果〕交给〔模型〕来确认，确保结果有意义。
+最后根据用户的选择返回〔A〕还是〔B〕。
+⑥ 根据这些需求帮我构建一个详细的需求文档，先不要着急去做设计，等我 review 完这个需求文档之后我们再来讨论设计，
+⑦ 文档放在 ./specs/0001-〔项目名〕-prd.md 文件中。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：PRD 已 commit；上面 6 项逐项标了有或无；多余的工具名列在运行记录里。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-4-1"><span>PRD 已生成并 commit</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-4-2"><span>6 项检查已逐项标注</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-4-3"><span>多余工具已列出</span></label></li></ul>
 
@@ -741,6 +787,27 @@ claude mcp remove demo
 <li>对拿不准的库单独再做一次深度调研。讲者在等设计文档时又让 Gemini 专门研究了 SQLGlot 的设计理念和支持的 SQL 范围[00:30:30]。<span class="source-markers">[<a class="source-ref" id="cite-o2-15" href="#source-o2">O2</a>]</span></li>
 <li>结论存成 <code>docs/research/survey-pg-mcp-libs.md</code> 并 commit。这个命名沿用你们 ai-tools 规范里 survey 类调研的写法。<span class="source-markers">[<a class="source-ref" id="cite-o13-4" href="#source-o13">O13</a>]</span></li>
 </ol>
+<h4>讲者原文提示词</h4>
+<p>讲者是在浏览器里对 Gemini 口述的，没有进 <code>.chats/w5.md</code>，下面两条按第 2 讲逐字稿整理。逐字稿是机器转写，"SQLGlot"原稿识别成"CircleGlob"，"支持的 SQL 范围"识别成"直指的Circle范围"，已按上下文改正。<span class="source-markers">[<a class="source-ref" id="cite-o2-41" href="#source-o2">O2</a>]</span></p>
+<p>选库调研，[00:08:56]–[00:09:09]（附上 PRD 一起发）：</p>
+<pre><code class="language-text">帮我研究一下这个需求，如果是用python来实现的话，那应该用哪些库，为什么用这些库</code></pre>
+<h5 id="w5-inline-extra-1">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">附件是〔项目一句话描述〕的〔PRD 路径／需求文档〕。如果用〔语言与运行环境〕实现，应为〔功能类别列表〕分别选择哪些库？逐项给出首选、备选及选择理由，引用〔官方文档与源码来源〕，说明与需求的对应关系，输出到〔调研记录位置〕。
+</code></pre>
+<p>单个库深挖，[00:31:00]–[00:31:14]（等设计文档时做）：</p>
+<pre><code class="language-text">帮我深度研究SQLGlot，了解它的设计理念和支持的SQL范围</code></pre>
+<h5 id="w5-inline-extra-2">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">深度研究〔库名〕，了解它的设计理念、支持的〔语法／功能范围〕及限制。结合〔项目使用场景〕判断能否满足〔关键需求〕，列出依据与待验证问题，将结论保存到〔调研文档位置〕。
+</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>第一条同<a href="#template-t2">模板 T2</a>，按本步骤目标的四类库写好了；第二条是助手按讲者第二句抽的骨架。〔〕里是虚构占位。</p>
+<pre><code class="language-text">附件是〔项目一句话描述〕的 PRD。请做 deep research：如果用 Python 实现，〔MCP 框架〕、〔数据库驱动〕、〔SQL 解析〕、〔模型调用〕各应选哪些库？每一类给出首选、备选、淘汰理由，引用 GitHub 活跃度与官方文档，输出中文。
+</code></pre>
+<pre><code class="language-text">帮我深度研究〔库名〕，了解它的设计理念、支持的〔范围〕，以及在〔我的场景〕里有哪些局限，输出中文。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：调研文件里四类库各有首选和理由；与讲者结论不同的地方写了原因。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-5-1"><span>调研已完成并落盘</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-5-2"><span>四类库都有首选与理由</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-5-3"><span>与讲者不同处已说明</span></label></li></ul>
 
@@ -765,6 +832,14 @@ claude mcp remove demo
 <p>逐字摘自课程仓库 <code>.chats/w5.md</code>（讲者与模型的对话记录）。路径里的 <code>./specs/w5/</code>、<code>./w5/pg-mcp</code> 按你的练习目录改。</p>
 <p>第 9 行：</p>
 <pre><code class="language-text">commit code; 然后，接口目前只需要 query 即可，其它意义不大；另外调用 codex review skill 让 codex review 这个需求文档，并更新</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>〔〕均为占位，请替换成真实内容。以下模板由助手按本步骤示例与动作整理，不是讲者原文。</p>
+<p>先填好 PRD 路径、要保留的接口和评审结果文件位置；没有讲者的 review skill 时，按<a href="#template-t3">模板 T3</a>使用可用的只读评审工具。</p>
+<pre><code class="language-text">请先保存并提交〔本轮需求文档的改动〕。阅读〔PRD 路径〕，把对外接口收敛为〔唯一需要的接口及参数〕，删除〔暂时不需要的接口或功能〕。
+然后用〔另一个模型／可用的 review 工具〕评审这份需求文档，重点检查〔输入输出、安全边界、失败处理、验收标准〕，把原始意见保存到〔评审报告路径〕，输出中文。
+逐条判断意见是否符合〔本轮使用场景〕：合理的更新到〔PRD 路径〕，暂不采纳的记录理由，不扩大需求范围。最后列出本轮修改和仍待决定的问题。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：工具表只有 query 一行，参数是 question、可选的 database、可选的 return_type；修订记录列出了吸收的 review 意见。可对照课程 0001 第 185–189 行。<span class="source-markers">[<a class="source-ref" id="cite-o8-3" href="#source-o8">O8</a>]</span></p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-6-1"><span>review 文件已生成</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-6-2"><span>工具表只剩 query</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-6-3"><span>修订记录已更新并 commit</span></label></li></ul>
 
@@ -784,6 +859,17 @@ claude mcp remove demo
 <p>逐字摘自课程仓库 <code>.chats/w5.md</code>（讲者与模型的对话记录）。路径里的 <code>./specs/w5/</code>、<code>./w5/pg-mcp</code> 按你的练习目录改。</p>
 <p>第 13 行：</p>
 <pre><code class="language-text">根据 ./specs/w5/0001-pg-mcp-prd.md 文档，使用 FastMCP、Asyncpg、SQLGlot、Pydantic以及openai 构建 pg-mcp 的设计文档，文档放在 ./specs/w5/0002-pg-mcp-design.md 文件中。</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>〔〕均为占位，请替换成真实内容。以下模板由助手按本步骤示例与动作整理，不是讲者原文。</p>
+<p>设计文档与项目规范分别发送；先替换输入文档、技术栈和输出路径。</p>
+<pre><code class="language-text">根据〔已确认的 PRD 路径〕和〔选库调研结论路径〕，使用〔已选定的技术栈〕，为〔项目名〕编写技术设计，保存到〔设计文档路径〕。
+写清组件职责、请求处理流程、数据与配置结构、项目目录、错误处理和测试边界。严格对应本轮需求，不增加 PRD 之外的功能；拿不准的单列为待确认问题。先交付设计文档，不开始实现。
+</code></pre>
+<p>在项目目录另开会话写项目规范：</p>
+<pre><code class="language-text">请为〔项目根目录〕生成 CLAUDE.md，说明〔项目目标〕、〔语言与技术栈〕、〔目录约定〕和〔测试与检查命令〕。
+采用本项目适用的 SOLID、DRY 原则，重视代码和测试质量，保持实现简单。先读取已有配置和文档，保留仍适用的约定；未核实的命令不要写成可用。文件放在〔项目根目录〕/CLAUDE.md。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：0002 里有技术栈、架构图、分层、项目目录树和安全设计；CLAUDE.md 写了 SOLID、DRY 和测试要求；重启后在新会话里问"这个项目的编码规范是什么"，它能复述出来。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-7-1"><span>0002 已生成</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-7-2"><span>CLAUDE.md 已生成并重启生效</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-7-3"><span>过度复杂之处已记下</span></label></li></ul>
 </div></details>
@@ -800,6 +886,18 @@ claude mcp remove demo
 <p>逐字摘自课程仓库 <code>.chats/w5.md</code>（讲者与模型的对话记录）。路径里的 <code>./specs/w5/</code>、<code>./w5/pg-mcp</code> 按你的练习目录改。</p>
 <p>第 17 行：</p>
 <pre><code class="language-text">使用 sub agent 调用 codex review skill 让 codex review ./specs/w5/0002-pg-mcp-design.md 文件。之后仔细阅读 review 的结果，思考是否合理，然后相应地更新 ./specs/w5/0002-pg-mcp-design.md 文件。</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>〔〕均为占位，请替换成真实内容。以下模板由助手按本步骤示例与动作整理，不是讲者原文。</p>
+<p>把评审和采纳拆成两条发，方便在两轮之间判断是否过度设计。这是对本步骤“先评审、再取舍”的模板化整理。</p>
+<pre><code class="language-text">请用〔独立模型／可用的 review 工具〕评审〔设计文档路径〕，同时对照〔PRD 路径〕。
+当前场景是〔本机练习／团队内部使用／其他真实场景〕。按严重程度列问题，说明影响、依据和建议；区分必须修复的正确性问题与可后置的扩展需求。
+先不要修改设计，把完整评审保存到〔设计评审报告路径〕，输出中文。
+</code></pre>
+<p>看完评审、决定取舍后再发：</p>
+<pre><code class="language-text">阅读〔设计评审报告路径〕。本轮只采纳〔明确列出的意见〕，暂缓〔明确列出的其他意见〕，原因是〔本轮边界和理由〕。
+据此更新〔设计文档路径〕并保留修订记录；如果上一轮已经加入了暂缓项，只撤回对应设计改动。保留完整评审，将暂缓项和理由记入〔待办记录路径〕，不要继续扩展功能。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：0003 存在，含评分和按严重程度分级的条目；0002 的修订记录里没有"按 review 扩展"的新版本；待办清单列出了暂缓条目和暂缓理由。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-8-1"><span>0003 已存档</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-8-2"><span>0002 保持原范围</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-8-3"><span>暂缓条目已进待办</span></label></li></ul>
 
@@ -824,6 +922,14 @@ claude mcp remove demo
 <p>逐字摘自课程仓库 <code>.chats/w5.md</code>（讲者与模型的对话记录）。路径里的 <code>./specs/w5/</code>、<code>./w5/pg-mcp</code> 按你的练习目录改。</p>
 <p>第 21 行：</p>
 <pre><code class="language-text">根据 ./specs/w5/0002-pg-mcp-design.md 文档，构建 pg-mcp 的实现计划，think ultra hard，文档放在 ./specs/w5/0004-pg-mcp-impl-plan.md 文件中。之后调用 codex review skill 让 codex review ./specs/w5/0004-pg-mcp-impl-plan.md 文件，并构建 ./specs/w5/0005-pg-mcp-impl-plan-review.md 文件。</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>〔〕均为占位，请替换成真实内容。以下模板由助手按本步骤示例与动作整理，不是讲者原文。</p>
+<p>先填计划范围、输出路径和可用评审工具。本课程练习仍按下方的 11 个阶段验收；换成其他项目时，阶段数量按实际依赖划分，并按已确认的计划验收。</p>
+<pre><code class="language-text">根据〔已确认的设计文档路径〕，为〔项目名〕编写实施计划，保存到〔实施计划路径〕。请充分思考任务依赖，再划分为〔本轮阶段范围〕。
+每个阶段写清任务、涉及模块、交付文件、验收方法和依赖条件；测试数据使用〔测试库／fixtures 位置〕。本轮先写计划，不实现代码。
+之后使用〔独立模型／可用的 review 工具〕评审该计划，将问题、严重程度和修改建议保存到〔计划评审报告路径〕，输出中文。不要自动把超出本轮需求的建议加入计划。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：0004 有 11 个 phase 和依赖关系；0005 有结论和问题清单；你在运行记录里写下"按 0005 改或不改、为什么"。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-9-1"><span>0004 已生成</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-9-2"><span>0005 已生成</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-9-3"><span>改不改计划已决定</span></label></li></ul>
 </div></details>
@@ -841,6 +947,14 @@ claude mcp remove demo
 <p>逐字摘自课程仓库 <code>.chats/w5.md</code>（讲者与模型的对话记录）。路径里的 <code>./specs/w5/</code>、<code>./w5/pg-mcp</code> 按你的练习目录改。</p>
 <p>第 25 行：</p>
 <pre><code class="language-text">根据 ./specs/w5/0004-pg-mcp-impl-plan.md 和 ./specs/w5/0002-pg-mcp-design.md 文档，使用 sub agent 完整实现 pg-mcp phase 0-4。代码放在 ./w5/pg-mcp 下。</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>〔〕均为占位，请替换成真实内容。以下模板由助手按本步骤示例与动作整理，不是讲者原文。</p>
+<p>同<a href="#template-t4">模板 T4</a>的分段实现方式；填写本轮起止阶段和代码目录，避免一次把后续阶段也做完。</p>
+<pre><code class="language-text">根据〔实施计划路径〕和〔设计文档路径〕，使用 subagent 实现〔项目名〕的 Phase〔起始阶段〕～〔结束阶段〕，代码放在〔代码目录〕。
+先读该目录的 CLAUDE.md 与现有实现，只完成这一段的任务和必要测试。核对〔关键依赖及项目要求〕，运行〔本阶段测试命令〕；涉及数据库的部分，用〔测试库及连接配置位置〕做一次真实连接验证。
+修复本阶段出现的失败，记录实际运行结果与尚未解决的问题；全部满足本阶段验收条件后，提交本次相关改动。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：<code>uv run pytest tests/unit</code> 全部通过；<code>pyproject.toml</code> 依赖里有 <code>fastmcp</code>；运行记录里有一次连 blog_small 成功的输出。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-10-1"><span>依赖已核对</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-10-2"><span>单元测试全部通过</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-10-3"><span>数据库部分真连过一次</span></label></li></ul>
 
@@ -864,10 +978,43 @@ claude mcp remove demo
 <p>逐字摘自课程仓库 <code>.chats/w5.md</code>（讲者与模型的对话记录）。路径里的 <code>./specs/w5/</code>、<code>./w5/pg-mcp</code> 按你的练习目录改。</p>
 <p>第 33 行：</p>
 <pre><code class="language-text">根据 ./specs/w5/0004-pg-mcp-impl-plan.md 和 ./specs/w5/0002-pg-mcp-design.md 文档，构建 pg-mcp 的测试计划，think ultra hard，文档放在 ./specs/w5/0007-pg-mcp-test-plan.md 文件中。之后调用 codex review skill 让 codex review ./specs/w5/0007-pg-mcp-test-plan.md 文件，并构建 ./specs/w5/0008-pg-mcp-test-plan-review.md 文件。</code></pre>
+<h5 id="w5-inline-template-09">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">根据〔实施计划路径〕和〔设计文档路径〕，为〔项目名〕编写可以实际执行的测试计划，保存到〔测试计划路径〕。覆盖〔关键流程、错误路径与边界条件〕，说明环境、数据、命令与预期结果。再调用〔独立评审工具／模型〕评审，将结果保存到〔测试计划评审路径〕。
+</code></pre>
 <p>第 37 行：</p>
 <pre><code class="language-text">根据 @specs/w5/0001-pg-mcp-prd.md 在 ./w5/pg-mcp/fixtures 下构建三个有意义的数据库，分别有少量，中等量级，以及大量的 table/view/types/index 等schema，且有足够多的数据。生成这三个数据库的 sql 文件，并构建 Makefile 来重建这些测试数据库。</code></pre>
+<h5 id="w5-inline-template-10">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">根据〔PRD 路径〕，在〔fixtures 目录〕构建〔规模层级列表〕的有意义测试数据库，覆盖〔表、视图、类型、索引与业务关系〕及〔各层数据量要求〕。生成各库 SQL 和用于重建的〔构建脚本〕，写明库名与验证方法。
+</code></pre>
 <p>第 39 行：</p>
 <pre><code class="language-text">commit 然后你来建立和测试这几个数据库确保可用</code></pre>
+<h5 id="w5-inline-template-11">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">提交〔本轮测试数据文件〕，使用〔本地连接配置〕建立〔目标测试数据库列表〕并测试可用性。执行〔建库命令〕与〔验证命令〕，核对〔结构、类型、索引和数据量〕，记录实际结果及失败原因到〔验证记录路径〕。
+</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>〔〕均为占位，请替换成真实内容。以下模板由助手按本步骤示例与动作整理，不是讲者原文。</p>
+<p>按需要分别发送：测试计划是必需项，生成新 fixtures 是可选练习；已有测试库时可直接编写测试问题集。</p>
+<p>测试计划与评审：</p>
+<pre><code class="language-text">根据〔实施计划路径〕和〔设计文档路径〕，为〔项目名〕编写你可以实际执行的测试计划，保存到〔测试计划路径〕。
+覆盖〔关键流程、错误路径、边界条件和安全限制〕，写明测试环境、数据准备、执行命令与预期结果。未实现的测试明确标记，不能用空断言冒充通过。
+然后用〔独立模型／可用的 review 工具〕评审，将结果保存到〔测试计划评审路径〕，输出中文。
+</code></pre>
+<p>可选：生成隔离的练习数据：</p>
+<pre><code class="language-text">根据〔PRD 路径〕，在〔fixtures 目录〕生成〔小／中／大三个规模〕的测试数据库 SQL 和用于重建、验证的 Makefile。
+覆盖〔表、视图、类型、索引及业务关系〕，写清每个库预期的数据量。所有新库名使用〔独立练习前缀〕，不要覆盖现有课程库；本轮先生成文件，不执行建库。
+</code></pre>
+<p>确认生成文件和目标库名之后再发：</p>
+<pre><code class="language-text">保存并提交〔本轮 fixtures 文件〕。现在使用〔本地连接配置位置〕建立〔已确认的练习库名列表〕并测试是否可用。
+运行〔建库命令〕、〔验证命令〕，核对表、视图、类型、索引和数据量，把实际输出写入〔验证记录路径〕；失败时记录错误与原因，不将未执行的检查标为通过。
+</code></pre>
+<p>生成自然语言测试问题集：</p>
+<pre><code class="language-text">阅读〔fixtures 目录／测试数据库结构〕，在〔TEST_QUERIES.md 路径〕生成从简单到复杂的自然语言查询问题。
+每题写明目标库、问题、预期 SQL 或结果及数据依据；另列写操作拒绝、歧义问题等测试。没有足够种子数据支持的题明确注明，不编造预期数字。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：0007、0008 已 commit；占位测试的处理方式已定；TEST_QUERIES 里每个库至少有 3 道简单题和 1 道复杂题。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-11-1"><span>0007、0008 已生成</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-11-2"><span>占位测试已处理或标明</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-11-3"><span>TEST_QUERIES 已生成</span></label></li></ul>
 </div></details>
@@ -885,6 +1032,14 @@ claude mcp remove demo
 <p>逐字摘自课程仓库 <code>.chats/w5.md</code>（讲者与模型的对话记录）。路径里的 <code>./specs/w5/</code>、<code>./w5/pg-mcp</code> 按你的练习目录改。</p>
 <p>第 27 行：</p>
 <pre><code class="language-text">根据 ./specs/w5/0004-pg-mcp-impl-plan.md 和 ./specs/w5/0002-pg-mcp-design.md 文档，使用 sub agent 完整实现 pg-mcp phase 5-10。代码放在 ./w5/pg-mcp 下。</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>〔〕均为占位，请替换成真实内容。以下模板由助手按本步骤示例与动作整理，不是讲者原文。</p>
+<p>用于接续上一段实现，填入真实的后续阶段范围、检查命令和测试环境。</p>
+<pre><code class="language-text">根据〔实施计划路径〕和〔设计文档路径〕，使用 subagent 完整实现〔项目名〕的 Phase〔后续起始阶段〕～〔后续结束阶段〕，代码放在〔代码目录〕。
+先核对前一段的实际完成情况，沿用〔测试库及连接配置位置〕。完成后运行〔全量测试命令〕和〔代码检查命令〕，逐项分析并修复本轮引入的 test failure 和 warning。
+检查集成测试是否真正验证了成功条件与结果，不能因查询失败而跳过断言后仍算通过。输出实际执行的命令、结果、跳过项和剩余问题；验收通过后提交相关改动。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：<code>uv run pytest</code> 的结果写进运行记录；条件断言的用例已列出；<code>uv run ruff check .</code> 跑过并记下错误数。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-12-1"><span>Phase 5–10 已完成</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-12-2"><span>全量测试结果已记录</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-12-3"><span>条件断言的用例已列出</span></label></li></ul>
 
@@ -907,6 +1062,14 @@ claude mcp remove demo
 <p>逐字摘自课程仓库 <code>.chats/w5.md</code>（讲者与模型的对话记录）。路径里的 <code>./specs/w5/</code>、<code>./w5/pg-mcp</code> 按你的练习目录改。</p>
 <p>第 29 行：</p>
 <pre><code class="language-text">提交，使用 sub agent调用 codex review skill 让 codex review 整个代码，看其是否符合 /specs/w5/0002-pg-mcp-design.md 和 ./specs/w5/0004-pg-mcp-impl-plan.md。把 review 结果写到 ./specs/w5/0006-pg-mcp-code-review.md 文件中。</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>〔〕均为占位，请替换成真实内容。以下模板由助手按本步骤示例与动作整理，不是讲者原文。</p>
+<p>评审输出单独保存，先知道问题是什么，再决定哪些作为本轮作业修复。</p>
+<pre><code class="language-text">使用〔独立模型／可用的 review 工具〕评审〔代码目录〕，对照〔PRD 路径〕、〔设计文档路径〕与〔实施计划路径〕，检查功能是否真正实现、测试能否证明结果，以及边界处理和安全限制是否遗漏。
+每个问题给出文件与位置、触发条件、影响、严重程度和建议修法；区分代码缺陷、测试缺口与暂缓功能。
+本轮只做评审，不修改代码。将中文报告保存到〔代码评审报告路径〕，不要把未运行的测试写成已通过。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：0006 已 commit；两条 High 进了待办；至少有一条发现你自己在代码里找到了对应位置。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-13-1"><span>0006 已生成</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-13-2"><span>High 项已进待办</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-13-3"><span>至少一条已在代码里定位</span></label></li></ul>
 </div></details>
@@ -939,8 +1102,27 @@ claude -p &quot;用 pg-mcp 的 query 工具回答：数据库有多少用户？&
 <p>逐字摘自课程仓库 <code>.chats/w5.md</code>（讲者与模型的对话记录）。路径里的 <code>./specs/w5/</code>、<code>./w5/pg-mcp</code> 按你的练习目录改。</p>
 <p>第 43 行：</p>
 <pre><code class="language-text">对于 @w5/pg-mcp，将这个 mcp 添加到 claude code 中，打开一个 claude code headless cli 选择 @w5/pg-mcp/fixtures/TEST_QUERIES.md 下面的某些 query，运行，查看是否调用这个 mcp，结果是否符合预期</code></pre>
+<h5 id="w5-inline-template-14">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">将〔代码目录〕的〔MCP 服务名〕接入〔客户端项目〕。启动另一个〔客户端 headless 命令〕会话，从〔测试问题集路径〕选择〔问题编号列表〕执行，检查是否实际调用目标 MCP，并将输入、调用、结果与预期对照写入〔验证记录路径〕。
+</code></pre>
 <p>第 45 行：</p>
 <pre><code class="language-text">直接用本地的 `uvx --refresh --from /Users/tchen/projects/mycode/bootcamp/ai/w5/pg-mcp pg-mcp` 来运行 mcp server</code></pre>
+<h5 id="w5-inline-template-15">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">直接用本地命令 `uvx --refresh --from 〔项目绝对路径〕 〔入口命令名〕` 运行〔MCP 服务名〕。按〔环境配置位置〕补齐连接参数，再检查客户端是否能够列出并调用预期工具。
+</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>〔〕均为占位，请替换成真实内容。以下模板由助手按本步骤示例与动作整理，不是讲者原文。</p>
+<p>先填本地 MCP 启动方式和测试问题集，再做实际客户端验证；凭据沿用已有本地配置，不写进报告。</p>
+<pre><code class="language-text">把〔代码目录〕中的〔MCP 服务名〕接入当前项目的 Claude Code，使用本地启动命令〔MCP 启动命令〕，连接参数从〔本地配置位置〕读取。
+打开另一个 Claude Code headless 会话，从〔TEST_QUERIES.md 路径〕选择〔要测的问题编号〕逐题执行，确认实际调用了该 MCP，而不只是直接回答。
+记录每题的目标库、输入、工具调用、SQL、结果与预期对照；加入一题〔应被拒绝的写操作请求〕，只验证拒绝行为。连接或调用失败时先记录现象、排查原因，再重试，不把失败当成功。报告写到〔端到端测试记录路径〕，不要输出密钥。
+</code></pre>
+<p>本地源码启动命令的替换模板（与讲者第二条示例对应）：</p>
+<pre><code class="language-text">直接用本地命令 `uvx --refresh --from 〔项目绝对路径〕 〔入口命令名〕` 启动〔MCP 服务名〕；按〔环境配置位置〕补齐配置，再验证客户端是否能列出并调用预期工具。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：<code>/mcp</code> 显示 pg-mcp 已连接；课程版本与你的版本各有不少于 5 题的记录（问题、生成的 SQL、结果、是否符合预期）；删除请求被拒绝；排错记录写了现象、原因和处理。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-14-1"><span>入口与配置已改对</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-14-2"><span>课程版本 5 题已记录</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-14-3"><span>你的版本 5 题已记录</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-14-4"><span>写操作被拒绝</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-14-5"><span>排错记录已写</span></label></li></ul>
 
@@ -1030,6 +1212,17 @@ claude -p &quot;用 pg-mcp 的 query 工具回答：数据库有多少用户？&
 3. 使用 psql 测试这个 SQL 确保它能够执行并且返回有意义的结果。如果执行失败，则深度思考，重新生成 SQL，回到第 3 步。
 4. 把用户的输入，生成的 SQL，以及返回的结果的一部分进行分析来确认结果是不是有意义，根据分析打个分数。10分非常 confident，0分非常不 confident。如果小于 7 分，则深度思考，重新生成 SQL，回到第 3 步。
 5. 最后根据用户的输入是返回 SQL 还是返回 SQL 查询之后的结果（默认）来返回相应的内容</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>〔〕均为占位，请替换成真实内容。以下模板由助手按本步骤示例与动作整理，不是讲者原文。</p>
+<p>同<a href="#template-t6">模板 T6</a>的骨架，保留“探索资源、生成结果、实测、评分、返回”五段。分数和重试次数按实际任务填写。</p>
+<pre><code class="language-text">在当前项目的 .claude/skills/〔skill 名〕 下创建一个 Skill，要求：
+1. 通过〔命令行工具及本地连接配置〕探索〔数据库／资源列表〕，每个资源分别生成一份 reference Markdown，记录〔结构与业务含义〕；可独立的资源并行探索。
+2. 根据用户输入，选择对应 reference，生成〔SQL／其他目标产物〕；遵守〔只读、禁止操作、数据范围及敏感信息边界〕。
+3. 使用〔实际验证命令〕测试产物能否执行、是否符合输入要求；失败时分析原因并重试，最多〔重试次数〕次，仍失败则返回错误与已知原因。
+4. 根据用户输入、产物和部分结果检查意义并评分：满分〔满分值〕，低于〔阈值〕则重新分析，沿用同一重试上限；评分不能替代实际执行验证。
+5. 按用户选择返回〔产物〕或〔执行结果〕，默认返回〔默认内容〕。SKILL.md 写清触发场景、工作步骤、安全约束及 reference 索引；最后用〔问题集／样例〕实际验证触发与结果。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：四个文件都在；新会话里直接用大白话提问能自动触发 pg-data；对比表 3 行，每行有两边的 SQL、结果、速度感受和差异。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-15-1"><span>读懂 site-slides 的结构</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-15-2"><span>pg-data Skill 已生成</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-15-3"><span>能自动触发</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-15-4"><span>对比表 3 行已填</span></label></li></ul>
 
@@ -1056,6 +1249,19 @@ claude -p &quot;用 pg-mcp 的 query 工具回答：数据库有多少用户？&
 <li>守住范围：不要把 0003 里的认证、OAuth 一起做进去，讲者的原则是这类生产特性放到后续再处理。<span class="source-markers">[<a class="source-ref" id="cite-o2-32" href="#source-o2">O2</a>]</span></li>
 <li>跑 <code>uv run pytest tests/unit</code>、<code>uv run ruff check .</code>，再用 subagent 调 codex 对照 0006 复查这一项。</li>
 </ol>
+<h4>讲者原文</h4>
+<p>第 4 讲结尾布置的作业，[00:30:55]–[00:31:28]。这是给学员的作业说明，不是发给模型的提示词。<span class="source-markers">[<a class="source-ref" id="cite-o4-16" href="#source-o4">O4</a>]</span></p>
+<pre><code class="language-text">完成 Codex Review 里面所说的几个缺失的功能
+</code></pre>
+<h5 id="w5-inline-extra-4">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">阅读〔代码评审路径〕，列出〔本轮要补的缺失功能与优先级〕，对照〔设计文档与实施计划〕逐项实现；每项补对应验证并运行〔测试、静态检查与构建命令〕。记录仍未完成项，最后用〔独立评审工具／模型〕复核实现是否满足评审要求。
+</code></pre>
+<h4>可套用模板</h4>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<p>由<a href="#template-t5">模板 T5</a> 删减成只做 High 第 1 条，并按本步骤的顺序先改测试。</p>
+<pre><code class="language-text">阅读 ./specs/0006-pg-mcp-code-review.md 的 High 第 1 条：请求里指定的 database 不生效，所有查询都跑在默认库上。只修这一条，认证、OAuth 等其他条目不做。先改测试：把依赖单数 Settings.database 的测试（如 tests/unit/test_config.py）改成多库配置，并加一条用例：请求的 database 为 ecommerce_medium 时，查询在 ecommerce_medium 上执行。再改实现让测试通过。运行 uv run pytest tests/unit、uv run ruff check . 全部通过后提交，最后用 sub agent 调 codex 对照 0006 复查这一条是否已解决。
+</code></pre>
 <p class="step-done"><strong>做完的标准</strong>：请求里写 database 为 ecommerce_medium 时，查询确实在 ecommerce_medium 上执行；单元测试和 ruff 通过；复查结论里这一项不再列为 High。</p>
 <ul class="checklist"><li><label class="check-item"><input type="checkbox" data-check-id="section-step-16-1"><span>已选定一项并写清验收方法</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-16-2"><span>测试先改、代码后改</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-16-3"><span>测试与 ruff 通过</span></label></li><li><label class="check-item"><input type="checkbox" data-check-id="section-step-16-4"><span>Codex 复查已完成</span></label></li></ul>
 </div></details>
@@ -1128,41 +1334,93 @@ claude -p &quot;用 pg-mcp 的 query 工具回答：数据库有多少用户？&
 <h3 id="prompt-p1">P1 写 PRD（.chats/w5.md 第 5 行）</h3>
 <pre><code class="language-text">主要的需求是在Python下面创建一个Postgres的mcp：用户可以给特定自然语言描述的查询的需求，然后mcp server 根据结果来返回一个SQL或者返回这个查询的结果。mcp的服务器在启动的时候，应该读取它都有哪些可以访问的数据库，并且缓存这些数据库的schema：了解每一个数据库下面都有哪些 table/view/types/index 等等，然后根据这些信息以及用户的输入去调用OpenAI的大模型（gpt-5-mini）来生成 SQL。之后mcp server应该来校验这个sql只允许查询的语句然后测试这个sql确保它能够执行并且返回有意义的结果：这里也可以把用户的输入生成的sql以及返回的结果的一部分调用openai来确认这样可以确保它的结果是不是有意义。最后根据用户的输入是返回SQL还是返回SQL查询之后的结果来返回相应的内容根据这些需求帮我构建一个详细的需求文档，先不要著急去做设计，等我review完这个需求文档之后呢我们再来讨论设计，文档放在 ./specs/w5/0001-pg-mcp-prd.md 文件中。
 </code></pre>
+<h5 id="w5-inline-template-17">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">主要需求是在〔语言／平台〕下创建〔服务类型〕：用户给〔自然语言需求〕，服务返回〔生成产物〕或〔执行结果〕。启动时读取〔可访问资源〕并缓存〔结构与元数据〕；结合结构与输入，调用〔模型与配置〕生成〔产物〕。校验〔允许的操作与安全边界〕后试运行，结合输入、产物与部分结果确认是否有意义，最后按用户选择返回对应内容。根据这些需求写详细 PRD 到〔PRD 路径〕，先不要设计，等我 review 后再讨论设计。
+</code></pre>
 <h3 id="prompt-p2">P2 提交并 review PRD（第 9 行）</h3>
 <pre><code class="language-text">commit code; 然后，接口目前只需要 query 即可，其它意义不大；另外调用 codex review skill 让 codex review 这个需求文档，并更新
+</code></pre>
+<h5 id="w5-inline-template-18">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">提交〔当前已检查的改动〕；将接口范围收敛到〔保留的核心接口〕，暂不实现〔排除的接口〕。调用〔独立评审模型／工具〕评审〔PRD 路径〕，逐条判断意见是否合理，再更新需求文档并记录采纳与不采纳的理由。
 </code></pre>
 <h3 id="prompt-p3">P3 写设计文档（第 13 行）</h3>
 <pre><code class="language-text">根据 ./specs/w5/0001-pg-mcp-prd.md 文档，使用 FastMCP、Asyncpg、SQLGlot、Pydantic以及openai 构建 pg-mcp 的设计文档，文档放在 ./specs/w5/0002-pg-mcp-design.md 文件中。
 </code></pre>
+<h5 id="w5-inline-template-19">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">根据〔PRD 路径〕，使用〔框架、数据访问、解析校验、结构化建模与模型调用库〕编写〔项目名〕的设计文档，说明模块、数据结构、接口及关键流程，保存到〔设计文档路径〕。
+</code></pre>
 <h3 id="prompt-p4">P4 review 设计文档（第 17 行）</h3>
 <pre><code class="language-text">使用 sub agent 调用 codex review skill 让 codex review ./specs/w5/0002-pg-mcp-design.md 文件。之后仔细阅读 review 的结果，思考是否合理，然后相应地更新 ./specs/w5/0002-pg-mcp-design.md 文件。
+</code></pre>
+<h5 id="w5-inline-template-20">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">使用〔独立评审 agent〕调用〔评审工具／模型〕评审〔设计文档路径〕。仔细阅读结果，判断是否符合〔项目范围与约束〕，再据此更新设计文档，保留评审记录到〔评审路径〕。
 </code></pre>
 <h3 id="prompt-p5">P5 实施计划与 review（第 21 行）</h3>
 <pre><code class="language-text">根据 ./specs/w5/0002-pg-mcp-design.md 文档，构建 pg-mcp 的实现计划，think ultra hard，文档放在 ./specs/w5/0004-pg-mcp-impl-plan.md 文件中。之后调用 codex review skill 让 codex review ./specs/w5/0004-pg-mcp-impl-plan.md 文件，并构建 ./specs/w5/0005-pg-mcp-impl-plan-review.md 文件。
 </code></pre>
+<h5 id="w5-inline-template-21">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">根据〔设计文档路径〕，深入思考并编写〔项目名〕的实施计划，保存到〔实施计划路径〕。拆分阶段与依赖，并写清各阶段产物和验收条件。再调用〔评审工具／模型〕评审计划，将结果保存到〔计划评审路径〕。
+</code></pre>
 <h3 id="prompt-p6">P6 实现 Phase 0–4（第 25 行）</h3>
 <pre><code class="language-text">根据 ./specs/w5/0004-pg-mcp-impl-plan.md 和 ./specs/w5/0002-pg-mcp-design.md 文档，使用 sub agent 完整实现 pg-mcp phase 0-4。代码放在 ./w5/pg-mcp 下。
+</code></pre>
+<h5 id="w5-inline-template-22">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">根据〔实施计划路径〕和〔设计文档路径〕，使用〔执行 agent〕完整实现〔项目名〕的〔起始阶段〕至〔结束阶段〕。代码放在〔代码目录〕，按阶段要求核对实现和测试，记录未完成项。
 </code></pre>
 <h3 id="prompt-p7">P7 测试计划与 review（第 33 行）</h3>
 <pre><code class="language-text">根据 ./specs/w5/0004-pg-mcp-impl-plan.md 和 ./specs/w5/0002-pg-mcp-design.md 文档，构建 pg-mcp 的测试计划，think ultra hard，文档放在 ./specs/w5/0007-pg-mcp-test-plan.md 文件中。之后调用 codex review skill 让 codex review ./specs/w5/0007-pg-mcp-test-plan.md 文件，并构建 ./specs/w5/0008-pg-mcp-test-plan-review.md 文件。
 </code></pre>
+<h5 id="w5-inline-template-23">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">根据〔实施计划路径〕和〔设计文档路径〕，为〔项目名〕编写可以实际执行的测试计划，保存到〔测试计划路径〕。覆盖〔关键流程、错误路径与边界条件〕，说明环境、数据、命令与预期结果。再调用〔独立评审工具／模型〕评审，将结果保存到〔测试计划评审路径〕。
+</code></pre>
 <h3 id="prompt-p8">P8 生成测试数据库（第 37 行）</h3>
 <pre><code class="language-text">根据 @specs/w5/0001-pg-mcp-prd.md 在 ./w5/pg-mcp/fixtures 下构建三个有意义的数据库，分别有少量，中等量级，以及大量的 table/view/types/index 等schema，且有足够多的数据。生成这三个数据库的 sql 文件，并构建 Makefile 来重建这些测试数据库。
+</code></pre>
+<h5 id="w5-inline-template-24">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">根据〔PRD 路径〕，在〔fixtures 目录〕构建〔规模层级列表〕的有意义测试数据库，覆盖〔表、视图、类型、索引与业务关系〕及〔各层数据量要求〕。生成各库 SQL 和用于重建的〔构建脚本〕，写明库名与验证方法。
 </code></pre>
 <h3 id="prompt-p9">P9 建库并自测（第 39 行）</h3>
 <pre><code class="language-text">commit 然后你来建立和测试这几个数据库确保可用
 </code></pre>
+<h5 id="w5-inline-template-25">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">提交〔本轮测试数据文件〕，使用〔本地连接配置〕建立〔目标测试数据库列表〕并测试可用性。执行〔建库命令〕与〔验证命令〕，核对〔结构、类型、索引和数据量〕，记录实际结果及失败原因到〔验证记录路径〕。
+</code></pre>
 <h3 id="prompt-p10">P10 实现 Phase 5–10（第 27 行）</h3>
 <pre><code class="language-text">根据 ./specs/w5/0004-pg-mcp-impl-plan.md 和 ./specs/w5/0002-pg-mcp-design.md 文档，使用 sub agent 完整实现 pg-mcp phase 5-10。代码放在 ./w5/pg-mcp 下。
+</code></pre>
+<h5 id="w5-inline-template-26">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">根据〔实施计划路径〕和〔设计文档路径〕，使用〔执行 agent〕完整实现〔项目名〕的〔剩余起始阶段〕至〔结束阶段〕。代码放在〔代码目录〕，运行〔验收测试命令〕并修复失败，记录尚未完成的检查。
 </code></pre>
 <h3 id="prompt-p11">P11 code review（第 29 行）</h3>
 <pre><code class="language-text">提交，使用 sub agent调用 codex review skill 让 codex review 整个代码，看其是否符合 /specs/w5/0002-pg-mcp-design.md 和 ./specs/w5/0004-pg-mcp-impl-plan.md。把 review 结果写到 ./specs/w5/0006-pg-mcp-code-review.md 文件中。
 </code></pre>
+<h5 id="w5-inline-template-27">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">提交〔本轮实现改动〕，使用〔独立评审 agent〕调用〔代码评审工具／模型〕审查〔代码目录〕，逐项核对〔设计文档路径〕和〔实施计划路径〕。将问题、证据、影响及建议写到〔代码评审路径〕。
+</code></pre>
 <h3 id="prompt-p12">P12 让 Claude Code 自己做端到端测试（第 43 行）</h3>
 <pre><code class="language-text">对于 @w5/pg-mcp，将这个 mcp 添加到 claude code 中，打开一个 claude code headless cli 选择 @w5/pg-mcp/fixtures/TEST_QUERIES.md 下面的某些 query，运行，查看是否调用这个 mcp，结果是否符合预期
 </code></pre>
+<h5 id="w5-inline-template-28">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">将〔代码目录〕的〔MCP 服务名〕接入〔客户端项目〕。启动另一个〔客户端 headless 命令〕会话，从〔测试问题集路径〕选择〔问题编号列表〕执行，检查是否实际调用目标 MCP，并将输入、调用、结果与预期对照写入〔验证记录路径〕。
+</code></pre>
 <h3 id="prompt-p13">P13 指定用本地 uvx 运行（第 45 行，路径是讲者本机的）</h3>
 <pre><code class="language-text">直接用本地的 `uvx --refresh --from /Users/tchen/projects/mycode/bootcamp/ai/w5/pg-mcp pg-mcp` 来运行 mcp server
+</code></pre>
+<h5 id="w5-inline-template-29">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">直接用本地命令 `uvx --refresh --from 〔项目绝对路径〕 〔入口命令名〕` 运行〔MCP 服务名〕。按〔环境配置位置〕补齐连接参数，再检查客户端是否能够列出并调用预期工具。
 </code></pre>
 <h3 id="prompt-p14">P14 构建 pg-data Skill（第 49–55 行）</h3>
 <pre><code class="language-text">在当前项目下创建一个新的 skill，要求：
@@ -1173,17 +1431,42 @@ claude -p &quot;用 pg-mcp 的 query 工具回答：数据库有多少用户？&
 4. 把用户的输入，生成的 SQL，以及返回的结果的一部分进行分析来确认结果是不是有意义，根据分析打个分数。10分非常 confident，0分非常不 confident。如果小于 7 分，则深度思考，重新生成 SQL，回到第 3 步。
 5. 最后根据用户的输入是返回 SQL 还是返回 SQL 查询之后的结果（默认）来返回相应的内容
 </code></pre>
+<h5 id="w5-inline-template-30">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">在〔项目内 Skill 目录〕创建〔Skill 名〕：
+1. 使用〔命令行客户端与连接配置〕探索〔数据库列表〕的〔表、视图、类型、索引等结构〕，每库生成一份 reference 文件。
+2. 根据用户的自然语言需求选择 reference 并生成 SQL，只允许〔查询操作集合〕，禁止〔写操作、危险函数、注入和敏感信息泄露〕。
+3. 用〔命令行客户端〕执行 SQL；失败则分析原因、重新生成并重试。
+4. 结合用户输入、SQL 与部分结果，按〔评分量表〕评估意义；低于〔置信阈值〕则重新生成并回到执行验证。
+5. 按用户要求返回 SQL 或查询结果，默认返回〔默认返回内容〕。
+</code></pre>
 <h3 id="prompt-r1">R1 生成项目 CLAUDE.md（第 2 讲 [00:33:32]–[00:34:31]，非原文）</h3>
 <pre><code class="language-text">为 pg-mcp 生成 CLAUDE.md，符合 Python best practice，符合 SOLID、DRY 的设计思路，代码质量和测试质量高。
+</code></pre>
+<h5 id="w5-inline-template-31">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">为〔项目名〕生成〔项目规则文件路径〕，符合〔语言及工具链〕的最佳实践，遵守〔设计原则〕，明确代码质量、测试质量及检查命令。
 </code></pre>
 <h3 id="prompt-r2">R2 叫停过度设计（第 2 讲 [00:42:12]，非原文）</h3>
 <pre><code class="language-text">避免过度设计，先不考虑这些，rollback design，把 codex review 的结果存入 ./specs/w5/0003-pg-mcp-design-review.md
 </code></pre>
+<h5 id="w5-inline-template-32">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">避免超出〔当前阶段范围〕的过度设计，暂不考虑〔暂缓事项〕。将设计恢复到〔保留的设计范围〕，把〔独立模型／工具〕的评审意见保存到〔设计评审路径〕，列清本轮采纳与暂缓内容。
+</code></pre>
 <h3 id="prompt-r3">R3 生成自然语言测试问题集（第 3 讲 [00:24:58]–[00:25:54]，非原文）</h3>
 <pre><code class="language-text">根据这些 fixture，假设用户要用自然语言提问，pg-mcp 生成相应的 SQL。帮我生成一个 TEST_QUERIES.md，里面包含对数据库内部数据从简单到复杂的各种问题。
 </code></pre>
+<h5 id="w5-inline-template-33">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">根据〔fixtures 目录〕，假设用户通过自然语言提问、〔查询服务名〕生成 SQL。在〔测试问题集路径〕生成从简单到复杂的问题，覆盖〔数据库列表与业务关系〕，并按〔难度层级〕组织。
+</code></pre>
 <h3 id="prompt-r4">R4 修 site-slides 的小 bug（第 5 讲 [00:07:43]–[00:08:25]，非原文）</h3>
 <pre><code class="language-text">site-slides skill 有个小 bug，导致 PDF 删除不了，请更新修复
+</code></pre>
+<h5 id="w5-inline-template-34">可套用模板</h5>
+<p>助手抽象模板；替换〔〕后使用。</p>
+<pre><code class="language-text">〔Skill 名〕存在〔具体故障现象〕，影响〔操作／产物〕。请检查〔Skill 目录及相关调用链〕，定位原因、修复并验证〔复现步骤与预期行为〕。
 </code></pre>
 </div></details>
 <details class="manual-section" id="section-appendix-c" open><summary><span class="section-title">附录 C｜可套用模板</span></summary><div class="section-body">

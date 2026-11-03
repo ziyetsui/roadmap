@@ -582,6 +582,17 @@ DATABASE_URL='〔同一个独立测试库连接〕' uv run pytest -v
 按照这个想法，帮我生成详细的需求和设计文档，放在 ./specs/w1/0001-spec.md 文件中，输出为中文。
 ```
 
+<a id="inline-w1-01"></a>
+##### 可套用模板｜P1
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+构建一个用于〔用户场景〕、管理〔核心对象〕的工具。数据库采用〔数据库〕，后端采用〔后端栈〕，前端采用〔前端栈〕；用户与认证范围为〔范围〕。
+用户需要：〔对象生命周期操作〕、〔分类关联操作〕、按〔分类字段〕查看列表、按〔检索字段〕搜索。
+先生成详细需求和设计文档，说明数据模型、接口、交互、错误与验收，保存到〔规格文件路径〕，以〔输出语言〕撰写。
+```
+
 [回到步骤](#section-step7)。
 
 <a id="prompt-p2"></a>
@@ -591,6 +602,16 @@ DATABASE_URL='〔同一个独立测试库连接〕' uv run pytest -v
 
 ```text
 按照 ./specs/w1/0001-spec.md 中的需求和设计文档，生成一个详细的实现计划，放在 ./specs/w1/0002-implementation-plan.md 文件中，输出为中文。
+```
+
+<a id="inline-w1-02"></a>
+##### 可套用模板｜P2
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+按照〔需求与设计文件路径〕生成详细实现计划，保存到〔计划文件路径〕，输出为〔语言〕。
+将任务按依赖划分阶段，逐阶段列出范围、相关文件与可执行验收；本轮只生成计划。
 ```
 
 ![计划原文与发送上下文](images/l05-plan-sent.png)
@@ -608,6 +629,16 @@ DATABASE_URL='〔同一个独立测试库连接〕' uv run pytest -v
 按照 ./specs/w1/0002-implementation-plan.md 完整实现这个项目的 phase 1 代码
 ```
 
+<a id="inline-w1-03"></a>
+##### 可套用模板｜P3
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+先阅读〔需求文档〕、〔实现计划〕和〔任务文件〕，核对〔本轮阶段〕的前置条件。
+只完成该阶段列出的全部任务，代码写入〔项目目录〕；提供实际改动、执行的验证、失败与未测项，再更新任务状态。
+```
+
 [回到步骤](#section-step9)。
 
 <a id="prompt-p4"></a>
@@ -619,6 +650,17 @@ DATABASE_URL='〔同一个独立测试库连接〕' uv run pytest -v
 添加一个 seed.sql 里面放 50个 meaningful 的 ticket 和几十个tags（包含platform tag，如 ios，project tag 如 viking，功能性 tag 如 autocomplete，等等）。要求 seed 文件正确可以通过 psql 执行。
 ```
 
+<a id="inline-w1-04"></a>
+##### 可套用模板｜P4
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+为〔项目及数据库〕生成〔种子文件路径〕，包含〔对象数量〕条有业务意义的〔核心对象〕与〔分类数量〕条〔分类对象〕。
+分类覆盖〔分类维度及示例〕，对象与分类关联合理，兼顾〔验收场景〕；确保文件可由〔数据库客户端〕执行。
+说明执行前提、重复执行行为及验证条数的方法。
+```
+
 [回到步骤](#section-step10)。
 
 <a id="prompt-p5"></a>
@@ -628,6 +670,16 @@ DATABASE_URL='〔同一个独立测试库连接〕' uv run pytest -v
 
 ```text
 按照 apple website 的设计风格，think ultra hard，优化 UI 和 UX。
+```
+
+<a id="inline-w1-05"></a>
+##### 可套用模板｜P5
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+参照〔设计参考网站或截图〕优化〔项目页面〕的UI与UX。
+先指出〔布局/层次/间距/反馈〕的具体问题，按〔改动优先级〕实施，保持〔既有业务行为〕，并检查〔典型交互与页面状态〕。
 ```
 
 [回到步骤](#section-step12)。
@@ -645,6 +697,16 @@ DATABASE_URL='〔同一个独立测试库连接〕' uv run pytest -v
 使用 style.md 中的风格，学习 ./site 中 token 的定义，优化整体的 UI 和 UX。
 ```
 
+<a id="inline-w1-06"></a>
+##### 可套用模板｜P6
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+阅读〔风格规范文件〕，学习〔参考项目目录〕中的设计token定义，优化〔目标项目〕整体UI与UX。
+将颜色、字体、间距、组件状态映射到已有token，检查〔目标页面与交互〕的一致性；原输入归属未核不代表课堂已执行。
+```
+
 [回到步骤](#section-step12)。
 
 <a id="prompt-p7"></a>
@@ -656,6 +718,17 @@ DATABASE_URL='〔同一个独立测试库连接〕' uv run pytest -v
 侧边栏目前用途不大，可以放所有已有的数据库，并且把添加数据库，删除已有的数据库的功能放在侧边栏。侧边栏也要使用新的 token 风格。然后主页直接显示第一个数据库的 metadata 信息和查询界面，这样用户可以减少一次点击进入到 database display 页面。一个页面囊括所有功能。
 ```
 
+<a id="inline-w1-07"></a>
+##### 可套用模板｜P7
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+请调整〔项目〕的侧栏，集中展示全部〔资源类型〕并提供添加、删除与当前选中状态。
+遵循〔设计规则/token文件〕；主页默认展示〔默认资源选择规则〕对应的〔信息区〕和〔操作区〕，减少进入详情的步骤。
+检查添加、切换、删除当前项及无资源时的行为，记录布局与交互结果。
+```
+
 [回到步骤](#section-step12)。
 
 <a id="prompt-p8"></a>
@@ -665,6 +738,17 @@ DATABASE_URL='〔同一个独立测试库连接〕' uv run pytest -v
 
 ```text
 [Image #2] schema 边栏应该直接铺满除了db name 外整个高度，db name + refresh button 是一个 top bar，使用偏黄色的 token style color；schema 内部的 treeview 应该铺满整个 schema；[Image #3] 这些 metrics 和main sql editor 放在一个容器，他们可以更小一些，不需要占这么多空间。
+```
+
+<a id="inline-w1-08"></a>
+##### 可套用模板｜P8
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+依据〔真实参考截图及区域标记〕调整〔结构侧栏〕：〔资源名〕与〔刷新控件〕组成顶部栏，使用〔主题token〕。
+结构树占满顶部栏之外的可用高度，明确滚动区域；〔指标区〕与〔主编辑区〕放入同一容器，按〔空间分配要求〕收紧尺寸。
+检查〔目标窗口尺寸〕下的高度、溢出、刷新与编辑行为；缺少截图时先确认区域，不猜附件内容。
 ```
 
 [回到步骤](#section-step12)。
@@ -683,6 +767,16 @@ DATABASE_URL='〔同一个独立测试库连接〕' uv run pytest -v
 Help me discover the AI related paper and new progress in last 3-6 months
 ```
 
+<a id="inline-w1-09"></a>
+##### 可套用模板｜N1
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+Help me discover papers and recent progress about 〔research topic〕 during 〔time window〕.
+Return sources relevant to 〔research question〕, with publication dates and links for verification.
+```
+
 ![发现AI进展原视频画面](images/l03-discover-full.png)
 
 图注：真实视频帧，第3讲00:02:26；用于核对上述文字及上下文。整理于2026-10-29；仅代表录课时界面和可见范围。
@@ -694,6 +788,16 @@ Help me discover the AI related paper and new progress in last 3-6 months
 
 ```text
 Help me discover the AI related paper and new progress in last 3-6 months, limited to youtube video only.
+```
+
+<a id="inline-w1-10"></a>
+##### 可套用模板｜N2
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+Help me discover recent progress about 〔research topic〕 during 〔time window〕, limited to 〔video platform/source type〕.
+Check that each result matches the requested source type; list mismatches separately.
 ```
 
 ![限定YouTube原视频画面](images/l03-youtube-full.png)
@@ -709,6 +813,16 @@ Help me discover the AI related paper and new progress in last 3-6 months, limit
 Help me discover the AI related paper and new progress in last 3-6 months, limited to arxiv.org papers.
 ```
 
+<a id="inline-w1-11"></a>
+##### 可套用模板｜N3
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+Help me discover papers and recent progress about 〔research topic〕 during 〔time window〕, limited to 〔paper repository/domain〕.
+For each result, record the date, link and relevance to 〔research question〕.
+```
+
 ![限定arXiv的可见前缀原视频画面](images/l03-arxiv-submit.png)
 
 图注：真实视频帧，第3讲00:04:20；用于核对上述文字及上下文。整理于2026-10-29；仅代表录课时界面和可见范围。
@@ -720,6 +834,16 @@ Help me discover the AI related paper and new progress in last 3-6 months, limit
 
 ```text
 未来 AI 会有什么主要的发展方向？大模型会走向 AGI 么？context window 会有巨大的飞跃么？
+```
+
+<a id="inline-w1-12"></a>
+##### 可套用模板｜N4
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+基于当前选中的〔来源范围〕，说明〔研究领域〕未来的主要方向。
+分别回答〔关键能力或目标〕是否可能实现，以及〔关键指标〕可能如何发展；逐项给出来源依据，并区分已知事实、预测和缺乏证据的判断。
 ```
 
 ![询问AI未来方向原视频画面](images/l03-ask-full.png)
@@ -735,6 +859,16 @@ Help me discover the AI related paper and new progress in last 3-6 months, limit
 Help me to do market analysis on AI based education tool to teach kid vibe coding. What are the existing products, how's their usage, how's users general feeling and how to improve.
 ```
 
+<a id="inline-w1-13"></a>
+##### 可套用模板｜N5
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+Help me analyze the market for 〔product category〕 serving 〔target users〕 with 〔core use case〕.
+Identify existing products, usage evidence, user sentiment and improvement opportunities. Link each claim to its source and separate verified findings from assumptions.
+```
+
 ![儿童AI编程产品研究原视频画面](images/l03-product-complete.png)
 
 图注：真实视频帧，第3讲00:13:16；用于核对上述文字及上下文。整理于2026-10-29；仅代表录课时界面和可见范围。
@@ -746,6 +880,16 @@ Help me to do market analysis on AI based education tool to teach kid vibe codin
 
 ```text
 Help me to do market analysis on AI based education tool to teach kid vibe coding. What are the existing products, how's their usage, how's users general feeling and how to improve. Search for youtube video in last 6 months.
+```
+
+<a id="inline-w1-14"></a>
+##### 可套用模板｜N6
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+Help me analyze the market for 〔product category〕 serving 〔target users〕 with 〔core use case〕.
+Compare existing products, usage evidence, user sentiment and improvements. Search 〔video platform〕 during 〔time window〕; check dates and relevance rather than treating broad market results as product evidence.
 ```
 
 ![补找近半年YouTube产品资料原视频画面](images/l03-product-youtube-complete.png)
@@ -763,6 +907,17 @@ Help me to do market analysis on AI based education tool to teach kid vibe codin
 我觉得 LLM 很快会突破 2-5m 的窗口大小，届时大的代码库可以被很好地处理。
 ```
 
+<a id="inline-w1-15"></a>
+##### 可套用模板｜N7
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+笔记标题：我对〔主题〕的个人看法
+这是个人推断：我认为〔能力或指标〕可能在〔时间条件〕达到〔预期范围〕，从而影响〔应用场景〕。
+依据：〔已有观察或待验证依据〕；需验证：〔不确定条件〕。此模板是笔记骨架，不能把个人预测当外部研究结论。
+```
+
 ![个人笔记原文原视频画面](images/l04-note-full.png)
 
 图注：真实视频帧，第4讲00:09:48；用于核对上述文字及上下文。整理于2026-10-29；仅代表录课时界面和可见范围。
@@ -774,6 +929,16 @@ Help me to do market analysis on AI based education tool to teach kid vibe codin
 
 ```text
 大模型的上下文窗口会有多大？
+```
+
+<a id="inline-w1-16"></a>
+##### 可套用模板｜N8
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+基于〔当前选择的资料〕，〔目标能力或指标〕未来可能达到什么范围？
+请注明各结论的来源与时间，区分个人笔记、外部研究和模型推断；来源不能支持的预测写明不确定。
 ```
 
 ![围绕个人笔记提问原视频画面](images/l04-note-query.png)
@@ -789,6 +954,16 @@ Help me to do market analysis on AI based education tool to teach kid vibe codin
 帮我根据 rest client 撰写一个 test.rest 文件，里面包含对所有支持的 API 的测试
 ```
 
+<a id="inline-w1-17"></a>
+##### 可套用模板｜R1
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+根据〔项目API契约与实际路由〕，使用〔REST客户端格式〕编写〔测试文件路径〕，覆盖全部已支持API。
+核对地址前缀、请求字段及资源依赖，包含成功与错误请求；区分已编写的用例和已执行的结果。
+```
+
 ### R2 后续阶段短输入（画面原文）
 
 第5讲00:38:20右侧已发送消息：
@@ -797,16 +972,46 @@ Help me to do market analysis on AI based education tool to teach kid vibe codin
 开发 phase 2的全部功能
 ```
 
+<a id="inline-w1-18"></a>
+##### 可套用模板｜R2
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+先阅读〔需求文档〕、〔实现计划〕和〔任务文件〕，核对〔本轮阶段〕的前置条件。
+只完成该阶段列出的全部任务，代码写入〔项目目录〕；提供实际改动、执行的验证、失败与未测项，再更新任务状态。
+```
+
 第5讲00:49:50右侧已发送消息：
 
 ```text
 构建 phase 4 的所有任务
 ```
 
+<a id="inline-w1-19"></a>
+##### 可套用模板｜R2
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+先阅读〔需求文档〕、〔实现计划〕和〔任务文件〕，核对〔本轮阶段〕的前置条件。
+只完成该阶段列出的全部任务，代码写入〔项目目录〕；提供实际改动、执行的验证、失败与未测项，再更新任务状态。
+```
+
 两条均见下方原帧，不能以此推断其间phase3输入全文。第5讲00:55:45已发送消息另有：
 
 ```text
 完成 phase 5 & 6
+```
+
+<a id="inline-w1-20"></a>
+##### 可套用模板｜R2
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+先阅读〔需求文档〕、〔实现计划〕和〔任务文件〕，核对〔本轮阶段〕的前置条件。
+只完成该阶段列出的全部任务，代码写入〔项目目录〕；提供实际改动、执行的验证、失败与未测项，再更新任务状态。
 ```
 
 ![phase2输入的已发送消息](images/l05-api-rest.png)
@@ -829,12 +1034,32 @@ Help me to do market analysis on AI based education tool to teach kid vibe codin
 don't need w1-start-dev And w1-install-xxx, remove them, and w1-stop doesn't work
 ```
 
+<a id="inline-w1-21"></a>
+##### 可套用模板｜R3
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+请在〔构建脚本路径〕删除已不需要的〔目标列表〕，并修复〔失效目标〕。
+先检查目标依赖、启动进程与停止方式，保持〔仍需保留的命令行为〕；执行相关命令验证，记录退出码和残留进程情况。
+```
+
 ### 第三方建议与模板的边界
 
 第3讲建议问题中可读一条：
 
 ```text
 How are new AI agent architectures addressing the complex challenges of autonomy and adaptability?
+```
+
+<a id="inline-w1-22"></a>
+##### 可套用模板｜建议问题
+
+助手抽象模板；替换〔〕后使用。
+
+```text
+针对〔研究主题〕，〔新架构或方法〕如何解决〔挑战一〕与〔挑战二〕？
+请按挑战、机制、适用条件与证据组织回答，引用〔所选来源〕并指出尚未验证的限制。此模板抽象自产品建议问题，不改写其作者归属。
 ```
 
 这是NotebookLM建议问题，讲者读过它，不当作讲者原创prompt。Reports的Study Guide/Blog Post/Strategic Plan等预置内容由产品提供；本次未逐项展开其中隐藏的生成prompt，不能声称全文已保留。第2讲Learning guide模式与聊天风格设置有演示，但它不是一段已提供完整原文的自定义system prompt。第1讲Slack Coder演示里“help me make login better”是其他项目案例输入，不移入Alpha开发步骤。[[O1](#source-o1)、[O2](#source-o2)、[O3](#source-o3)]
