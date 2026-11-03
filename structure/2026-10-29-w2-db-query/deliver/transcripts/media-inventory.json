@@ -1,0 +1,122 @@
+[
+  {
+    "week": "w2",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/1. 快速上手 Cursor.mp4",
+    "title": "1. 快速上手 Cursor",
+    "duration": 1851.930703,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "652edccb5afabc0b03afb627878e8d936d729d4a1db2eaf3e5f45d1042621ca6",
+    "bytes": 173246258
+  },
+  {
+    "week": "w2",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/2. 如何使用 Cursor 的 Rules.mp4",
+    "title": "2. 如何使用 Cursor 的 Rules",
+    "duration": 3310.677914,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "b7471bac6e22c40498ebd8b00a93f121e466c87474a6d3653303089ffb976daf",
+    "bytes": 336576900
+  },
+  {
+    "week": "w2",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/3. Spec Kit 实践.mp4",
+    "title": "3. Spec Kit 实践",
+    "duration": 1884.766,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "b5883a5e085037f8e8dd47a5b285dffd8f174837f4b356b392e9d0eaaca42333",
+    "bytes": 213485557
+  },
+  {
+    "week": "w2",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/4. 设计一个数据库查询工具.mp4",
+    "title": "4. 设计一个数据库查询工具",
+    "duration": 2588.630204,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "24edc5827d2e7a03eb223dbeb2a9a80ec9fba436e5aa6570dc2eb983da05b75f",
+    "bytes": 384004896
+  },
+  {
+    "week": "w2",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/5. 实现数据库查询工具.mp4",
+    "title": "5. 实现数据库查询工具",
+    "duration": 7892.439365,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "708db866eebab051e45a6fe85976ac8e9cb80433d4e26750929e5449d3f42eff",
+    "bytes": 965026512
+  },
+  {
+    "week": "w3",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w3/videos/4. 用 Claude Code 为数据库查询工具增加 MySQL 的支持.mp4",
+    "title": "4. 用 Claude Code 为数据库查询工具增加 MySQL 的支持",
+    "duration": 1957.209977,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "30f6519df466aefd7337016dfb24202c992b602af9620e4921c1160a48d13d88",
+    "bytes": 252395653
+  }
+]

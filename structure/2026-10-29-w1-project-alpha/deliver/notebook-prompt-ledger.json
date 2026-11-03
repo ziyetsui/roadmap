@@ -1,0 +1,66 @@
+[
+  {
+    "id": "N1",
+    "title": "发现AI进展",
+    "original_text": "Help me discover the AI related paper and new progress in last 3-6 months",
+    "locator": "第3讲00:02:26",
+    "screenshot": "images/l03-discover-full.png",
+    "status": "作者搜索输入，完整画面可读；文末无可见句号。"
+  },
+  {
+    "id": "N2",
+    "title": "限定YouTube",
+    "original_text": "Help me discover the AI related paper and new progress in last 3-6 months, limited to youtube video only.",
+    "locator": "第3讲00:03:21",
+    "screenshot": "images/l03-youtube-full.png",
+    "status": "作者搜索输入，全选状态全文可读；展示换行是输入框自动折行，不另造手动换行。"
+  },
+  {
+    "id": "N3",
+    "title": "限定arXiv",
+    "original_text": "Help me discover the AI related paper and new progress in last 3-6 months, limited to arxiv.org papers.",
+    "locator": "第3讲00:04:20",
+    "screenshot": "images/l03-arxiv-submit.png",
+    "status": "提交前画面全文已核"
+  },
+  {
+    "id": "N4",
+    "title": "询问AI未来方向",
+    "original_text": "未来 AI 会有什么主要的发展方向？大模型会走向 AGI 么？context window 会有巨大的飞跃么？",
+    "locator": "第3讲00:06:18",
+    "screenshot": "images/l03-ask-full.png",
+    "status": "作者聊天输入，完整可见；中英文之间的可见空格按画面转录，无法证明编辑器底层空白字节。"
+  },
+  {
+    "id": "N5",
+    "title": "儿童AI编程产品研究",
+    "original_text": "Help me to do market analysis on AI based education tool to teach kid vibe coding. What are the existing products, how's their usage, how's users general feeling and how to improve.",
+    "locator": "第3讲00:13:16",
+    "screenshot": "images/l03-product-complete.png",
+    "status": "作者搜索输入，全文可见；这是产品探索练习，未据此声称市场结论已验证。"
+  },
+  {
+    "id": "N6",
+    "title": "补找近半年YouTube产品资料",
+    "original_text": "Help me to do market analysis on AI based education tool to teach kid vibe coding. What are the existing products, how's their usage, how's users general feeling and how to improve. Search for youtube video in last 6 months.",
+    "locator": "第3讲00:13:51",
+    "screenshot": "images/l03-product-youtube-complete.png",
+    "status": "作者搜索输入，全文全选可见；保留与N5的共同前文，不能只存末尾追加句。"
+  },
+  {
+    "id": "N7",
+    "title": "个人笔记原文",
+    "original_text": "我个人对 AI 的认知\n\n我觉得 LLM 很快会突破 2-5m 的窗口大小，届时大的代码库可以被很好地处理。",
+    "locator": "第4讲00:09:48",
+    "screenshot": "images/l04-note-full.png",
+    "status": "作者笔记数据，不是发给聊天的prompt；笔记标题为“我对人工智能的看法”。"
+  },
+  {
+    "id": "N8",
+    "title": "围绕个人笔记提问",
+    "original_text": "大模型的上下文窗口会有多大？",
+    "locator": "第4讲00:10:38",
+    "screenshot": "images/l04-note-query.png",
+    "status": "输入框待发送版本；随后00:11:10回答中显示“未来会有多大?”，两帧有版本差异，不静默合并。"
+  }
+]

@@ -1,0 +1,242 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-29",
+  "status": "draft_evidence_mapped",
+  "scope": "仅.chats/w1.md全部8个h2下的输入；视频、NotebookLM屏幕未核，不能声称全部课程提示词已齐",
+  "items": [
+    {
+      "id": "W1-P01",
+      "source_heading": "project alpha 需求和设计文档",
+      "category": "作者聊天输入",
+      "source_path": "_raw/chats/w1.md",
+      "original_path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/.chats/w1.md",
+      "source_sha256": "ad56f7b41dc5b1908447c54b88e5f3f6b3886ee74205c422e294117ef315a80d",
+      "heading_line": 3,
+      "body_line_start": 5,
+      "body_line_end": 12,
+      "original_text": "构建一个一个简单的，使用标签分类和管理 ticket 的工具。它基于 Postgres 数据库，使用 Fast API 作为后端，使用 Typescript/Vite/Tailwind/Shadcn 作为前端。无需用户系统，当前用户可以：\n\n- 创建/编辑/删除/完成/取消完成 ticket\n- 添加/删除 ticket 的标签\n- 按照不同的标签查看 ticket 列表\n- 按 title 搜索 ticket\n\n按照这个想法，帮我生成详细的需求和设计文档，放在 ./specs/w1/0001-spec.md 文件中，输出为中文。",
+      "raw_body_between_headings": "\n构建一个一个简单的，使用标签分类和管理 ticket 的工具。它基于 Postgres 数据库，使用 Fast API 作为后端，使用 Typescript/Vite/Tailwind/Shadcn 作为前端。无需用户系统，当前用户可以：\n\n- 创建/编辑/删除/完成/取消完成 ticket\n- 添加/删除 ticket 的标签\n- 按照不同的标签查看 ticket 列表\n- 按 title 搜索 ticket\n\n按照这个想法，帮我生成详细的需求和设计文档，放在 ./specs/w1/0001-spec.md 文件中，输出为中文。\n\n",
+      "context": {
+        "previous_id": null,
+        "next_id": "W1-P02",
+        "chronology_note": "h2顺序是聊天摘录顺序，尚未证明视频实际轮次与画面对应"
+      },
+      "manual_destination": "prompt-p1",
+      "scope": "Project Alpha",
+      "text_status": "原文件全文逐字保留；画面可见部分已核",
+      "screenshot_status": "matched_visible_text_or_continuation",
+      "screenshots": [
+        "images/l05-requirements-end.png",
+        "images/l05-plan-full.png"
+      ],
+      "screenshot_plan": "在第5讲定位原输入及上下文；长原文需连续多帧，不以转写或生成图替代",
+      "template_plan": "独立提供〔占位〕可套用版本，不改原文",
+      "path_mismatch": "原提示词 ./specs/w1/0001-spec.md；当前文件 w1/specs/0001-spec.md。原文保留，执行模板另改当前路径。"
+    },
+    {
+      "id": "W1-P02",
+      "source_heading": "implementation plan",
+      "category": "多轮追问",
+      "source_path": "_raw/chats/w1.md",
+      "original_path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/.chats/w1.md",
+      "source_sha256": "ad56f7b41dc5b1908447c54b88e5f3f6b3886ee74205c422e294117ef315a80d",
+      "heading_line": 14,
+      "body_line_start": 16,
+      "body_line_end": 16,
+      "original_text": "按照 ./specs/w1/0001-spec.md 中的需求和设计文档，生成一个详细的实现计划，放在 ./specs/w1/0002-implementation-plan.md 文件中，输出为中文。",
+      "raw_body_between_headings": "\n按照 ./specs/w1/0001-spec.md 中的需求和设计文档，生成一个详细的实现计划，放在 ./specs/w1/0002-implementation-plan.md 文件中，输出为中文。\n\n",
+      "context": {
+        "previous_id": "W1-P01",
+        "next_id": "W1-P03",
+        "chronology_note": "h2顺序是聊天摘录顺序，尚未证明视频实际轮次与画面对应"
+      },
+      "manual_destination": "prompt-p2",
+      "scope": "Project Alpha",
+      "text_status": "原文件全文逐字保留；画面可见部分已核",
+      "screenshot_status": "matched_visible_text_or_continuation",
+      "screenshots": [
+        "images/l05-plan-full.png",
+        "images/l05-plan-sent.png"
+      ],
+      "screenshot_plan": "在第5讲定位原输入及上下文；长原文需连续多帧，不以转写或生成图替代",
+      "template_plan": "独立提供〔占位〕可套用版本，不改原文",
+      "path_mismatch": "原提示词 ./specs/w1/；当前 w1/specs/，不要默默修正原文。"
+    },
+    {
+      "id": "W1-P03",
+      "source_heading": "phased implementation",
+      "category": "多轮追问",
+      "source_path": "_raw/chats/w1.md",
+      "original_path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/.chats/w1.md",
+      "source_sha256": "ad56f7b41dc5b1908447c54b88e5f3f6b3886ee74205c422e294117ef315a80d",
+      "heading_line": 18,
+      "body_line_start": 20,
+      "body_line_end": 20,
+      "original_text": "按照 ./specs/w1/0002-implementation-plan.md 完整实现这个项目的 phase 1 代码",
+      "raw_body_between_headings": "\n按照 ./specs/w1/0002-implementation-plan.md 完整实现这个项目的 phase 1 代码\n\n",
+      "context": {
+        "previous_id": "W1-P02",
+        "next_id": "W1-P04",
+        "chronology_note": "h2顺序是聊天摘录顺序，尚未证明视频实际轮次与画面对应"
+      },
+      "manual_destination": "prompt-p3",
+      "scope": "Project Alpha",
+      "text_status": "原文件全文逐字保留；画面可见部分已核",
+      "screenshot_status": "matched_visible_text_or_continuation",
+      "screenshots": [
+        "images/l05-phase-sent.png"
+      ],
+      "screenshot_plan": "在第5讲定位原输入及上下文；长原文需连续多帧，不以转写或生成图替代",
+      "template_plan": "独立提供〔占位〕可套用版本，不改原文"
+    },
+    {
+      "id": "W1-P04",
+      "source_heading": "seed sql",
+      "category": "作者聊天输入",
+      "source_path": "_raw/chats/w1.md",
+      "original_path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/.chats/w1.md",
+      "source_sha256": "ad56f7b41dc5b1908447c54b88e5f3f6b3886ee74205c422e294117ef315a80d",
+      "heading_line": 22,
+      "body_line_start": 24,
+      "body_line_end": 24,
+      "original_text": "添加一个 seed.sql 里面放 50个 meaningful 的 ticket 和几十个tags（包含platform tag，如 ios，project tag 如 viking，功能性 tag 如 autocomplete，等等）。要求 seed 文件正确可以通过 psql 执行。",
+      "raw_body_between_headings": "\n添加一个 seed.sql 里面放 50个 meaningful 的 ticket 和几十个tags（包含platform tag，如 ios，project tag 如 viking，功能性 tag 如 autocomplete，等等）。要求 seed 文件正确可以通过 psql 执行。\n\n",
+      "context": {
+        "previous_id": "W1-P03",
+        "next_id": "W1-P05",
+        "chronology_note": "h2顺序是聊天摘录顺序，尚未证明视频实际轮次与画面对应"
+      },
+      "manual_destination": "prompt-p4",
+      "scope": "Project Alpha",
+      "text_status": "原文件全文逐字保留；画面可见部分已核",
+      "screenshot_status": "matched_visible_text_or_continuation",
+      "screenshots": [
+        "images/l05-seed-full.png"
+      ],
+      "screenshot_plan": "在第5讲定位原输入及上下文；长原文需连续多帧，不以转写或生成图替代",
+      "template_plan": "独立提供〔占位〕可套用版本，不改原文"
+    },
+    {
+      "id": "W1-P05",
+      "source_heading": "优化 UI",
+      "category": "多轮追问",
+      "source_path": "_raw/chats/w1.md",
+      "original_path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/.chats/w1.md",
+      "source_sha256": "ad56f7b41dc5b1908447c54b88e5f3f6b3886ee74205c422e294117ef315a80d",
+      "heading_line": 26,
+      "body_line_start": 28,
+      "body_line_end": 28,
+      "original_text": "按照 apple website 的设计风格，think ultra hard，优化 UI 和 UX。",
+      "raw_body_between_headings": "\n按照 apple website 的设计风格，think ultra hard，优化 UI 和 UX。\n\n",
+      "context": {
+        "previous_id": "W1-P04",
+        "next_id": "W1-P06",
+        "chronology_note": "h2顺序是聊天摘录顺序，尚未证明视频实际轮次与画面对应"
+      },
+      "manual_destination": "prompt-p5",
+      "scope": "Project Alpha",
+      "text_status": "原文件全文逐字保留；画面可见部分已核",
+      "screenshot_status": "matched_visible_text_or_continuation",
+      "screenshots": [
+        "images/l05-ui-late-send.png"
+      ],
+      "screenshot_plan": "在第5讲定位原输入及上下文；长原文需连续多帧，不以转写或生成图替代",
+      "template_plan": "独立提供〔占位〕可套用版本，不改原文"
+    },
+    {
+      "id": "W1-P06",
+      "source_heading": "前端风格",
+      "category": "多轮追问",
+      "source_path": "_raw/chats/w1.md",
+      "original_path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/.chats/w1.md",
+      "source_sha256": "ad56f7b41dc5b1908447c54b88e5f3f6b3886ee74205c422e294117ef315a80d",
+      "heading_line": 30,
+      "body_line_start": 32,
+      "body_line_end": 32,
+      "original_text": "使用 style.md 中的风格，学习 ./site 中 token 的定义，优化整体的 UI 和 UX。",
+      "raw_body_between_headings": "\n使用 style.md 中的风格，学习 ./site 中 token 的定义，优化整体的 UI 和 UX。\n\n",
+      "context": {
+        "previous_id": "W1-P05",
+        "next_id": "W1-P07",
+        "chronology_note": "h2顺序是聊天摘录顺序，尚未证明视频实际轮次与画面对应"
+      },
+      "manual_destination": "prompt-p6",
+      "scope": "归属待视频核对：风格提示可跨项目复用",
+      "text_status": "原文件全文逐字保留",
+      "screenshot_status": "unlocated_scope_uncertain",
+      "screenshots": [],
+      "screenshot_plan": "在第5讲定位原输入及上下文；长原文需连续多帧，不以转写或生成图替代",
+      "template_plan": "独立提供〔占位〕可套用版本，不改原文",
+      "scope_evidence": [
+        "style.md实际在根.cursor/rules/style.md，已由主Agent快照到_raw/tooling/",
+        "需视频确认本条是否用于Ticket项目；暂不作Project Alpha现场证据"
+      ]
+    },
+    {
+      "id": "W1-P07",
+      "source_heading": "侧边栏",
+      "category": "多轮追问",
+      "source_path": "_raw/chats/w1.md",
+      "original_path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/.chats/w1.md",
+      "source_sha256": "ad56f7b41dc5b1908447c54b88e5f3f6b3886ee74205c422e294117ef315a80d",
+      "heading_line": 34,
+      "body_line_start": 36,
+      "body_line_end": 36,
+      "original_text": "侧边栏目前用途不大，可以放所有已有的数据库，并且把添加数据库，删除已有的数据库的功能放在侧边栏。侧边栏也要使用新的 token 风格。然后主页直接显示第一个数据库的 metadata 信息和查询界面，这样用户可以减少一次点击进入到 database display 页面。一个页面囊括所有功能。",
+      "raw_body_between_headings": "\n侧边栏目前用途不大，可以放所有已有的数据库，并且把添加数据库，删除已有的数据库的功能放在侧边栏。侧边栏也要使用新的 token 风格。然后主页直接显示第一个数据库的 metadata 信息和查询界面，这样用户可以减少一次点击进入到 database display 页面。一个页面囊括所有功能。\n\n",
+      "context": {
+        "previous_id": "W1-P06",
+        "next_id": "W1-P08",
+        "chronology_note": "h2顺序是聊天摘录顺序，尚未证明视频实际轮次与画面对应"
+      },
+      "manual_destination": "prompt-p7",
+      "scope": "数据库查询项目：跨周混入，w1不采用",
+      "text_status": "原文件全文逐字保留",
+      "screenshot_status": "cross_project_unlocated_attachment_gap",
+      "screenshots": [],
+      "screenshot_plan": "在第5讲定位原输入及上下文；长原文需连续多帧，不以转写或生成图替代",
+      "template_plan": "由数据库项目提供，不插入w1主线",
+      "scope_evidence": [
+        "w1/project-alpha/README.md:13-24 核心对象Ticket和Tag",
+        "w1/project-alpha/frontend/src/components/layout/FilterSidebar.tsx:状态/标签筛选，无数据库列表/schema树/SQL编辑器",
+        ".chats/w2.md:15-28 数据库metadata、表视图和自然语言SQL查询"
+      ]
+    },
+    {
+      "id": "W1-P08",
+      "source_heading": "schema tree view",
+      "category": "多轮追问",
+      "source_path": "_raw/chats/w1.md",
+      "original_path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/.chats/w1.md",
+      "source_sha256": "ad56f7b41dc5b1908447c54b88e5f3f6b3886ee74205c422e294117ef315a80d",
+      "heading_line": 38,
+      "body_line_start": 40,
+      "body_line_end": 40,
+      "original_text": "[Image #2] schema 边栏应该直接铺满除了db name 外整个高度，db name + refresh button 是一个 top bar，使用偏黄色的 token style color；schema 内部的 treeview 应该铺满整个 schema；[Image #3] 这些 metrics 和main sql editor 放在一个容器，他们可以更小一些，不需要占这么多空间。",
+      "raw_body_between_headings": "\n[Image #2] schema 边栏应该直接铺满除了db name 外整个高度，db name + refresh button 是一个 top bar，使用偏黄色的 token style color；schema 内部的 treeview 应该铺满整个 schema；[Image #3] 这些 metrics 和main sql editor 放在一个容器，他们可以更小一些，不需要占这么多空间。\n",
+      "context": {
+        "previous_id": "W1-P07",
+        "next_id": null,
+        "chronology_note": "h2顺序是聊天摘录顺序，尚未证明视频实际轮次与画面对应"
+      },
+      "manual_destination": "prompt-p8",
+      "scope": "数据库查询项目：跨周混入，w1不采用",
+      "text_status": "原文件全文逐字保留",
+      "screenshot_status": "cross_project_unlocated_attachment_gap",
+      "screenshots": [],
+      "screenshot_plan": "在第5讲定位原输入及上下文；长原文需连续多帧，不以转写或生成图替代",
+      "template_plan": "由数据库项目提供，不插入w1主线",
+      "scope_evidence": [
+        "w1/project-alpha/README.md:13-24 核心对象Ticket和Tag",
+        "w1/project-alpha/frontend/src/components/layout/FilterSidebar.tsx:状态/标签筛选，无数据库列表/schema树/SQL编辑器",
+        ".chats/w2.md:15-28 数据库metadata、表视图和自然语言SQL查询"
+      ]
+    }
+  ],
+  "unresolved": [
+    "P6归属与发送帧未定位",
+    "P7/P8跨项目，原Image #2/#3附件未附",
+    "视频中零散短输入和Reports预置prompt不能声称穷尽",
+    "真实应用/数据库运行和真实读者试用未做"
+  ]
+}

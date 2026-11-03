@@ -1,0 +1,142 @@
+[
+  {
+    "week": "w3",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w3/videos/1. Claude Code 简介.mp4",
+    "title": "1. Claude Code 简介",
+    "duration": 1270.131542,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "a2e13b40a880e3dc5453719886d8fe9fedb4ef502931d62be4c5317b35745ec2",
+    "bytes": 118195655
+  },
+  {
+    "week": "w3",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w3/videos/2. Claude Code 的架构设计.mp4",
+    "title": "2. Claude Code 的架构设计",
+    "duration": 2002.930091,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "256a6fea8b8173864dbf96937230b120d3c4737b689544d740b61385c828b354",
+    "bytes": 199484521
+  },
+  {
+    "week": "w3",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w3/videos/3. Claude Code 的常用功能.mp4",
+    "title": "3. Claude Code 的常用功能",
+    "duration": 3088.044989,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "b88c2d1b452551f6a4ac91f657c979ed05ebedbc68cf9c3ec4195e07d72165a3",
+    "bytes": 349703395
+  },
+  {
+    "week": "w3",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w3/videos/4. 用 Claude Code 为数据库查询工具增加 MySQL 的支持.mp4",
+    "title": "4. 用 Claude Code 为数据库查询工具增加 MySQL 的支持",
+    "duration": 1957.209977,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "30f6519df466aefd7337016dfb24202c992b602af9620e4921c1160a48d13d88",
+    "bytes": 252395653
+  },
+  {
+    "week": "w3",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w3/videos/5. 用 Claude Code 构建一个语音 App.mp4",
+    "title": "5. 用 Claude Code 构建一个语音 App",
+    "duration": 2731.874104,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "582289a43755477c5c855cd056614e69c8c18cec39f4c1e495977e3f72a3f8ce",
+    "bytes": 352393899
+  },
+  {
+    "week": "w3",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w3/videos/6. 语音 App 的代码实现.mp4",
+    "title": "6. 语音 App 的代码实现",
+    "duration": 1651.890794,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "7384ca871ba706a333727fc0a581faee46a16f9a926dbb8e3348ee0ec54f3942",
+    "bytes": 259671553
+  },
+  {
+    "week": "w3",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w3/videos/7. 本章小结.mp4",
+    "title": "7. 本章小结",
+    "duration": 1100.254331,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "538c6dfb3e5f460f1b4b9e688a8c2a6beb33481007155ffc86d228f25a1bcdf0",
+    "bytes": 94823836
+  }
+]

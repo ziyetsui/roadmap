@@ -88,5 +88,41 @@
     "html": "manual.html",
     "pdf": "manual.pdf",
     "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-29-w1-project-alpha",
+    "slug": "w1-project-alpha",
+    "title": "w1 实战手册：用 AI 从需求到交付项目管理工具",
+    "status": "needs-qc",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-29-w2-db-query",
+    "slug": "w2-db-query",
+    "title": "数据库查询工具实战手册：从 Spec Kit 到 PostgreSQL 与 MySQL",
+    "status": "needs-qc",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-29-w3-raflow",
+    "slug": "w3-raflow",
+    "title": "RaFlow 实战手册：用 Claude Code 构建语音输入 App",
+    "status": "needs-qc",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-29-w7-genslides",
+    "slug": "w7-genslides",
+    "title": "GenSlides 实战手册：从产品规划到 AI 图片幻灯片",
+    "status": "needs-qc",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
   }
 ]

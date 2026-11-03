@@ -1,0 +1,212 @@
+[
+  {
+    "file": "images/cursor-rust-rule.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/1. 快速上手 Cursor.mp4",
+    "seconds": 1430,
+    "kind": "真实课程视频帧，未改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": false,
+    "sha256": "84a8027d2180c08cefeff67926a029dad232cade8c13f082dfcb4bcabac7f0e3",
+    "review": "未用于当前正文"
+  },
+  {
+    "file": "images/rules-design-prompt.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/2. 如何使用 Cursor 的 Rules.mp4",
+    "seconds": 1955,
+    "kind": "真实课程视频帧，未改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": false,
+    "sha256": "7261541ad0fd0768c851d3139bbed063f3903f03675269ffe7c02ed561cc9314",
+    "review": "未用于当前正文"
+  },
+  {
+    "file": "images/speckit-command.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/3. Spec Kit 实践.mp4",
+    "seconds": 1190,
+    "kind": "真实课程视频帧，未改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": false,
+    "sha256": "09b677fe88a356f21daeb8d0b71191686e39f2aa35c5a83b4bacd38d4dd49409",
+    "review": "未用于当前正文"
+  },
+  {
+    "file": "images/constitution.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/4. 设计一个数据库查询工具.mp4",
+    "seconds": 980,
+    "kind": "真实课程视频帧，未改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": false,
+    "sha256": "999f1b5de36ba8a8b9906ba657a3d92f5aeef8ef2adee3cbaaba27309aabd91f",
+    "review": "未用于当前正文"
+  },
+  {
+    "file": "images/specify.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/4. 设计一个数据库查询工具.mp4",
+    "seconds": 1165,
+    "kind": "真实课程视频帧，未改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": false,
+    "sha256": "451d5520a2aa6b9ec0088d8dca35f5e366828e105efef310e9099e0126b07772",
+    "review": "未用于当前正文"
+  },
+  {
+    "file": "images/plan.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/4. 设计一个数据库查询工具.mp4",
+    "seconds": 1550,
+    "kind": "真实课程视频帧，未改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": false,
+    "sha256": "7f8a6b2e27ba9393c237d5437302ec73651833c8f42da8211d8f31da0c1fc856",
+    "review": "未用于当前正文"
+  },
+  {
+    "file": "images/tasks.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/4. 设计一个数据库查询工具.mp4",
+    "seconds": 2370,
+    "kind": "真实课程视频帧，未改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": false,
+    "sha256": "535403ba0d148544f33fe472fcde54840820277e3aeeffb234fbbdc7526b44b1",
+    "review": "未用于当前正文"
+  },
+  {
+    "file": "images/db-interface.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/5. 实现数据库查询工具.mp4",
+    "seconds": 7200,
+    "kind": "真实课程视频帧，未改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "0fc0204a8a9dcb830f732a878979121b81fd8409c162858610ae2f32bd2d77db",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  },
+  {
+    "file": "images/mysql-extension.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w3/videos/4. 用 Claude Code 为数据库查询工具增加 MySQL 的支持.mp4",
+    "seconds": 1250,
+    "kind": "真实课程视频帧，未改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": false,
+    "sha256": "28882fa1cc21ab4e15f25f0adb61eb83786757ccf6134ce063548ffac6e1d115",
+    "review": "未用于当前正文"
+  },
+  {
+    "file": "images/w2-l02-1955.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/2. 如何使用 Cursor 的 Rules.mp4",
+    "seconds": 1955,
+    "kind": "真实课程视频原帧，未修改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "7261541ad0fd0768c851d3139bbed063f3903f03675269ffe7c02ed561cc9314",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  },
+  {
+    "file": "images/w2-l03-0423.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/3. Spec Kit 实践.mp4",
+    "seconds": 423,
+    "kind": "真实课程视频原帧，未修改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "0368438b667111b5d009438667a798d9d84fd497c26462a87fb29231fb8d7c44",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  },
+  {
+    "file": "images/w2-l03-0590.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/3. Spec Kit 实践.mp4",
+    "seconds": 590,
+    "kind": "真实课程视频原帧，未修改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "b8408fed82174e445268efb3887c117d4324460abc9ce95daad17147c44d23bf",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  },
+  {
+    "file": "images/w2-l04-2370.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/4. 设计一个数据库查询工具.mp4",
+    "seconds": 2370,
+    "kind": "真实课程视频原帧，未修改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "535403ba0d148544f33fe472fcde54840820277e3aeeffb234fbbdc7526b44b1",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  },
+  {
+    "file": "images/w2-l05-0190.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/5. 实现数据库查询工具.mp4",
+    "seconds": 190,
+    "kind": "真实课程视频原帧，未修改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "6bf0046d4c9f481a00201a783beee413d4344a4453846fff21e71a93f9f94616",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  },
+  {
+    "file": "images/w2-l05-0270.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/5. 实现数据库查询工具.mp4",
+    "seconds": 270,
+    "kind": "真实课程视频原帧，未修改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "20dd2af67acb81d29e9fb29c65f0611d12209b16aa6bdde217ca0b1ecebedc39",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  },
+  {
+    "file": "images/w2-l05-0650.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/5. 实现数据库查询工具.mp4",
+    "seconds": 650,
+    "kind": "真实课程视频原帧，未修改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "1948038400483a7aa4a916188878c32d98e22c03c9ad219982f1d74016e191c0",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  },
+  {
+    "file": "images/db-manual-result.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/5. 实现数据库查询工具.mp4",
+    "seconds": 3700,
+    "kind": "真实课程视频原帧，未修改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "8feb5b894a6a814b70c502b6dc3ee4a7ec4e61babf9b496957f5cecb74217bb0",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  },
+  {
+    "file": "images/db-natural-result.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w2/videos/5. 实现数据库查询工具.mp4",
+    "seconds": 6005,
+    "kind": "真实课程视频原帧，未修改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "cb220bb20e9e4a37faaa43a5623b9c32ae93b3eb6a49d43515cf2621c915af2c",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  },
+  {
+    "file": "images/w3-l04-1140.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w3/videos/4. 用 Claude Code 为数据库查询工具增加 MySQL 的支持.mp4",
+    "seconds": 1140,
+    "kind": "真实课程视频原帧，未修改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "ed4f11a3acc3842c2a2b25fccf9b494f3283b67f4add715ea0206418de76bb88",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  },
+  {
+    "file": "images/w3-l04-1145.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w3/videos/4. 用 Claude Code 为数据库查询工具增加 MySQL 的支持.mp4",
+    "seconds": 1145,
+    "kind": "真实课程视频原帧，未修改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "4f1c0f569e15a3045a81e32b11f6b7db0ae643c9a3b8152e648f6c25da13cce3",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  },
+  {
+    "file": "images/w3-l04-1810.png",
+    "source": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w3/videos/4. 用 Claude Code 为数据库查询工具增加 MySQL 的支持.mp4",
+    "seconds": 1810,
+    "kind": "真实课程视频原帧，未修改内容",
+    "captured_at": "2026-10-29",
+    "used_in_manual": true,
+    "sha256": "9e28795fa6206f1f0dda7973059c11898c3f701bcede4b2bde42ffb038ce9a8a",
+    "review": "正文所用帧已人工核对画面及图注；HTML放大/PDF同页待根Agent导出后核对"
+  }
+]

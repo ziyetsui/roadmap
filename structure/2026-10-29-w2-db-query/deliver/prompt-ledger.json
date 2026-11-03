@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "file_entries": [
+    {
+      "id": "W2-P01",
+      "title": "constitution",
+      "path": "_raw/chats/w2.md",
+      "line_start": 4,
+      "line_end": 12,
+      "text": "这是针对 ./w2/db_query 项目的:\n\n- 后端使用 Ergonomic Python 风格来编写代码，前端使用 typescript\n- 前后端都要有严格的类型标注\n- 使用 pydantic 来定义数据模型\n- 所有后端生成的 JSON 数据，使用 camelCase 格式。\n- 不需要 authentication，任何用户都可以使用。",
+      "sha256": "a24721b4b070d102c204a16c3252ccbd1fc3ecbdcb1e407f909da6aac23add15",
+      "classification": "作者原输入，档案顺序不保证即视频顺序"
+    },
+    {
+      "id": "W2-P02",
+      "title": "基本思路",
+      "path": "_raw/chats/w2.md",
+      "line_start": 14,
+      "line_end": 59,
+      "text": "这是一个数据库查询工具，用户可以添加一个 db url，系统会连接到数据库，获取数据库的 metadta，然后将数据库中的 table 和 view 的信息展示出来，然后用户可以自己输入 sql 查询，也可以通过自然语言来生成 sql 查询。\n\n基本想法：\n\n- 数据库连接字符串和数据库的 metadata 都会存储到 sqlite 数据库中。我们可以根据 postgres 的功能来查询系统中的表和视图的信息，然后用 LLM 来将这些信息转换成 json 格式，然后存储到 sqlite 数据库中。这个信息以后可以复用。\n- 当用户使用 LLM 来生成 sql 查询时，我们可以把系统中的表和视图的信息作为 context 传递给 LLM，然后 LLM 会根据这些信息来生成 sql 查询。\n- 任何输入的 sql 语句，都需要经过 sqlparser 解析，确保语法正确，并且仅包含 select 语句。如果语法不正确，需要给出错误信息。\n  - 如果查询不包含 limit 子句，则默认添加 limit 1000 子句。\n- 输出格式是 json，前端将其组织成表格，并显示出来。\n\n后端使用 Python (uv) / FastAPI / sqlglot / openai sdk 来实现。\n前端使用 React / refine 5 / tailwind / ant design 来实现。sql editor 使用 monaco editor 来实现。\n\nOpenAI API key 在环境变量 OPENAI_API_KEY 中。数据库连接和 metadata 存储在 sqlite 数据库中，放在 ~/.db_query/db_query.db 中。\n\n后端 API 需要支持 cors，允许所有 origin。大致 API 如下：\n\n```bash\n# 获取所有已存储的数据库\nGET /api/v1/dbs\n# 添加一个数据库\nPUT /api/v1/dbs/{name}\n\n{\n  \"url\": \"postgres://postgres:postgres@localhost:5432/postgres\"\n}\n\n# 获取一个数据库的 metadata\nGET /api/v1/dbs/{name}\n\n# 查询某个数据库的信息\nPOST /api/v1/dbs/{name}/query\n\n{\n  \"sql\": \"SELECT * FROM users\"\n}\n\n# 根据自然语言生成 sql\nPOST /api/v1/dbs/{name}/query/natural\n\n{\n  \"prompt\": \"查询用户表的所有信息\"\n}\n```",
+      "sha256": "ae34ac17ffccbbe1762529a421278251e9e0e92bf599a7411f223bf57be5c324",
+      "classification": "作者原输入，档案顺序不保证即视频顺序"
+    },
+    {
+      "id": "W2-P03",
+      "title": "测试",
+      "path": "_raw/chats/w2.md",
+      "line_start": 61,
+      "line_end": 63,
+      "text": "仔细阅读 ./w2/db_query 下面的代码，然后运行后端和前端，根据@w2/db_query/fixtures/test.rest 用 curl 测试后端已实现的路由；然后用 playwright 开前端进行测试，任何测试问题，think ultra hard and fix",
+      "sha256": "ba3303eded458946a3c5f277a0bfbf46d074f9649212c4d95f28bbb1e2b63515",
+      "classification": "作者原输入，档案顺序不保证即视频顺序"
+    },
+    {
+      "id": "W2-P04",
+      "title": "db migration & unit test",
+      "path": "_raw/chats/w2.md",
+      "line_start": 65,
+      "line_end": 67,
+      "text": "`make setup` 会出错，修复它；确保前后端 unit test 都通过。",
+      "sha256": "9e9a1653b68925fb0fd3d61c0db910f71e44b5baf090e794b26d723793c7376c",
+      "classification": "作者原输入，档案顺序不保证即视频顺序"
+    },
+    {
+      "id": "W2-P05",
+      "title": "添加 MySQL db 支持",
+      "path": "_raw/chats/w2.md",
+      "line_start": 69,
+      "line_end": 71,
+      "text": "参考 ./w2/db_query/backend 中的 PostgreSQL 实现，实现 MySQL 的 metadata 提取和查询支持，同时自然语言生成 sql 也支持 MySQL。目前我本地有一个 todo_db 数据库，使用 `mysql -u root todo_db -e \"SELECT * FROM todos;\"` 可以查询到数据。",
+      "sha256": "eaabba56ef97bcda236a794cf28e5bb7101fb781669762eaa3548d251fc61bad",
+      "classification": "作者原输入，档案顺序不保证即视频顺序"
+    },
+    {
+      "id": "W2-P06",
+      "title": "测试 MySQL db 支持",
+      "path": "_raw/chats/w2.md",
+      "line_start": 73,
+      "line_end": 78,
+      "text": "目前 mysql 已经得到支持，在 ./w2/db_query/fixtures/test.rest 中添加 MySQL db 支持的测试用例，然后运行测试。如果后端测试 ok，那么打开后端和前端，使用 playwright 测试前端，确保 MySQL db 的基本功能：\n\n- 添加 新的数据库 interview_db（url 为 mysql://root@localhost:3306/interview_db）\n- 生成 sql，查询 interview_db，并显示结果\n- 自然语言生成 MySQL sql，查询 interview_db，并显示结果",
+      "sha256": "0a209abb6bb81711c03acfb2d6061d3ea4468eea2fb838dda482ca8bdcfffe28",
+      "classification": "作者原输入，档案顺序不保证即视频顺序"
+    },
+    {
+      "id": "W3-P01",
+      "title": "code review command",
+      "path": "_raw/chats/w3.md",
+      "line_start": 4,
+      "line_end": 11,
+      "text": "帮我参照 @.claude/commands/speckit.specify.md 的结构，think ultra hard，构建一个对 Python 和 Typescript 代码进行深度代码审查的命令，放在 @.claude/commands/ 下。主要考虑几个方面：\n\n- 架构和设计：是否考虑 python 和 typescript 的架构和设计最佳实践？是否有清晰的接口设计？是否考虑一定程度的可扩展性\n- KISS 原则\n- 代码质量：DRY, YAGNI, SOLID, etc. 函数原则上不超过 150 行，参数原则上不超过 7 个。\n- 使用 builder 模式",
+      "sha256": "df79df1d3f3e9dd5d5eb19f1ff4a1977f9ec945e3782dd53610bb4eaadc72c00",
+      "classification": "作者原输入，档案顺序不保证即视频顺序"
+    },
+    {
+      "id": "W3-P02",
+      "title": "review 代码",
+      "path": "_raw/chats/w3.md",
+      "line_start": 13,
+      "line_end": 16,
+      "text": "@agent-py-arch 帮我仔细查看 ./w2/db_query/backend\n的架构，目前因为添加了新的数据库，需要重新考虑整体的设计，最好设计一套 interface，为以后添加更多数据库留有余地，不至于到处修改已有代码。设计要符合 Open-Close 和 SOLID 原则。",
+      "sha256": "cdc2e870ec2849055670f1526e87d886caeef1833ecbfed21421fb396ffc8920",
+      "classification": "作者原输入，档案顺序不保证即视频顺序"
+    },
+    {
+      "id": "W1-P07",
+      "title": "侧边栏",
+      "path": "_raw/chats/w1.md",
+      "line_start": 35,
+      "line_end": 37,
+      "text": "侧边栏目前用途不大，可以放所有已有的数据库，并且把添加数据库，删除已有的数据库的功能放在侧边栏。侧边栏也要使用新的 token 风格。然后主页直接显示第一个数据库的 metadata 信息和查询界面，这样用户可以减少一次点击进入到 database display 页面。一个页面囊括所有功能。",
+      "sha256": "3ff3f49062da029f713cb654ddddc9ece71709a2771d1888630aaf5a9abaa0f3",
+      "classification": "作者原输入，档案顺序不保证即视频顺序"
+    },
+    {
+      "id": "W1-P08",
+      "title": "schema tree view",
+      "path": "_raw/chats/w1.md",
+      "line_start": 39,
+      "line_end": 40,
+      "text": "[Image #2] schema 边栏应该直接铺满除了db name 外整个高度，db name + refresh button 是一个 top bar，使用偏黄色的 token style color；schema 内部的 treeview 应该铺满整个 schema；[Image #3] 这些 metrics 和main sql editor 放在一个容器，他们可以更小一些，不需要占这么多空间。",
+      "sha256": "cd764771b047d0f49562d8fb6ed94d837a1c43c0d80a726546d5d48bcababfac",
+      "classification": "作者原输入，档案顺序不保证即视频顺序"
+    }
+  ],
+  "screen_entries": [
+    {
+      "id": "DB-V01",
+      "title": "生成MotherDuck规则",
+      "text": "生成一个 motherduck 风格的前端设计 rules",
+      "classification": "视频作者屏幕输入（完整）",
+      "source_week": "w2",
+      "lesson": 2,
+      "seconds": 1955,
+      "screenshot": "images/w2-l02-1955.png",
+      "text_status": "full",
+      "note": "第2讲00:32:35，尚未附加后续参考要素，不把后续内容并进这句",
+      "source_file": "_raw/transcripts/L02/transcript.json"
+    },
+    {
+      "id": "DB-V02",
+      "title": "继续提取设计token",
+      "text": "深度阅读 motherduck.com 的页面结构和样式，从中抽取详细的包括静态和交互细节的 design token，更新 style.md。",
+      "classification": "视频作者屏幕输入（完整）",
+      "source_week": "w2",
+      "lesson": 3,
+      "seconds": 423,
+      "screenshot": "images/w2-l03-0423.png",
+      "text_status": "full",
+      "note": "第3讲00:07:03可见上次消息回顾；链接/附件标签转为文件名，软折行合并",
+      "source_file": "_raw/transcripts/L03/transcript.json"
+    },
+    {
+      "id": "DB-V03",
+      "title": "Memory Bank初始化",
+      "text": "Enter VAN mode: initialize memory bank at .memory",
+      "classification": "视频作者屏幕输入（完整）",
+      "source_week": "w2",
+      "lesson": 3,
+      "seconds": 590,
+      "screenshot": "images/w2-l03-0590.png",
+      "text_status": "full",
+      "note": "第3讲00:09:50，历史工具实验，不要求数据库项目安装它",
+      "source_file": "_raw/transcripts/L03/transcript.json"
+    },
+    {
+      "id": "DB-V04",
+      "title": "限定任务阶段",
+      "text": "/speckit.tasks 这个任务相对简单，可以分成不超过3个 phase 来完成",
+      "classification": "视频作者屏幕输入（完整）",
+      "source_week": "w2",
+      "lesson": 4,
+      "seconds": 2370,
+      "screenshot": "images/w2-l04-2370.png",
+      "text_status": "full",
+      "note": "第4讲00:39:30；输入完整，代理任务说明与总数是另一部分",
+      "source_file": "_raw/transcripts/L04/transcript.json"
+    },
+    {
+      "id": "DB-V05",
+      "title": "uv安装失败反馈",
+      "text": "backend uv sync 出错",
+      "classification": "视频作者屏幕输入（完整）",
+      "source_week": "w2",
+      "lesson": 5,
+      "seconds": 190,
+      "screenshot": "images/w2-l05-0190.png",
+      "text_status": "full",
+      "note": "第5讲00:03:10，屏幕同时显示缺README错误与后续重跑，不能把代理成功宣告当本次安装结果",
+      "source_file": "_raw/transcripts/L05/transcript.json"
+    },
+    {
+      "id": "DB-V06",
+      "title": "升级依赖",
+      "text": "把所有依赖升级到最新版本",
+      "classification": "视频作者屏幕输入（完整）",
+      "source_week": "w2",
+      "lesson": 5,
+      "seconds": 270,
+      "screenshot": "images/w2-l05-0270.png",
+      "text_status": "full",
+      "note": "第5讲00:04:30；这是课程输入，复现现成代码不照此盲目升级",
+      "source_file": "_raw/transcripts/L05/transcript.json"
+    },
+    {
+      "id": "DB-V07",
+      "title": "实现第二阶段",
+      "text": "/speckit.implement 实现所有 phase 2 tasks",
+      "classification": "视频作者屏幕输入（完整）",
+      "source_week": "w2",
+      "lesson": 5,
+      "seconds": 650,
+      "screenshot": "images/w2-l05-0650.png",
+      "text_status": "full",
+      "note": "第5讲00:10:50，保留大小写与phase任务范围",
+      "source_file": "_raw/transcripts/L05/transcript.json"
+    },
+    {
+      "id": "DB-V08",
+      "title": "指定架构文稿落点",
+      "text": "新的设计放在 ./specs/w2/0001-improvement.md",
+      "classification": "视频作者屏幕输入（完整）",
+      "source_week": "w3",
+      "lesson": 4,
+      "seconds": 1810,
+      "screenshot": "images/w3-l04-1810.png",
+      "text_status": "full",
+      "note": "w3第4讲00:30:10仍可见已发送消息，文件历史路径保留",
+      "source_file": "_raw/transcripts/w3-L04/transcript.json"
+    },
+    {
+      "id": "DB-V09",
+      "title": "MySQL自然语言测试",
+      "text": "帮我看看还有哪些应聘者没有安排面试",
+      "classification": "视频作者屏幕输入（完整）",
+      "source_week": "w3",
+      "lesson": 4,
+      "seconds": 1140,
+      "screenshot": "images/w3-l04-1140.png",
+      "text_status": "full",
+      "note": "w3第4讲00:19:00，输入完整；下方表格还是先前结果，不视为此问题结果",
+      "source_file": "_raw/transcripts/w3-L04/transcript.json"
+    },
+    {
+      "id": "DB-Q01",
+      "title": "Phase1输入可见部分",
+      "text": "/speckit.implement 完成 phase",
+      "classification": "视频作者输入草稿（只保留可见部分）",
+      "source_week": "w2",
+      "lesson": 5,
+      "seconds": 55,
+      "screenshot": "images/w2-l05-0055.png",
+      "text_status": "partial",
+      "note": "底部输入被画面/讲者遮挡，不能从ASR补成完整句",
+      "source_file": "_raw/transcripts/L05/transcript.json"
+    },
+    {
+      "id": "DB-Q02",
+      "title": "Phase3输入准备",
+      "text": "/speckit.implement",
+      "classification": "视频作者输入草稿（只保留可见部分）",
+      "source_week": "w2",
+      "lesson": 5,
+      "seconds": 3780,
+      "screenshot": "images/w2-l05-3780.png",
+      "text_status": "partial",
+      "note": "第5讲01:03:00仅可见命令/补全，后续阶段文字未在此帧完整显示",
+      "source_file": "_raw/transcripts/L05/transcript.json"
+    },
+    {
+      "id": "DB-Q03",
+      "title": "MySQL测试库输入草稿",
+      "text": "构建一个相对复杂的 mysql 数据库 interview_db，记录公司招聘面试安排面试结果等相关的信息，并添加足够丰富",
+      "classification": "视频作者输入草稿（只保留可见部分）",
+      "source_week": "w3",
+      "lesson": 4,
+      "seconds": 600,
+      "screenshot": "images/w3-l04-0600.png",
+      "text_status": "partial",
+      "note": "末尾真实seed等字尚在输入，所见即止，不造完整原话",
+      "source_file": "_raw/transcripts/w3-L04/transcript.json"
+    },
+    {
+      "id": "DB-Q04",
+      "title": "架构实施输入草稿",
+      "text": "根据以上的重构设计 @w2/db_query/backend/ARCHITECTURE_REDESIGN.md",
+      "classification": "视频作者输入草稿（只保留可见部分）",
+      "source_week": "w3",
+      "lesson": 4,
+      "seconds": 1840,
+      "screenshot": "images/w3-l04-1840.png",
+      "text_status": "partial",
+      "note": "指令仍在输入，后续implementation guide/所有phase等按口述转述而非原prompt",
+      "source_file": "_raw/transcripts/w3-L04/transcript.json"
+    }
+  ],
+  "runtime_code": {
+    "path": "_raw/course/db_query/backend/app/services/nl2sql.py",
+    "classification": "源码程序模型输入，不是作者聊天",
+    "manual_section": "section-runtime"
+  },
+  "completeness": "文件10段全文保留；核到9条完整屏幕输入及4条部分草稿，未声明所有视频输入穷尽",
+  "created_at": "2026-10-29"
+}

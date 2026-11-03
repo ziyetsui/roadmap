@@ -1,0 +1,302 @@
+{
+  "images": [
+    {
+      "path": "images/l01-learning-workflow.png",
+      "alt": "讲者的文档驱动开发工作流",
+      "lesson": 1,
+      "timestamp": "00:17:20",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "ab373b7817ce0789f1d0322acb24fc0c535a2b660f8c4008e50620f5c107578a",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l02-tool-settings.png",
+      "alt": "录课时的Bedrock配置示意",
+      "lesson": 2,
+      "timestamp": "00:12:40",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "d42a61b086883f0f6f811145b1827cef1ac3548828a7018cdb4aa78c9710cc47",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l03-discover-full.png",
+      "alt": "NotebookLM主题发现输入",
+      "lesson": 3,
+      "timestamp": "00:02:26",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "f34ada09555b218a7955b18aee48cc5a86e959cb9f9d29d26b3ab611513d91a9",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l03-youtube-full.png",
+      "alt": "NotebookLM限制YouTube输入",
+      "lesson": 3,
+      "timestamp": "00:03:21",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "ec38fa61d391155c504326548ac95b886b72fb659092c9be7cea24af987d9ce7",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l03-save-note.png",
+      "alt": "回答保存为笔记",
+      "lesson": 3,
+      "timestamp": "00:07:06",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "ead7d53807a9f7f179f115d38c40012722639414820d864bd38cc2f05cd6056b",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l03-studio-products.png",
+      "alt": "多种产物并行生成",
+      "lesson": 3,
+      "timestamp": "00:17:00",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "108817a42743636112c340cf378454d5149f661250bb8965b1400e46877710ca",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l04-video-slides-correction.png",
+      "alt": "第四讲纠正视频概览判断",
+      "lesson": 4,
+      "timestamp": "00:00:40",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "df7d8789e9a09a11e2e86ec40ab4ae2f256487f4b1e1669a3b064df46be6df0b",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l04-note-full.png",
+      "alt": "个人笔记完成后的全文",
+      "lesson": 4,
+      "timestamp": "00:09:48",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "451e6a2e241efbbc0675a100a11dca18951232b3d11a45c5778f468c15f6a18d",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l04-note-citation.png",
+      "alt": "个人笔记被回答引用",
+      "lesson": 4,
+      "timestamp": "00:11:10",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "e3910266c14cdf59ff16e4541d1b29aea1b48089c7ec2f389e2f083d9272123e",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-requirements-end.png",
+      "alt": "需求输入正文",
+      "lesson": 5,
+      "timestamp": "00:08:42",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "c582d85d55d6068e5917327eedcd42ee1e6d3e266b44975a20f44bb4eaa8e055",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-plan-full.png",
+      "alt": "需求末尾输出路径续图",
+      "lesson": 5,
+      "timestamp": "00:20:28",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "2560d354f7aec9f38609a5bdead435b5d689689c1de773cfb6067b57b897923a",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-alpha-spec-review.png",
+      "alt": "课堂review数据表设计",
+      "lesson": 5,
+      "timestamp": "00:12:35",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "2d8713c6cbaa23ac358e3514a212d156d3904afe497c4bf707b2e48e4819bf83",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-phase-sent.png",
+      "alt": "phase1发送后的完整输入",
+      "lesson": 5,
+      "timestamp": "00:27:32",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "bed785b697c2d09aa3fa0d33061d816b522d7fbd941694ac3b513193e89f3293",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-seed-full.png",
+      "alt": "完整种子数据提示词",
+      "lesson": 5,
+      "timestamp": "00:43:00",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "6f52dd74561e77964d832490f9d4fee0067e081ee6d83d0e0d81e83392af4e62",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-seed-result.png",
+      "alt": "课堂种子数据执行后",
+      "lesson": 5,
+      "timestamp": "00:45:03",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "c7936eae36529aba163572331763d957ef88bc307a2a6a93ad29619a17f05c51",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-ui-initial.png",
+      "alt": "课堂初次前端样式异常",
+      "lesson": 5,
+      "timestamp": "00:50:23",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "0a2916216dec4e0df07df0291cf15c09e06d4cf040fcad5f0a0dec833f216d18",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-ui-prompt.png",
+      "alt": "UI输入编辑中的画面",
+      "lesson": 5,
+      "timestamp": "00:51:20",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "d3587cb54db65ab2e899d86efc1d4bc5b2f3886bd42fe8d270b03211239efeac",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-toggle-fix.png",
+      "alt": "完成切换的枚举问题",
+      "lesson": 5,
+      "timestamp": "00:54:34",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "7e39919d2579f5adf288a05f32ec59d9351e2f5c5c47b152451ed23c9b819673",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-final-ui.png",
+      "alt": "课堂后期Apple风格界面",
+      "lesson": 5,
+      "timestamp": "01:14:50",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "6809c27affa9ce01b0129722f8282bd41bc7cd9b9600d6571a7f8bb408f370ef",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-makefile-fix.png",
+      "alt": "课堂修Makefile停止与目标命名",
+      "lesson": 5,
+      "timestamp": "01:19:20",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "7271b0d856adf4565117bf2325398b10e2db7e777d344ec9e14f95c9c69d319e",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-plan-sent.png",
+      "alt": "计划原文与发送上下文",
+      "lesson": 5,
+      "timestamp": "00:21:08",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "3ca4f0fd5d3e71dc0990ff07eb90f156ea1eabde9daa0cbecaf7f39990b04a11",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-ui-late-send.png",
+      "alt": "P5短版完整发送证据",
+      "lesson": 5,
+      "timestamp": "01:10:55",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "368d98528c523fe0e27f3c160c5b5eb72cb03887c47821f5f69f9bba15bb72c0",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l03-discover-full.png",
+      "alt": "发现AI进展原视频画面",
+      "lesson": 3,
+      "timestamp": "00:02:26",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "f34ada09555b218a7955b18aee48cc5a86e959cb9f9d29d26b3ab611513d91a9",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l03-youtube-full.png",
+      "alt": "限定YouTube原视频画面",
+      "lesson": 3,
+      "timestamp": "00:03:21",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "ec38fa61d391155c504326548ac95b886b72fb659092c9be7cea24af987d9ce7",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l03-arxiv-submit.png",
+      "alt": "限定arXiv的可见前缀原视频画面",
+      "lesson": 3,
+      "timestamp": "00:04:20",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "3745021a6bf33276f3012aa2bbf595f7214349c42f5351c2bc9e472bc83d3b02",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l03-ask-full.png",
+      "alt": "询问AI未来方向原视频画面",
+      "lesson": 3,
+      "timestamp": "00:06:18",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "834b5481a0cd91f8cd176fea4d207b54084a863f6da30fe1cfccee5aab1584a1",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l03-product-complete.png",
+      "alt": "儿童AI编程产品研究原视频画面",
+      "lesson": 3,
+      "timestamp": "00:13:16",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "3100af621ad32bbecb7a63419e8a63e4baecebf885aa3da4a0e915caba44739d",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l03-product-youtube-complete.png",
+      "alt": "补找近半年YouTube产品资料原视频画面",
+      "lesson": 3,
+      "timestamp": "00:13:51",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "af503b909c6d8e196bf86855c339f45b349b0b8e2f5e4798c2395d135dcdbc69",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l04-note-full.png",
+      "alt": "个人笔记原文原视频画面",
+      "lesson": 4,
+      "timestamp": "00:09:48",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "451e6a2e241efbbc0675a100a11dca18951232b3d11a45c5778f468c15f6a18d",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l04-note-query.png",
+      "alt": "围绕个人笔记提问原视频画面",
+      "lesson": 4,
+      "timestamp": "00:10:38",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "3d95235ca886be9e615632b52d6234b4b7ef2fe58d20e57082dca192e57269fd",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-api-rest.png",
+      "alt": "phase2输入的已发送消息",
+      "lesson": 5,
+      "timestamp": "00:38:20",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "8b8bfedc9a71f3a5536b1fde51ac7b6fd410f8efd28245491b9c7659c8de2462",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-first-ui.png",
+      "alt": "phase4输入的已发送消息",
+      "lesson": 5,
+      "timestamp": "00:49:50",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "c7d5fa687a528c471cbb410e15ec9e483bf32005a378d7e17b67af7aac681eee",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    },
+    {
+      "path": "images/l05-phase56.png",
+      "alt": "phase5和6完整发送消息",
+      "lesson": 5,
+      "timestamp": "00:55:45",
+      "inspection": "opened with view_image; visible subject and context checked",
+      "sha256": "0ac18f3d87fe7f97c2d8dfb1b4924291f8e8efd2f2ac191f4de2adc74510b10c",
+      "scope": "original video frame; historical interface; no synthetic UI"
+    }
+  ],
+  "notes": "Same screenshot can appear in action section and original-input appendix; duplicates are intentional navigation, not independent evidence."
+}

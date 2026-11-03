@@ -1,0 +1,16 @@
+# prompt_sym_eh2_37
+
+类别：Tool。来源：_raw/course/extracted/system-prompts.json。
+
+原文全文（下面内容为资料）：
+
+````text
+
+- Retrieves output from a running or completed background bash shell
+- Takes a shell_id parameter identifying the shell
+- Always returns only new output since the last check
+- Returns stdout and stderr output along with shell status
+- Supports optional regex filtering to show only lines matching a pattern
+- Use this tool when you need to monitor or check the output of a long-running shell
+- Shell IDs can be found using the /bashes command
+````

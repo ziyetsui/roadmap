@@ -1,0 +1,262 @@
+{
+  "images": [
+    {
+      "path": "images/w7-l01-0263.jpg",
+      "sha256": "f222eb3519379258e8589ebe13deb569926a1b6042624ae44d7babea7d227eed",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [],
+      "lesson": 1,
+      "seconds": 263,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/1. 项目前期规划与调研.mp4",
+      "time": "00:04:23"
+    },
+    {
+      "path": "images/genslide-original.jpg",
+      "sha256": "13c39781650725f9b7e1b13305b0d981ca3e20a1d72d8ec2ff51411a5d291ece",
+      "kind": "course_original_wireframe",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": []
+    },
+    {
+      "path": "images/w7-l02-0264.jpg",
+      "sha256": "049bce2d12c7edc970e97168c51b885080c2e0bdf8daa057d9324afbe58b215a",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P01"
+      ],
+      "lesson": 2,
+      "seconds": 264,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/2. 生成产品设计文档.mp4",
+      "time": "00:04:24"
+    },
+    {
+      "path": "images/w7-l02-0790.jpg",
+      "sha256": "6b0ffba0938b3f35026e2e2e0634c4d1d6c4fedcd96c4050a4eed821476e9daa",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked_by_root",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P02"
+      ],
+      "lesson": 2,
+      "seconds": 790,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/2. 生成产品设计文档.mp4",
+      "time": "00:13:10"
+    },
+    {
+      "path": "images/w7-l02-1225.jpg",
+      "sha256": "307720ca2eadff835f462a33c9f307b453cc738495b2ee36ac0d7fbdef48b6a5",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked_by_root",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P03"
+      ],
+      "lesson": 2,
+      "seconds": 1225,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/2. 生成产品设计文档.mp4",
+      "time": "00:20:25"
+    },
+    {
+      "path": "images/w7-l02-1640.jpg",
+      "sha256": "73494378cfa5fdde28fe43418710d18b8fdb4b45ce72332e38d10f2b0e511872",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P04"
+      ],
+      "lesson": 2,
+      "seconds": 1640,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/2. 生成产品设计文档.mp4",
+      "time": "00:27:20"
+    },
+    {
+      "path": "images/w7-l02-1835.jpg",
+      "sha256": "f7cbfc7a9e06a1c4f41d3b754ac767b5102e1bcd674e212a293b3dde58058595",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P05"
+      ],
+      "lesson": 2,
+      "seconds": 1835,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/2. 生成产品设计文档.mp4",
+      "time": "00:30:35"
+    },
+    {
+      "path": "images/w7-l02-2035.jpg",
+      "sha256": "2e8b1279f5fce78d4ed85845e4b1c65b00b35970c05ca90081b1404932210ca0",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P06"
+      ],
+      "lesson": 2,
+      "seconds": 2035,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/2. 生成产品设计文档.mp4",
+      "time": "00:33:55"
+    },
+    {
+      "path": "images/w7-l03-0145.jpg",
+      "sha256": "95000f8d118c2410446339818bd781f612a9b22cb55db34c498c172ba7087529",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P07"
+      ],
+      "lesson": 3,
+      "seconds": 145,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/3. 项目的代码实现.mp4",
+      "time": "00:02:25"
+    },
+    {
+      "path": "images/w7-l03-2415.jpg",
+      "sha256": "968ec3addc5e249461376931f86406c4b69e3678a0d387a75242a996fd0ab85d",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P14"
+      ],
+      "lesson": 3,
+      "seconds": 2415,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/3. 项目的代码实现.mp4",
+      "time": "00:40:15"
+    },
+    {
+      "path": "images/w7-l03-1440.jpg",
+      "sha256": "62c1ca237bd65e8a9fc76734c8b07837ab3500032ad348f2f0d07dc18657a317",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked_by_root",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P09"
+      ],
+      "lesson": 3,
+      "seconds": 1440,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/3. 项目的代码实现.mp4",
+      "time": "00:24:00"
+    },
+    {
+      "path": "images/w7-l03-4370.jpg",
+      "sha256": "30d3cc36d6c2de198898ab00e1c6da7a11f9bb9343ddb557ae046146b32098a8",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [],
+      "lesson": 3,
+      "seconds": 4370,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/3. 项目的代码实现.mp4",
+      "time": "01:12:50"
+    },
+    {
+      "path": "images/w7-l03-1115.jpg",
+      "sha256": "ebcd9d97611226c636fbb0d21334ea3b3e3aa8d3d3609f356cbd947c95858bb1",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P18"
+      ],
+      "lesson": 3,
+      "seconds": 1115,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/3. 项目的代码实现.mp4",
+      "time": "00:18:35"
+    },
+    {
+      "path": "images/w7-l03-2110.jpg",
+      "sha256": "23bb19ab03810bf47d8109c63306a4a84de51be2a5bb61ef38dbfb0bcfeda05c",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P13"
+      ],
+      "lesson": 3,
+      "seconds": 2110,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/3. 项目的代码实现.mp4",
+      "time": "00:35:10"
+    },
+    {
+      "path": "images/w7-l03-2275.jpg",
+      "sha256": "05a25947aa83113032c44c6fcf2a24d79ea70b711818e00bab8034998f970876",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [],
+      "lesson": 3,
+      "seconds": 2275,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/3. 项目的代码实现.mp4",
+      "time": "00:37:55"
+    },
+    {
+      "path": "images/w7-l03-4350.jpg",
+      "sha256": "82dc467ce8a976d2332ca03cad8985c5db69cdaf2420c2634aa2215212f9fcc9",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [],
+      "lesson": 3,
+      "seconds": 4350,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/3. 项目的代码实现.mp4",
+      "time": "01:12:30"
+    },
+    {
+      "path": "images/w7-l03-4600.jpg",
+      "sha256": "6bca5e9201c542b4a4eaf5d1360fe388dc95e28823bd0dedc3709afbe0beeb89",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P15"
+      ],
+      "lesson": 3,
+      "seconds": 4600,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/3. 项目的代码实现.mp4",
+      "time": "01:16:40"
+    },
+    {
+      "path": "images/w7-l03-4700.jpg",
+      "sha256": "656d0849cce1b161cb828228ffbe04b5598f3b5749b0b1da61a54e91c2e63deb",
+      "kind": "real_video_frame",
+      "visual_review": "opened_and_checked",
+      "caption_scope": "partial/full distinction retained in manual",
+      "pdf_same_page": "not_checked",
+      "prompt_ids": [
+        "W7-P16"
+      ],
+      "lesson": 3,
+      "seconds": 4700,
+      "source_video": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/3. 项目的代码实现.mp4",
+      "time": "01:18:20"
+    }
+  ],
+  "unused_candidate_frames": "Other images are search candidates, not delivered evidence",
+  "prompt_screenshot_gaps": "See prompt-ledger: full/variant/partial/related, not all video inputs certified"
+}

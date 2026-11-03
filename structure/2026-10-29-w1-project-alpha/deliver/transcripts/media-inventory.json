@@ -1,0 +1,102 @@
+[
+  {
+    "week": "w1",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w1/videos/1. 如何学习 AI 编程实战营.mp4",
+    "title": "1. 如何学习 AI 编程实战营",
+    "duration": 2651.533061,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "8b7c936cc9d1f161689b29e66316cda4b8c1a9b58a7004ece1af318f047907db",
+    "bytes": 234313078
+  },
+  {
+    "week": "w1",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w1/videos/2. AI 编程工具简介.mp4",
+    "title": "2. AI 编程工具简介",
+    "duration": 1112.491247,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "dba40c5b7b239f6ea5d1e5649196bb219bb1bddb8188f85ed5edbb697e6f2010",
+    "bytes": 108708708
+  },
+  {
+    "week": "w1",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w1/videos/3. 学会使用 NotebookLM.mp4",
+    "title": "3. 学会使用 NotebookLM",
+    "duration": 1669.526,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "436c62f53ef8a6225eac6dc106a41f65008e91d981b147d51cd95f03b520bca2",
+    "bytes": 185749433
+  },
+  {
+    "week": "w1",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w1/videos/4. 深度探索 NotebookLM.mp4",
+    "title": "4. 深度探索 NotebookLM",
+    "duration": 793.216871,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "2e137992a4ebeda13111ec76133c53d4d8da1d774060918b8ae18de7a2de6258",
+    "bytes": 70486983
+  },
+  {
+    "week": "w1",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w1/videos/5. 制作一个项目管理工具.mp4",
+    "title": "5. 制作一个项目管理工具",
+    "duration": 4998.025578,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "551faee3b513a2d87de1942186a5d870ff7bfea32b4b2a93cac880f516b7ee03",
+    "bytes": 670358337
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "week": "w7",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/1. 项目前期规划与调研.mp4",
+    "title": "1. 项目前期规划与调研",
+    "duration": 1865.467937,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "212faf55523e1cf5db09227dabab5717be679014b31fd2cd389161b903f54b95",
+    "bytes": 144231257
+  },
+  {
+    "week": "w7",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/2. 生成产品设计文档.mp4",
+    "title": "2. 生成产品设计文档",
+    "duration": 2469.566,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "fd1b7d1ff59d2212da22ad09565f89f4341b92ac7d7c345e67e9e1386d1c0c7a",
+    "bytes": 318227335
+  },
+  {
+    "week": "w7",
+    "path": "/Users/ziye/Desktop/tyr/geektime-bootcamp-ai/w7/videos/3. 项目的代码实现.mp4",
+    "title": "3. 项目的代码实现",
+    "duration": 5258.766,
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio"
+      }
+    ],
+    "sha256": "1f8b8a4146189ac3cf227120ec3fa94578b54e5b9bc2736e6cf82c7d0261eae4",
+    "bytes": 617253960
+  }
+]
