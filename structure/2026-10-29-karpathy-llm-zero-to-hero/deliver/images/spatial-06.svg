@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect x="0" y="0" width="1200" height="760" fill="#ffffff"/>
+<text x="50" y="65" fill="#18333d" font-family="sans-serif" font-size="36" font-weight="bold" text-anchor="start">步骤 6 · 矩阵乘法有两个输入，梯度另行传回</text>
+<text x="50" y="110" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="start">Y = X @ W + b；G = dL/dY。先看前向依赖，再核对三个反向公式。</text>
+<rect x="45" y="180" width="200" height="85" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="145.0" y="231.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">X：4 × 3</text>
+<rect x="45" y="330" width="200" height="85" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="145.0" y="381.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">W：3 × 2</text>
+<rect x="360" y="250" width="205" height="105" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="462.5" y="292.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">矩阵乘法</text>
+<text x="462.5" y="330.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">X @ W</text>
+<line x1="245" y1="225" x2="360" y2="275" stroke="#087f8c" stroke-width="4"/>
+<polygon points="360.0,275.0 349.0,262.6 343.5,275.4" fill="#087f8c"/>
+<line x1="245" y1="370" x2="360" y2="325" stroke="#087f8c" stroke-width="4"/>
+<polygon points="360.0,325.0 343.5,323.9 348.6,337.0" fill="#087f8c"/>
+<rect x="690" y="250" width="145" height="105" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="762.5" y="311.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">加法</text>
+<line x1="565" y1="300" x2="690" y2="300" stroke="#087f8c" stroke-width="4"/>
+<polygon points="690.0,300.0 675.0,293.0 675.0,307.0" fill="#087f8c"/>
+<rect x="650" y="145" width="225" height="75" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="762.5" y="191.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">b：2 个数</text>
+<line x1="762" y1="220" x2="762" y2="250" stroke="#087f8c" stroke-width="4"/>
+<polygon points="762.0,250.0 769.0,235.0 755.0,235.0" fill="#087f8c"/>
+<rect x="970" y="250" width="190" height="105" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="1065.0" y="311.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">Y：4 × 2</text>
+<line x1="835" y1="300" x2="970" y2="300" stroke="#087f8c" stroke-width="4"/>
+<polygon points="970.0,300.0 955.0,293.0 955.0,307.0" fill="#087f8c"/>
+<rect x="970" y="400" width="190" height="80" rx="12" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="1065.0" y="449.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">G：4 × 2</text>
+<line x1="970" y1="440" x2="720" y2="440" stroke="#c66b24" stroke-width="4"/>
+<polygon points="720.0,440.0 735.0,447.0 735.0,433.0" fill="#c66b24"/>
+<text x="695" y="448" fill="#c66b24" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="end">来自后续 loss 的梯度</text>
+<rect x="45" y="525" width="340" height="100" rx="12" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="215.0" y="565.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">dX = G @ W.T</text>
+<text x="215.0" y="603.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">4 × 3</text>
+<rect x="430" y="525" width="340" height="100" rx="12" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="600.0" y="565.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">dW = X.T @ G</text>
+<text x="600.0" y="603.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">3 × 2</text>
+<rect x="815" y="525" width="340" height="100" rx="12" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="985.0" y="565.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">db = G.sum(0)</text>
+<text x="985.0" y="603.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">2 个数</text>
+<text x="50" y="670" fill="#18333d" font-family="sans-serif" font-size="27" font-weight="normal" text-anchor="start">X 与 W 共同参与乘法；同一个 b 在四行使用，所以 db 对行求和。</text>
+<text x="50" y="713" fill="#516771" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="start">Y 保存前向数值，G 保存对 Y 的梯度；二者形状相同，含义不同。</text>
+</svg>

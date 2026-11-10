@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect x="0" y="0" width="1200" height="760" fill="#ffffff"/>
+<text x="50" y="65" fill="#18333d" font-family="sans-serif" font-size="36" font-weight="bold" text-anchor="start">步骤 10 · 结构像装配图，权重像旋钮位置</text>
+<text x="50" y="110" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="start">把重复 Block 装对之后，还要区分随机检查、载入权重和从零训练。</text>
+<rect x="45" y="280" width="240" height="130" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="165.0" y="335.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">token 表示</text>
+<text x="165.0" y="373.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">+ 位置表示</text>
+<rect x="410" y="200" width="390" height="300" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="605.0" y="302.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">重复 N 个 Block</text>
+<text x="605.0" y="340.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">LayerNorm / 注意力</text>
+<text x="605.0" y="378.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">LayerNorm / MLP</text>
+<text x="605.0" y="416.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">内部保留残差相加</text>
+<rect x="920" y="280" width="235" height="130" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="1037.5" y="335.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">末端归一化</text>
+<text x="1037.5" y="373.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">词表分数</text>
+<line x1="285" y1="345" x2="410" y2="345" stroke="#087f8c" stroke-width="4"/>
+<polygon points="410.0,345.0 395.0,338.0 395.0,352.0" fill="#087f8c"/>
+<line x1="800" y1="345" x2="920" y2="345" stroke="#087f8c" stroke-width="4"/>
+<polygon points="920.0,345.0 905.0,338.0 905.0,352.0" fill="#087f8c"/>
+<text x="600" y="560" fill="#18333d" font-family="sans-serif" font-size="29" font-weight="normal" text-anchor="middle">小例子出口：(B,T,V) = (2,16,32)</text>
+<text x="50" y="670" fill="#18333d" font-family="sans-serif" font-size="27" font-weight="normal" text-anchor="start">每个位置给 V 个候选打分，不是一次输出 V 个词。</text>
+<text x="50" y="713" fill="#516771" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="start">本图概括数据流，具体层内先后、bias 和权重绑定仍需对照代码。</text>
+</svg>

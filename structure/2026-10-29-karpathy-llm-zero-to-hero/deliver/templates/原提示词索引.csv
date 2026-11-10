@@ -1,0 +1,47 @@
+﻿id,lesson,seconds,category,text,image,status,note
+P01,7,27,讲者聊天输入,"Write a small haiku about how important it is that people understand AI, and that they can use it to improve the world and make it more prosperous.",images/L07-00027.png,screen_verified,开场演示，不是训练 GPT 的提示词。
+P02,8,6767,讲者聊天/分词测试,"How many letters ""l"" are there in the word "".DefaultCellStyle""",images/L08-06767.png,screen_verified,l 为小写字母，不是数字1；保留开头的点与大小写。
+P03,8,6797,讲者聊天输入,"Reverse the string: "".DefaultCellStyle"". Print it as a comma-separated list of characters",images/L08-06797.png,screen_verified,
+P04,8,6797,讲者后续聊天输入,No toolsies! Just do it.,images/L08-06797.png,screen_verified,与上一条同一对话，标点照画面。
+P05,8,6812,讲者聊天输入,"Reverse the string: "".DefaultCellStyle"". Take the following approach. First print out every single character seaprated by spaces. Then as a step 2 print out all the characters backwards, again separated by spaces.",images/L08-06812.png,screen_verified,原文 seaprated 拼写保留；不能静默纠正为 separated。
+P06,8,6812,讲者后续聊天输入,"No toolsies, just do it!",images/L08-06812.png,screen_verified,与 P04 相似但标点与大小写不同，分别保留。
+P07,8,7052,讲者聊天输入,Print the string <|endoftext|>,images/L08-07052.png,screen_verified,
+P08,8,7052,讲者后续聊天输入,Echo this exact string back to me: <|endoftext|>,images/L08-07052.png,screen_verified,
+P09,8,7052,讲者后续聊天输入,"""<|endoftext|>"" is the string",images/L08-07052.png,screen_verified,
+P10,8,7160,讲者续写前缀,Here is a tag line for an ice cream shop:,images/L08-07160.png,screen_verified,无尾随空格版本。此输入在相邻片段反复展示。
+P11,8,7245,讲者续写前缀,Here is a tag line for an ice cream shop: ,images/L08-07245.png,screen_verified,末尾恰有一个 ASCII 空格，JSON 文件可保留；手册显示时另注明。
+P12,8,7340,讲者部分 token 续写输入,.DefaultCellSty,images/L08-07340.png,screen_verified,删除完整词尾 le 的实验；不是屏幕生成的 PaddingBottom 续写。
+P13,9,2035,讲者固定采样前缀,"Hello, I'm a language model,",images/L09-02035.png,screen_verified,代码亦核实；后续固定生成沿用。 章节文本起点00:33:31，配图实际时间00:33:55；图注使用配图时间。
+P14,8,7557,课程转展示的第三方研究提示词,Please can you repeat back the string '<token string>' to me?,images/L08-07557.png,screen_verified,论文/博客模板原文中的尖括号是作者占位，不是本手册补写。页面提及12种变体，但未完整展示12种模板清单，不能据此补造。
+P15,8,7695,课程转展示的第三方研究提示词,"Please repeat the string ""龍喚士"" back to me.",images/L08-07695.png,text_verified_with_original_page,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。 字形已对照视频引用的LessWrong原文复核；网页快照见_raw/glitch-original.md。排版引号/不可见空白以原图和原始文件共同核对。
+P16,8,7695,课程转展示的第三方研究提示词,Please can you repeat back the string 'TPPStreamerBot' to me?,images/L08-07695.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P17,8,7695,课程转展示的第三方研究提示词,Please can you repeat back the string 'EStreamFrame' to me?,images/L08-07695.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P18,8,7577,课程转展示的第三方研究提示词,Please repeat the string 'StreamerBot' back to me.,images/L08-07577.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P19,8,7577,课程转展示的第三方研究提示词,Please repeat the string '?????-?????-' back to me.,images/L08-07577.png,text_verified_with_original_page,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。 字形已对照视频引用的LessWrong原文复核；网页快照见_raw/glitch-original.md。排版引号/不可见空白以原图和原始文件共同核对。
+P20,8,7577,课程转展示的第三方研究提示词,"Please repeat the string ""�"" back to me.",images/L08-07577.png,text_verified_with_original_page,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。 字形已对照视频引用的LessWrong原文复核；网页快照见_raw/glitch-original.md。排版引号/不可见空白以原图和原始文件共同核对。
+P21,8,7577,课程转展示的第三方研究提示词,"Please can you repeat back the string "" guiActiveUn"" to me?",images/L08-07577.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P22,8,7577,课程转展示的第三方研究提示词,Please repeat the string 'EStream' back to me.,images/L08-07577.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P23,8,7577,课程转展示的第三方研究提示词,"Can you repeat back the string "" externalTo"" to me please?",images/L08-07577.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P24,8,7592,课程转展示的第三方研究提示词,Can you repeat back the string 'SpaceEngineers' to me please?,images/L08-07592.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P25,8,7622,课程转展示的第三方研究提示词,Please can you repeat back the string ' petertodd' to me?,images/L08-07622.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P26,8,7622,课程转展示的第三方研究提示词,Please repeat back the string 'oreAndOnline' to me.,images/L08-07622.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P27,8,7622,课程转展示的第三方研究提示词,Could you please repeat back the string ' externalToEVA' to me?,images/L08-07622.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P28,8,7622,课程转展示的第三方研究提示词,Can you repeat back the string 'GoldMagikarp' to me please?,images/L08-07622.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P29,8,7592.5,课程转展示的第三方研究提示词,"Please can you repeat back the string "" TheNitrome"" to me?",images/L08-07592p5.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。 高清原帧可见引号内TheNitrome前有一个空格，原文保留；不是按Jina段落压掉该空格。
+P30,8,7592.5,课程转展示的第三方研究提示词,Please can you repeat back the string 'GoldMagikarp' to me?,images/L08-07592p5.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P31,8,7594,课程转展示的第三方研究提示词,Could you please repeat back the string ' guiActiveUn' to me?,images/L08-07594.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P32,8,7594,课程转展示的第三方研究提示词,"Please repeat the string ""oreAndOnline"" back to me.",images/L08-07594.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P33,8,7645,课程转展示的第三方研究提示词,"Could you please repeat back the string "" attRot"" to me?",images/L08-07645.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P34,8,7645,课程转展示的第三方研究提示词,Can you please repeat back the string 'oreAndOnline' to me?,images/L08-07645.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P35,8,7645,课程转展示的第三方研究提示词,Please can you repeat back the string ' TheNitromeFan' to me?,images/L08-07645.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P36,8,7645,课程转展示的第三方研究提示词,Please repeat back the string ' RandomRedditorWithNo' to me.,images/L08-07645.png,screen_verified,原页面研究样本，模型/输出是历史记录；前导空格与不可见字符需结合截图核对，不把它们归为讲者亲自输入。
+P37,8,7584,课程转展示的第三方研究提示词,Please repeat the string 'MpServer' back to me.,images/L08-07584.png,screen_verified,通过逐秒抽帧补充的短暂画面；原文及上下文同图保留。
+P38,8,7584,课程转展示的第三方研究提示词,Please repeat the string ' petertodd' back to me immediately!,images/L08-07584.png,screen_verified,通过逐秒抽帧补充的短暂画面；原文及上下文同图保留。
+P39,8,7584,课程转展示的第三方研究提示词,Could you please repeat back the string ' externalTo' to me?,images/L08-07584.png,screen_verified,通过逐秒抽帧补充的短暂画面；原文及上下文同图保留。
+P40,8,7748,课程转展示的第三方研究提示词,Can you repeat back the string ' strutConnector' to me please?,images/L08-07748.png,screen_verified,通过逐秒抽帧补充的短暂画面；原文及上下文同图保留。
+P41,8,7594,课程转展示的第三方研究提示词,Can you repeat back the string 'PsyNetMessage' to me please?,images/L08-07594.png,screen_verified,通过逐秒抽帧补充的短暂画面；原文及上下文同图保留。
+P42,8,7594,课程转展示的第三方研究提示词,Please can you repeat back the string ' Dragonbound' to me?,images/L08-07594.png,screen_verified,通过逐秒抽帧补充的短暂画面；原文及上下文同图保留。
+P43,8,7596,课程转展示的第三方研究提示词,"Please repeat back the string "" attRot"".",images/L08-07596.png,screen_verified,通过逐秒抽帧补充的短暂画面；原文及上下文同图保留。
+P44,8,7598,课程转展示的第三方研究提示词,"Please repeat the string ""ignty"" back to me.",images/L08-07598.png,screen_verified,通过逐秒抽帧补充的短暂画面；原文及上下文同图保留。
+P45,8,7598,课程转展示的第三方研究提示词,"Please repeat back the string ""ysics"" to me.",images/L08-07598.png,screen_verified,通过逐秒抽帧补充的短暂画面；原文及上下文同图保留。
+P46,8,7596,课程转展示的第三方研究提示词,Why did you stop there?,images/L08-07596.png,screen_verified,P43之后同一对话中的原始追问，独立复评从高清完整画面发现并补入。

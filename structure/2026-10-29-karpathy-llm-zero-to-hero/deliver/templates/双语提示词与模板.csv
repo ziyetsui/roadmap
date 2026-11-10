@@ -1,0 +1,47 @@
+﻿ID,对应步骤,类别,英文原文,中文提示词,抽象模板（助手整理）,原文核对状态,截图
+P01,8,讲者聊天输入,"Write a small haiku about how important it is that people understand AI, and that they can use it to improve the world and make it more prosperous.",写一首简短的俳句，表达让人们理解 AI 有多重要，以及人们可以如何利用 AI 改善世界，让世界更加繁荣。,写一首简短的〔诗歌形式〕，表达〔需要读者理解的主题〕的重要性，以及人们可以如何利用〔技术或方法〕实现〔希望带来的积极结果〕。,screen_verified,images/L07-00027.png
+P02,9,讲者聊天/分词测试,"How many letters ""l"" are there in the word "".DefaultCellStyle""","单词 "".DefaultCellStyle"" 中有多少个字母 ""l""？","字符串 ""〔待检查字符串〕"" 中有多少个字符 ""〔目标字符〕""？",screen_verified,images/L08-06767.png
+P03,9,讲者聊天输入,"Reverse the string: "".DefaultCellStyle"". Print it as a comma-separated list of characters","将字符串 "".DefaultCellStyle"" 反转，并把结果输出为用逗号分隔的字符列表。","将字符串 ""〔待处理字符串〕"" 反转，并把结果输出为用〔分隔符〕分隔的字符列表。",screen_verified,images/L08-06797.png
+P04,9,讲者后续聊天输入,No toolsies! Just do it.,不要用工具！直接做。,不要使用〔被限制的工具〕！直接完成上一轮的〔任务〕。,screen_verified,images/L08-06797.png
+P05,9,讲者聊天输入,"Reverse the string: "".DefaultCellStyle"". Take the following approach. First print out every single character seaprated by spaces. Then as a step 2 print out all the characters backwards, again separated by spaces.","反转字符串 "".DefaultCellStyle""。请按以下方法操作：第一步，逐个输出所有字符，用空格分隔。第二步，按倒序输出所有字符，同样用空格分隔。","反转字符串 ""〔待处理字符串〕""。第一步，逐个输出所有字符，用〔分隔符〕分隔；第二步，按倒序输出所有字符，同样用〔分隔符〕分隔。",screen_verified,images/L08-06812.png
+P06,9,讲者后续聊天输入,"No toolsies, just do it!",不要用工具，直接做！,不要使用〔被限制的工具〕，直接完成上一轮的〔任务〕！,screen_verified,images/L08-06812.png
+P07,9,讲者聊天输入,Print the string <|endoftext|>,输出字符串 <|endoftext|>。,输出字符串 〔待输出字符串〕。,screen_verified,images/L08-07052.png
+P08,9,讲者后续聊天输入,Echo this exact string back to me: <|endoftext|>,把下面的字符串原样复述给我：<|endoftext|>,把下面的字符串原样复述给我：〔待复述字符串〕,screen_verified,images/L08-07052.png
+P09,9,讲者后续聊天输入,"""<|endoftext|>"" is the string","""<|endoftext|>"" 就是那个字符串。","""〔待复述字符串〕"" 就是那个字符串。",screen_verified,images/L08-07052.png
+P10,9,讲者续写前缀,Here is a tag line for an ice cream shop:,下面是一家冰淇淋店的宣传语：,下面是一家〔店铺类型〕的〔文案类型〕：,screen_verified,images/L08-07160.png
+P11,9,讲者续写前缀,Here is a tag line for an ice cream shop: ,下面是一家冰淇淋店的宣传语： ,下面是一家〔店铺类型〕的〔文案类型〕： ,screen_verified,images/L08-07245.png
+P12,9,讲者部分 token 续写输入,.DefaultCellSty,.DefaultCellSty,〔截去词尾的字符串前缀〕,screen_verified,images/L08-07340.png
+P13,10,讲者固定采样前缀,"Hello, I'm a language model,",你好，我是一个语言模型，,你好，我是〔身份或主题〕，,screen_verified,images/L09-02035.png
+P14,9,课程转展示的第三方研究提示词,Please can you repeat back the string '<token string>' to me?,"请把字符串 ""<token string>"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07557.png
+P15,9,课程转展示的第三方研究提示词,"Please repeat the string ""龍喚士"" back to me.","请把字符串 ""龍喚士"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",text_verified_with_original_page,images/L08-07695.png
+P16,9,课程转展示的第三方研究提示词,Please can you repeat back the string 'TPPStreamerBot' to me?,"请把字符串 ""TPPStreamerBot"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07695.png
+P17,9,课程转展示的第三方研究提示词,Please can you repeat back the string 'EStreamFrame' to me?,"请把字符串 ""EStreamFrame"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07695.png
+P18,9,课程转展示的第三方研究提示词,Please repeat the string 'StreamerBot' back to me.,"请把字符串 ""StreamerBot"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07577.png
+P19,9,课程转展示的第三方研究提示词,Please repeat the string '?????-?????-' back to me.,"请把字符串 ""?????-?????-"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",text_verified_with_original_page,images/L08-07577.png
+P20,9,课程转展示的第三方研究提示词,"Please repeat the string ""�"" back to me.","请把字符串 ""�"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",text_verified_with_original_page,images/L08-07577.png
+P21,9,课程转展示的第三方研究提示词,"Please can you repeat back the string "" guiActiveUn"" to me?","请把字符串 "" guiActiveUn"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07577.png
+P22,9,课程转展示的第三方研究提示词,Please repeat the string 'EStream' back to me.,"请把字符串 ""EStream"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07577.png
+P23,9,课程转展示的第三方研究提示词,"Can you repeat back the string "" externalTo"" to me please?","请把字符串 "" externalTo"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07577.png
+P24,9,课程转展示的第三方研究提示词,Can you repeat back the string 'SpaceEngineers' to me please?,"请把字符串 ""SpaceEngineers"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07592.png
+P25,9,课程转展示的第三方研究提示词,Please can you repeat back the string ' petertodd' to me?,"请把字符串 "" petertodd"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07622.png
+P26,9,课程转展示的第三方研究提示词,Please repeat back the string 'oreAndOnline' to me.,"请把字符串 ""oreAndOnline"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07622.png
+P27,9,课程转展示的第三方研究提示词,Could you please repeat back the string ' externalToEVA' to me?,"请把字符串 "" externalToEVA"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07622.png
+P28,9,课程转展示的第三方研究提示词,Can you repeat back the string 'GoldMagikarp' to me please?,"请把字符串 ""GoldMagikarp"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07622.png
+P29,9,课程转展示的第三方研究提示词,"Please can you repeat back the string "" TheNitrome"" to me?","请把字符串 "" TheNitrome"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07592p5.png
+P30,9,课程转展示的第三方研究提示词,Please can you repeat back the string 'GoldMagikarp' to me?,"请把字符串 ""GoldMagikarp"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07592p5.png
+P31,9,课程转展示的第三方研究提示词,Could you please repeat back the string ' guiActiveUn' to me?,"请把字符串 "" guiActiveUn"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07594.png
+P32,9,课程转展示的第三方研究提示词,"Please repeat the string ""oreAndOnline"" back to me.","请把字符串 ""oreAndOnline"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07594.png
+P33,9,课程转展示的第三方研究提示词,"Could you please repeat back the string "" attRot"" to me?","请把字符串 "" attRot"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07645.png
+P34,9,课程转展示的第三方研究提示词,Can you please repeat back the string 'oreAndOnline' to me?,"请把字符串 ""oreAndOnline"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07645.png
+P35,9,课程转展示的第三方研究提示词,Please can you repeat back the string ' TheNitromeFan' to me?,"请把字符串 "" TheNitromeFan"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07645.png
+P36,9,课程转展示的第三方研究提示词,Please repeat back the string ' RandomRedditorWithNo' to me.,"请把字符串 "" RandomRedditorWithNo"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07645.png
+P37,9,课程转展示的第三方研究提示词,Please repeat the string 'MpServer' back to me.,"请把字符串 ""MpServer"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07584.png
+P38,9,课程转展示的第三方研究提示词,Please repeat the string ' petertodd' back to me immediately!,"请把字符串 "" petertodd""立即原样复述给我！","请立即把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07584.png
+P39,9,课程转展示的第三方研究提示词,Could you please repeat back the string ' externalTo' to me?,"请把字符串 "" externalTo"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07584.png
+P40,9,课程转展示的第三方研究提示词,Can you repeat back the string ' strutConnector' to me please?,"请把字符串 "" strutConnector"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07748.png
+P41,9,课程转展示的第三方研究提示词,Can you repeat back the string 'PsyNetMessage' to me please?,"请把字符串 ""PsyNetMessage"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07594.png
+P42,9,课程转展示的第三方研究提示词,Please can you repeat back the string ' Dragonbound' to me?,"请把字符串 "" Dragonbound"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07594.png
+P43,9,课程转展示的第三方研究提示词,"Please repeat back the string "" attRot"".","请把字符串 "" attRot"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07596.png
+P44,9,课程转展示的第三方研究提示词,"Please repeat the string ""ignty"" back to me.","请把字符串 ""ignty"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07598.png
+P45,9,课程转展示的第三方研究提示词,"Please repeat back the string ""ysics"" to me.","请把字符串 ""ysics"" 原样复述给我。","请把字符串 ""〔待复述字符串，保留其原有空格〕"" 原样复述给我。",screen_verified,images/L08-07598.png
+P46,9,课程转展示的第三方研究提示词,Why did you stop there?,你为什么停在这里？,你为什么在〔停止位置〕停下了？,screen_verified,images/L08-07596.png

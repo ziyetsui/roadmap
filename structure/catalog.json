@@ -124,5 +124,14 @@
     "html": "manual.html",
     "pdf": "manual.pdf",
     "md": "manual.md"
+  },
+  {
+    "episode": "2026-10-29-karpathy-llm-zero-to-hero",
+    "slug": "karpathy-llm-zero-to-hero",
+    "title": "Karpathy 从零构建大语言模型实战手册",
+    "status": "needs-qc",
+    "html": "manual.html",
+    "pdf": "manual.pdf",
+    "md": "manual.md"
   }
 ]

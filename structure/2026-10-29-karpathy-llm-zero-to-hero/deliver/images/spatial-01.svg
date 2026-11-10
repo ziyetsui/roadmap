@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect x="0" y="0" width="1200" height="760" fill="#ffffff"/>
+<text x="50" y="65" fill="#18333d" font-family="sans-serif" font-size="36" font-weight="bold" text-anchor="start">步骤 1 · 把学习环境当成一张工作台</text>
+<text x="50" y="110" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="start">文件、运行工具、输出记录各有位置；装好工具还没有开始训练。</text>
+<rect x="50" y="200" width="290" height="130" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="195.0" y="255.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">学习副本</text>
+<text x="195.0" y="293.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">代码与数据</text>
+<rect x="455" y="200" width="290" height="130" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="600.0" y="255.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">Python 环境</text>
+<text x="600.0" y="293.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">执行当前代码</text>
+<rect x="860" y="200" width="290" height="130" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="1005.0" y="255.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">输出与证据</text>
+<text x="1005.0" y="293.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">日志、图、检查点</text>
+<line x1="340" y1="265" x2="455" y2="265" stroke="#087f8c" stroke-width="4"/>
+<polygon points="455.0,265.0 440.0,258.0 440.0,272.0" fill="#087f8c"/>
+<line x1="745" y1="265" x2="860" y2="265" stroke="#087f8c" stroke-width="4"/>
+<polygon points="860.0,265.0 845.0,258.0 845.0,272.0" fill="#087f8c"/>
+<rect x="355" y="440" width="490" height="115" rx="12" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="600.0" y="487.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">Jupyter：逐格发送代码</text>
+<text x="600.0" y="525.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">内核：记住本次运行中的变量</text>
+<line x1="600" y1="440" x2="600" y2="330" stroke="#087f8c" stroke-width="4"/>
+<polygon points="600.0,330.0 593.0,345.0 607.0,345.0" fill="#087f8c"/>
+<text x="50" y="670" fill="#18333d" font-family="sans-serif" font-size="27" font-weight="normal" text-anchor="start">手指沿线走：找到文件 → 选对环境 → 执行 → 观察并保存。</text>
+<text x="50" y="713" fill="#516771" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="start">路径像工作台上的地址；不是换个文件夹就自动换了 Python 环境。</text>
+</svg>

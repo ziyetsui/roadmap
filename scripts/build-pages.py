@@ -20,7 +20,7 @@ def main():
         slug = item['slug']
         src = ROOT / 'structure' / item['episode'] / 'deliver'
         dst = OUT / slug
-        shutil.copytree(src, dst)
+        shutil.copytree(src, dst, ignore=shutil.ignore_patterns('_prev'))
         shutil.copy2(dst / item['html'], dst / 'index.html')
         title = html.escape(item['title'])
         status = html.escape(STATUS.get(item['status'], item['status']))

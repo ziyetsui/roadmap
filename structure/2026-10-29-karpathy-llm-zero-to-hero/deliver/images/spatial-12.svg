@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect x="0" y="0" width="1200" height="760" fill="#ffffff"/>
+<text x="50" y="65" fill="#18333d" font-family="sans-serif" font-size="36" font-weight="bold" text-anchor="start">步骤 12 · 先收齐小批梯度，再改一次参数</text>
+<text x="50" y="110" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="start">示意 W=2、A=3；每张卡三个微批，微批之间不改参数。</text>
+<text x="50" y="295" fill="#18333d" font-family="sans-serif" font-size="29" font-weight="normal" text-anchor="start">卡 0</text>
+<rect x="180" y="240" width="145" height="100" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="252.5" y="280.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">微批 1</text>
+<text x="252.5" y="318.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">反传累积</text>
+<line x1="325" y1="290" x2="360" y2="290" stroke="#087f8c" stroke-width="4"/>
+<polygon points="360.0,290.0 345.0,283.0 345.0,297.0" fill="#087f8c"/>
+<rect x="360" y="240" width="145" height="100" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="432.5" y="280.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">微批 2</text>
+<text x="432.5" y="318.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">反传累积</text>
+<line x1="505" y1="290" x2="540" y2="290" stroke="#087f8c" stroke-width="4"/>
+<polygon points="540.0,290.0 525.0,283.0 525.0,297.0" fill="#087f8c"/>
+<rect x="540" y="240" width="145" height="100" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="612.5" y="280.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">微批 3</text>
+<text x="612.5" y="318.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">反传累积</text>
+<line x1="685" y1="290" x2="815" y2="380" stroke="#087f8c" stroke-width="4"/>
+<polygon points="815.0,380.0 806.7,365.7 798.7,377.2" fill="#087f8c"/>
+<text x="50" y="495" fill="#18333d" font-family="sans-serif" font-size="29" font-weight="normal" text-anchor="start">卡 1</text>
+<rect x="180" y="440" width="145" height="100" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="252.5" y="480.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">微批 1</text>
+<text x="252.5" y="518.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">反传累积</text>
+<line x1="325" y1="490" x2="360" y2="490" stroke="#087f8c" stroke-width="4"/>
+<polygon points="360.0,490.0 345.0,483.0 345.0,497.0" fill="#087f8c"/>
+<rect x="360" y="440" width="145" height="100" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="432.5" y="480.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">微批 2</text>
+<text x="432.5" y="518.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">反传累积</text>
+<line x1="505" y1="490" x2="540" y2="490" stroke="#087f8c" stroke-width="4"/>
+<polygon points="540.0,490.0 525.0,483.0 525.0,497.0" fill="#087f8c"/>
+<rect x="540" y="440" width="145" height="100" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="612.5" y="480.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">微批 3</text>
+<text x="612.5" y="518.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">反传累积</text>
+<line x1="685" y1="490" x2="815" y2="380" stroke="#087f8c" stroke-width="4"/>
+<polygon points="815.0,380.0 799.0,384.3 808.1,395.0" fill="#087f8c"/>
+<rect x="815" y="315" width="140" height="130" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="885.0" y="370.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">梯度</text>
+<text x="885.0" y="408.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">汇总</text>
+<rect x="1010" y="315" width="155" height="130" rx="12" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="1087.5" y="370.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">更新</text>
+<text x="1087.5" y="408.0" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">一次</text>
+<line x1="955" y1="380" x2="1010" y2="380" stroke="#087f8c" stroke-width="4"/>
+<polygon points="1010.0,380.0 995.0,373.0 995.0,387.0" fill="#087f8c"/>
+<text x="50" y="670" fill="#18333d" font-family="sans-serif" font-size="27" font-weight="normal" text-anchor="start">全局 token/更新 = B × T × W × A；等大微批按 A 平均。</text>
+<text x="50" y="713" fill="#516771" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="start">这是汇总依赖图；实际通信可能与计算重叠，不必只发生在末尾。</text>
+</svg>

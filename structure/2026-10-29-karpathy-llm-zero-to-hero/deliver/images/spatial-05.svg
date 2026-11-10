@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<rect x="0" y="0" width="1200" height="760" fill="#ffffff"/>
+<text x="50" y="65" fill="#18333d" font-family="sans-serif" font-size="36" font-weight="bold" text-anchor="start">步骤 5 · 看弯道：有输出，不一定容易改变</text>
+<text x="50" y="110" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="start">tanh 的两端变平；反向梯度经过这里时可能被大幅缩小。</text>
+<line x1="110" y1="390" x2="780" y2="390" stroke="#087f8c" stroke-width="4"/>
+<polygon points="780.0,390.0 765.0,383.0 765.0,397.0" fill="#087f8c"/>
+<line x1="445" y1="565" x2="445" y2="170" stroke="#087f8c" stroke-width="4"/>
+<polygon points="445.0,170.0 438.0,185.0 452.0,185.0" fill="#087f8c"/>
+<polyline points="145.0,539.9 148.8,539.9 152.5,539.9 156.2,539.9 160.0,539.8 163.8,539.8 167.5,539.8 171.2,539.8 175.0,539.8 178.8,539.8 182.5,539.7 186.2,539.7 190.0,539.7 193.8,539.6 197.5,539.6 201.2,539.5 205.0,539.5 208.8,539.5 212.5,539.4 216.2,539.3 220.0,539.3 223.8,539.2 227.5,539.1 231.2,539.0 235.0,538.9 238.8,538.8 242.5,538.7 246.2,538.5 250.0,538.4 253.8,538.2 257.5,538.0 261.2,537.8 265.0,537.6 268.8,537.3 272.5,537.0 276.2,536.7 280.0,536.4 283.8,536.0 287.5,535.6 291.2,535.1 295.0,534.6 298.8,534.0 302.5,533.4 306.2,532.8 310.0,532.0 313.8,531.2 317.5,530.3 321.2,529.3 325.0,528.3 328.8,527.1 332.5,525.8 336.2,524.4 340.0,522.8 343.8,521.1 347.5,519.3 351.2,517.2 355.0,515.0 358.8,512.7 362.5,510.1 366.2,507.3 370.0,504.2 373.8,501.0 377.5,497.4 381.2,493.7 385.0,489.6 388.8,485.3 392.5,480.7 396.2,475.8 400.0,470.6 403.8,465.1 407.5,459.3 411.2,453.3 415.0,447.0 418.8,440.5 422.5,433.7 426.2,426.7 430.0,419.6 433.8,412.3 437.5,405.0 441.2,397.5 445.0,390.0 448.8,382.5 452.5,375.0 456.2,367.7 460.0,360.4 463.8,353.3 467.5,346.3 471.2,339.5 475.0,333.0 478.8,326.7 482.5,320.7 486.2,314.9 490.0,309.4 493.8,304.2 497.5,299.3 501.2,294.7 505.0,290.4 508.8,286.3 512.5,282.6 516.2,279.0 520.0,275.8 523.8,272.7 527.5,269.9 531.2,267.3 535.0,265.0 538.8,262.8 542.5,260.7 546.2,258.9 550.0,257.2 553.8,255.6 557.5,254.2 561.2,252.9 565.0,251.7 568.8,250.7 572.5,249.7 576.2,248.8 580.0,248.0 583.8,247.2 587.5,246.6 591.2,246.0 595.0,245.4 598.8,244.9 602.5,244.4 606.2,244.0 610.0,243.6 613.8,243.3 617.5,243.0 621.2,242.7 625.0,242.4 628.8,242.2 632.5,242.0 636.2,241.8 640.0,241.6 643.8,241.5 647.5,241.3 651.2,241.2 655.0,241.1 658.8,241.0 662.5,240.9 666.2,240.8 670.0,240.7 673.8,240.7 677.5,240.6 681.2,240.5 685.0,240.5 688.8,240.5 692.5,240.4 696.2,240.4 700.0,240.3 703.8,240.3 707.5,240.3 711.2,240.2 715.0,240.2 718.8,240.2 722.5,240.2 726.2,240.2 730.0,240.2 733.8,240.1 737.5,240.1 741.2,240.1 745.0,240.1" fill="none" stroke="#087f8c" stroke-width="5"/>
+<text x="90" y="155" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="start">输出接近 ±1 时曲线变平</text>
+<text x="700" y="430" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="start">输入 x</text>
+<text x="460" y="195" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="start">输出 tanh(x)</text>
+<text x="460" y="245" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">+1</text>
+<text x="460" y="545" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">−1</text>
+<rect x="855" y="215" width="280" height="125" rx="12" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="995.0" y="267.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">x = 0</text>
+<text x="995.0" y="305.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">局部导数 = 1</text>
+<rect x="855" y="410" width="280" height="125" rx="12" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="995.0" y="462.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">x = 3</text>
+<text x="995.0" y="500.5" fill="#18333d" font-family="sans-serif" font-size="28" font-weight="normal" text-anchor="middle">导数 ≈ 0.0099</text>
+<text x="50" y="670" fill="#18333d" font-family="sans-serif" font-size="27" font-weight="normal" text-anchor="start">先检查初始化和中间信号，再比较修复前后的分布。</text>
+<text x="50" y="713" fill="#516771" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="start">曲线是数学关系；饱和比例只是线索，不能单凭它判定训练失败。</text>
+</svg>

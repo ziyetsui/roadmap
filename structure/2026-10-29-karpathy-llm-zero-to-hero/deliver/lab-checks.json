@@ -1,0 +1,197 @@
+{
+  "torch": "2.8.0",
+  "device": "cpu",
+  "scope": "bounded mathematical and structural checks; not full training",
+  "checks": {
+    "micrograd_repeated_node": {
+      "gradient": 2,
+      "status": "passed"
+    },
+    "manual_backprop": {
+      "status": "passed",
+      "items": [
+        {
+          "tensor": "logprobs",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "probs",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "counts_sum_inv",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "counts_sum",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "counts",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "norm_logits",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "logit_maxes",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "logits",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "h",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "W2",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "b2",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "hpreact",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "bngain",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "bnbias",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "bnraw",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "bnvar_inv",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "bnvar",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "bndiff2",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "bndiff",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "bnmeani",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "hprebn",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "embcat",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "W1",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "b1",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "emb",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "C",
+          "maxdiff": 0.0,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "logits",
+          "maxdiff": 5.238689482212067e-09,
+          "within_atol_1e-6_rtol_1e-4": true
+        },
+        {
+          "tensor": "hprebn",
+          "maxdiff": 9.313225746154785e-10,
+          "within_atol_1e-6_rtol_1e-4": true
+        }
+      ]
+    },
+    "bpe": {
+      "status": "passed",
+      "ids": [
+        258,
+        100,
+        258,
+        97,
+        99
+      ],
+      "roundtrips": [
+        "",
+        "hello",
+        "中文测试",
+        "안녕하세요 😉",
+        "aaaaaaa"
+      ]
+    },
+    "gpt2_tiny": {
+      "status": "passed",
+      "shape": [
+        2,
+        8,
+        32
+      ],
+      "causal_diff": 0.0,
+      "weight_tied": true,
+      "losses": [
+        3.4875054359436035,
+        3.070157766342163,
+        2.853271722793579,
+        2.5981271266937256,
+        2.4190187454223633,
+        2.116330623626709,
+        1.884934663772583,
+        1.6702357530593872,
+        1.4760538339614868,
+        1.2958953380584717
+      ],
+      "parameters": 26752,
+      "note": "2-layer 32-wide random model, 10 updates, not 124M training"
+    }
+  }
+}

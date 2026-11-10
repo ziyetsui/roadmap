@@ -1,0 +1,37 @@
+[
+  {
+    "repo": "makemore",
+    "url": "https://github.com/karpathy/makemore",
+    "commit": "988aa59e4d8fefa526d06f3b453ad116258398d4"
+  },
+  {
+    "repo": "minbpe",
+    "url": "https://github.com/karpathy/minbpe",
+    "commit": "1acefe89412b20245db5a22d2a02001e547dc602"
+  },
+  {
+    "repo": "build-nanogpt",
+    "url": "https://github.com/karpathy/build-nanogpt",
+    "commit": "6104ab1b53920f6e2159749676073ff7d815c1fa"
+  },
+  {
+    "repo": "ng-video-lecture",
+    "url": "https://github.com/karpathy/ng-video-lecture",
+    "commit": "52201428ed7b46804849dea0b3ccf0de9df1a5c3"
+  },
+  {
+    "repo": "micrograd",
+    "url": "https://github.com/karpathy/micrograd",
+    "commit": "7bc720e951fe422b8f8814aa5aa1b64121d26b4c"
+  },
+  {
+    "repo": "nanoGPT",
+    "url": "https://github.com/karpathy/nanoGPT",
+    "commit": "3adf61e154c3fe3fca428ad6bc3818b27a3b8291"
+  },
+  {
+    "repo": "nn-zero-to-hero",
+    "url": "https://github.com/karpathy/nn-zero-to-hero",
+    "commit": "73c3fcc741f0ec104ca850b1fb0df90e7e8d4cde"
+  }
+]

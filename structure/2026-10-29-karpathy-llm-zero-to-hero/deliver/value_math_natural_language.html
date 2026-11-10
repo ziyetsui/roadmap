@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>从数学表达式到自然语言：micrograd 教学代码对照</title>
+<style>
+:root{color-scheme:light;--ink:#203137;--muted:#52646a;--line:#cbd9d9;--paper:#fffdf8;--soft:#f1f7f4;--accent:#1c655c;--tint:#dceee8}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:76rem;margin:auto;padding:clamp(1rem,4vw,3rem)}h1{line-height:1.2}h2{margin-top:2.4rem;padding-bottom:.4rem;border-bottom:2px solid var(--accent);color:var(--accent)}
+.intro{padding:1rem 1.2rem;background:var(--soft);border-left:4px solid var(--accent)}.pair{width:100%;border-collapse:separate;border-spacing:0;margin:1rem 0 1.6rem;border:1px solid var(--line);border-radius:.7rem;overflow:hidden;background:white}
+.pair th,.pair td{padding:.8rem 1rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}.pair th{background:var(--tint);color:var(--accent)}.pair tr:last-child td{border-bottom:0}
+.pair td:first-child{width:42%;font:1rem/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}.read{display:block;margin-top:.35rem;color:var(--muted);font: .9rem/1.5 system-ui,sans-serif}.natural{font-size:1rem}.tag{display:inline-block;margin:0 .35rem .25rem 0;padding:.05rem .45rem;border-radius:999px;background:var(--tint);color:var(--accent);font-size:.78rem;font-weight:700}
+.note{color:var(--muted);font-size:.92rem}code{padding:.08rem .25rem;border-radius:.2rem;background:var(--soft)}@media(max-width:680px){.pair thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.pair,.pair tbody,.pair tr,.pair td{display:block;width:100%}.pair tr{padding:.35rem 0;border-bottom:1px solid var(--line)}.pair tr:last-child{border:0}.pair td{border:0!important;padding:.4rem .8rem}.pair td:first-child:before{content:"数学表达式";display:block;margin-bottom:.15rem;color:var(--accent);font:700 .78rem system-ui,sans-serif}.pair td:nth-child(2):before{content:"自然语言表达式";display:block;margin-bottom:.15rem;color:var(--accent);font:700 .78rem system-ui,sans-serif}}
+@media print{body{font-size:11pt}.pair{break-inside:avoid}h2{break-after:avoid}main{max-width:none;padding:0}}
+</style>
+</head>
+<body><main>
+<h1>从数学表达式到自然语言</h1>
+<p class="intro">这份对照把教学代码里的每个核心运算和实验，写成“数学表达式 → 自然语言表达式”。公式下方附中文读法，方便开口讲解。这里的箭头表示解释对应关系，不表示代码逐字等于数学公式。</p>
+
+<h2>一、一个数字，也记录它怎样影响结果</h2>
+<table class="pair"><thead><tr><th>数学表达式</th><th>自然语言表达式</th></tr></thead><tbody>
+<tr><td>v = (data, grad, parents, op)<span class="read">读作：维等于 data、grad、parents、op 组成的记录</span></td><td class="natural"><span class="tag">Value</span>把一个数装进记录卡：当前数值、结果变化时它要承担的影响、它从哪些上游数算来，以及用了什么运算。</td></tr>
+<tr><td>v.grad = 0<span class="read">读作：维的梯度初始为零</span></td><td class="natural">一开始还没有从最终结果传回任何影响，所以先把这张记录卡收到的影响设为零。</td></tr>
+<tr><td>v._backward = 空操作<span class="read">读作：维的反向规则暂时什么也不做</span></td><td class="natural">如果这个数是最终结果，或没有上游运算需要处理，默认就不再向前传。</td></tr>
+</tbody></table>
+
+<h2>二、每种运算都有一条反向规则</h2>
+<table class="pair"><thead><tr><th>数学表达式</th><th>自然语言表达式</th></tr></thead><tbody>
+<tr><td>z = x + y<br>∂z/∂x = 1，∂z/∂y = 1<span class="read">读作：z 等于 x 加 y；z 对 x 和 y 的偏导数都等于一</span></td><td class="natural">加法结果多一份，任一输入多一份都会让结果多一份。因此，下游传回多少影响，x 和 y 就各自收到多少。</td></tr>
+<tr><td>x.grad += z.grad<br>y.grad += z.grad<span class="read">读作：x 和 y 的梯度，各自加上 z 收到的梯度</span></td><td class="natural">把结果的影响原样分给两个加数；用“累加”是为了保留这个数从其他路径收到的影响。</td></tr>
+<tr><td>z = x × y<br>∂z/∂x = y，∂z/∂y = x<span class="read">读作：z 等于 x 乘 y；z 对 x 的偏导数是 y，对 y 的偏导数是 x</span></td><td class="natural">看 x 的影响时，把 y 固定住，x 的变化会被 y 倍放大；看 y 时则固定 x，所以被 x 倍放大。</td></tr>
+<tr><td>x.grad += y × z.grad<br>y.grad += x × z.grad<span class="read">读作：x 收到 y 乘以 z 的梯度；y 收到 x 乘以 z 的梯度</span></td><td class="natural">先看这一站的放大倍数，再乘上结果从下游收到的影响。这就是把局部导数接到整条计算链上。</td></tr>
+<tr><td>z = xⁿ<br>∂z/∂x = n × xⁿ⁻¹<span class="read">读作：z 等于 x 的 n 次方；z 对 x 的导数等于 n 乘 x 的 n 减一次方</span></td><td class="natural">幂函数有固定的斜率规则。代码把这个局部斜率乘以下游传来的影响，再加到 x 的梯度上。</td></tr>
+<tr><td>若 n = 0，则 ∂(x⁰)/∂x = 0<span class="read">读作：指数是零时，x 的零次方对 x 的导数是零</span></td><td class="natural">零次方是常数 1，不随 x 改变，所以没有影响传回 x。代码因此在指数不为零时才执行幂函数的导数计算。</td></tr>
+<tr><td>t = tanh(x)<br>∂t/∂x = 1 − t²<span class="read">读作：t 等于双曲正切 x；导数等于一减 t 的平方</span></td><td class="natural">tanh 把输入压到 -1 到 1。代码先算出输出 t，再用输出算出这一站的局部斜率，把影响传回输入。</td></tr>
+<tr><td>−x = x × (−1)<br>x − y = x + (−y)<br>x / y = x × y⁻¹<span class="read">读作：负 x 等于 x 乘负一；减法改写为加负数；除法改写为乘倒数</span></td><td class="natural">负号、减法和除法不另造一套反向规则，而是改写成已会处理的乘法、加法和乘方。</td></tr>
+</tbody></table>
+
+<h2>三、从最终结果往回传影响</h2>
+<table class="pair"><thead><tr><th>数学表达式</th><th>自然语言表达式</th></tr></thead><tbody>
+<tr><td>∂L/∂L = 1<span class="read">读作：L 对自身的导数等于一</span></td><td class="natural">从最终结果开始回传时，先给它自己的影响标为 1，表示结果对自身变化一比一。</td></tr>
+<tr><td>parents → node → order<br>反向遍历 order<span class="read">读作：先沿父节点排好顺序，再按相反顺序处理</span></td><td class="natural">先找齐结果依赖过的所有数字，并排成计算顺序；之后从结果往输入方向走。每个节点只处理一次，但同一输入收到的多条贡献仍然相加。</td></tr>
+<tr><td>若 q = a + a，则 ∂q/∂a = 2<br>若 q = a × a，则 ∂q/∂a = 2a<span class="read">读作：a 加 a 对 a 的导数是二；a 乘 a 对 a 的导数是二 a</span></td><td class="natural">同一个数字用了两次，就有两条回传路线。两条路线的影响要汇总，不能让后一条覆盖前一条。</td></tr>
+<tr><td>∂L/∂x = (∂L/∂z) × (∂z/∂x)<span class="read">读作：L 对 x 的导数，等于 L 对 z 的导数乘以 z 对 x 的导数</span></td><td class="natural">沿一条计算链走时，把每一站的局部放大倍数相乘。若有多条不同路线通向同一个输入，再把各路线的贡献加起来。</td></tr>
+</tbody></table>
+
+<h2>四、五个小实验分别在验证什么</h2>
+<table class="pair"><thead><tr><th>数学表达式</th><th>自然语言表达式</th></tr></thead><tbody>
+<tr><td>f(x) = 3x² − 4x + 5<br>[f(2+h) − f(2)] / h → 8<span class="read">读作：三 x 平方减四 x 加五；用函数值的变化除以 x 的变化，逼近八</span></td><td class="natural"><span class="tag">实验 1：有限差分</span>把 x 从 2 往前挪一点，观察 f 增加多少。再用输出变化除以输入变化，估计这一点附近的斜率。h 越小通常越准，但过小会受浮点舍入影响。</td></tr>
+<tr><td>d = 2 × 3 + 4 = 10<br>∂d/∂a = 3，∂d/∂b = 2，∂d/∂c = 1<span class="read">读作：d 等于二乘三加四，结果十；三个输入的影响依次是三、二、一</span></td><td class="natural"><span class="tag">实验 2：计算图</span>用一个乘法接一个加法。分别固定另外两个输入，只改变一个输入，检查手写规则能否得到预期的影响。</td></tr>
+<tr><td>a = 3<br>∂(a+a)/∂a = 2<br>∂(a×a)/∂a = 6<span class="read">读作：a 等于三；a 加 a 的导数是二；a 乘 a 的导数是六</span></td><td class="natural"><span class="tag">实验 3：重复节点</span>同一个 a 在表达式里出现两次，程序要把两条路线的贡献累加。乘法例子中，a=3，因此导数为 3+3=6。</td></tr>
+<tr><td>loss = (2w − 4)²<br>w ← w − 0.1 × ∂loss/∂w<span class="read">读作：损失等于二 w 减四的平方；w 减去零点一乘损失对 w 的导数</span></td><td class="natural"><span class="tag">实验 4：一次更新</span>先看当前参数造成多大误差，再沿着让误差下降的方向挪动参数。学习率 0.1 是这次示范的步幅；更新后重新计算误差。</td></tr>
+<tr><td>loss = ¼ × Σᵢ(predᵢ − targetᵢ)²<br>p ← p − 0.05 × ∂loss/∂p<span class="read">读作：损失是四个样本平方误差的平均；参数减去零点零五乘损失对参数的导数</span></td><td class="natural"><span class="tag">实验 5：四样本训练</span>网络分别预测四个输入，把预测与目标的差异合成平均误差。然后将误差的影响传回所有权重和偏置，并各自小幅调整。重复 200 轮，观察重新计算的误差和预测。</td></tr>
+</tbody></table>
+
+<h2>五、网络结构与训练流程</h2>
+<table class="pair"><thead><tr><th>数学表达式</th><th>自然语言表达式</th></tr></thead><tbody>
+<tr><td>neuron(x) = tanh(Σᵢ wᵢxᵢ + b)<span class="read">读作：神经元输出等于双曲正切，括号里是每个输入乘权重后求和再加偏置</span></td><td class="natural">一个神经元给每个输入分配权重，把加权结果加起来，加上可调偏置，再通过 tanh 得到输出。</td></tr>
+<tr><td>Σᵢ wᵢxᵢ + b<br>从 b 开始累加各个 wᵢxᵢ<span class="read">读作：从偏置开始，把每个输入与对应权重的乘积逐个加上</span></td><td class="natural">代码用 `sum(..., b)` 做加权求和，并指定从偏置开始。`zip(weights, inputs)` 让每个权重和对应输入配成一对。</td></tr>
+<tr><td>layer(x) = [neuron₁(x), …, neuronₘ(x)]<span class="read">读作：一层的输出是多个神经元各自的输出</span></td><td class="natural">一层包含多个并排的神经元；它们读取同一份输入，各自给出一个结果。</td></tr>
+<tr><td>MLP(x) = layerₖ(…layer₂(layer₁(x)))<span class="read">读作：多层感知器把输入依次送过每一层</span></td><td class="natural">把多层接起来：前一层输出交给后一层处理。最后一层给出预测。</td></tr>
+<tr><td>MLP(3, [4, 4, 1])<span class="read">读作：三维输入，后面依次是四个、四个、一个神经元</span></td><td class="natural">这个示例接收三个输入值，经过宽度为 4、4、1 的三层网络。最后只有一个输出，所以返回单个预测值；若最后一层有多个神经元，就返回一组输出。</td></tr>
+<tr><td>sizes = [input_count] + widths<br>相邻层大小依次配对<span class="read">读作：把输入宽度和各层宽度排成一列，再连接相邻两层</span></td><td class="natural">代码根据相邻两层的神经元数量创建层，并把每一层的权重和偏置收集起来，供训练使用。</td></tr>
+<tr><td>每轮：loss → 清梯度 → backward → 更新参数 → 重算 loss<span class="read">读作：先算损失、清空旧梯度、反向求导、更新参数，再重新计算损失</span></td><td class="natural">每轮都用当前参数重新做一次预测；清掉上轮留下的梯度；从误差反向计算影响；按影响调整参数。调整后必须重新预测，才能知道新误差。</td></tr>
+<tr><td>每 50 轮打印一次；共更新 200 轮<span class="read">读作：一共训练两百次，每五十次汇报一次</span></td><td class="natural">程序在第 50、100、150、200 次更新后重新计算并打印误差，便于观察训练过程。打印时用的是更新后的新计算结果。</td></tr>
+<tr><td>random.seed(42)<span class="read">读作：随机种子设为四十二</span></td><td class="natural">固定随机数的起点，让初始化和实验更容易重复。它不会保证模型效果更好，也不能保证所有设备上的计算完全一致。</td></tr>
+<tr><td>parameters = weights ∪ biases<span class="read">读作：模型参数由权重和偏置组成</span></td><td class="natural">把所有需要学习的权重和偏置集中起来，统一清梯度、读取梯度和更新。</td></tr>
+</tbody></table>
+
+<p class="note">阅读边界：数学表达式用于说明代码中的核心计算，不是把每一行 Python 语法硬译成公式。四条样本和 200 次更新只是小型演示，不能据此判断网络对新数据的泛化能力。</p>
+</main></body></html>
