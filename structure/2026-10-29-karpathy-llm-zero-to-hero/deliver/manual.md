@@ -607,6 +607,26 @@ G3：基础模型只续写文本，不承诺问答能力。完整训练质量依
 每个学习日先用 15 分钟回读上次记录，再完成表中的任务；结束前 30 分钟保存代码、参数、结果和下一步，这些时间计入表内。若某步未通过，使用下一时段继续排错；144 小时是计划预算，不是学会或跑完的保证。
 
 
+<a id="section-visual"></a>
+## 术语图解：六张能拖的卡片
+
+前面那张术语表是用来**查**的；这一节是用来**看**的。六个最容易卡住的词，各做了一张单页卡片：漫画开头、能拖的图收尾，离线也能打开。先看完卡片，再回来读正文，会省很多来回。
+
+| 卡片 | 讲什么 | 什么时候看 |
+|---|---|---|
+| [① logits / exp / softmax](https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/three-words/) | 三个词不是三件事，是同一条流水线的三站 | 先看，认名字 |
+| [② NLL / 交叉熵](https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/nll-cross-entropy/) | 罚的是“没把握”，不是“答错”；含一条能拖的罚款曲线 | 读步骤 3 之前 |
+| [③ 一个点，穿过四个房间](https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/four-rooms/) | 把 logits → exp → softmax → NLL 全画成空间变形，一个红点走完 | 想一次看全貌时 |
+| [④ exp 的空间变换](https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/exp/) | 拖一根进度条，看一排等距刻度被拉成等比、方格子被压弯 | 卡在“为什么非得是 exp” |
+| [⑤ 为什么压成一条线](https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/softmax-squash/) | 两个人分一块饼，所以答案只住得下一条线 | 卡在“平面怎么变成线” |
+| [⑥ softmax 具体怎么算](https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/softmax/) | 数字表、代码、三个常见坑，以及可以拖的实时演算 | 要自己写代码时 |
+
+建议顺序：先看 ① 认名字，再看 ② 知道罚什么，然后 ③ 把整条线走一遍。④⑤⑥ 是遇到具体卡点时再翻的深水区。
+
+这些卡片和正文里的插图不是一回事：正文的图是固定讲解，卡片的图**可以自己拖**——拖动参数，看分布和罚款当场变化。每一页都是单个 HTML 文件，另存下来双击就能离线打开，不联网也能用。
+
+回到正文：[步骤 3 的 bigram 与交叉熵](#section-s3)、[术语与形状速查](#section-intro)。
+
 <a id="section-s1"></a>
 ## 步骤 1 建立环境与课程工作目录
 

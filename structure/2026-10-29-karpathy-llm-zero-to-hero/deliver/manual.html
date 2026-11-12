@@ -171,7 +171,7 @@
       </div>
     </div>
     <div class="export-tools">
-      <button id="print-button" type="button" data-pdf-name="manual.pdf">分享</button>
+      <button id="print-button" type="button" data-pdf-name="">分享</button>
       <div class="export-copy" aria-label="PDF 分享说明">
         <p id="export-primary">导出为PDF文件进行分享</p>
         <p id="export-secondary">选择「另存为 PDF」，并在浏览器打印设置里关闭页眉和页脚</p>
@@ -2880,6 +2880,53 @@ If you've made it this far, you're now a pro at LLM Tokenization! Sadly, you're 
 </tbody>
 </table></div>
 <p>每个学习日先用 15 分钟回读上次记录，再完成表中的任务；结束前 30 分钟保存代码、参数、结果和下一步，这些时间计入表内。若某步未通过，使用下一时段继续排错；144 小时是计划预算，不是学会或跑完的保证。</p>
+</div></details>
+<details class="manual-section" id="section-visual" open><summary><span class="section-title">术语图解：六张能拖的卡片</span></summary><div class="section-body">
+<p>前面那张术语表是用来<strong>查</strong>的；这一节是用来<strong>看</strong>的。六个最容易卡住的词，各做了一张单页卡片：漫画开头、能拖的图收尾，离线也能打开。先看完卡片，再回来读正文，会省很多来回。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>卡片</th>
+<th>讲什么</th>
+<th>什么时候看</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/three-words/">① logits / exp / softmax</a></td>
+<td>三个词不是三件事，是同一条流水线的三站</td>
+<td>先看，认名字</td>
+</tr>
+<tr>
+<td><a href="https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/nll-cross-entropy/">② NLL / 交叉熵</a></td>
+<td>罚的是“没把握”，不是“答错”；含一条能拖的罚款曲线</td>
+<td>读步骤 3 之前</td>
+</tr>
+<tr>
+<td><a href="https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/four-rooms/">③ 一个点，穿过四个房间</a></td>
+<td>把 logits → exp → softmax → NLL 全画成空间变形，一个红点走完</td>
+<td>想一次看全貌时</td>
+</tr>
+<tr>
+<td><a href="https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/exp/">④ exp 的空间变换</a></td>
+<td>拖一根进度条，看一排等距刻度被拉成等比、方格子被压弯</td>
+<td>卡在“为什么非得是 exp”</td>
+</tr>
+<tr>
+<td><a href="https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/softmax-squash/">⑤ 为什么压成一条线</a></td>
+<td>两个人分一块饼，所以答案只住得下一条线</td>
+<td>卡在“平面怎么变成线”</td>
+</tr>
+<tr>
+<td><a href="https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/softmax/">⑥ softmax 具体怎么算</a></td>
+<td>数字表、代码、三个常见坑，以及可以拖的实时演算</td>
+<td>要自己写代码时</td>
+</tr>
+</tbody>
+</table></div>
+<p>建议顺序：先看 ① 认名字，再看 ② 知道罚什么，然后 ③ 把整条线走一遍。④⑤⑥ 是遇到具体卡点时再翻的深水区。</p>
+<p>这些卡片和正文里的插图不是一回事：正文的图是固定讲解，卡片的图<strong>可以自己拖</strong>——拖动参数，看分布和罚款当场变化。每一页都是单个 HTML 文件，另存下来双击就能离线打开，不联网也能用。</p>
+<p>回到正文：<a href="#section-s3">步骤 3 的 bigram 与交叉熵</a>、<a href="#section-intro">术语与形状速查</a>。</p>
 </div></details>
 <details class="manual-section" id="section-s1" open><summary><span class="section-title">步骤 1 建立环境与课程工作目录</span></summary><div class="section-body">
 <p>先把“视频里运行的文件”和“你自己的练习”分开。这样能反复从空白实现，又能随时对照作者代码，避免把所有版本覆盖成最后一次尝试。</p>

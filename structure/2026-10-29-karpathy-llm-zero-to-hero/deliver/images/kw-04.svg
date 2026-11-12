@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="35" font-weight="bold" text-anchor="start">步骤 4 · 一条样本从 3 个字符走到 27 个分数</text>
+<text x="50" y="105" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">同一批 4 道题，形状一路变；每个括号里的数字都能用手指点出来。</text>
+<rect x="18" y="230" width="212" height="150" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="124.0" y="281.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">Xb：4 道题</text>
+<text x="124.0" y="313.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">(4, 3)</text>
+<text x="124.0" y="345.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">字符编号</text>
+<line x1="230" y1="305" x2="248" y2="305" stroke="#087f8c" stroke-width="4"/>
+<polygon points="248.0,305.0 233.0,298.0 233.0,312.0" fill="#087f8c"/>
+<rect x="248" y="230" width="212" height="150" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="354.0" y="281.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">embedding</text>
+<text x="354.0" y="313.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">(4, 3, 2)</text>
+<text x="354.0" y="345.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">每字符 2 个数</text>
+<line x1="460" y1="305" x2="478" y2="305" stroke="#087f8c" stroke-width="4"/>
+<polygon points="478.0,305.0 463.0,298.0 463.0,312.0" fill="#087f8c"/>
+<rect x="478" y="230" width="212" height="150" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="584.0" y="281.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">拼接</text>
+<text x="584.0" y="313.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">(4, 6)</text>
+<text x="584.0" y="345.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">3 × 2 = 6</text>
+<line x1="690" y1="305" x2="708" y2="305" stroke="#087f8c" stroke-width="4"/>
+<polygon points="708.0,305.0 693.0,298.0 693.0,312.0" fill="#087f8c"/>
+<rect x="708" y="230" width="212" height="150" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="814.0" y="281.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">tanh 隐层</text>
+<text x="814.0" y="313.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">(4, 100)</text>
+<text x="814.0" y="345.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">100 个混合值</text>
+<line x1="920" y1="305" x2="938" y2="305" stroke="#087f8c" stroke-width="4"/>
+<polygon points="938.0,305.0 923.0,298.0 923.0,312.0" fill="#087f8c"/>
+<rect x="938" y="230" width="212" height="150" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="1044.0" y="281.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">logits</text>
+<text x="1044.0" y="313.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">(4, 27)</text>
+<text x="1044.0" y="345.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">27 个分数</text>
+<text x="50" y="430" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">3 个字符 × 2 个坐标 = 6 个数被排成一行，喂给隐层；隐层再给 27 个字符各打一个分。</text>
+<text x="50" y="470" fill="#516771" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">形状不是装饰：它对不上，说明取错了行、拼错了段，或把批次维混进了特征维。</text>
+<rect x="50" y="520" width="520" height="110" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="310.0" y="567.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">最后一步才 softmax</text>
+<text x="310.0" y="599.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">27 个分数 → 27 份概率</text>
+<rect x="620" y="520" width="530" height="110" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="885.0" y="567.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">训练目标：真实下一个字符的概率</text>
+<text x="885.0" y="599.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">−log(p) 越小越好</text>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">手指读图：从左往右数括号里的三个位置——第几道题、第几个字符、第几个特征。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">易错：concat 后是 (4,6) 不是 (4,3,2)；embedding 后共 4×3×2 = 24 个数，拼接只是换排列。</text>
+</svg>

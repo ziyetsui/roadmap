@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="35" font-weight="bold" text-anchor="start">每个数字兜里都有一封「责任信」</text>
+<text x="50" y="105" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">往前算一遍数值，再往后寄一遍信：谁对结果影响大，谁收到的信就厚。</text>
+<rect x="70" y="190" width="150" height="90" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="145.0" y="227.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">a</text>
+<text x="145.0" y="259.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">数值 2</text>
+<rect x="70" y="360" width="150" height="90" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="145.0" y="397.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">b</text>
+<text x="145.0" y="429.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">数值 3</text>
+<rect x="330" y="275" width="190" height="100" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="425.0" y="317.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">u = a×b</text>
+<text x="425.0" y="349.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">数值 6</text>
+<rect x="330" y="470" width="190" height="80" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="425.0" y="502.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">c</text>
+<text x="425.0" y="534.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">数值 4</text>
+<rect x="640" y="330" width="180" height="100" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="730.0" y="372.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">d = u+c</text>
+<text x="730.0" y="404.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">数值 10</text>
+<line x1="220" y1="230" x2="330" y2="305" stroke="#087f8c" stroke-width="4"/>
+<polygon points="330.0,305.0 321.5,290.8 313.7,302.3" fill="#087f8c"/>
+<line x1="220" y1="405" x2="330" y2="340" stroke="#087f8c" stroke-width="4"/>
+<polygon points="330.0,340.0 313.5,341.6 320.6,353.7" fill="#087f8c"/>
+<line x1="520" y1="325" x2="640" y2="370" stroke="#087f8c" stroke-width="4"/>
+<polygon points="640.0,370.0 628.4,358.2 623.5,371.3" fill="#087f8c"/>
+<line x1="520" y1="510" x2="640" y2="400" stroke="#087f8c" stroke-width="4"/>
+<polygon points="640.0,400.0 624.2,405.0 633.7,415.3" fill="#087f8c"/>
+<text x="90" y="175" fill="#087f8c" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">往前：算数</text>
+<text x="700" y="310" fill="#c66b24" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">往后：寄信</text>
+<line x1="735" y1="445" x2="540" y2="385" stroke="#c66b24" stroke-width="3"/>
+<polygon points="540.0,385.0 552.3,396.1 556.4,382.7" fill="#c66b24"/>
+<text x="600" y="470" fill="#c66b24" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="start">① d 先收到 1，往回传</text>
+<rect x="830" y="440" width="300" height="120" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="980.0" y="476.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">加法：信原样递回</text>
+<text x="980.0" y="508.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">乘法：乘上「另一个人」</text>
+<text x="980.0" y="540.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">同一个数收到几封就相加</text>
+<text x="70" y="600" fill="#c66b24" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">最后三封信：a 收到 3，b 收到 2，c 收到 1</text>
+<text x="70" y="642" fill="#516771" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">意思：把 a 挪一点点，结果大约动 3 倍；c 挪一点点，只动 1 倍。</text>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">手指读图：先顺着青色箭头把数算出来，再逆着橙色箭头把「1」一路乘回去。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">为什么 a 的信是 3：u=a×b 里 a 的搭档是 b=3，所以影响乘 3；b 的搭档是 a=2，所以乘 2。</text>
+</svg>

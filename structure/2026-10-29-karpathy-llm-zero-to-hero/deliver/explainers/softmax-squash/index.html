@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>为什么 softmax 把一整张纸压成一条线</title>
+<style>
+  :root{
+    --paper:#FBF6EC; --paper-2:#F5EDDF; --ink:#1B1917; --muted:#6E665A;
+    --line:#DED3C0; --red:#D2452A; --red-soft:#F7E3DB; --teal:#0F7B72;
+    --teal-soft:#DCEFEA; --gold:#E8B23A;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:400 19px/1.78 "PingFang SC","Hiragino Sans GB","Noto Sans SC",system-ui,sans-serif;
+    letter-spacing:.01em}
+  .wrap{max-width:1000px;margin:0 auto;padding:44px 50px 110px}
+  .mono{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+
+  .nav{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted);
+    margin:0 0 26px;padding-bottom:14px;border-bottom:1.5px solid var(--line)}
+  .nav a{color:var(--muted);text-decoration:none}
+  .nav a:hover{color:var(--red)}
+  .nav .tag{border:1.5px solid var(--line);border-radius:999px;padding:3px 12px;font-size:13px}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.18em;
+    color:var(--muted);text-transform:uppercase;margin:0 0 16px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--red);display:block}
+  h1{font-size:50px;line-height:1.2;margin:0 0 20px;font-weight:800;letter-spacing:-.01em}
+  h1 em{font-style:normal;color:var(--red);position:relative;white-space:nowrap}
+  h1 em::after{content:"";position:absolute;left:-2px;right:-2px;bottom:3px;height:12px;
+    background:var(--gold);opacity:.35;z-index:-1;border-radius:3px}
+  .lede{font-size:21px;color:#3B3630;max-width:790px;margin:0 0 28px}
+  .lede b{color:var(--ink)}
+
+  .tldr{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:28px 34px 24px;
+    margin:0 0 60px;box-shadow:8px 8px 0 var(--paper-2)}
+  .tldr h2{margin:0 0 14px;font-size:19px;letter-spacing:.06em}
+  .tldr ol{margin:0;padding:0;list-style:none;counter-reset:t}
+  .tldr li{counter-increment:t;position:relative;padding-left:44px;margin:0 0 11px;font-size:19px;line-height:1.65}
+  .tldr li::before{content:counter(t);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:50%;
+    background:var(--ink);color:#fff;font-size:14px;font-weight:700;display:grid;place-items:center}
+  .tldr li:last-child{margin-bottom:0}
+  .keyline{margin-top:18px;padding-top:14px;border-top:1.5px dashed var(--line);font-size:19px}
+  .keyline b{color:var(--red)}
+
+  section{margin:0 0 66px}
+  h2.sec{font-size:36px;line-height:1.3;margin:0 0 10px;font-weight:800;letter-spacing:-.01em;
+    display:inline-block;padding-bottom:12px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='9' viewBox='0 0 44 9'><path d='M1 6 Q 11 1.5 22 6 T 43 6' fill='none' stroke='%23D2452A' stroke-width='2.6' stroke-linecap='round'/></svg>") repeat-x left bottom;
+    background-size:44px 9px}
+  h2.sec .num{font-size:15px;color:var(--red);vertical-align:top;margin-right:10px;font-weight:700;letter-spacing:.1em}
+  .sub{color:var(--muted);font-size:17.5px;margin:0 0 24px;max-width:780px}
+
+  .panels{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:0 0 8px}
+  .panel{margin:0;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:16px 16px 8px}
+  .panel:nth-child(1){transform:rotate(-.3deg)}
+  .panel:nth-child(2){transform:rotate(.3deg)}
+  .panel:nth-child(3){transform:rotate(.25deg)}
+  .panel:nth-child(4){transform:rotate(-.25deg)}
+  .panel figcaption{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:700;
+    margin:0 0 4px;color:#3B3630}
+  .pn{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-size:13px;flex:none}
+  .panel svg{display:block;width:100%;height:auto}
+  .pcap{font-size:14.5px;line-height:1.55;color:var(--muted);margin:4px 2px 8px;min-height:48px}
+  .pcap b{color:var(--ink)}
+
+  .demo{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:16px 16px 12px}
+  .demo svg{display:block;width:100%;height:auto}
+  .sliders{display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;margin:12px 4px 0}
+  .srow{display:grid;grid-template-columns:86px 1fr 46px;gap:10px;align-items:center}
+  .srow label{font-size:14px;color:var(--muted)}
+  .srow output{font-size:13px;color:var(--muted);text-align:right;font-family:"SF Mono",Menlo,monospace}
+  input[type=range]{-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;margin:0;
+    background:linear-gradient(90deg,#F0D9CF,#CFE7E1);outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+    background:var(--ink);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.25);cursor:grab}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 4px 0}
+  .chip{border:1.5px solid var(--line);border-radius:999px;padding:5px 13px;font-size:14px;color:#4A443C;background:#FFFDF7}
+  .chip b{color:var(--red);font-family:"SF Mono",Menlo,monospace}
+
+  .obs{counter-reset:o;margin:0;padding:0;list-style:none}
+  .obs li{counter-increment:o;position:relative;padding:0 0 0 56px;margin:0 0 22px}
+  .obs li::before{content:counter(o);position:absolute;left:0;top:2px;width:36px;height:36px;border-radius:50%;
+    border:2px solid var(--ink);display:grid;place-items:center;font-weight:800;font-size:15px;background:#fff;
+    box-shadow:3px 3px 0 var(--paper-2)}
+  .obs h3{margin:0 0 4px;font-size:20px;font-weight:800}
+  .obs p{margin:0;color:#4A443C;font-size:18px}
+
+  .note{border-left:4px solid var(--teal);background:var(--teal-soft);padding:16px 20px;
+    border-radius:0 12px 12px 0;font-size:17.5px;margin:18px 0 0;color:#233A36}
+  .note b{color:#0B5C55}
+
+  .cheat{background:var(--ink);color:#F7F1E4;border-radius:22px;padding:34px 36px;box-shadow:10px 10px 0 var(--paper-2)}
+  .cheat h2{color:#fff;margin:0 0 6px;font-size:29px;font-weight:800}
+  .cheat .sub2{color:#BDB3A0;font-size:16px;margin:0 0 20px}
+  .cheat ul{list-style:none;margin:0;padding:0}
+  .cheat li{display:grid;grid-template-columns:20px 1fr;gap:14px;padding:11px 0;border-top:1px dashed #4A443C;font-size:18.5px}
+  .cheat li:first-child{border-top:none}
+  .cheat .d{color:var(--gold)}
+  .cheat em{font-style:normal;color:#F0B429;font-family:"SF Mono",Menlo,monospace}
+
+  footer{margin-top:58px;padding-top:22px;border-top:1.5px solid var(--line);
+    display:flex;justify-content:space-between;color:var(--muted);font-size:14px;gap:20px;flex-wrap:wrap}
+
+  @media (max-width:860px){
+    .wrap{padding:28px 20px 80px}
+    h1{font-size:32px}
+    .lede{font-size:19px}
+    .panels,.sliders{grid-template-columns:1fr}
+    h2.sec{font-size:26px}
+    .cheat{padding:26px 22px}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <nav class="nav">
+    <a href="../four-rooms/index.html">← 上一篇：一个点穿过四个房间</a>
+    <span class="tag">为什么是“压成一条线”</span>
+  </nav>
+
+  <p class="eyebrow">术语卡 · 人话版</p>
+  <h1>为什么 softmax<br>把一整张纸<em>压成一条线</em></h1>
+  <p class="lede">
+    因为两个人分一块饼：<b>一个人多拿，另一个必然少拿</b>。
+    你只要知道一个人拿了几成，另一个就自动知道了——所以答案不用一整张纸，一条线就够了。
+  </p>
+
+  <div class="tldr">
+    <h2>三十秒版</h2>
+    <ol>
+      <li>两个候选 = 两个人分一块饼，份额加起来必须是 100%。</li>
+      <li>所以“所有可能的答案”不是一张纸，而是<b>一条从“m 全拿”到“e 全拿”的线</b>。</li>
+      <li>平面上的每个点（一组分数），都被排到这条线上的某个位置。</li>
+      <li>同一条斜线上的点，两个分数的<b>差</b>都一样 → 全挤到线上<b>同一个位置</b>。</li>
+    </ol>
+    <p class="keyline">一句话：<b>缝（差）决定你站哪儿，平移（一起加多少）不算数</b>。</p>
+  </div>
+
+  <!-- ================= 01 ================= -->
+  <section id="sec1">
+    <h2 class="sec"><span class="num">01</span>四格漫画：从“一张纸”到“一条线”</h2>
+    <p class="sub">先别看公式，就看这四张图。每张只讲一件事。</p>
+
+    <div class="panels">
+
+      <figure class="panel">
+        <figcaption><span class="pn">1</span>两个人，分一块饼</figcaption>
+        <svg viewBox="0 0 430 250" role="img" aria-label="m 和 e 两个人分一块饼">
+          <circle cx="130" cy="120" r="78" fill="#FBF0E8" stroke="#1B1917" stroke-width="2.5"/>
+          <path d="M130 120 L130 42 A78 78 0 1 1 56 144 Z" fill="#D2452A" opacity=".85"/>
+          <text x="178" y="112" font-size="20" font-weight="800" fill="#fff" text-anchor="middle">m 70%</text>
+          <text x="90" y="86" font-size="16" font-weight="700" fill="#6E665A" text-anchor="middle">e 30%</text>
+
+          <text x="270" y="96" font-size="16" fill="#4A443C">总共只有一块饼，</text>
+          <text x="270" y="124" font-size="16" fill="#4A443C">分完就是 100%。</text>
+          <text x="270" y="166" font-size="16" font-weight="700" fill="#D2452A">m 多拿，e 就少拿。</text>
+        </svg>
+        <p class="pcap">两个候选的份额<b>必须加起来 100%</b>。这是铁律，softmax 就是干这个的。</p>
+      </figure>
+
+      <figure class="panel">
+        <figcaption><span class="pn">2</span>所以一个数就够了</figcaption>
+        <svg viewBox="0 0 430 250" role="img" aria-label="只要知道 m 的份额，e 的份额就定了">
+          <line x1="40" y1="140" x2="390" y2="140" stroke="#1B1917" stroke-width="2.5"/>
+          <g stroke="#C9BCA6" stroke-width="3">
+            <line x1="40" y1="132" x2="40" y2="148"/>
+            <line x1="215" y1="132" x2="215" y2="148"/>
+            <line x1="390" y1="132" x2="390" y2="148"/>
+          </g>
+          <g font-size="14" fill="#6E665A" font-family="SF Mono,Menlo,monospace" text-anchor="middle">
+            <text x="40" y="172">0%</text><text x="215" y="172">50%</text><text x="390" y="172">100%</text>
+          </g>
+          <circle cx="285" cy="140" r="10" fill="#D2452A" stroke="#fff" stroke-width="3"/>
+          <text x="285" y="116" font-size="17" font-weight="800" fill="#D2452A" text-anchor="middle">m 70%</text>
+          <text x="120" y="116" font-size="15" fill="#6E665A" text-anchor="middle">e 就自动是 30%</text>
+          <path d="M160 122 Q 220 90 250 112" fill="none" stroke="#6E665A" stroke-width="1.6" stroke-dasharray="4 4"/>
+          <text x="215" y="212" font-size="16" text-anchor="middle" fill="#4A443C">一条线，从头到尾，就是一个数字</text>
+        </svg>
+        <p class="pcap">说“m 拿七成”，就不用再说 e 拿多少。<b>2 个数变成了 1 个数</b>。</p>
+      </figure>
+
+      <figure class="panel">
+        <figcaption><span class="pn">3</span>同一条斜线上的，全挤成一个点</figcaption>
+        <svg viewBox="0 0 430 250" role="img" aria-label="同一条斜线上的三个点挤到线上同一个位置">
+          <rect x="20" y="40" width="150" height="150" fill="#FFFDF7" stroke="#C9BCA6" stroke-width="1.5"/>
+          <line x1="20" y1="40" x2="170" y2="190" stroke="#D2452A" stroke-width="2" stroke-dasharray="6 5"/>
+          <g fill="#D2452A" stroke="#fff" stroke-width="2">
+            <circle cx="60" cy="80" r="7"/><circle cx="95" cy="115" r="7"/><circle cx="130" cy="150" r="7"/>
+          </g>
+          <g stroke="#1B1917" stroke-width="1.5" fill="none" opacity=".55">
+            <path d="M172 88 Q 250 96 320 108"/>
+            <path d="M174 118 Q 250 114 320 108"/>
+            <path d="M176 148 Q 250 132 320 108"/>
+          </g>
+          <circle cx="330" cy="108" r="9" fill="#D2452A" stroke="#fff" stroke-width="3"/>
+          <text x="330" y="86" font-size="14" font-weight="700" fill="#D2452A" text-anchor="middle">全挤到这</text>
+          <text x="20" y="222" font-size="14" fill="#6E665A">这条斜线上的点，</text>
+          <text x="20" y="242" font-size="14" fill="#6E665A">两个分数差得一样多</text>
+        </svg>
+        <p class="pcap">斜线 = “差一样”。<b>一条斜线上的所有点，最后都落到线上同一个位置</b>。</p>
+      </figure>
+
+      <figure class="panel">
+        <figcaption><span class="pn">4</span>差得不一样，才排到不同位置</figcaption>
+        <svg viewBox="0 0 430 250" role="img" aria-label="不同的斜线落到线上的不同位置">
+          <rect x="20" y="40" width="150" height="150" fill="#FFFDF7" stroke="#C9BCA6" stroke-width="1.5"/>
+          <g stroke="#D2452A" stroke-width="1.6" stroke-dasharray="6 5" opacity=".85">
+            <line x1="20" y1="88" x2="108" y2="176"/>
+            <line x1="20" y1="48" x2="120" y2="148"/>
+            <line x1="58" y1="40" x2="170" y2="152"/>
+          </g>
+          <g fill="#D2452A" stroke="#fff" stroke-width="2">
+            <circle cx="52" cy="120" r="6"/>
+            <circle cx="70" cy="98" r="6"/>
+            <circle cx="120" cy="78" r="6"/>
+          </g>
+          <g stroke="#1B1917" stroke-width="1.4" fill="none" opacity=".45">
+            <path d="M176 122 Q 250 172 330 172"/>
+            <path d="M176 100 Q 250 142 354 133"/>
+            <path d="M178 80 Q 250 108 378 94"/>
+          </g>
+          <line x1="310" y1="212" x2="402" y2="52" stroke="#0F7B72" stroke-width="2.2" stroke-dasharray="6 5" opacity=".6"/>
+          <g fill="#D2452A" stroke="#fff" stroke-width="3">
+            <circle cx="332" cy="171" r="7"/>
+            <circle cx="355" cy="132" r="7"/>
+            <circle cx="378" cy="94" r="7"/>
+          </g>
+          <text x="404" y="228" font-size="13" fill="#6E665A" text-anchor="end">一条线</text>
+        </svg>
+        <p class="pcap">差得越多，落点越靠两头。<b>整张纸就这样被一条条斜线“折”成了线</b>。</p>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ================= 02 ================= -->
+  <section id="sec2">
+    <h2 class="sec"><span class="num">02</span>自己拖：什么变了，什么没变</h2>
+    <p class="sub">
+      左边是分数的平面，三个红点在<b>同一条斜线</b>上。右边那条线，是 softmax 之后能站的地方。
+    </p>
+
+    <div class="demo">
+      <svg id="svg" viewBox="0 0 900 430" role="img" aria-label="平面压成一条线">
+        <defs><clipPath id="clipPlane"><rect x="40" y="60" width="300" height="300"/></clipPath></defs>
+
+        <text x="40" y="34" font-size="15" font-weight="700" fill="#1B1917">① 分数平面（点在这里）</text>
+        <text x="520" y="34" font-size="15" font-weight="700" fill="#1B1917">② 份额线（softmax 之后只能站在这）</text>
+
+        <rect x="40" y="60" width="300" height="300" fill="#FFFDF7" stroke="#C9BCA6" stroke-width="1.5"/>
+        <line x1="40" y1="210" x2="340" y2="210" stroke="#1B1917" stroke-width="1.4"/>
+        <line x1="190" y1="60" x2="190" y2="360" stroke="#1B1917" stroke-width="1.4"/>
+        <text x="336" y="232" font-size="13" text-anchor="end" fill="#6E665A">m 的分数</text>
+        <text x="202" y="76" font-size="13" fill="#6E665A">e 的分数</text>
+
+        <g id="isos" clip-path="url(#clipPlane)"></g>
+        <g id="activeIso" clip-path="url(#clipPlane)"></g>
+        <g id="dots" clip-path="url(#clipPlane)"></g>
+
+        <!-- 右侧份额线 -->
+        <line x1="520" y1="360" x2="860" y2="60" stroke="#0F7B72" stroke-width="2.6" stroke-dasharray="8 6" opacity=".7"/>
+        <text x="520" y="386" font-size="13" fill="#6E665A">m 全不要</text>
+        <text x="860" y="46" font-size="13" fill="#6E665A" text-anchor="end">m 全拿走</text>
+        <circle id="target" cx="770" cy="165" r="11" fill="#D2452A" stroke="#fff" stroke-width="3"/>
+        <text id="targetTag" x="770" y="145" font-size="14" font-weight="700" fill="#D2452A" text-anchor="middle">m 73%</text>
+      </svg>
+
+      <div class="sliders">
+        <div class="srow"><label>差（缝）</label><input id="rd" type="range" min="-2" max="2" step="0.1" value="1"><output id="od">1.0</output></div>
+        <div class="srow"><label>一起加多少</label><input id="rb" type="range" min="-1" max="1" step="0.1" value="0"><output id="ob">0.0</output></div>
+      </div>
+      <div class="chips">
+        <span class="chip">m 的份额 <b id="cm">73%</b></span>
+        <span class="chip">e 的份额 <b id="ce">27%</b></span>
+      </div>
+      <p class="figcap" style="margin-top:8px">
+        拖<b>“一起加多少”</b>：左边三个点整条斜线平移，右边<b>纹丝不动</b>——它们在同一个“队列”里。
+        拖<b>“差”</b>：换一条斜线，右边才动。
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= 03 ================= -->
+  <section id="sec3">
+    <h2 class="sec"><span class="num">03</span>三个“原来如此”</h2>
+
+    <ol class="obs">
+      <li>
+        <h3>为什么不是一整张纸？</h3>
+        <p>因为两个份额加起来必须 100%。多一个自由度，就多出“加不到 100%”的假答案。所以真实答案只能住在一条线上——<b>线就是“总和 = 1”这句话本身</b>。</p>
+      </li>
+      <li>
+        <h3>为什么同一条斜线会挤成一个点？</h3>
+        <p>斜线上的点，两个分数的差一直没变。而 softmax 里分数只以“差”的方式出现，所以算出来的结果一模一样。<b>不是它们碰巧，是本来就只算差</b>。</p>
+      </li>
+      <li>
+        <h3>“压”这个字准吗？</h3>
+        <p>准。平面本来是两维的，结果只有一维。整张纸上的无数个点，最后都落到同一条线上——<b>很多点，一个位置</b>，这就是压缩。</p>
+      </li>
+    </ol>
+
+    <div class="note">
+      <b>分饼的版本：</b>m 拿七成，e 就只能拿三成。你从“m 拿多少”这一个数，就知道全部答案。
+      平面上的点再多，能说清的就只有这一个数——所以压成一条线，不丢任何信息。
+    </div>
+  </section>
+
+  <!-- ================= 04 ================= -->
+  <section style="margin-bottom:0">
+    <div class="cheat">
+      <h2>一页速记</h2>
+      <p class="sub2">四句话</p>
+      <ul>
+        <li><span class="d">▸</span><div>份额加起来 = 100%，所以答案住在<em>一条线</em>上</div></li>
+        <li><span class="d">▸</span><div>平面上的点，按<em>差</em>排队，排到线上的位置</div></li>
+        <li><span class="d">▸</span><div>差一样 → 同一条斜线 → <em>挤成同一个点</em></div></li>
+        <li><span class="d">▸</span><div>一起加多少 → 点滑走，<em>位置不变</em></div></li>
+        <li><span class="d">▸</span><div>这就是“把平面压成一条线”</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <span>给弱智版 · 2026-11-12</span>
+    <span>相关：<a href="../four-rooms/index.html" style="color:inherit;border-bottom:1.5px solid #D2452A;text-decoration:none">四个房间</a> · <a href="../softmax/index.html" style="color:inherit;border-bottom:1.5px solid #D2452A;text-decoration:none">softmax 怎么做</a></span>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var NS = 'http://www.w3.org/2000/svg';
+  var rd = document.getElementById('rd'), rb = document.getElementById('rb');
+  var isos = document.getElementById('isos'), activeIso = document.getElementById('activeIso');
+  var dots = document.getElementById('dots');
+  var target = document.getElementById('target'), tag = document.getElementById('targetTag');
+
+  var CX = 190, CY = 210, S = 48;
+
+  function el(tag, attrs){
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  // 静态：五条参考斜线
+  for (var c = -2; c <= 2; c++){
+    var y0 = 400 + S * c;
+    isos.appendChild(el('line', {x1: -200, y1: y0 + 200, x2: 700, y2: y0 - 700,
+      stroke: '#CFE7E1', 'stroke-width': 1.4}));
+  }
+
+  function draw(){
+    var d = parseFloat(rd.value), b = parseFloat(rb.value);
+    var pm = 1 / (1 + Math.exp(-d));
+
+    // 当前斜线
+    while (activeIso.firstChild) activeIso.removeChild(activeIso.firstChild);
+    var y = 400 + S * d;
+    activeIso.appendChild(el('line', {x1: -200, y1: y + 200, x2: 700, y2: y - 700,
+      stroke: '#D2452A', 'stroke-width': 2.4, 'stroke-dasharray': '8 6'}));
+
+    // 三个点，沿着斜线分布
+    while (dots.firstChild) dots.removeChild(dots.firstChild);
+    [-1, 0, 1].forEach(function(k){
+      var zm = b + k + d / 2;
+      var ze = b + k - d / 2;
+      var x = CX + zm * S, y2 = CY - ze * S;
+      dots.appendChild(el('circle', {cx: x, cy: y2, r: 7, fill: '#D2452A',
+        stroke: '#fff', 'stroke-width': 2}));
+    });
+
+    // 落点
+    target.setAttribute('cx', (520 + 340 * pm).toFixed(1));
+    target.setAttribute('cy', (360 - 300 * pm).toFixed(1));
+    tag.setAttribute('x', (520 + 340 * pm - 16).toFixed(1));
+    tag.setAttribute('y', (360 - 300 * pm - 10).toFixed(1));
+    tag.textContent = 'm ' + Math.round(pm * 100) + '%';
+    tag.setAttribute('text-anchor', 'end');
+
+    document.getElementById('cm').textContent = Math.round(pm * 100) + '%';
+    document.getElementById('ce').textContent = Math.round((1 - pm) * 100) + '%';
+    document.getElementById('od').textContent = d.toFixed(1).replace('-', '−');
+    document.getElementById('ob').textContent = b.toFixed(1).replace('-', '−');
+  }
+
+  rd.addEventListener('input', draw);
+  rb.addEventListener('input', draw);
+  draw();
+})();
+</script>
+</body>
+</html>

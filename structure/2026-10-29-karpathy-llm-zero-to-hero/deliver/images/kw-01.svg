@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="35" font-weight="bold" text-anchor="start">步骤 1 · 一次实验 = 一张配方卡</text>
+<text x="50" y="105" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">同一句话「我跑出来挺好」，除非能重做，否则无法追查是哪一个改变带来的。</text>
+<rect x="35" y="175" width="270" height="180" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="170.0" y="225.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">① 数据</text>
+<text x="170.0" y="257.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">names.txt</text>
+<text x="170.0" y="289.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">32,033 行</text>
+<text x="170.0" y="321.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">训练/验证怎么切</text>
+<rect x="320" y="175" width="270" height="180" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="455.0" y="225.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">② 代码与配方</text>
+<text x="455.0" y="257.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">哪个文件/版本</text>
+<text x="455.0" y="289.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">步数 / 学习率</text>
+<text x="455.0" y="321.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">批大小</text>
+<rect x="605" y="175" width="270" height="180" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="740.0" y="225.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">③ 随机</text>
+<text x="740.0" y="257.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">seed = 42</text>
+<text x="740.0" y="289.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">初始化顺序</text>
+<text x="740.0" y="321.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">采样顺序</text>
+<rect x="890" y="175" width="270" height="180" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="1025.0" y="225.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">④ 环境</text>
+<text x="1025.0" y="257.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">Python / PyTorch</text>
+<text x="1025.0" y="289.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">CPU 还是 GPU</text>
+<text x="1025.0" y="321.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">依赖版本</text>
+<rect x="35" y="430" width="545" height="120" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="307.5" y="482.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">只换 seed：名字变了</text>
+<text x="307.5" y="514.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">模型没有变好，只是换了一次抽签</text>
+<rect x="620" y="430" width="545" height="120" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="892.5" y="482.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">只换数据：loss 变了</text>
+<text x="892.5" y="514.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">不能把差异归因给「模型改进」</text>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">手指读图：任取一个结果，沿四张卡片逐格问「这一格记了吗」，缺一格就无法复现。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">易错：记了版本号不等于记了切分；同一份文件换个训练/验证划分，也是不同的实验。</text>
+</svg>

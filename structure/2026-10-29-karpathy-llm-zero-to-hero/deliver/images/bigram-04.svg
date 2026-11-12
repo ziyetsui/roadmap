@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="36" font-weight="bold" text-anchor="start">步骤 3 · 神经网络版：one-hot 抽出一行，softmax 摊成份额</text>
+<text x="50" y="108" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="start">同样是“当前字符 → 下一个字符”，只是把记账表换成了可训练的分数板 W。</text>
+<text x="50" y="170" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">前半段：one-hot 乘 W，等于把 W 的第 m 行整行取出来</text>
+<rect x="50" y="200" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="94" y="200" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="138" y="200" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="182" y="200" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="226" y="200" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="270" y="200" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="50" y="244" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="94" y="244" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="138" y="244" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="182" y="244" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="226" y="244" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="270" y="244" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="50" y="288" width="40" height="40" rx="0" fill="#c66b24" stroke="#ffffff" stroke-width="2"/>
+<rect x="94" y="288" width="40" height="40" rx="0" fill="#c66b24" stroke="#ffffff" stroke-width="2"/>
+<rect x="138" y="288" width="40" height="40" rx="0" fill="#c66b24" stroke="#ffffff" stroke-width="2"/>
+<rect x="182" y="288" width="40" height="40" rx="0" fill="#c66b24" stroke="#ffffff" stroke-width="2"/>
+<rect x="226" y="288" width="40" height="40" rx="0" fill="#c66b24" stroke="#ffffff" stroke-width="2"/>
+<rect x="270" y="288" width="40" height="40" rx="0" fill="#c66b24" stroke="#ffffff" stroke-width="2"/>
+<rect x="50" y="332" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="94" y="332" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="138" y="332" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="182" y="332" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="226" y="332" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="270" y="332" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="50" y="376" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="94" y="376" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="138" y="376" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="182" y="376" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="226" y="376" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="270" y="376" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="50" y="420" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="94" y="420" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="138" y="420" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="182" y="420" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="226" y="420" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="270" y="420" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<text x="328" y="308" fill="#18333d" font-family="sans-serif" font-size="32" font-weight="normal" text-anchor="start">×</text>
+<rect x="366" y="200" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="410" y="200" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="454" y="200" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="498" y="200" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="542" y="200" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="586" y="200" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="366" y="244" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="410" y="244" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="454" y="244" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="498" y="244" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="542" y="244" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="586" y="244" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="366" y="288" width="40" height="40" rx="0" fill="#f7d9c2" stroke="#087f8c" stroke-width="2"/>
+<rect x="410" y="288" width="40" height="40" rx="0" fill="#f7d9c2" stroke="#087f8c" stroke-width="2"/>
+<rect x="454" y="288" width="40" height="40" rx="0" fill="#f7d9c2" stroke="#087f8c" stroke-width="2"/>
+<rect x="498" y="288" width="40" height="40" rx="0" fill="#f7d9c2" stroke="#087f8c" stroke-width="2"/>
+<rect x="542" y="288" width="40" height="40" rx="0" fill="#f7d9c2" stroke="#087f8c" stroke-width="2"/>
+<rect x="586" y="288" width="40" height="40" rx="0" fill="#f7d9c2" stroke="#087f8c" stroke-width="2"/>
+<rect x="366" y="332" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="410" y="332" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="454" y="332" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="498" y="332" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="542" y="332" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="586" y="332" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="366" y="376" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="410" y="376" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="454" y="376" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="498" y="376" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="542" y="376" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="586" y="376" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="366" y="420" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="410" y="420" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="454" y="420" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="498" y="420" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="542" y="420" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<rect x="586" y="420" width="40" height="40" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="644" y="308" fill="#18333d" font-family="sans-serif" font-size="32" font-weight="normal" text-anchor="start">=</text>
+<rect x="726" y="200" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="726" y="244" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="726" y="288" width="40" height="40" rx="0" fill="#c66b24" stroke="#ffffff" stroke-width="2"/>
+<rect x="726" y="332" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="726" y="376" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<rect x="726" y="420" width="40" height="40" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<text x="50" y="498" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="start">xenc：27 个开关只亮 1 个</text>
+<text x="366" y="498" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="start">W：27×27 可训练分数</text>
+<text x="746" y="498" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="middle">27 个数</text>
+<text x="800" y="170" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">后半段：softmax 摊成份额</text>
+<text x="800" y="205" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="start">取第 m 行一小段（教学数字）</text>
+<text x="860" y="248" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">a</text>
+<text x="922" y="248" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">i</text>
+<text x="984" y="248" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">e</text>
+<text x="1046" y="248" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">.</text>
+<text x="1108" y="248" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">o</text>
+<text x="800" y="282" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">① logits 分数，可负</text>
+<text x="860" y="316" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">2.0</text>
+<text x="922" y="316" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">1.0</text>
+<text x="984" y="316" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">0.5</text>
+<text x="1046" y="316" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">-0.5</text>
+<text x="1108" y="316" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">-1.0</text>
+<text x="800" y="356" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">② exp 后全为正</text>
+<text x="860" y="390" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">7.39</text>
+<text x="922" y="390" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">2.72</text>
+<text x="984" y="390" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">1.65</text>
+<text x="1046" y="390" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">0.61</text>
+<text x="1108" y="390" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">0.37</text>
+<text x="800" y="430" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">③ 除以总和 12.73</text>
+<text x="860" y="464" fill="#087f8c" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">0.58</text>
+<text x="922" y="464" fill="#087f8c" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">0.21</text>
+<text x="984" y="464" fill="#087f8c" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">0.13</text>
+<text x="1046" y="464" fill="#087f8c" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">0.05</text>
+<text x="1108" y="464" fill="#087f8c" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">0.03</text>
+<text x="800" y="504" fill="#087f8c" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">27 份加起来 = 1.00</text>
+<text x="800" y="542" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="start">计数法直接数出份额；</text>
+<text x="800" y="570" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="start">神经网络版把份额当参数学出来。</text>
+<line x1="800" y1="215" x2="1150" y2="215" stroke="#c9d6da" stroke-width="2"/>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">手指读图：先在 one-hot 上找到那一个 1，顺着它横着走，取出的正是 W 的同一行。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">易错：one-hot 不是“编码魔法”，它只是选行；logits 也不是概率，负分和总和不为 1 都正常。</text>
+</svg>

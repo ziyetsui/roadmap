@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="35" font-weight="bold" text-anchor="start">步骤 10 · 124M 参数是从哪里长出来的</text>
+<text x="50" y="105" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">GPT-2 124M：12 层、768 宽、1024 上下文、词表 50,257；合计 124,439,808。</text>
+<rect x="60" y="220" width="334.98256506470983" height="90" rx="2" fill="#c66b24" stroke="#ffffff" stroke-width="2"/>
+<rect x="394.98256506470983" y="220" width="6.825360579148435" height="90" rx="2" fill="#7fb8b5" stroke="#ffffff" stroke-width="2"/>
+<rect x="401.80792564385825" y="220" width="738.1787435737606" height="90" rx="2" fill="#087f8c" stroke="#ffffff" stroke-width="2"/>
+<rect x="1139.9866692176188" y="220" width="3" height="90" rx="2" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<text x="60" y="190" fill="#c66b24" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">token 嵌入 38.6M（31%）</text>
+<text x="560" y="190" fill="#087f8c" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">12 个 Block：85.05M（68%）</text>
+<text x="400" y="345" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="start">位置 0.79M</text>
+<text x="1000" y="345" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="end">末尾 LN 1,536</text>
+<text x="60" y="400" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">50,257 × 768 = 38,597,376</text>
+<text x="60" y="444" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">1,024 × 768 = 786,432</text>
+<text x="60" y="488" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">每层 7,087,872 × 12 = 85,054,464</text>
+<text x="60" y="532" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">合计 124,439,808</text>
+<rect x="660" y="380" width="490" height="150" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="905.0" y="447.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">权重绑定：输入嵌入与输出层共用一块</text>
+<text x="905.0" y="479.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">省下 38.6M，但要求两边维度相同</text>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">手指读图：先看整条长度是 124M，再看四段各占多长；最长的一段是 12 个 Block。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">易错：词表 50,257 是原始 GPT-2；训练时常补到 50,304 只是为整除，不是换了分词器。</text>
+</svg>

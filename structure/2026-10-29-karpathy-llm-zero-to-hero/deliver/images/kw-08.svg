@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="35" font-weight="bold" text-anchor="start">步骤 8 · 注意力是一张「谁可以看谁」的表</text>
+<text x="50" y="105" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">3 个位置的例子：行是提问的人，列是被看的人；上三角是未来，遮掉。</text>
+<text x="158.0" y="192" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">k1</text>
+<text x="254.0" y="192" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">k2</text>
+<text x="350.0" y="192" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">k3</text>
+<text x="96" y="266.0" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="end">q1</text>
+<rect x="110" y="210" width="92" height="92" rx="4" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="156.0" y="266.0" fill="#18333d" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="middle">可看</text>
+<rect x="206" y="210" width="92" height="92" rx="4" fill="#e9edf1" stroke="#c9d6da" stroke-width="2"/>
+<text x="252.0" y="266.0" fill="#8d9aa2" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="middle">遮住</text>
+<rect x="302" y="210" width="92" height="92" rx="4" fill="#e9edf1" stroke="#c9d6da" stroke-width="2"/>
+<text x="348.0" y="266.0" fill="#8d9aa2" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="middle">遮住</text>
+<text x="96" y="362.0" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="end">q2</text>
+<rect x="110" y="306" width="92" height="92" rx="4" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="156.0" y="362.0" fill="#18333d" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="middle">可看</text>
+<rect x="206" y="306" width="92" height="92" rx="4" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="252.0" y="362.0" fill="#18333d" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="middle">可看</text>
+<rect x="302" y="306" width="92" height="92" rx="4" fill="#e9edf1" stroke="#c9d6da" stroke-width="2"/>
+<text x="348.0" y="362.0" fill="#8d9aa2" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="middle">遮住</text>
+<text x="96" y="458.0" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="end">q3</text>
+<rect x="110" y="402" width="92" height="92" rx="4" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="156.0" y="458.0" fill="#18333d" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="middle">可看</text>
+<rect x="206" y="402" width="92" height="92" rx="4" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="252.0" y="458.0" fill="#18333d" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="middle">可看</text>
+<rect x="302" y="402" width="92" height="92" rx="4" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="348.0" y="458.0" fill="#18333d" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="middle">可看</text>
+<text x="430" y="200" fill="#c66b24" font-family="sans-serif" font-size="27" font-weight="normal" text-anchor="start">softmax(QKᵀ/√d) V</text>
+<text x="430" y="250" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">QKᵀ：谁和谁像，得 (B,H,T,T)</text>
+<text x="430" y="288" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">÷√d：d=64 时就是 ÷8，防止分数过大</text>
+<text x="430" y="326" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">mask：上三角设 −∞，softmax 后为 0</text>
+<text x="430" y="364" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">×V：按权重把可见位置的信息混起来</text>
+<rect x="430" y="410" width="600" height="110" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="730.0" y="457.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">每行归一化后和为 1</text>
+<text x="730.0" y="489.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">第 3 行可以看 1、2、3，第 1 行只能看 1</text>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">手指读图：先看行（谁在提问），再看这一行哪些格子亮着（能看谁），最后看亮格子的权重怎么分。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">易错：遮住的是「分数」不是「向量」；注意力权重不是人类可读的解释，只是模型学到的混合比例。</text>
+</svg>

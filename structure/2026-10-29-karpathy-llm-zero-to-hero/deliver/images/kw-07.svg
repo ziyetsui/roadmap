@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="35" font-weight="bold" text-anchor="start">步骤 7 · 层级组合：感受野一层层变大</text>
+<text x="50" y="105" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">8 个字符先两两成组，再组组相合；每一层的可见范围翻倍。</text>
+<rect x="101" y="520" width="98" height="76" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="150.0" y="566.0" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="middle">字符 1</text>
+<rect x="219" y="520" width="98" height="76" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="268.0" y="566.0" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="middle">字符 2</text>
+<rect x="337" y="520" width="98" height="76" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="386.0" y="566.0" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="middle">字符 3</text>
+<rect x="455" y="520" width="98" height="76" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="504.0" y="566.0" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="middle">字符 4</text>
+<rect x="573" y="520" width="98" height="76" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="622.0" y="566.0" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="middle">字符 5</text>
+<rect x="691" y="520" width="98" height="76" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="740.0" y="566.0" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="middle">字符 6</text>
+<rect x="809" y="520" width="98" height="76" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="858.0" y="566.0" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="middle">字符 7</text>
+<rect x="927" y="520" width="98" height="76" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="976.0" y="566.0" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="middle">字符 8</text>
+<rect x="109" y="400" width="200" height="76" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="209.0" y="430.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">组 1</text>
+<text x="209.0" y="462.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">2 个字</text>
+<line x1="130" y1="520" x2="169" y2="476" stroke="#087f8c" stroke-width="4"/>
+<polygon points="169.0,476.0 153.8,482.6 164.3,491.9" fill="#087f8c"/>
+<line x1="288" y1="520" x2="249" y2="476" stroke="#087f8c" stroke-width="4"/>
+<polygon points="249.0,476.0 253.7,491.9 264.2,482.6" fill="#087f8c"/>
+<rect x="345" y="400" width="200" height="76" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="445.0" y="430.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">组 2</text>
+<text x="445.0" y="462.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">2 个字</text>
+<line x1="366" y1="520" x2="405" y2="476" stroke="#087f8c" stroke-width="4"/>
+<polygon points="405.0,476.0 389.8,482.6 400.3,491.9" fill="#087f8c"/>
+<line x1="524" y1="520" x2="485" y2="476" stroke="#087f8c" stroke-width="4"/>
+<polygon points="485.0,476.0 489.7,491.9 500.2,482.6" fill="#087f8c"/>
+<rect x="581" y="400" width="200" height="76" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="681.0" y="430.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">组 3</text>
+<text x="681.0" y="462.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">2 个字</text>
+<line x1="602" y1="520" x2="641" y2="476" stroke="#087f8c" stroke-width="4"/>
+<polygon points="641.0,476.0 625.8,482.6 636.3,491.9" fill="#087f8c"/>
+<line x1="760" y1="520" x2="721" y2="476" stroke="#087f8c" stroke-width="4"/>
+<polygon points="721.0,476.0 725.7,491.9 736.2,482.6" fill="#087f8c"/>
+<rect x="817" y="400" width="200" height="76" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="917.0" y="430.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">组 4</text>
+<text x="917.0" y="462.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">2 个字</text>
+<line x1="838" y1="520" x2="877" y2="476" stroke="#087f8c" stroke-width="4"/>
+<polygon points="877.0,476.0 861.8,482.6 872.3,491.9" fill="#087f8c"/>
+<line x1="996" y1="520" x2="957" y2="476" stroke="#087f8c" stroke-width="4"/>
+<polygon points="957.0,476.0 961.7,491.9 972.2,482.6" fill="#087f8c"/>
+<rect x="137" y="280" width="380" height="76" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="327.0" y="310.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">组合 1</text>
+<text x="327.0" y="342.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">4 个字</text>
+<line x1="249" y1="400" x2="227" y2="356" stroke="#087f8c" stroke-width="4"/>
+<polygon points="227.0,356.0 227.4,372.5 240.0,366.3" fill="#087f8c"/>
+<line x1="405" y1="400" x2="427" y2="356" stroke="#087f8c" stroke-width="4"/>
+<polygon points="427.0,356.0 414.0,366.3 426.6,372.5" fill="#087f8c"/>
+<rect x="609" y="280" width="380" height="76" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="799.0" y="310.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">组合 2</text>
+<text x="799.0" y="342.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">4 个字</text>
+<line x1="721" y1="400" x2="699" y2="356" stroke="#087f8c" stroke-width="4"/>
+<polygon points="699.0,356.0 699.4,372.5 712.0,366.3" fill="#087f8c"/>
+<line x1="877" y1="400" x2="899" y2="356" stroke="#087f8c" stroke-width="4"/>
+<polygon points="899.0,356.0 886.0,366.3 898.6,372.5" fill="#087f8c"/>
+<rect x="443" y="160" width="240" height="76" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="563.0" y="190.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">预测</text>
+<text x="563.0" y="222.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">8 个字</text>
+<line x1="427" y1="280" x2="523" y2="236" stroke="#087f8c" stroke-width="4"/>
+<polygon points="523.0,236.0 506.4,235.9 512.3,248.6" fill="#087f8c"/>
+<line x1="699" y1="280" x2="603" y2="236" stroke="#087f8c" stroke-width="4"/>
+<polygon points="603.0,236.0 613.7,248.6 619.6,235.9" fill="#087f8c"/>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">手指读图：从最上面一个预测往下走，看它最终能碰到几个原始字符——那就是这一层的感受野。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">易错：分组不能让元素凭空消失或重复；reshape 前后总数必须一致（8→4→2→1 组）。</text>
+</svg>

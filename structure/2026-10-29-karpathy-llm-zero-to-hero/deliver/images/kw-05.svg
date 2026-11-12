@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="35" font-weight="bold" text-anchor="start">步骤 5 · 先看信号落在曲线的哪一段，再看 BN 对哪一维求平均</text>
+<text x="50" y="105" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">tanh 两端变平：输入 8 到 15 时，输出几乎全挤在 1 附近，反向信号很弱。</text>
+<line x1="100" y1="380" x2="590" y2="380" stroke="#18333d" stroke-width="3"/>
+<line x1="330" y1="380" x2="330" y2="130" stroke="#18333d" stroke-width="3"/>
+<rect x="110" y="140" width="108" height="238" rx="0" fill="#f7d9c2" stroke="#f7d9c2" stroke-width="2"/>
+<rect x="442" y="140" width="118" height="238" rx="0" fill="#f7d9c2" stroke="#f7d9c2" stroke-width="2"/>
+<polyline points="112.3,442.0 114.6,442.0 116.9,441.9 119.3,441.9 121.6,441.9 123.9,441.9 126.2,441.9 128.5,441.9 130.8,441.9 133.2,441.9 135.5,441.9 137.8,441.9 140.1,441.9 142.4,441.9 144.7,441.9 147.1,441.8 149.4,441.8 151.7,441.8 154.0,441.8 156.3,441.8 158.6,441.8 160.9,441.7 163.3,441.7 165.6,441.7 167.9,441.7 170.2,441.6 172.5,441.6 174.8,441.6 177.2,441.5 179.5,441.5 181.8,441.4 184.1,441.4 186.4,441.3 188.7,441.3 191.1,441.2 193.4,441.1 195.7,441.1 198.0,441.0 200.3,440.9 202.6,440.8 204.9,440.7 207.3,440.6 209.6,440.5 211.9,440.3 214.2,440.2 216.5,440.0 218.8,439.9 221.2,439.7 223.5,439.5 225.8,439.3 228.1,439.0 230.4,438.8 232.7,438.5 235.1,438.2 237.4,437.9 239.7,437.5 242.0,437.1 244.3,436.7 246.6,436.3 248.9,435.8 251.3,435.3 253.6,434.7 255.9,434.2 258.2,433.5 260.5,432.8 262.8,432.1 265.2,431.3 267.5,430.4 269.8,429.5 272.1,428.5 274.4,427.5 276.7,426.4 279.1,425.2 281.4,423.9 283.7,422.6 286.0,421.2 288.3,419.7 290.6,418.1 292.9,416.4 295.3,414.7 297.6,412.8 299.9,410.9 302.2,408.9 304.5,406.8 306.8,404.7 309.2,402.4 311.5,400.1 313.8,397.8 316.1,395.3 318.4,392.9 320.7,390.3 323.1,387.8 325.4,385.2 327.7,382.6 330.0,380.0 332.3,377.4 334.6,374.8 336.9,372.2 339.3,369.7 341.6,367.1 343.9,364.7 346.2,362.2 348.5,359.9 350.8,357.6 353.2,355.3 355.5,353.2 357.8,351.1 360.1,349.1 362.4,347.2 364.7,345.3 367.1,343.6 369.4,341.9 371.7,340.3 374.0,338.8 376.3,337.4 378.6,336.1 380.9,334.8 383.3,333.6 385.6,332.5 387.9,331.5 390.2,330.5 392.5,329.6 394.8,328.7 397.2,327.9 399.5,327.2 401.8,326.5 404.1,325.8 406.4,325.3 408.7,324.7 411.1,324.2 413.4,323.7 415.7,323.3 418.0,322.9 420.3,322.5 422.6,322.1 424.9,321.8 427.3,321.5 429.6,321.2 431.9,321.0 434.2,320.7 436.5,320.5 438.8,320.3 441.2,320.1 443.5,320.0 445.8,319.8 448.1,319.7 450.4,319.5 452.7,319.4 455.1,319.3 457.4,319.2 459.7,319.1 462.0,319.0 464.3,318.9 466.6,318.9 468.9,318.8 471.3,318.7 473.6,318.7 475.9,318.6 478.2,318.6 480.5,318.5 482.8,318.5 485.2,318.4 487.5,318.4 489.8,318.4 492.1,318.3 494.4,318.3 496.7,318.3 499.1,318.3 501.4,318.2 503.7,318.2 506.0,318.2 508.3,318.2 510.6,318.2 512.9,318.2 515.3,318.1 517.6,318.1 519.9,318.1 522.2,318.1 524.5,318.1 526.8,318.1 529.2,318.1 531.5,318.1 533.8,318.1 536.1,318.1 538.4,318.1 540.7,318.1 543.1,318.1 545.4,318.0 547.7,318.0" fill="none" stroke="#087f8c" stroke-width="5"/>
+<text x="140" y="172" fill="#c66b24" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">饱和区</text>
+<text x="468" y="172" fill="#c66b24" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">饱和区</text>
+<text x="112" y="412" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="start">−4</text>
+<text x="578" y="412" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="end">+4</text>
+<text x="295" y="412" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="middle">0</text>
+<text x="100" y="470" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">输入 8~15 → tanh ≈ 1，导数 ≈ 0</text>
+<text x="100" y="508" fill="#516771" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">只有中间一段（约 −2 到 2）还在明显弯曲</text>
+<rect x="640" y="165" width="500" height="150" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="890.0" y="216.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">(B, T, C) 激活</text>
+<text x="890.0" y="248.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">BN 对 B×T 求均值、方差</text>
+<text x="890.0" y="280.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">每个通道 C 各有一对统计量</text>
+<rect x="640" y="350" width="500" height="120" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="890.0" y="386.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">2D 版 (B, C)</text>
+<text x="890.0" y="418.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">只对 B 求，T 维不存在</text>
+<text x="890.0" y="450.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">轴选错，形状对但结果不对</text>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">手指读图：先在曲线上找到信号区间，再看 BN 把哪几个位置算作「一批」。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">易错：BN 的统计量来自批次，不是固定常数；评估时必须用累计的 running 统计量。</text>
+</svg>

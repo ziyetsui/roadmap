@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="35" font-weight="bold" text-anchor="start">200 次练习：从「错很多」到「错一点点」</text>
+<text x="50" y="105" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">4 道题、41 个旋钮；每错一次，就按坡度把旋钮轻轻拧一下。</text>
+<line x1="90" y1="470" x2="650" y2="470" stroke="#18333d" stroke-width="3"/>
+<line x1="90" y1="470" x2="90" y2="170" stroke="#18333d" stroke-width="3"/>
+<text x="78" y="196" fill="#18333d" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="end">错多少</text>
+<text x="370.0" y="516" fill="#18333d" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="middle">练习次数 →</text>
+<circle cx="90.0" cy="187.2" r="7" fill="#c66b24"/>
+<text x="90.0" y="171.20714285714286" fill="#c66b24" font-family="sans-serif" font-size="19" font-weight="normal" text-anchor="middle">1.32</text>
+<line x1="90.0" y1="187.20714285714286" x2="230.0" y2="456.35" stroke="#087f8c" stroke-width="3"/>
+<circle cx="230.0" cy="456.4" r="7" fill="#c66b24"/>
+<text x="230.0" y="440.35" fill="#c66b24" font-family="sans-serif" font-size="19" font-weight="normal" text-anchor="middle">0.0637</text>
+<line x1="230.0" y1="456.35" x2="370.0" y2="465.8642857142857" stroke="#087f8c" stroke-width="3"/>
+<circle cx="370.0" cy="465.9" r="7" fill="#c66b24"/>
+<text x="370.0" y="449.8642857142857" fill="#c66b24" font-family="sans-serif" font-size="19" font-weight="normal" text-anchor="middle">0.0193</text>
+<line x1="370.0" y1="465.8642857142857" x2="510.0" y2="467.77142857142854" stroke="#087f8c" stroke-width="3"/>
+<circle cx="510.0" cy="467.8" r="7" fill="#c66b24"/>
+<text x="510.0" y="451.77142857142854" fill="#c66b24" font-family="sans-serif" font-size="19" font-weight="normal" text-anchor="middle">0.0104</text>
+<line x1="510.0" y1="467.77142857142854" x2="650.0" y2="468.53214285714284" stroke="#087f8c" stroke-width="3"/>
+<circle cx="650.0" cy="468.5" r="7" fill="#c66b24"/>
+<text x="650.0" y="452.53214285714284" fill="#c66b24" font-family="sans-serif" font-size="19" font-weight="normal" text-anchor="middle">0.00685</text>
+<text x="100" y="560" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="start">第 0 次：错 1.32</text>
+<text x="520" y="560" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="start">第 200 次：错 0.0069</text>
+<text x="760" y="150" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">4 道题的答案（柱＝模型，横线＝正确）</text>
+<rect x="760" y="299.5305" width="54" height="80.4695" rx="2" fill="#087f8c" stroke="#ffffff" stroke-width="2"/>
+<line x1="754" y1="295" x2="820" y2="295" stroke="#c66b24" stroke-width="3"/>
+<text x="787" y="488" fill="#516771" font-family="sans-serif" font-size="19" font-weight="normal" text-anchor="middle">题1</text>
+<text x="787" y="323.5305" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="normal" text-anchor="middle">0.95</text>
+<rect x="855" y="380" width="54" height="76.72099999999999" rx="2" fill="#7fb8b5" stroke="#ffffff" stroke-width="2"/>
+<line x1="849" y1="465" x2="915" y2="465" stroke="#c66b24" stroke-width="3"/>
+<text x="882" y="488" fill="#516771" font-family="sans-serif" font-size="19" font-weight="normal" text-anchor="middle">题2</text>
+<text x="882" y="446.721" fill="#18333d" font-family="sans-serif" font-size="18" font-weight="normal" text-anchor="middle">-0.90</text>
+<rect x="950" y="380" width="54" height="78.78649999999999" rx="2" fill="#7fb8b5" stroke="#ffffff" stroke-width="2"/>
+<line x1="944" y1="465" x2="1010" y2="465" stroke="#c66b24" stroke-width="3"/>
+<text x="977" y="488" fill="#516771" font-family="sans-serif" font-size="19" font-weight="normal" text-anchor="middle">题3</text>
+<text x="977" y="448.7865" fill="#18333d" font-family="sans-serif" font-size="18" font-weight="normal" text-anchor="middle">-0.93</text>
+<rect x="1045" y="303.398" width="54" height="76.602" rx="2" fill="#087f8c" stroke="#ffffff" stroke-width="2"/>
+<line x1="1039" y1="295" x2="1105" y2="295" stroke="#c66b24" stroke-width="3"/>
+<text x="1072" y="488" fill="#516771" font-family="sans-serif" font-size="19" font-weight="normal" text-anchor="middle">题4</text>
+<text x="1072" y="327.398" fill="#ffffff" font-family="sans-serif" font-size="18" font-weight="normal" text-anchor="middle">0.90</text>
+<line x1="750" y1="380" x2="1140" y2="380" stroke="#c9d6da" stroke-width="2"/>
+<text x="760" y="530" fill="#c66b24" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="start">橙色横线是正确答案：+1、−1、−1、+1</text>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">手指读图：曲线越往右越低，说明错得越来越少；柱子和橙线越靠越近，说明答案越来越对。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">注意：它只学了这 4 道题，把新题做对是另一回事；这就是后面要分训练/验证的原因。</text>
+</svg>

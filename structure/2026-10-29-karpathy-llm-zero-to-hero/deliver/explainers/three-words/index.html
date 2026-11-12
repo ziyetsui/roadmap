@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>logits / exp / softmax · 三个词一次讲完</title>
+<style>
+  :root{
+    --paper:#FBF6EC; --paper-2:#F5EDDF; --ink:#1B1917; --muted:#6E665A;
+    --line:#DED3C0; --red:#D2452A; --red-soft:#F7E3DB; --teal:#0F7B72;
+    --teal-soft:#DCEFEA; --gold:#E8B23A;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:400 19px/1.78 "PingFang SC","Hiragino Sans GB","Noto Sans SC",system-ui,sans-serif;
+    letter-spacing:.01em}
+  .wrap{max-width:1000px;margin:0 auto;padding:44px 50px 110px}
+  .mono{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+
+  .nav{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted);
+    margin:0 0 26px;padding-bottom:14px;border-bottom:1.5px solid var(--line)}
+  .nav a{color:var(--muted);text-decoration:none}
+  .nav a:hover{color:var(--red)}
+  .nav .tag{border:1.5px solid var(--line);border-radius:999px;padding:3px 12px;font-size:13px}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.18em;
+    color:var(--muted);text-transform:uppercase;margin:0 0 16px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--red);display:block}
+  h1{font-size:52px;line-height:1.18;margin:0 0 20px;font-weight:800;letter-spacing:-.01em}
+  h1 em{font-style:normal;color:var(--red);position:relative;white-space:nowrap}
+  h1 em::after{content:"";position:absolute;left:-2px;right:-2px;bottom:3px;height:12px;
+    background:var(--gold);opacity:.35;z-index:-1;border-radius:3px}
+  .lede{font-size:21px;color:#3B3630;max-width:780px;margin:0 0 28px}
+  .lede b{color:var(--ink)}
+
+  .tldr{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:28px 34px 24px;
+    margin:0 0 62px;box-shadow:8px 8px 0 var(--paper-2)}
+  .tldr h2{margin:0 0 14px;font-size:19px;letter-spacing:.06em}
+  .tldr ol{margin:0;padding:0;list-style:none;counter-reset:t}
+  .tldr li{counter-increment:t;position:relative;padding-left:44px;margin:0 0 11px;font-size:19px;line-height:1.65}
+  .tldr li::before{content:counter(t);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:50%;
+    background:var(--ink);color:#fff;font-size:14px;font-weight:700;display:grid;place-items:center}
+  .tldr li:last-child{margin-bottom:0}
+  .keyline{margin-top:18px;padding-top:14px;border-top:1.5px dashed var(--line);font-size:19px}
+  .keyline b{color:var(--red)}
+
+  section{margin:0 0 70px}
+  h2.sec{font-size:36px;line-height:1.3;margin:0 0 10px;font-weight:800;letter-spacing:-.01em;
+    display:inline-block;padding-bottom:12px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='9' viewBox='0 0 44 9'><path d='M1 6 Q 11 1.5 22 6 T 43 6' fill='none' stroke='%23D2452A' stroke-width='2.6' stroke-linecap='round'/></svg>") repeat-x left bottom;
+    background-size:44px 9px}
+  h2.sec .num{font-size:15px;color:var(--red);vertical-align:top;margin-right:10px;font-weight:700;letter-spacing:.1em}
+  .sub{color:var(--muted);font-size:17.5px;margin:0 0 26px;max-width:780px}
+
+  .panels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:0 0 8px}
+  .panel{margin:0;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:16px 14px 8px}
+  .panel figcaption{display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:700;
+    letter-spacing:.02em;margin:0 0 4px;color:#3B3630}
+  .pn{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--ink);color:#fff;font-size:12px;flex:none}
+  .panel svg{display:block;width:100%;height:auto}
+  .pcap{font-size:13.5px;line-height:1.5;color:var(--muted);margin:4px 0 6px;min-height:60px}
+  .pcap b{color:var(--ink)}
+
+  .flow{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:26px 22px 20px;margin:0 0 10px}
+  .frow{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+  .num{min-width:58px;text-align:center;border-radius:10px;padding:6px 8px;font-size:16px;
+    font-family:"SF Mono",Menlo,monospace;border:1.5px solid var(--line);background:#FFFDF7;color:#4A443C}
+  .num.neg{background:var(--red-soft);border-color:#E9C3B7;color:#9E2E18}
+  .num.hot{background:var(--red);border-color:var(--red);color:#fff;font-weight:700;box-shadow:0 3px 0 #B23A24}
+  .num.big{background:var(--teal);border-color:var(--teal);color:#fff;font-weight:700}
+  .fnote{text-align:center;font-size:13px;color:var(--muted);margin-top:8px}
+  .farrow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;margin:9px 0}
+  .farrow .ln{height:1.5px;background:var(--line)}
+  .farrow .tx{font-size:14.5px;color:var(--muted);white-space:nowrap}
+  .farrow .tx b{color:var(--red);font-weight:800}
+
+  table{width:100%;border-collapse:collapse;font-size:17px;background:#fff;
+    border:1.5px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 18px}
+  th,td{padding:13px 15px;text-align:left;vertical-align:top;line-height:1.55}
+  thead th{background:var(--paper-2);font-size:14.5px;letter-spacing:.06em;color:#4A443C}
+  tbody tr+tr td{border-top:1px solid #EDE4D4}
+  td:first-child{font-weight:800;white-space:nowrap}
+
+  .note{border-left:4px solid var(--teal);background:var(--teal-soft);padding:16px 20px;
+    border-radius:0 12px 12px 0;font-size:17.5px;margin:20px 0 0;color:#233A36}
+  .note b{color:#0B5C55}
+  .warn{border-left-color:var(--red);background:var(--red-soft);color:#4A241B}
+  .warn b{color:#9E2E18}
+
+  .demo{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:18px 20px 12px}
+  .demo svg{display:block;width:100%;height:auto}
+  .sliders{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px 22px;margin:12px 0 0}
+  .srow{display:grid;grid-template-columns:52px 1fr 40px;gap:8px;align-items:center}
+  .srow label{font-family:"SF Mono",Menlo,monospace;font-weight:700;font-size:14px}
+  .srow output{font-family:"SF Mono",Menlo,monospace;font-size:13px;color:var(--muted);text-align:right}
+  input[type=range]{-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;margin:0;
+    background:linear-gradient(90deg,#F0D9CF,#CFE7E1);outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;
+    background:var(--ink);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.25);cursor:grab}
+
+  .cheat{background:var(--ink);color:#F7F1E4;border-radius:22px;padding:34px 36px;box-shadow:10px 10px 0 var(--paper-2)}
+  .cheat h2{color:#fff;margin:0 0 6px;font-size:29px;font-weight:800}
+  .cheat .sub2{color:#BDB3A0;font-size:16px;margin:0 0 20px}
+  .cheat ul{list-style:none;margin:0;padding:0}
+  .cheat li{display:grid;grid-template-columns:20px 1fr;gap:14px;padding:11px 0;border-top:1px dashed #4A443C;font-size:18.5px}
+  .cheat li:first-child{border-top:none}
+  .cheat .d{color:var(--gold)}
+  .cheat em{font-style:normal;color:#F0B429;font-family:"SF Mono",Menlo,monospace}
+
+  footer{margin-top:60px;padding-top:22px;border-top:1.5px solid var(--line);
+    display:flex;justify-content:space-between;color:var(--muted);font-size:14px;gap:20px;flex-wrap:wrap}
+
+  @media (max-width:860px){
+    .wrap{padding:28px 20px 80px}
+    h1{font-size:34px}
+    .lede{font-size:19px}
+    .panels{grid-template-columns:1fr}
+    h2.sec{font-size:26px}
+    .sliders{grid-template-columns:1fr}
+    .cheat{padding:26px 22px}
+    .num{min-width:46px;font-size:14px;padding:5px 6px}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <nav class="nav">
+    <a href="../softmax/index.html">← 上一篇：softmax 怎么把分数变成把握</a>
+    <span class="tag">一张图讲完三个词</span>
+  </nav>
+
+  <p class="eyebrow">术语卡 · 人话版</p>
+  <h1>logits、exp、softmax<br><em>三个词</em>一次讲完</h1>
+  <p class="lede">
+    它们不是三个知识点，是<b>同一条流水线上的三站</b>：
+    模型先<b>打分</b>（logits），exp 把分数<b>换成倍数</b>，softmax 把倍数<b>分成份额</b>。
+  </p>
+
+  <div class="tldr">
+    <h2>三十秒版</h2>
+    <ol>
+      <li><b>logits</b>：模型打的草稿分。可正可负，加起来多少都行，<b>不是百分比</b>。</li>
+      <li><b>exp</b>：把每个分数换成“几倍”。负数变小数，正数变大数，<b>永远不会是负的</b>。</li>
+      <li><b>softmax</b>：把这些倍数分成 100 份，<b>得到加起来的份额</b>。</li>
+      <li>然后只取真实答案那一份，用 −ln 收罚款——那是上一篇的事。</li>
+    </ol>
+    <p class="keyline">记一句话：<b>打分 → 换倍数 → 分份额</b>，三步，一个都不能少。</p>
+  </div>
+
+  <!-- ================= 01 ================= -->
+  <section id="sec1">
+    <h2 class="sec"><span class="num">01</span>三个词，三张脸</h2>
+    <p class="sub">同一排候选（m / e / a / s / x / 其他），在三个阶段的三种长相。</p>
+
+    <div class="panels">
+
+      <figure class="panel">
+        <figcaption><span class="pn">1</span>logits：草稿分</figcaption>
+        <svg viewBox="0 0 300 260" role="img" aria-label="六个候选的原始分数">
+          <line x1="150" y1="20" x2="150" y2="240" stroke="#C9BCA6" stroke-width="2"/>
+          <g fill="#0F7B72">
+            <rect x="150" y="26" width="96" height="18" rx="3"/>
+            <rect x="150" y="60" width="45" height="18" rx="3" opacity=".85"/>
+            <rect x="150" y="94" width="22" height="18" rx="3" opacity=".7"/>
+            <rect x="150" y="128" width="4" height="18" rx="2" opacity=".55"/>
+          </g>
+          <g fill="#D2452A">
+            <rect x="143" y="162" width="7" height="18" rx="2" opacity=".6"/>
+            <rect x="108" y="196" width="42" height="18" rx="3" opacity=".85"/>
+          </g>
+          <g font-size="13" font-weight="700" fill="#1B1917" font-family="SF Mono,Menlo,monospace">
+            <text x="6" y="40">m</text><text x="6" y="74">e</text><text x="6" y="108">a</text>
+            <text x="6" y="142">s</text><text x="6" y="176">x</text><text x="6" y="210">其他</text>
+          </g>
+          <g font-size="12" fill="#4A443C" font-family="SF Mono,Menlo,monospace">
+            <text x="252" y="40">3.0</text><text x="201" y="74">1.4</text><text x="178" y="108">0.7</text>
+            <text x="160" y="142">0.1</text><text x="137" y="176" text-anchor="end">−0.2</text>
+            <text x="102" y="210" text-anchor="end">−1.3</text>
+          </g>
+        </svg>
+        <p class="pcap">模型对每个候选的<b>偏爱程度</b>。有正有负，加起来不是 100，也不代表任何百分比。</p>
+      </figure>
+
+      <figure class="panel">
+        <figcaption><span class="pn">2</span>exp：换成倍数</figcaption>
+        <svg viewBox="0 0 300 260" role="img" aria-label="取 e 的次方后全部变正">
+          <g fill="#0F7B72">
+            <rect x="30" y="26" width="210" height="18" rx="3"/>
+            <rect x="30" y="60" width="42.4" height="18" rx="3" opacity=".8"/>
+            <rect x="30" y="94" width="21" height="18" rx="3" opacity=".68"/>
+            <rect x="30" y="128" width="11.6" height="18" rx="3" opacity=".55"/>
+            <rect x="30" y="162" width="8.6" height="18" rx="3" opacity=".45"/>
+            <rect x="30" y="196" width="2.8" height="18" rx="1.5" opacity=".35"/>
+          </g>
+          <g font-size="13" font-weight="700" fill="#1B1917" font-family="SF Mono,Menlo,monospace">
+            <text x="6" y="40">m</text><text x="6" y="74">e</text><text x="6" y="108">a</text>
+            <text x="6" y="142">s</text><text x="6" y="176">x</text><text x="6" y="210">其他</text>
+          </g>
+          <g font-size="12" fill="#4A443C" font-family="SF Mono,Menlo,monospace">
+            <text x="248" y="40">20.1</text><text x="80" y="74">4.1</text>
+            <text x="59" y="108">2.0</text><text x="49" y="142">1.1</text>
+            <text x="46" y="176">0.8</text><text x="40" y="210">0.3</text>
+          </g>
+        </svg>
+        <p class="pcap">每个数取 <b>e 的次方</b>：负数变小数，正数变大数。<b>全部为正</b>，差距也被放大。</p>
+      </figure>
+
+      <figure class="panel">
+        <figcaption><span class="pn">3</span>softmax：分成份额</figcaption>
+        <svg viewBox="0 0 300 260" role="img" aria-label="归一化后分成 100% 的份额">
+          <rect x="20" y="70" width="181.8" height="46" fill="#D2452A"/>
+          <rect x="201.8" y="70" width="35.8" height="46" fill="#0F7B72" opacity=".8"/>
+          <rect x="237.6" y="70" width="17.9" height="46" fill="#0F7B72" opacity=".68"/>
+          <rect x="255.5" y="70" width="10.2" height="46" fill="#0F7B72" opacity=".55"/>
+          <rect x="265.7" y="70" width="7.7" height="46" fill="#0F7B72" opacity=".45"/>
+          <rect x="273.4" y="70" width="2.6" height="46" fill="#0F7B72" opacity=".35"/>
+          <text x="111" y="100" font-size="17" font-weight="800" fill="#fff" text-anchor="middle">m 71%</text>
+
+          <g font-size="13" fill="#4A443C" font-family="SF Mono,Menlo,monospace" text-anchor="middle">
+            <text x="20" y="140">0</text><text x="276" y="140">100%</text>
+          </g>
+          <text x="20" y="170" font-size="13" fill="#6E665A">e 14% · a 7% · s 4% · x 3% · 其他 1%</text>
+
+          <g font-size="13" fill="#6E665A">
+            <text x="20" y="215">每一份 ÷ 总和 28.35</text>
+            <text x="20" y="238">六份加起来正好 100%</text>
+          </g>
+        </svg>
+        <p class="pcap">把倍数除以它们的和，变成<b>加起来 100%</b> 的份额。颜色越浅，份额越小。</p>
+      </figure>
+
+    </div>
+    <p class="fnote">为了画得下，只画 6 组；真实词表是 27 个字符，形状完全一样。</p>
+  </section>
+
+  <!-- ================= 02 ================= -->
+  <section id="sec2">
+    <h2 class="sec"><span class="num">02</span>串起来：一条流水线</h2>
+    <p class="sub">从模型的输出，到最后一笔罚款。每一步只做一件小事。</p>
+
+    <div class="flow">
+      <div class="frow">
+        <span class="num">3.0</span><span class="num">1.4</span><span class="num">0.7</span>
+        <span class="num">0.1</span><span class="num neg">−0.2</span><span class="num neg">−1.3</span>
+      </div>
+      <p class="fnote">① logits：模型打的分，有正有负</p>
+
+      <div class="farrow"><span class="ln"></span><span class="tx"><b>exp</b>　每个数取 e 的次方</span><span class="ln"></span></div>
+
+      <div class="frow">
+        <span class="num">20.1</span><span class="num">4.1</span><span class="num">2.0</span>
+        <span class="num">1.1</span><span class="num">0.8</span><span class="num">0.3</span>
+      </div>
+      <p class="fnote">② 倍数：全是正数，大的更大，小的趋近 0</p>
+
+      <div class="farrow"><span class="ln"></span><span class="tx"><b>÷ 28.35</b>　除以这六个数的和</span><span class="ln"></span></div>
+
+      <div class="frow">
+        <span class="num big">71%</span><span class="num">14%</span><span class="num">7%</span>
+        <span class="num">4%</span><span class="num">3%</span><span class="num">1%</span>
+      </div>
+      <p class="fnote">③ softmax：份额，六个加起来正好 100%</p>
+
+      <div class="farrow"><span class="ln"></span><span class="tx"><b>只看真答案</b>　真实答案是 m，只取它那一份</span><span class="ln"></span></div>
+
+      <div class="frow"><span class="num hot">71%</span></div>
+      <p class="fnote">④ 这一题，模型给正确答案的把握</p>
+
+      <div class="farrow"><span class="ln"></span><span class="tx"><b>−ln</b>　换成罚款（NLL）</span><span class="ln"></span></div>
+
+      <div class="frow"><span class="num hot" style="background:#1B1917;border-color:#1B1917;box-shadow:0 3px 0 #000">0.35 分</span></div>
+      <p class="fnote">⑤ 这题的 loss</p>
+    </div>
+    <p class="fnote" style="text-align:left;margin-top:12px">
+      三个词就住在这条线的头三站。后面两站（取真答案、取负对数）就是上一张卡片讲的 NLL。
+    </p>
+  </section>
+
+  <!-- ================= 03 ================= -->
+  <section id="sec3">
+    <h2 class="sec"><span class="num">03</span>自己动手：拖三个分数</h2>
+    <p class="sub">同一排数据，三张脸实时同步。拖一拖，看哪一站的形状变得最夸张。</p>
+
+    <div class="demo">
+      <svg id="svg" viewBox="0 0 900 400" role="img" aria-label="三个阶段实时同步">
+        <text x="40" y="24" font-size="14" font-weight="700" fill="#1B1917">① 分数 logits</text>
+        <text x="335" y="24" font-size="14" font-weight="700" fill="#1B1917">② 倍数 exp</text>
+        <text x="630" y="24" font-size="14" font-weight="700" fill="#1B1917">③ 份额 softmax</text>
+        <line x1="40" y1="290" x2="292" y2="290" stroke="#1B1917" stroke-width="2"/>
+        <line x1="335" y1="290" x2="587" y2="290" stroke="#1B1917" stroke-width="2"/>
+        <line x1="630" y1="290" x2="882" y2="290" stroke="#1B1917" stroke-width="2"/>
+        <g id="bars"></g>
+      </svg>
+
+      <div class="sliders" id="sliders"></div>
+      <p class="fnote" style="text-align:left;margin-top:10px">
+        三张图的<b>刻度不一样</b>（分数 −3～3、倍数 0～21、份额 0～100%），看的是形状变化，不是长度比大小。
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ================= 04 ================= -->
+  <section id="sec4">
+    <h2 class="sec"><span class="num">04</span>一张表，分清三个词</h2>
+    <p class="sub">名字容易记混，是因为它们挨得太近。记住每个词“不是什么”，反而更快。</p>
+
+    <table>
+      <thead><tr><th>词</th><th>它是什么</th><th>它不是什么</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>logits</td>
+          <td>模型最后一层直接吐出来的分数</td>
+          <td>不是概率，也不是“信心”；可以是负数，加起来不等于 1</td>
+        </tr>
+        <tr>
+          <td>exp</td>
+          <td>把分数换成倍数的机器：e<sup>z</sup></td>
+          <td>不是归一化，也不改变谁大谁小；它只负责变正、放大差距</td>
+        </tr>
+        <tr>
+          <td>softmax</td>
+          <td>把倍数分成份额：除以它们的和</td>
+          <td>不是准确率；换一组候选，同一排分数的百分比会变</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="note warn">
+      <b>最常被搞混的一条：</b>softmax 的输出不是“模型有多确定”，它只是“在这几个候选里怎么分”。
+      把候选从 27 个换成 5 个，同一个 m 的份额立刻不一样——分母变了。
+    </div>
+  </section>
+
+  <!-- ================= 05 ================= -->
+  <section style="margin-bottom:0">
+    <div class="cheat">
+      <h2>一页速记</h2>
+      <p class="sub2">考自己：遮住右边，能不能说出三个词各干什么</p>
+      <ul>
+        <li><span class="d">▸</span><div><em>logits</em> 打分：可正可负，和不为 1</div></li>
+        <li><span class="d">▸</span><div><em>exp</em> 换倍数：z 加 1 → ×2.72，永远为正</div></li>
+        <li><span class="d">▸</span><div><em>softmax</em> 分份额：exp 之后除以和，加起来 100%</div></li>
+        <li><span class="d">▸</span><div>三步连起来：<em>打分 → 换倍数 → 分份额</em></div></li>
+        <li><span class="d">▸</span><div>再往后：取真答案那份 → <em>−ln</em> → 罚款</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <span>新人入职版 · 2026-11-12</span>
+    <span>想细看：<a href="../exp/index.html" style="color:inherit;border-bottom:1.5px solid #D2452A;text-decoration:none">exp 的空间变换</a> · <a href="../softmax/index.html" style="color:inherit;border-bottom:1.5px solid #D2452A;text-decoration:none">softmax 怎么做</a> · <a href="../nll-cross-entropy/index.html" style="color:inherit;border-bottom:1.5px solid #D2452A;text-decoration:none">NLL 罚什么</a></span>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var NAMES = ['m','e','a','s','x','其他'];
+  var INIT  = [3.0,1.4,0.7,0.1,-0.2,-1.3];
+  var svgNS = 'http://www.w3.org/2000/svg';
+  var g = document.getElementById('bars');
+
+  // 三个区块
+  var G1 = {x0: 40,  base: 290, scale: 30,  signed: true};
+  var G2 = {x0: 335, base: 290, scale: 7.5, signed: false};
+  var G3 = {x0: 630, base: 290, scale: 1.6, signed: false};
+  var BW = 28, GAP = 14;
+
+  // 滑块
+  var wrap = document.getElementById('sliders');
+  INIT.forEach(function(v, i){
+    var row = document.createElement('div');
+    row.className = 'srow';
+    row.innerHTML = '<label>' + NAMES[i] + '</label>' +
+      '<input type="range" id="r' + i + '" min="-3" max="3" step="0.1" value="' + v + '">' +
+      '<output id="o' + i + '">' + v.toFixed(1) + '</output>';
+    wrap.appendChild(row);
+  });
+
+  function softmax(z){
+    var m = Math.max.apply(null, z);
+    var e = z.map(function(v){ return Math.exp(v - m); });
+    var s = e.reduce(function(a,b){ return a + b; }, 0);
+    return e.map(function(v){ return v / s; });
+  }
+
+  function txt(x, y, s, size, fill, weight, anchor){
+    var t = document.createElementNS(svgNS, 'text');
+    t.setAttribute('x', x); t.setAttribute('y', y);
+    t.setAttribute('font-size', size);
+    t.setAttribute('fill', fill);
+    t.setAttribute('font-family', 'SF Mono,Menlo,monospace');
+    if (weight) t.setAttribute('font-weight', weight);
+    t.setAttribute('text-anchor', anchor || 'middle');
+    t.textContent = s;
+    return t;
+  }
+
+  function bar(x, base, h, up, fill, op){
+    var r = document.createElementNS(svgNS, 'rect');
+    var hh = Math.max(h, 1.5);
+    r.setAttribute('x', x);
+    r.setAttribute('y', up ? base - hh : base);
+    r.setAttribute('width', BW);
+    r.setAttribute('height', hh);
+    r.setAttribute('rx', 3);
+    r.setAttribute('fill', fill);
+    if (op) r.setAttribute('opacity', op);
+    g.appendChild(r);
+    return r;
+  }
+
+  function draw(){
+    var z = [];
+    for (var i = 0; i < 6; i++){
+      z.push(parseFloat(document.getElementById('r' + i).value));
+      document.getElementById('o' + i).textContent = z[i].toFixed(1).replace('-', '−');
+    }
+    var ex = z.map(Math.exp);
+    var p  = softmax(z);
+    while (g.firstChild) g.removeChild(g.firstChild);
+
+    for (var i = 0; i < 6; i++){
+      var isM = (i === 0);
+      var fillS = isM ? '#D2452A' : (z[i] < 0 ? '#D2452A' : '#0F7B72');
+
+      // ① 分数
+      var x1 = G1.x0 + i * (BW + GAP);
+      var h1 = Math.abs(z[i]) * G1.scale;
+      bar(x1, G1.base, h1, z[i] >= 0, fillS, isM ? 1 : .7);
+      g.appendChild(txt(x1 + BW/2, z[i] >= 0 ? G1.base - h1 - 6 : G1.base + h1 + 14,
+        z[i].toFixed(1).replace('-', '−'), 11, '#4A443C'));
+
+      // ② 倍数
+      var x2 = G2.x0 + i * (BW + GAP);
+      var h2 = ex[i] * G2.scale;
+      bar(x2, G2.base, h2, true, isM ? '#D2452A' : '#0F7B72', isM ? 1 : .55);
+      g.appendChild(txt(x2 + BW/2, G2.base - Math.max(h2, 1.5) - 6, ex[i].toFixed(1), 11, '#4A443C'));
+
+      // ③ 份额
+      var x3 = G3.x0 + i * (BW + GAP);
+      var h3 = p[i] * 100 * G3.scale;
+      bar(x3, G3.base, h3, true, isM ? '#D2452A' : '#0F7B72', isM ? 1 : .55);
+      g.appendChild(txt(x3 + BW/2, G3.base - Math.max(h3, 1.5) - 6, (p[i] * 100).toFixed(0) + '%', 11, '#4A443C'));
+
+      // 名字
+      g.appendChild(txt(x1 + BW/2, 372, NAMES[i], 12, '#6E665A', '700'));
+      g.appendChild(txt(x2 + BW/2, 372, NAMES[i], 12, '#6E665A', '700'));
+      g.appendChild(txt(x3 + BW/2, 372, NAMES[i], 12, '#6E665A', '700'));
+    }
+  }
+
+  for (var i = 0; i < 6; i++){
+    document.getElementById('r' + i).addEventListener('input', draw);
+  }
+  draw();
+})();
+</script>
+</body>
+</html>

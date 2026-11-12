@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一个点，穿过四个房间 · logits → exp → softmax → NLL</title>
+<style>
+  :root{
+    --paper:#FBF6EC; --paper-2:#F5EDDF; --ink:#1B1917; --muted:#6E665A;
+    --line:#DED3C0; --red:#D2452A; --red-soft:#F7E3DB; --teal:#0F7B72;
+    --teal-soft:#DCEFEA; --gold:#E8B23A;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font:400 19px/1.78 "PingFang SC","Hiragino Sans GB","Noto Sans SC",system-ui,sans-serif;
+    letter-spacing:.01em}
+  .wrap{max-width:1000px;margin:0 auto;padding:44px 50px 110px}
+  .mono{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+
+  .nav{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted);
+    margin:0 0 26px;padding-bottom:14px;border-bottom:1.5px solid var(--line)}
+  .nav a{color:var(--muted);text-decoration:none}
+  .nav a:hover{color:var(--red)}
+  .nav .tag{border:1.5px solid var(--line);border-radius:999px;padding:3px 12px;font-size:13px}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.18em;
+    color:var(--muted);text-transform:uppercase;margin:0 0 16px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--red);display:block}
+  h1{font-size:52px;line-height:1.18;margin:0 0 20px;font-weight:800;letter-spacing:-.01em}
+  h1 em{font-style:normal;color:var(--red);position:relative;white-space:nowrap}
+  h1 em::after{content:"";position:absolute;left:-2px;right:-2px;bottom:3px;height:12px;
+    background:var(--gold);opacity:.35;z-index:-1;border-radius:3px}
+  .lede{font-size:21px;color:#3B3630;max-width:790px;margin:0 0 28px}
+  .lede b{color:var(--ink)}
+
+  .tldr{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:28px 34px 24px;
+    margin:0 0 60px;box-shadow:8px 8px 0 var(--paper-2)}
+  .tldr h2{margin:0 0 14px;font-size:19px;letter-spacing:.06em}
+  .tldr ol{margin:0;padding:0;list-style:none;counter-reset:t}
+  .tldr li{counter-increment:t;position:relative;padding-left:44px;margin:0 0 11px;font-size:19px;line-height:1.65}
+  .tldr li::before{content:counter(t);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:50%;
+    background:var(--ink);color:#fff;font-size:14px;font-weight:700;display:grid;place-items:center}
+  .tldr li:last-child{margin-bottom:0}
+  .keyline{margin-top:18px;padding-top:14px;border-top:1.5px dashed var(--line);font-size:19px}
+  .keyline b{color:var(--red)}
+
+  section{margin:0 0 68px}
+  h2.sec{font-size:36px;line-height:1.3;margin:0 0 10px;font-weight:800;letter-spacing:-.01em;
+    display:inline-block;padding-bottom:12px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='9' viewBox='0 0 44 9'><path d='M1 6 Q 11 1.5 22 6 T 43 6' fill='none' stroke='%23D2452A' stroke-width='2.6' stroke-linecap='round'/></svg>") repeat-x left bottom;
+    background-size:44px 9px}
+  h2.sec .num{font-size:15px;color:var(--red);vertical-align:top;margin-right:10px;font-weight:700;letter-spacing:.1em}
+  .sub{color:var(--muted);font-size:17.5px;margin:0 0 24px;max-width:780px}
+
+  .demo{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:16px 16px 12px}
+  .demo svg{display:block;width:100%;height:auto}
+  .ctl{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:12px 4px 0}
+  .ctl label{font-size:14px;color:var(--muted);flex:none}
+  .sliders{display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;margin:12px 4px 0}
+  .srow{display:grid;grid-template-columns:64px 1fr 42px;gap:10px;align-items:center}
+  .srow label{font-size:14px;color:var(--muted)}
+  .srow output{font-size:13px;color:var(--muted);text-align:right;font-family:"SF Mono",Menlo,monospace}
+  input[type=range]{-webkit-appearance:none;appearance:none;height:6px;border-radius:3px;margin:0;
+    background:linear-gradient(90deg,#F0D9CF,#CFE7E1);outline:none;flex:1 1 180px}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+    background:var(--ink);border:3px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.25);cursor:grab}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 4px 0}
+  .chip{border:1.5px solid var(--line);border-radius:999px;padding:5px 13px;font-size:14px;color:#4A443C;background:#FFFDF7}
+  .chip b{color:var(--red);font-family:"SF Mono",Menlo,monospace}
+  .btn{border:1.5px solid var(--ink);background:#fff;border-radius:999px;padding:6px 15px;font-size:13.5px;
+    font-weight:700;cursor:pointer;font-family:inherit}
+  .btn:hover{background:var(--paper-2)}
+
+  .obs{counter-reset:o;margin:0;padding:0;list-style:none}
+  .obs li{counter-increment:o;position:relative;padding:0 0 0 56px;margin:0 0 22px}
+  .obs li::before{content:counter(o);position:absolute;left:0;top:2px;width:36px;height:36px;border-radius:50%;
+    border:2px solid var(--ink);display:grid;place-items:center;font-weight:800;font-size:15px;background:#fff;
+    box-shadow:3px 3px 0 var(--paper-2)}
+  .obs h3{margin:0 0 4px;font-size:20px;font-weight:800}
+  .obs p{margin:0;color:#4A443C;font-size:18px}
+
+  .note{border-left:4px solid var(--teal);background:var(--teal-soft);padding:16px 20px;
+    border-radius:0 12px 12px 0;font-size:17.5px;margin:18px 0 0;color:#233A36}
+  .note b{color:#0B5C55}
+
+  .cheat{background:var(--ink);color:#F7F1E4;border-radius:22px;padding:34px 36px;box-shadow:10px 10px 0 var(--paper-2)}
+  .cheat h2{color:#fff;margin:0 0 6px;font-size:29px;font-weight:800}
+  .cheat .sub2{color:#BDB3A0;font-size:16px;margin:0 0 20px}
+  .cheat ul{list-style:none;margin:0;padding:0}
+  .cheat li{display:grid;grid-template-columns:20px 1fr;gap:14px;padding:11px 0;border-top:1px dashed #4A443C;font-size:18.5px}
+  .cheat li:first-child{border-top:none}
+  .cheat .d{color:var(--gold)}
+  .cheat em{font-style:normal;color:#F0B429;font-family:"SF Mono",Menlo,monospace}
+
+  footer{margin-top:58px;padding-top:22px;border-top:1.5px solid var(--line);
+    display:flex;justify-content:space-between;color:var(--muted);font-size:14px;gap:20px;flex-wrap:wrap}
+
+  @media (max-width:860px){
+    .wrap{padding:28px 20px 80px}
+    h1{font-size:34px}
+    .lede{font-size:19px}
+    h2.sec{font-size:26px}
+    .cheat{padding:26px 22px}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <nav class="nav">
+    <a href="../three-words/index.html">← 上一篇：三个词一次讲完</a>
+    <span class="tag">全是空间变换</span>
+  </nav>
+
+  <p class="eyebrow">术语卡 · 人话版</p>
+  <h1>一个点，<br>穿过<em>四个房间</em></h1>
+  <p class="lede">
+    别背公式。只要记住：模型做完预测，会留下<b>一个点</b>；
+    这个点依次穿过四个房间，每过一道门，空间就变形一次。
+  </p>
+
+  <div class="tldr">
+    <h2>三十秒版</h2>
+    <ol>
+      <li><b>① 分数房间</b>：两个候选各一个分数，点在平面上，哪里都能去，负的也行。</li>
+      <li><b>② 倍数房间</b>：每个数取 e 的次方，点被拽进右上角，格子被拉成等比。</li>
+      <li><b>③ 份额房间</b>：整个平面“啪”地压成一条斜线，点落在线上。</li>
+      <li><b>④ 罚款房间</b>：只看线上 m 占多少，换算成一根柱子的高度——份额越小，柱子越高。</li>
+    </ol>
+    <p class="keyline">看这一页你只需要盯住：<b>那个红点，在四个房间里分别站在哪</b>。</p>
+  </div>
+
+  <!-- ================= 01 ================= -->
+  <section id="sec1">
+    <h2 class="sec"><span class="num">01</span>四个房间，一个红点</h2>
+    <p class="sub">下面四个小房间是同一件事的四个阶段。拖动滑块，看红点怎么被一路“搬”过去。</p>
+
+    <div class="demo">
+      <svg id="svg" viewBox="0 0 900 330" role="img" aria-label="一个点穿过四个空间">
+        <!-- 标题 -->
+        <g font-size="14" font-weight="700" fill="#1B1917">
+          <text x="10" y="24">① 分数房间</text>
+          <text x="243" y="24">② 倍数房间</text>
+          <text x="476" y="24">③ 份额房间</text>
+          <text x="700" y="24">④ 罚款房间</text>
+        </g>
+        <g font-size="12" fill="#6E665A">
+          <text x="10" y="276">负的、大的，都行</text>
+          <text x="243" y="276">全变正，往外松</text>
+          <text x="476" y="276">平面压成一条线</text>
+          <text x="700" y="276">份额越小，越高</text>
+        </g>
+
+        <!-- 箭头 -->
+        <g stroke="#1B1917" stroke-width="1.6" fill="none" opacity=".55">
+          <path d="M204 140 H 232"/><path d="M226 135 L 233 140 L 226 145"/>
+          <path d="M437 140 H 465"/><path d="M459 135 L 466 140 L 459 145"/>
+          <path d="M670 140 H 698"/><path d="M692 135 L 699 140 L 692 145"/>
+        </g>
+
+        <!-- ① 分数平面 -->
+        <g id="roomA"></g>
+        <rect x="10" y="50" width="180" height="180" fill="none" stroke="#1B1917" stroke-width="1.6"/>
+        <line x1="10" y1="140" x2="190" y2="140" stroke="#1B1917" stroke-width="1.4"/>
+        <line x1="100" y1="50" x2="100" y2="230" stroke="#1B1917" stroke-width="1.4"/>
+
+        <!-- ② 倍数空间 -->
+        <g id="roomB"></g>
+        <line x1="243" y1="230" x2="423" y2="230" stroke="#1B1917" stroke-width="1.6"/>
+        <line x1="243" y1="50" x2="243" y2="230" stroke="#1B1917" stroke-width="1.6"/>
+
+        <!-- ③ 份额线段 -->
+        <line x1="476" y1="80" x2="656" y2="230" stroke="#0F7B72" stroke-width="2.4" stroke-dasharray="7 6" opacity=".65"/>
+        <line x1="476" y1="230" x2="656" y2="230" stroke="#1B1917" stroke-width="1.4"/>
+        <line x1="476" y1="230" x2="476" y2="80" stroke="#1B1917" stroke-width="1.4"/>
+        <g font-size="11" fill="#6E665A" font-family="SF Mono,Menlo,monospace">
+          <text x="476" y="246" text-anchor="middle">0</text>
+          <text x="656" y="246" text-anchor="middle">1</text>
+          <text x="468" y="84" text-anchor="end">1</text>
+        </g>
+
+        <!-- ④ 罚款曲线 -->
+        <g id="roomD"></g>
+        <line x1="700" y1="230" x2="880" y2="230" stroke="#1B1917" stroke-width="1.4"/>
+        <line x1="700" y1="230" x2="700" y2="60" stroke="#1B1917" stroke-width="1.4"/>
+        <g font-size="11" fill="#6E665A" font-family="SF Mono,Menlo,monospace">
+          <text x="700" y="246" text-anchor="middle">0</text>
+          <text x="880" y="246" text-anchor="middle">1</text>
+          <text x="692" y="64" text-anchor="end">3</text>
+        </g>
+
+        <!-- 点 -->
+        <circle id="pA" cx="100" cy="140" r="8" fill="#D2452A" stroke="#fff" stroke-width="2.5"/>
+        <circle id="pB" cx="251" cy="222" r="8" fill="#D2452A" stroke="#fff" stroke-width="2.5"/>
+        <circle id="pC" cx="607" cy="190" r="8" fill="#D2452A" stroke="#fff" stroke-width="2.5"/>
+        <circle id="pD" cx="830" cy="96" r="8" fill="#D2452A" stroke="#fff" stroke-width="2.5"/>
+      </svg>
+
+      <div class="sliders">
+        <div class="srow"><label>m 的分数</label><input id="rm" type="range" min="-3" max="3" step="0.1" value="1"><output id="om">1.0</output></div>
+        <div class="srow"><label>e 的分数</label><input id="re" type="range" min="-3" max="3" step="0.1" value="0"><output id="oe">0.0</output></div>
+      </div>
+      <div class="chips">
+        <span class="chip">m 的份额 <b id="cm">73%</b></span>
+        <span class="chip">e 的份额 <b id="ce">27%</b></span>
+        <span class="chip">罚款 −ln = <b id="cf">0.31</b></span>
+        <button class="btn" id="both">两个一起 +1</button>
+      </div>
+      <p class="figcap" style="margin-top:8px">
+        四个房间共用同一组分数。右边三个点不是“另一个点”，是同一个红点被搬过去的样子。
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= 02 ================= -->
+  <section id="sec2">
+    <h2 class="sec"><span class="num">02</span>拖三下，看懂三件事</h2>
+    <p class="sub">下面三个动作，每个都能在图上立刻看到后果。建议真的拖一遍。</p>
+
+    <ol class="obs">
+      <li>
+        <h3>把 m 拖到负分：点①跑到左下，点③只往左挪一点</h3>
+        <p>分数可以很大很负，但份额永远在 0 到 1 之间。平面被压成线段，就是这个意思——<b>再多可能性，最后只剩一条线上的位置</b>。</p>
+      </li>
+      <li>
+        <h3>两个分数一起加 1：点①和②动了，点③和④纹丝不动</h3>
+        <p>因为 softmax 只看两个分数的<b>差</b>。沿斜线滑动、也就是“差不变”，落点就不变。这就是为什么说 logits 的绝对值没有意义。</p>
+      </li>
+      <li>
+        <h3>把 m 的份额从 73% 拖到 10%：罚款从 0.3 涨到 2.3</h3>
+        <p>罚款房间里，越靠左（份额越小）柱子越高，而且越往左越陡。这就是 −ln：<b>没把握还嘴硬，罚得特别狠</b>。</p>
+      </li>
+    </ol>
+
+    <div class="note">
+      <b>一张嘴说完：</b>分数随便跑 → exp 拽进正数区 → softmax 压成一条线 → −ln 把线上的位置换算成罚款高度。
+      四步，四次空间变形，红点一路被搬过去。
+    </div>
+  </section>
+
+  <!-- ================= 03 ================= -->
+  <section style="margin-bottom:0">
+    <div class="cheat">
+      <h2>一页速记</h2>
+      <p class="sub2">四个房间，四句话</p>
+      <ul>
+        <li><span class="d">▸</span><div><em>分数</em>：平面上的点，可以到处跑</div></li>
+        <li><span class="d">▸</span><div><em>exp</em>：把点拽进右上角，格子拉成等比</div></li>
+        <li><span class="d">▸</span><div><em>softmax</em>：整个平面压成一条斜线</div></li>
+        <li><span class="d">▸</span><div><em>NLL</em>：线上越靠左，柱子越高（越陡）</div></li>
+        <li><span class="d">▸</span><div>红点只有位置在变，<em>还是同一个点</em></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <span>给弱智版 · 2026-11-12</span>
+    <span>想细看：<a href="../exp/index.html" style="color:inherit;border-bottom:1.5px solid #D2452A;text-decoration:none">exp 的空间变换</a> · <a href="../three-words/index.html" style="color:inherit;border-bottom:1.5px solid #D2452A;text-decoration:none">三个词一次讲完</a></span>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var NS = 'http://www.w3.org/2000/svg';
+  var rm = document.getElementById('rm'), re = document.getElementById('re');
+  var pA = document.getElementById('pA'), pB = document.getElementById('pB');
+  var pC = document.getElementById('pC'), pD = document.getElementById('pD');
+
+  function el(tag, attrs){
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  // 静态：① 的淡网格
+  var A = document.getElementById('roomA');
+  for (var i = 1; i < 6; i++){
+    A.appendChild(el('line', {x1: 10 + i*30, y1: 50, x2: 10 + i*30, y2: 230,
+      stroke: '#EDE4D4', 'stroke-width': 1}));
+    A.appendChild(el('line', {x1: 10, y1: 50 + i*30, x2: 190, y2: 50 + i*30,
+      stroke: '#EDE4D4', 'stroke-width': 1}));
+  }
+
+  // 静态：② 的等比网格
+  var B = document.getElementById('roomB');
+  for (var u = -3; u <= 3.001; u += 0.5){
+    var pos = Math.exp(u) * 8;
+    B.appendChild(el('line', {x1: 243 + pos, y1: 50, x2: 243 + pos, y2: 230,
+      stroke: '#0F7B72', 'stroke-width': 1, opacity: .3}));
+    B.appendChild(el('line', {x1: 243, y1: 230 - pos, x2: 423, y2: 230 - pos,
+      stroke: '#0F7B72', 'stroke-width': 1, opacity: .3}));
+  }
+  B.appendChild(el('rect', {x: 243, y: 50, width: 180, height: 180, fill: 'none',
+    stroke: '#1B1917', 'stroke-width': 1.6}));
+
+  // 静态：④ 的 −ln 曲线
+  var D = document.getElementById('roomD');
+  var dpath = '';
+  for (var p = 0.05; p <= 1.0001; p += 0.01){
+    var pen = Math.min(-Math.log(p), 3);
+    var x = 700 + p * 180, y = 230 - pen * 56.7;
+    dpath += (dpath ? ' L ' : 'M ') + x.toFixed(1) + ',' + y.toFixed(1);
+  }
+  D.appendChild(el('path', {d: dpath, fill: 'none', stroke: '#D2452A',
+    'stroke-width': 3, 'stroke-linecap': 'round'}));
+
+  function draw(){
+    var zm = parseFloat(rm.value), ze = parseFloat(re.value);
+    var d = zm - ze;
+    var pm = 1 / (1 + Math.exp(-d));
+
+    // ① 分数平面
+    pA.setAttribute('cx', (100 + zm * 25).toFixed(1));
+    pA.setAttribute('cy', (140 - ze * 25).toFixed(1));
+
+    // ② 倍数空间
+    var bx = 243 + Math.min(Math.exp(zm), 21) * 8;
+    var by = 230 - Math.min(Math.exp(ze), 21) * 8;
+    pB.setAttribute('cx', bx.toFixed(1));
+    pB.setAttribute('cy', by.toFixed(1));
+
+    // ③ 份额线段
+    pC.setAttribute('cx', (476 + 180 * pm).toFixed(1));
+    pC.setAttribute('cy', (80 + 150 * pm).toFixed(1));
+
+    // ④ 罚款曲线
+    var pen = Math.min(-Math.log(pm), 3);
+    pD.setAttribute('cx', (700 + 180 * pm).toFixed(1));
+    pD.setAttribute('cy', (230 - pen * 56.7).toFixed(1));
+
+    document.getElementById('om').textContent = zm.toFixed(1).replace('-', '−');
+    document.getElementById('oe').textContent = ze.toFixed(1).replace('-', '−');
+    document.getElementById('cm').textContent = Math.round(pm * 100) + '%';
+    document.getElementById('ce').textContent = Math.round((1 - pm) * 100) + '%';
+    document.getElementById('cf').textContent = (-Math.log(pm)).toFixed(2);
+  }
+
+  rm.addEventListener('input', draw);
+  re.addEventListener('input', draw);
+  document.getElementById('both').addEventListener('click', function(){
+    rm.value = Math.min(3, parseFloat(rm.value) + 1);
+    re.value = Math.min(3, parseFloat(re.value) + 1);
+    draw();
+  });
+  draw();
+})();
+</script>
+</body>
+</html>

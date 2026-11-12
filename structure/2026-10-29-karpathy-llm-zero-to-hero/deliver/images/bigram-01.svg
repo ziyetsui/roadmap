@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="36" font-weight="bold" text-anchor="start">步骤 3 · 记票、分摊、抽签，是三件不同的事</text>
+<text x="50" y="108" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="start">真实名字数据：32,033 个名字，27×27 表共 228,146 张票；下面始终跟着 m 这一行。</text>
+<rect x="40" y="150" width="320" height="130" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="200.0" y="172.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">① 记账</text>
+<text x="200.0" y="206.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">行＝现在是谁</text>
+<text x="200.0" y="240.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">列＝下一个是谁</text>
+<text x="200.0" y="274.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">每张票落一格</text>
+<rect x="420" y="150" width="340" height="130" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="590.0" y="172.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">② 取出 m 行</text>
+<text x="590.0" y="206.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">共 6,642 张票</text>
+<text x="590.0" y="240.0" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="middle">a 2590 · i 1256 · e 818</text>
+<text x="590.0" y="274.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">. 516 · o 452 · …</text>
+<rect x="820" y="150" width="340" height="130" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="990.0" y="189.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">③ 每格 +1，再除以 6,669</text>
+<text x="990.0" y="223.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">a = 2591/6,669 ≈ 0.39</text>
+<text x="990.0" y="257.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">g、q、x 也各得 1/6,669</text>
+<line x1="360" y1="215" x2="420" y2="215" stroke="#087f8c" stroke-width="4"/>
+<polygon points="420.0,215.0 405.0,208.0 405.0,222.0" fill="#087f8c"/>
+<line x1="760" y1="215" x2="820" y2="215" stroke="#087f8c" stroke-width="4"/>
+<polygon points="820.0,215.0 805.0,208.0 805.0,222.0" fill="#087f8c"/>
+<text x="600" y="340" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">m 行整理成 27 份份额（高度 = 概率，27 根柱子加起来 = 1）</text>
+<line x1="83" y1="620" x2="1143" y2="620" stroke="#18333d" stroke-width="3"/>
+<rect x="95" y="582.7890238416554" width="24" height="37.21097615834458" rx="2" fill="#087f8c" stroke="#087f8c" stroke-width="2"/>
+<rect x="134" y="433.5132703553756" width="24" height="186.4867296446244" rx="2" fill="#c66b24" stroke="#c66b24" stroke-width="2"/>
+<rect x="173" y="611.8668466036887" width="24" height="8.133153396311291" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="212" y="616.2573099415205" width="24" height="3.742690058479532" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="251" y="618.2006297795772" width="24" height="1.7993702204228519" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="290" y="561.0526315789474" width="24" height="58.94736842105263" rx="2" fill="#087f8c" stroke="#087f8c" stroke-width="2"/>
+<rect x="329" y="618.5" width="24" height="1.5" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="368" y="618.5" width="24" height="1.5" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="407" y="618.5" width="24" height="1.5" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="446" y="529.527665317139" width="24" height="90.472334682861" rx="2" fill="#087f8c" stroke="#087f8c" stroke-width="2"/>
+<rect x="485" y="618.5" width="24" height="1.5" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="524" y="618.5" width="24" height="1.5" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="563" y="618.5" width="24" height="1.5" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="602" y="607.8362573099415" width="24" height="12.163742690058479" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="641" y="618.4885290148449" width="24" height="1.5114709851551955" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="680" y="587.395411605938" width="24" height="32.60458839406208" rx="2" fill="#087f8c" stroke="#087f8c" stroke-width="2"/>
+<rect x="719" y="617.1929824561404" width="24" height="2.807017543859649" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="758" y="618.5" width="24" height="1.5" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="797" y="612.9464687359424" width="24" height="7.05353126405758" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="836" y="617.408906882591" width="24" height="2.591093117408907" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="875" y="618.5" width="24" height="1.5" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="914" y="609.923526765632" width="24" height="10.076473234367972" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="953" y="618.5" width="24" height="1.5" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="992" y="618.5" width="24" height="1.5" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="1031" y="618.5" width="24" height="1.5" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="1070" y="599.2712550607288" width="24" height="20.728744939271255" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<rect x="1109" y="618.5" width="24" height="1.5" rx="2" fill="#9ac7c9" stroke="#9ac7c9" stroke-width="2"/>
+<text x="146.0" y="423.5132703553756" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">a 0.39</text>
+<text x="458.0" y="519.527665317139" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">i 0.19</text>
+<text x="302.0" y="551.0526315789474" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">e 0.12</text>
+<text x="107.0" y="572.7890238416554" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">. 0.08</text>
+<text x="692.0" y="577.395411605938" fill="#18333d" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">o 0.07</text>
+<text x="95" y="654" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="start">第 0 列（点号）</text>
+<text x="1133" y="654" fill="#516771" font-family="sans-serif" font-size="20" font-weight="normal" text-anchor="end">第 26 列</text>
+<text x="620" y="500" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">g、q、x 三格原本是 0；加一后各得 1/6,669</text>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">手指读图：点一格 → 横着加总这一行 → 每格除以总数 → 得出柱高。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">易错：每行各自加起来是 1，不是整张表加起来是 1；整张表的和是 228,146 张票。</text>
+</svg>

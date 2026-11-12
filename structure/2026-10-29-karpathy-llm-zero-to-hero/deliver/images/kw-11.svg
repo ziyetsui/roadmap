@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="35" font-weight="bold" text-anchor="start">步骤 11 · 计时：先预热，再量稳态，最后除以步数</text>
+<text x="50" y="105" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">同一条时间轴，只有中间那段才拿来算吞吐。</text>
+<rect x="60" y="250" width="190" height="70" rx="0" fill="#e9edf1" stroke="#c9d6da" stroke-width="2"/>
+<rect x="250" y="250" width="640" height="70" rx="0" fill="#087f8c" stroke="#087f8c" stroke-width="2"/>
+<rect x="890" y="250" width="250" height="70" rx="0" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="155" y="295" fill="#516771" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">启动 / 预热</text>
+<text x="570" y="295" fill="#ffffff" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">计时窗口：50 步</text>
+<text x="1015" y="295" fill="#516771" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="middle">收尾 / 保存</text>
+<text x="60" y="200" fill="#c66b24" font-family="sans-serif" font-size="27" font-weight="normal" text-anchor="start">tokens/s = B × T × 步数 ÷ 秒数</text>
+<text x="60" y="380" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">例：20 次更新 × 2048 token ÷ 10 秒 = 4,096 tokens/s</text>
+<text x="60" y="420" fill="#516771" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">这个数字只回答「多快」，不回答「学得好不好」。</text>
+<rect x="60" y="470" width="340" height="120" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="230.0" y="522.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">只测前向</text>
+<text x="230.0" y="554.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">漏了反向与更新</text>
+<rect x="430" y="470" width="340" height="120" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="600.0" y="522.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">含数据加载</text>
+<text x="600.0" y="554.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">端到端才是用户体感</text>
+<rect x="800" y="470" width="340" height="120" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="970.0" y="522.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">冷启动 vs 稳态</text>
+<text x="970.0" y="554.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">首轮含编译，必须分开</text>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">手指读图：把灰色段（启动）拿掉，只量中间的青色段，再除以这段里的步数。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">易错：不同精度、不同批次、不同设备的 tokens/s 不能直接比；要连口径一起报。</text>
+</svg>

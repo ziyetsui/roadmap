@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="36" font-weight="bold" text-anchor="start">步骤 3 · 采样：在一条 0 到 1 的尺子上落一根针</text>
+<text x="50" y="108" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="start">把 m 行的份额一段段接在尺子上；随机落针落在哪一段，就选哪个字符。</text>
+<line x1="80" y1="330" x2="1120" y2="330" stroke="#18333d" stroke-width="3"/>
+<rect x="90.0" y="260" width="396.2843004948268" height="70" rx="0" fill="#c66b24" stroke="#ffffff" stroke-width="2"/>
+<text x="288.1421502474134" y="303" fill="#ffffff" font-family="sans-serif" font-size="30" font-weight="normal" text-anchor="middle">a</text>
+<rect x="486.2843004948268" y="260" width="192.25371120107962" height="70" rx="0" fill="#087f8c" stroke="#ffffff" stroke-width="2"/>
+<text x="582.4111560953667" y="303" fill="#ffffff" font-family="sans-serif" font-size="30" font-weight="normal" text-anchor="middle">i</text>
+<rect x="678.5380116959064" y="260" width="125.26315789473684" height="70" rx="0" fill="#4a9bb0" stroke="#ffffff" stroke-width="2"/>
+<text x="741.1695906432748" y="303" fill="#ffffff" font-family="sans-serif" font-size="30" font-weight="normal" text-anchor="middle">e</text>
+<rect x="803.8011695906432" y="260" width="79.07332433648223" height="70" rx="0" fill="#7fb8b5" stroke="#ffffff" stroke-width="2"/>
+<text x="843.3378317588844" y="303" fill="#18333d" font-family="sans-serif" font-size="30" font-weight="normal" text-anchor="middle">.</text>
+<rect x="882.8744939271254" y="260" width="69.28475033738192" height="70" rx="0" fill="#a9cfc9" stroke="#ffffff" stroke-width="2"/>
+<text x="917.5168690958164" y="303" fill="#18333d" font-family="sans-serif" font-size="30" font-weight="normal" text-anchor="middle">o</text>
+<rect x="952.1592442645073" y="260" width="44.04858299595141" height="70" rx="0" fill="#cfe4e0" stroke="#ffffff" stroke-width="2"/>
+<text x="974.183535762483" y="303" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="middle">y</text>
+<rect x="996.2078272604587" y="260" width="113.79217273954133" height="70" rx="0" fill="#e9edf1" stroke="#ffffff" stroke-width="2"/>
+<text x="1053.1039136302293" y="303" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">其余 21 列</text>
+<line x1="90" y1="330" x2="90" y2="344" stroke="#18333d" stroke-width="2"/>
+<text x="90" y="372" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">0</text>
+<line x1="486.27000000000004" y1="330" x2="486.27000000000004" y2="344" stroke="#18333d" stroke-width="2"/>
+<text x="486.27000000000004" y="372" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">0.39</text>
+<line x1="678.54" y1="330" x2="678.54" y2="344" stroke="#18333d" stroke-width="2"/>
+<text x="678.54" y="372" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">0.58</text>
+<line x1="803.7959999999999" y1="330" x2="803.7959999999999" y2="344" stroke="#18333d" stroke-width="2"/>
+<text x="803.7959999999999" y="372" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">0.70</text>
+<line x1="1110" y1="330" x2="1110" y2="344" stroke="#18333d" stroke-width="2"/>
+<text x="1110" y="372" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="middle">1</text>
+<line x1="722.4" y1="210" x2="722.4" y2="330" stroke="#c66b24" stroke-width="4"/>
+<polygon points="711.4,216 733.4,216 722.4,248" fill="#c66b24"/>
+<text x="738.4" y="205" fill="#c66b24" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">这一次随机落在 0.62</text>
+<text x="738.4" y="240" fill="#c66b24" font-family="sans-serif" font-size="28" font-weight="bold" text-anchor="start">→ 选中 e</text>
+<text x="90" y="150" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">m 行的账：a 38.9% · i 18.8% · e 12.3% · . 7.8% · 其余见右侧尺子</text>
+<rect x="90" y="430" width="500" height="130" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="340.0" y="486.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">抽完一格，指针移到新字符那一行</text>
+<text x="340.0" y="520.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">再由那一行的尺子抽下一个</text>
+<rect x="640" y="430" width="470" height="130" rx="10" fill="#e9edf1" stroke="#087f8c" stroke-width="2"/>
+<text x="875.0" y="469.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">torch.multinomial(P[ix], 1)</text>
+<text x="875.0" y="503.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">就是在这把尺子上扔针</text>
+<text x="875.0" y="537.0" fill="#18333d" font-family="sans-serif" font-size="26" font-weight="normal" text-anchor="middle">换 seed 只换落点，不改尺子</text>
+<line x1="340" y1="430" x2="340" y2="360" stroke="#087f8c" stroke-width="4"/>
+<polygon points="340.0,360.0 333.0,375.0 347.0,375.0" fill="#087f8c"/>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">为什么概率高不等于必选：针可能落在任何一段，只是宽段更容易被命中。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">为什么抽到 e 不代表它更“对”：尺子只记录数据里谁更常见，不代表名字好坏。</text>
+</svg>

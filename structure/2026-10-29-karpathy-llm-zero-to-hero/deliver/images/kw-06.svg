@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="780" viewBox="0 0 1200 780">
+<rect x="0" y="0" width="1200" height="780" fill="#ffffff"/>
+<text x="50" y="62" fill="#18333d" font-family="sans-serif" font-size="35" font-weight="bold" text-anchor="start">步骤 6 · 反向四式：每个梯度都从「谁参与了这次乘法」推出来</text>
+<text x="50" y="105" fill="#18333d" font-family="sans-serif" font-size="24" font-weight="normal" text-anchor="start">Y = X @ W + b；前向一行，反向三行。</text>
+<rect x="60" y="165" width="150" height="90" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="135.0" y="202.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">X</text>
+<text x="135.0" y="234.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">(4, 3)</text>
+<rect x="300" y="165" width="150" height="90" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="375.0" y="202.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">W</text>
+<text x="375.0" y="234.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">(3, 2)</text>
+<rect x="560" y="165" width="160" height="90" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="640.0" y="202.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">Y</text>
+<text x="640.0" y="234.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">(4, 2)</text>
+<rect x="300" y="320" width="150" height="80" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="375.0" y="352.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">b</text>
+<text x="375.0" y="384.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">(2,)</text>
+<line x1="210" y1="210" x2="300" y2="210" stroke="#087f8c" stroke-width="4"/>
+<polygon points="300.0,210.0 285.0,203.0 285.0,217.0" fill="#087f8c"/>
+<line x1="450" y1="210" x2="560" y2="210" stroke="#087f8c" stroke-width="4"/>
+<polygon points="560.0,210.0 545.0,203.0 545.0,217.0" fill="#087f8c"/>
+<line x1="450" y1="360" x2="560" y2="265" stroke="#c66b24" stroke-width="3"/>
+<polygon points="560.0,265.0 544.1,269.5 553.2,280.1" fill="#c66b24"/>
+<text x="470" y="385" fill="#c66b24" font-family="sans-serif" font-size="21" font-weight="normal" text-anchor="start">b 被 4 行共用</text>
+<rect x="60" y="440" width="340" height="140" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="230.0" y="502.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">dX = dY @ Wᵀ</text>
+<text x="230.0" y="534.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">(4,2)@(2,3) → (4,3)</text>
+<rect x="430" y="440" width="340" height="140" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="600.0" y="502.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">dW = Xᵀ @ dY</text>
+<text x="600.0" y="534.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">(3,4)@(4,2) → (3,2)</text>
+<rect x="800" y="440" width="340" height="140" rx="10" fill="#e7f5f3" stroke="#087f8c" stroke-width="2"/>
+<text x="970.0" y="502.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">db = dY.sum(0)</text>
+<text x="970.0" y="534.0" fill="#18333d" font-family="sans-serif" font-size="25" font-weight="normal" text-anchor="middle">4 行相加 → (2,)</text>
+<text x="60" y="620" fill="#c66b24" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">广播的账：四行对 b 的梯度是 1、2、3、4，原偏置只有一份，所以 db = 10。</text>
+<text x="50" y="700" fill="#18333d" font-family="sans-serif" font-size="23" font-weight="normal" text-anchor="start">手指读图：每条反向式里，谁被转置、谁保持原样，取决于它在前向里站在乘号的哪一边。</text>
+<text x="50" y="742" fill="#516771" font-family="sans-serif" font-size="22" font-weight="normal" text-anchor="start">易错：求和轴错了形状可能仍对；embedding 里同一个字符被查多次，梯度要累加。</text>
+</svg>
