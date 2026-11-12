@@ -153,6 +153,13 @@
       .check-item:has(> input:checked)::before { content: "☑"; }
       a { color: var(--accent); text-decoration: none; }
     }
+
+    .comic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin: 20px 0 8px; }
+    .comic-grid figure { margin: 0; }
+    .comic-grid img { width: 100%; display: block; border: 1px solid #d7ddd9; border-radius: 10px; background: #fff; }
+    .comic-grid figcaption { font-size: 13px; line-height: 1.6; color: #5b6b6a; margin-top: 6px; }
+    .comic-cta { display: inline-block; margin: 4px 0 12px; padding: 10px 18px; border-radius: 999px; background: #1c655c; color: #fff !important; font-weight: 600; }
+    .comic-cta:hover { background: #144b44; }
   </style>
 </head>
 <body>
@@ -189,7 +196,7 @@
       <header class="masthead">
         <h1>Karpathy 从零构建大语言模型实战手册</h1>
         <p class="subtitle">从生活场景到实际操作：13步白话说明与空间图解</p>
-        <p class="updated">更新：2026-11-12</p>
+        <p class="updated">更新：2026-11-13 · <a href="comic/">漫画版（24 格）</a></p>
       </header>
       <nav class="print-toc" id="print-toc" aria-label="打印目录">
         <p class="print-toc-title">目录</p>
@@ -1948,7 +1955,19 @@ If you've made it this far, you're now a pro at LLM Tokenization! Sadly, you're 
       </section>
       <div id="sections">
         <!-- SECTIONS_HTML_START: 每章用 <details class="manual-section" id="section-唯一安全ID" open><summary><span class="section-title">标题</span></summary><div class="section-body">正文</div></details>。步骤标题用“步骤 1 …”，S1 仅为站内来源；操作与判断步骤都写一句话目标 <p class="step-goal">、3–5 条动作清单（判断步骤包含输入/理由/反例/下一动作）、<p class="step-done">可观察的做完标准；代表性案例用 <div class="case-card"> 写起点/做法/自述结果/来源，可套用模板的占位须注明虚构。正文来源标记用一个 <span class="source-markers">[<a class="source-ref" id="cite-o1-1" href="#source-o1">O1</a>、<a class="source-ref" id="cite-s1-1" href="#source-s1">S1</a>]</span> 组，重复引用的 cite ID 必须唯一。清单用 <label class="check-item"><input type="checkbox" data-check-id="全书唯一且稳定的安全ID"><span>事项</span></label>。章节互引只指向已有 #section-...；有真实来源 URL 时外链用 target="_blank" rel="noopener noreferrer"。案例作者有已核对头像时在引用旁使用 <span class="source-credit"><img src="data:image/png;base64,..." alt="作者昵称">作者昵称</span>，无头像则只留昵称。代码块用 <pre><code class="language-可选语言">已做 HTML 文本转义的代码或提示词</code></pre>，无语言时省略 class；行内代码用 <code>已转义文本</code>，不得把 Markdown 的 ``` 围栏原样写进 HTML。图片只用同目录相对路径或 data:image/png/jpeg/webp;base64,...；相对图片须和 HTML 一起交付。不要插入远程资源、script、iframe 或内联事件属性。 -->
-        <details class="manual-section" id="section-route" open><summary><span class="section-title">六阶段路线图</span></summary><div class="section-body">
+        <details class="manual-section" id="section-comic" open><summary><span class="section-title">漫画图解：24 格看懂这门课</span></summary><div class="section-body">
+<p>如果文字看不进去，先看漫画。一格一件事、一句话一个数，不出现代码。全部是助手绘制的教学示意；图上的数字（524,288、2,048、10.83、7.17）来自笔记本的真实输出，但示意图不等于课程截图或 GPU 实测。</p>
+<p><a class="comic-cta" href="comic/">打开完整漫画（5 页，可直接打印）</a></p>
+<div class="comic-grid">
+<figure><a href="comic/"><img src="comic/panel-01.png" alt="第 1 格：它是一台吃字的机器"></a><figcaption>1 / 一台机器：吃字，然后改一次旋钮。</figcaption></figure>
+<figure><a href="comic/"><img src="comic/panel-04d.png" alt="第 4d 格：一整块就是一勺，2,048 个字"></a><figcaption>4d / 8 行 × 256 列 = 2,048，这一整块叫「一勺」。</figcaption></figure>
+<figure><a href="comic/"><img src="comic/panel-08.png" alt="第 8 格：两张卡错开读同一盘磁带"></a><figcaption>8 / 你读一格，我读一格，正好接上。</figcaption></figure>
+<figure><a href="comic/"><img src="comic/panel-loop-06.png" alt="第二辑第 6 格：训练就是这一圈走一万九千次"></a><figcaption>循环 / 喂→猜→算错→传回→拧，走 19,073 次。</figcaption></figure>
+</div>
+<p>漫画分三辑：前 12 格讲第 12 步的 token 预算与多卡短跑；第 4 格「一勺」单独放大成 6 格（一个字 → 一句话 → 八行 → 一勺 → 为什么这么大 → 然后呢）；最后 6 格讲数据喂进去之后机器到底做了什么（猜下一个字、算 loss、倒着传梯度、只拧一点点）。</p>
+<p>配套的白话长文与 10 张空间图在手册的「步骤 12」正文里；漫画只是同一套解释的图版。</p>
+</div></details>
+<details class="manual-section" id="section-route" open><summary><span class="section-title">六阶段路线图</span></summary><div class="section-body">
 <div class="table-wrap"><table>
 <thead>
 <tr>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>步骤 12 漫画版 · 12 格看懂</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #e9edf1;
+    color: #111;
+    font-family: -apple-system, "PingFang SC", "Heiti TC", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 14mm auto;
+    padding: 14mm 13mm 16mm;
+    background: #fff;
+    box-shadow: 0 6px 28px rgba(0, 0, 0, .14);
+    display: flex;
+    flex-direction: column;
+  }
+  .page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 3px solid #111;
+    padding-bottom: 3mm;
+    margin-bottom: 7mm;
+  }
+  .page-head h2 { margin: 0; font-size: 15pt; letter-spacing: .02em; }
+  .page-head span { font-size: 9pt; color: #777; }
+  .lede { font-size: 9.5pt; color: #555; margin: -3mm 0 6mm; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7mm;
+  }
+  .grid.six { grid-template-columns: 1fr 1fr; gap: 5mm; }
+  .grid.six figure img { width: 96%; margin: 0 auto; }
+  figure { margin: 0; break-inside: avoid; }
+  figure img { width: 100%; height: auto; display: block; }
+
+  .foot {
+    margin-top: auto;
+    padding-top: 5mm;
+    border-top: 1px solid #ddd;
+    font-size: 8pt;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cover { justify-content: center; align-items: center; text-align: center; }
+  .cover h1 { font-size: 30pt; margin: 0 0 4mm; letter-spacing: .04em; }
+  .cover .sub { font-size: 12pt; color: #555; line-height: 2; }
+  .cover .big { font-size: 64pt; margin: 12mm 0 6mm; }
+  .cover .tag {
+    margin-top: 14mm; font-size: 10pt; color: #333;
+    border: 2px solid #111; border-radius: 3mm; padding: 6mm 8mm; line-height: 2;
+  }
+
+  @media (max-width: 720px) {
+    .page { width: auto; min-height: 0; margin: 0; padding: 6mm; box-shadow: none; }
+    .grid { grid-template-columns: 1fr; gap: 5mm; }
+    body { background: #fff; }
+  }
+  @media print {
+    body { background: #fff; }
+    .page { box-shadow: none; margin: 0; page-break-after: always; }
+    .page:last-child { page-break-after: auto; }
+  }
+  @page { size: A4 portrait; margin: 0; }
+</style>
+</head>
+<body>
+
+<!-- 封面 -->
+<section class="page cover">
+  <h1>步骤 12 漫画版</h1>
+  <p class="sub">12 格，一格一件事<br>不需要懂任何代码</p>
+  <div class="big">🍚🔧</div>
+  <div class="tag">
+    它是一台吃字的机器。<br>
+    今天不喂它，先算账：<br>
+    要吃多少 · 分几趟 · 要多久。
+  </div>
+</section>
+
+<!-- 第 1 页 -->
+<section class="page">
+  <div class="page-head"><h2>第 1 页 · 它是什么</h2><span>1 / 5</span></div>
+  <p class="lede">一台机器，一张大嘴，一个大胃口。今天先不动手，先算清楚。</p>
+  <div class="grid">
+    <figure><img src="panel-01.png" alt="第 1 格：它是一台吃字改旋钮的机器"></figure>
+    <figure><img src="panel-02.png" alt="第 2 格：一次要吃 524,288 个字"></figure>
+    <figure><img src="panel-03.png" alt="第 3 格：今天不喂饭只算账"></figure>
+    <figure><img src="panel-04.png" alt="第 4 格：一勺是 8 行 256 列"></figure>
+  </div>
+  <div class="foot"><span>教学示意 · 数字来自 step12 笔记本的真实输出</span><span>第 1 页</span></div>
+</section>
+
+
+<!-- 第 1 页半：放大第 4 格 -->
+<section class="page">
+  <div class="page-head"><h2>放大 · 第 4 格「一勺」</h2><span>2 / 5</span></div>
+  <p class="lede">一格一个字 → 一行一句话 → 叠八行 → 一整块就是一勺 → 为什么是这么多 → 然后呢。</p>
+  <div class="grid six">
+    <figure><img src="panel-04a.png" alt="4a 一个格子等于一个字"></figure>
+    <figure><img src="panel-04b.png" alt="4b 一行等于一句话"></figure>
+    <figure><img src="panel-04c.png" alt="4c 叠八行等于八句话"></figure>
+    <figure><img src="panel-04d.png" alt="4d 整块一起舀是一勺"></figure>
+    <figure><img src="panel-04e.png" alt="4e 大小由显存决定"></figure>
+    <figure><img src="panel-04f.png" alt="4f 然后呢：两台机器一样的分法"></figure>
+  </div>
+  <div class="foot"><span>教学示意 · 8×256=2,048 为本机小号配置</span><span>放大页</span></div>
+</section>
+
+<!-- 第 2 页 -->
+<section class="page">
+  <div class="page-head"><h2>第 2 页 · 怎么把字喂进去</h2><span>3 / 5</span></div>
+  <p class="lede">一勺一勺舀，攒够了才改一次；除不尽就当场停下。</p>
+  <div class="grid">
+    <figure><img src="panel-05.png" alt="第 5 格：八勺攒一起才拧一次旋钮"></figure>
+    <figure><img src="panel-06.png" alt="第 6 格：除不尽就报错"></figure>
+    <figure><img src="panel-07.png" alt="第 7 格：数据剪成两卷"></figure>
+    <figure><img src="panel-08.png" alt="第 8 格：两张卡错开读，正好接上"></figure>
+  </div>
+  <div class="foot"><span>教学示意 · 524,288 ÷ 24,576 = 21.33，剩 8,192</span><span>第 2 页</span></div>
+</section>
+
+<!-- 第 3 页 -->
+<section class="page">
+  <div class="page-head"><h2>第 3 页 · 分给几张卡、跑一下</h2><span>4 / 5</span></div>
+  <p class="lede">抢同一段就白干；真机器太大，先造个小号的试车。</p>
+  <div class="grid">
+    <figure><img src="panel-09.png" alt="第 9 格：都从 0 开始等于一半白干"></figure>
+    <figure><img src="panel-10.png" alt="第 10 格：缩小模型"></figure>
+    <figure><img src="panel-11.png" alt="第 11 格：30 步 loss 从 10.83 到 7.17"></figure>
+    <figure><img src="panel-12.png" alt="第 12 格：管道通了但训练没跑"></figure>
+  </div>
+  <div class="foot"><span>教学示意 · 30 步只证明管道通，不证明效果</span><span>第 3 页</span></div>
+</section>
+
+
+<!-- 第二辑 -->
+<section class="page">
+  <div class="page-head"><h2>第二辑 · 喂进去之后</h2><span>5 / 5</span></div>
+  <p class="lede">猜 → 算错 → 把错传回去 → 拧一点点 → 再来一圈。这一圈走一万九千次。</p>
+  <div class="grid six">
+    <figure><img src="panel-loop-01.png" alt="L1 机器看一块猜下一个字"></figure>
+    <figure><img src="panel-loop-02.png" alt="L2 给五万个候选打分"></figure>
+    <figure><img src="panel-loop-03.png" alt="L3 猜错多少等于 loss"></figure>
+    <figure><img src="panel-loop-04.png" alt="L4 倒着传回梯度"></figure>
+    <figure><img src="panel-loop-05.png" alt="L5 攒够才拧一点点"></figure>
+    <figure><img src="panel-loop-06.png" alt="L6 这一圈走一万九千次"></figure>
+  </div>
+  <div class="foot"><span>教学示意 · loss 10.83 → 7.17 为本机 30 步实测</span><span>第二辑</span></div>
+</section>
+
+</body>
+</html>
