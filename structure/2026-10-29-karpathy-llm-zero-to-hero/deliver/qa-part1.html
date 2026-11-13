@@ -1,0 +1,15 @@
+<details class="manual-section" id="qa-s4" open><summary><span class="section-title">步骤 4 问答记录：把这一页真正读懂</span></summary><div class="section-body">
+<p class="step-goal"><strong>这一段是什么</strong>：2026-11-11 围绕步骤 4 的一轮问答整理，按问题归类。图都是当场为了解释而画的示意图，不是课程截图；图里的数字来自本次实跑（seed 42、block 3、D=2、H=100、1200 步），loss 与 notebook 打印的 2.863 / 2.861 / 2.865 一致。</p>
+<h3 id="qa-s4-1">一、这一步到底在干什么</h3>
+<p>一句话：<strong>给最近 3 个字符，给 27 个候选各打一个分数；训练就是调这 3,481 个数字，让正确答案的分数变高。</strong>代码里的 <code>forward</code> 就是这条流水线，一共五站。</p>
+<table><thead><tr><th>站</th><th>形状</th><th>在干什么</th><th>一句话</th></tr></thead><tbody><tr><td>① 输入</td><td><code>(N,3)</code></td><td>3 个字符换成 3 个编号</td><td>编号只是座位号，<code>e=5</code>、<code>m=13</code> 没有大小含义</td></tr><tr><td>② 查表</td><td><code>(N,3,2)</code></td><td>每个编号去 C 表取一行</td><td>表是 27×2、可训练；两个 <code>m</code> 取到完全一样的数字</td></tr><tr><td>③ 拼接</td><td><code>(N,6)</code></td><td>3 组坐标横着排成一条</td><td>顺序是信息，所以并排而不是相加</td></tr><tr><td>④ 隐层</td><td><code>(N,100)</code></td><td>6 个数变 100 个数，过 tanh</td><td>100 个“加权提问”，每个单元一种问法</td></tr><tr><td>⑤ 输出</td><td><code>(N,27)</code></td><td>100 个数变 27 个分数</td><td>还不是概率，softmax 之后才是</td></tr></tbody></table>
+<figure><img src="images/qa-01-shape-ladder.png" alt="一张样本的五站空间搬运"><figcaption>图注：用本次实跑的数字走一遍 <code>emm → a</code>。每站只做一件事，括号里是这一站的形状（N=1）。</figcaption></figure>
+<p>三个最容易误读的地方：</p>
+<ol><li><strong>train 和 dev 两条线重合，不是好消息。</strong>1200 步 × 32 条 = 38,400 次看题，而训练集有 182,625 道题，平均每道题只看了 0.21 遍。这叫欠拟合，不是泛化好。</li><li><strong>固定 32 条能压到 0.86，只证明“管线通了”。</strong>那是前向、反向、更新连起来的自检，不能说明学会了新名字。</li><li><strong><code>N</code> 不是模型的一部分。</strong><code>(4,3)</code> 与 <code>(182625,3)</code> 只是同时算几张卡；改 batch size 不改参数量。</li></ol>
+<p>参数量 3,481 = 54（C 表）+ 600（W1）+ 100（b1）+ 2,700（W2）+ 27（b2）。训练唯一改变的，就是这些数字。</p>
+<h4>四张细节图</h4>
+<figure><img src="images/qa-02-embedding-map.png" alt="27 个字符的二维地图"><figcaption>图注：D=2 是唯一能直接画出来的情况。1200 步只挪动了一点；同一套参数继续练到 5000 步（loss 2.59），元音才明显被推到上方、句号被甩到左下。</figcaption></figure>
+<figure><img src="images/qa-03-hidden-units.png" alt="emma 五步的隐层指纹"><figcaption>图注：同一列在不同行亮度不同，说明这些单元对“看到了什么前缀”敏感，而不是只看最后一个字符。</figcaption></figure>
+<figure><img src="images/qa-04-next-char.png" alt="每一步的下一字符概率"><figcaption>图注：<code>..e → m</code> 与 <code>.em → m</code> 的惊讶度 3.54、3.63 比瞎猜的 3.30 还差——平均 loss 降了，不代表每一步都变好。</figcaption></figure>
+<figure><img src="images/qa-05-loss-curves.png" alt="两种变好要分开看"><figcaption>图注：左图是全集 train/dev，右图是 32 条固定样本的自检。记住 32 条不等于学会新名字。</figcaption></figure>
+<figure><img src="images/qa-06-generate.png" alt="逐字生成"><figcaption>图注：看 3 个字 → 按概率抽 1 个 → 滑一格，抽到句号就停。每步概率只有 0.02–0.17。</figcaption></figure>

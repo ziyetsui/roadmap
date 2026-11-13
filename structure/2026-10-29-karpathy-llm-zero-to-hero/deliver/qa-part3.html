@@ -1,0 +1,21 @@
+<h3 id="qa-s4-5">五、loss 是怎么变成 27 个导数的</h3>
+<p>结论只有一行：<strong>导数 = 概率 − 答案</strong>。因为 loss 的定义是 <code>-log(p[答案])</code>，而 p 是 softmax 出来的；log 和 softmax 里的 exp 互相对消，最后只剩“预测减真相”。</p>
+<p>换成具体的账本更好懂：<strong>27 个孩子分 100 个苹果</strong>，按“嗓门”（分数）分。答案那个孩子 a 本该拿 100，实际只拿 13，差 −87（要补）；其他孩子多拿的 15、7、65，加起来正好 87（要退）。<strong>导数就是“实际拿的 − 应该拿的”。</strong></p>
+<figure><img src="images/qa-19-apples-share.png" alt="27 个孩子分 100 个苹果"><figcaption>图注：缺口 87 = 其他人多拿的 15+7+65，正好抵消——所以 27 个导数加起来等于 0。</figcaption></figure>
+<p><strong>为什么结果这么干净？</strong>因为 loss 本身就是一个减法：<code>loss = logsumexp(27 个分数) − 答案那一格</code>。求导时减号原样传下来，两块各自求导再相减：左边摊开时按 <code>e^z</code> 的比例分，这个比例就是 softmax，所以导数正好是概率；右边只有一格是 1，所以导数就是 one-hot。</p>
+<figure><img src="images/qa-17-minus-passes-through.png" alt="减号穿过求导"><figcaption>图注：loss 是个减法，所以导数也是个减法。不是算出来的，是照抄下来的。</figcaption></figure>
+<p><strong>那“求导”这个动作到底是什么？</strong>就是“提前试一下”：把一个分数抬 0.01，重算 loss（2.0241 → 2.0154），少了 0.00867，除以 0.01 得 0.867；而 <code>backward()</code> 不用试，直接给 0.868。<strong>唯一的区别是：你自己试要对 3,481 个旋钮各做一次，求导一次全给。</strong></p>
+<figure><img src="images/qa-18-differentiate-is-try.png" alt="求导就是提前试一下"><figcaption>图注：抬一下 → 重算 → 除一下，得到 0.867；求导直接给 0.868。差一点是因为 0.01 还不够小，步子越小越准。</figcaption></figure>
+<h3 id="qa-s4-6">六、为什么是 27 个分数</h3>
+<p>27 不是从“3 个字母”来的，是<strong>答案有多少种可能</strong>：<code>27 = 1 个句号 + 26 个字母</code>，就是词表大小。（3×3×3 也等于 27，那只是巧合。）</p>
+<p>两头是独立的：输入那头由“你看几个字”（窗口长度）决定，输出那头由“你能答几个”（词表大小）决定。窗口 3→5，输入从 6 个数变 10 个数，输出仍是 27；词表加 10 个数字，输出变 37，输入不变。</p>
+<figure><img src="images/qa-23-why-27.png" alt="为什么是 27 个分数"><figcaption>图注：左边是“看几个字”，右边是“能答几个”。</figcaption></figure>
+<figure><img src="images/qa-24-two-knobs.png" alt="喂进去几个，吐出来几个"><figcaption>图注：换窗口只动左边，换词表只动右边，两个数各管各的。</figcaption></figure>
+<p><strong>为什么会有“换窗口”这个旋钮？</strong>因为它决定模型能看多远：只看 1 个字，它是“所有 m 后面都可能接什么”；看 3 个字，它能利用“emm 后面几乎只接 a”。但看得多也有代价：3 个字的组合约 2 万种，5 个字约 1,400 万种，数据不够就学不动，算得也更慢。现实里这个旋钮叫“上下文长度”，4K / 128K / 1M 说的就是它。</p>
+<p><strong>为什么要换词表？</strong>因为表里没有的字，模型永远写不出来。比如名字里有 <code>O'Brien</code>，而词表里没有撇号，它就既读不懂也写不出。大模型按“词片”切，词表有几万个 token，答题卡就有几万格。</p>
+<h3 id="qa-s4-7">七、micrograd、训练的一步、容量</h3>
+<p><strong>micrograd 不“知道”斜率，它只知道“怎么算”斜率。</strong>它不认识名字、不知道任务；喂它什么算式，就算什么的斜率。斜率的大小、山的形状，是步骤 4 造出来的。可以记成：micrograd 是计算器，步骤 4 是你按计算器算的那道题。</p>
+<p><strong>有了导数，并不等于模型变了。</strong><code>loss.backward()</code> 只把 3,481 个斜率写进 <code>p.grad</code>；真正改模型的是下一行 <code>p -= lr * p.grad</code>。训练一步是三件事：量高度 → 问方向 → 迈一步。</p>
+<figure><img src="images/qa-22-training-loop.png" alt="训练的一步只有三件事"><figcaption>图注：backward 只做完 ②，模型一个数字都没动；③ 那一行才是“学习”。</figcaption></figure>
+<p><strong>按钮越多就越准吗？</strong>训练 loss 变低几乎是必然（小模型是大模型的特殊情况，多出来的旋钮设成 0 就退化了）；但新数据上的表现不是必然，它先降后升——按钮太多就开始背题。而“找不找得到”还取决于步数、学习率、初始化。你这次 3,481 个按钮、只看了 0.21 遍数据，还在“没学够”那一头。</p>
+<figure><img src="images/qa-21-capacity.png" alt="按钮越多越准吗"><figcaption>图注：训练 loss 一直降；新数据先降后升，中间的虚线是最合适的按钮数。</figcaption></figure>
