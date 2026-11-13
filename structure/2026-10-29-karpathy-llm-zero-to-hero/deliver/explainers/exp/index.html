@@ -421,6 +421,87 @@
   </section>
 
   <!-- ================= 05 ================= -->
+  <section id="sec5">
+    <h2 class="sec"><span class="num">05</span>它从哪来：一条 400 年的线</h2>
+    <p class="sub">
+      exp 不是谁一拍脑袋发明出来的。它由三条互不相干的线汇合而成：<b>对数表、复利、微积分</b>。
+      下面是这条线的时间轴。
+    </p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 900 540" role="img" aria-label="exp 的时间轴：1614 到 1873">
+        <line x1="170" y1="30" x2="170" y2="512" stroke="#DED3C0" stroke-width="2"/>
+
+        <g font-family="SF Mono,Menlo,monospace" font-size="17" font-weight="700" fill="#1B1917" text-anchor="end">
+          <text x="150" y="52">1614</text>
+          <text x="150" y="122">1683</text>
+          <text x="150" y="192">1690s</text>
+          <text x="150" y="262">1727</text>
+          <text x="150" y="332">1737</text>
+          <text x="150" y="402">1748</text>
+          <text x="150" y="472">1873</text>
+        </g>
+
+        <g fill="#0F7B72">
+          <circle cx="170" cy="46" r="7"/>
+          <circle cx="170" cy="116" r="7"/>
+        </g>
+        <g fill="#D2452A">
+          <circle cx="170" cy="186" r="7"/>
+          <circle cx="170" cy="256" r="7"/>
+          <circle cx="170" cy="326" r="7"/>
+          <circle cx="170" cy="396" r="7"/>
+        </g>
+        <circle cx="170" cy="466" r="7" fill="#8C7F6A"/>
+
+        <g font-size="15" fill="#3B3630">
+          <text x="192" y="42">纳皮尔发表对数表：把乘法变成加法——表里已经藏着 e，只是没给它名字。</text>
+          <text x="192" y="72" font-size="13" fill="#6E665A">John Napier，《奇妙的对数定律说明书》</text>
+
+          <text x="192" y="112">伯努利算复利：利息结算得越勤，钱会不会变无穷？他算出这个极限约 2.718。</text>
+          <text x="192" y="142" font-size="13" fill="#6E665A">Jacob Bernoulli，(1 + 1/n)ⁿ 的极限，第一次把 e 抓成一个数</text>
+
+          <text x="192" y="182">莱布尼茨把 bˣ 当函数来研究，给这一类起名 exponential（指数的）。</text>
+          <text x="192" y="212" font-size="13" fill="#6E665A">Gottfried Wilhelm Leibniz，微积分刚成形</text>
+
+          <text x="192" y="252">欧拉开始用字母 e 表示这个数。为什么是 e？说法很多，没人能完全确定。</text>
+          <text x="192" y="282" font-size="13" fill="#6E665A">Leonhard Euler，手稿与给哥德巴赫的信</text>
+
+          <text x="192" y="322">欧拉证明 e 是无理数：它写不成任何分数。</text>
+          <text x="192" y="352" font-size="13" fill="#6E665A">用连分数证明；1873 年埃尔米特再进一步，证明它是超越数</text>
+
+          <text x="192" y="392">《无穷分析引论》出版：eˣ、ln x、三角函数被一套级数打通。</text>
+          <text x="192" y="422" font-size="13" fill="#6E665A">Euler，1748；现代记号 eˣ 从这里基本定型</text>
+
+          <text x="192" y="462">埃尔米特证明 e 是超越数：它不是任何整系数方程的根。</text>
+          <text x="192" y="492" font-size="13" fill="#6E665A">Charles Hermite；e 比 π 早十年拿到这个结论</text>
+        </g>
+      </svg>
+      <div class="figcap">
+        时间轴是助手按通行数学史整理的，年份取公认的发表年；同一件事的日期各家写法略有出入，这里取常见版本。
+      </div>
+    </figure>
+
+    <p style="margin:0 0 14px">
+      <b>“exp” 这个写法是后来才有的。</b>“exponential” 来自拉丁语 <i>exponere</i>（摆出来、指数），
+      和 “exponent”（指数）同源。19 世纪以后，为了强调“这是一个函数”，人们开始写 <span class="mono">exp(x)</span>
+      而不是 <span class="mono">eˣ</span>；再后来进了 Fortran、C 的数学库，<span class="mono">exp()</span>
+      就成了今天代码里的样子。
+    </p>
+
+    <div class="note">
+      <b>为什么偏偏是 e？</b>因为在所有底数里，只有它满足 <span class="mono">d/dx eˣ = eˣ</span>——
+      它自己的变化率就是它自己。所谓“自然”，指的就是这个自相似：拿它当尺子，增长和衰减都不用再带一个多余的系数。
+    </div>
+
+    <p style="margin:20px 0 0">
+      顺带一提，它在机器学习里到处都是，也不全是因为数学：19 世纪统计物理写下的玻尔兹曼分布
+      <span class="mono">p ∝ exp(−E/kT)</span>，和“给定约束下熵最大”的分布，形式都是指数的。
+      softmax 就是这同一族分布在离散候选上的写法——所以分数叫 logits（对数几率），换算回份额要用 exp。
+    </p>
+  </section>
+
+
   <section style="margin-bottom:0">
     <div class="cheat">
       <h2>一页速记</h2>

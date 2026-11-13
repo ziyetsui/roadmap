@@ -608,9 +608,9 @@ G3：基础模型只续写文本，不承诺问答能力。完整训练质量依
 
 
 <a id="section-visual"></a>
-## 术语图解：六张能拖的卡片
+## 术语图解：七张能拖的卡片
 
-前面那张术语表是用来**查**的；这一节是用来**看**的。六个最容易卡住的词，各做了一张单页卡片：漫画开头、能拖的图收尾，离线也能打开。先看完卡片，再回来读正文，会省很多来回。
+前面那张术语表是用来**查**的；这一节是用来**看**的。七个最容易卡住的词，各做了一张单页卡片：漫画开头、能拖的图收尾，离线也能打开。先看完卡片，再回来读正文，会省很多来回。
 
 | 卡片 | 讲什么 | 什么时候看 |
 |---|---|---|
@@ -620,8 +620,9 @@ G3：基础模型只续写文本，不承诺问答能力。完整训练质量依
 | [④ exp 的空间变换](https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/exp/) | 拖一根进度条，看一排等距刻度被拉成等比、方格子被压弯 | 卡在“为什么非得是 exp” |
 | [⑤ 为什么压成一条线](https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/softmax-squash/) | 两个人分一块饼，所以答案只住得下一条线 | 卡在“平面怎么变成线” |
 | [⑥ softmax 具体怎么算](https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/softmax/) | 数字表、代码、三个常见坑，以及可以拖的实时演算 | 要自己写代码时 |
+| [⑦ −ln p：罚多少钱](https://ziyetsui.github.io/roadmap/karpathy-llm-zero-to-hero/explainers/neg-log/) | 八格漫画讲清 −ln：把握越低罚得越狠，每砍一半加 0.69 | 看完 ② 还想再细一层时 |
 
-建议顺序：先看 ① 认名字，再看 ② 知道罚什么，然后 ③ 把整条线走一遍。④⑤⑥ 是遇到具体卡点时再翻的深水区。
+建议顺序：先看 ① 认名字，再看 ② 知道罚什么，然后 ③ 把整条线走一遍。④⑤⑥⑦ 是遇到具体卡点时再翻的深水区。
 
 这些卡片和正文里的插图不是一回事：正文的图是固定讲解，卡片的图**可以自己拖**——拖动参数，看分布和罚款当场变化。每一页都是单个 HTML 文件，另存下来双击就能离线打开，不联网也能用。
 
@@ -5823,7 +5824,6 @@ If you've made it this far, you're now a pro at LLM Tokenization! Sadly, you're 
 | 01:49:58 | multimodal [image, video, audio] tokenization with vector quantization（用向量量化做图像/视频/音频的多模态分词） | [播放](https://www.youtube.com/watch?v=zduSFxRajkE&t=6598s) |
 | 01:51:41 | revisiting and explaining the quirks of LLM tokenization（回头解释 LLM 分词的种种怪现象） | [播放](https://www.youtube.com/watch?v=zduSFxRajkE&t=6701s) |
 | 02:10:20 | final recommendations（最后的建议） | [播放](https://www.youtube.com/watch?v=zduSFxRajkE&t=7820s) |
-
 
 <a id="section-bpe-primer"></a>
 ## 零基础补课：BPE 的白话版

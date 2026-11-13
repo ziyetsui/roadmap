@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>−ln p · 机器答错了，罚它多少钱</title>
+<style>
+  :root{
+    --paper:#FBF6EC; --paper-2:#F5EDDF; --ink:#1B1917; --muted:#6E665A;
+    --line:#DED3C0; --red:#D2452A; --red-soft:#F7E3DB; --teal:#0F7B72;
+    --teal-soft:#DCEFEA; --gold:#E8B23A; --yel:#FFF4C8;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);overflow-x:hidden;
+    font:400 19px/1.78 "PingFang SC","Hiragino Sans GB","Noto Sans SC",system-ui,sans-serif;
+    letter-spacing:.01em;
+  }
+  .wrap{max-width:1020px;margin:0 auto;padding:46px 44px 100px}
+  .mono{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+  .math{font-family:"Iowan Old Style","Times New Roman",serif;font-style:italic}
+
+  .nav{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--muted);
+    margin:0 0 26px;padding-bottom:13px;border-bottom:1.5px solid var(--line);gap:10px 16px;flex-wrap:wrap}
+  .nav > span:first-child{order:1;flex:0 0 auto}
+  .nav > .tag{order:3;margin-left:auto}
+  .nav > span:last-child{order:2}
+  .nav a{color:var(--muted);text-decoration:none;border-bottom:1.5px solid transparent}
+  .nav a:hover{color:var(--red);border-bottom-color:var(--red)}
+  .nav .tag{border:1.5px solid var(--line);border-radius:999px;padding:3px 12px;font-size:13px}
+
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.18em;
+    color:var(--muted);text-transform:uppercase;margin:0 0 16px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--red);display:block}
+  h1{font-size:54px;line-height:1.15;margin:0 0 18px;font-weight:800;letter-spacing:-.01em}
+  h1 em{font-style:normal;color:var(--red);position:relative;white-space:nowrap}
+  h1 em::after{content:"";position:absolute;left:-2px;right:-2px;bottom:2px;height:12px;
+    background:var(--gold);opacity:.35;z-index:-1;border-radius:3px}
+  .lede{font-size:21px;color:#3B3630;max-width:800px;margin:0 0 26px;overflow-wrap:anywhere}
+  .lede b{color:var(--ink)}
+
+  .hero{display:grid;grid-template-columns:minmax(260px, 560px) 1fr;gap:26px;align-items:center;
+    margin:0 0 34px;padding:14px 18px 14px 14px;background:#fff;border:1.5px solid var(--line);
+    border-radius:20px}
+  .hero img{display:block;width:100%;height:auto;border-radius:12px}
+  .hero p{margin:0;font-size:17px;color:#4A443C;line-height:1.75}
+  @media (max-width:640px){.hero{grid-template-columns:1fr;padding:12px}
+    .hero p{font-size:16px;padding:0 4px 6px}}
+
+  .tldr{background:#fff;border:2px solid var(--ink);border-radius:20px;padding:26px 32px 22px;
+    margin:0 0 56px;box-shadow:8px 8px 0 var(--paper-2)}
+  .tldr h2{margin:0 0 14px;font-size:19px;letter-spacing:.06em}
+  .tldr ol{margin:0;padding:0;list-style:none;counter-reset:t}
+  .tldr li{counter-increment:t;position:relative;padding-left:44px;margin:0 0 11px;font-size:19px;line-height:1.65}
+  .tldr li::before{content:counter(t);position:absolute;left:0;top:1px;width:28px;height:28px;border-radius:50%;
+    background:var(--ink);color:#fff;font-size:14px;font-weight:700;display:grid;place-items:center}
+  .tldr li:last-child{margin-bottom:0}
+  .keyline{margin-top:18px;padding-top:14px;border-top:1.5px dashed var(--line);font-size:19px}
+  .keyline b{color:var(--red)}
+
+  section{margin:0 0 66px}
+  h2.sec{font-size:36px;line-height:1.3;margin:0 0 10px;font-weight:800;letter-spacing:-.01em;
+    display:inline-block;padding-bottom:12px;
+    background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='9' viewBox='0 0 44 9'><path d='M1 6 Q 11 1.5 22 6 T 43 6' fill='none' stroke='%23D2452A' stroke-width='2.6' stroke-linecap='round'/></svg>") repeat-x left bottom;
+    background-size:44px 9px}
+  h2.sec .num{font-size:15px;color:var(--red);vertical-align:top;margin-right:10px;font-weight:700;letter-spacing:.1em}
+  .sub{color:var(--muted);font-size:17.5px;margin:0 0 26px;max-width:780px}
+
+  /* strip */
+  .strip{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:20px;
+    padding:14px;margin:0 0 14px}
+  .strip a{display:block;cursor:zoom-in;max-height:520px;overflow:hidden;border-radius:12px;
+    -webkit-mask-image:linear-gradient(180deg,#000 82%,transparent 100%);
+            mask-image:linear-gradient(180deg,#000 82%,transparent 100%)}
+  .strip img{display:block;width:100%;height:auto}
+  .strip-note{margin:10px 4px 0;font-size:14.5px;color:var(--muted);text-align:center}
+  .strip-note::before{content:"↑ ";color:var(--red)}
+
+  .panels-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 6px}
+  .panels-grid figure{margin:0;background:#fff;border:1.5px solid var(--line);border-radius:14px;
+    padding:9px 9px 4px;overflow:hidden}
+  .panels-grid img{display:block;width:100%;height:auto;border-radius:9px}
+  .panels-grid figcaption{font-size:13.5px;color:var(--muted);margin-top:7px;padding:0 3px 6px;
+    line-height:1.5}
+  .panels-grid b{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;
+    background:var(--ink);color:#fff;font-size:11.5px;margin-right:5px;vertical-align:-3px}
+  .figcap{font-size:14.5px;color:var(--muted);margin:2px 6px 0;line-height:1.6}
+
+  /* curve */
+  .fig{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:22px 22px 16px;margin:0}
+  .fig svg{display:block;width:100%;height:auto;overflow:visible}
+
+  .slider-box{background:#fff;border:1.5px solid var(--line);border-radius:16px;
+    padding:18px 22px;margin:16px 0 0;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .slider-box label{font-size:15px;color:var(--muted);flex:none}
+  input[type=range]{-webkit-appearance:none;appearance:none;flex:1 1 240px;height:6px;border-radius:3px;
+    background:linear-gradient(90deg,var(--red-soft),var(--teal-soft));outline:none;margin:0}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;
+    background:var(--ink);border:4px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.25);cursor:grab}
+  .readout{display:flex;align-items:baseline;gap:8px;font-size:15px;color:var(--muted);flex-wrap:wrap}
+  .readout b{font-size:30px;color:var(--red)}
+  .readout .tag{margin-left:2px;padding:2px 10px;border-radius:999px;font-size:13.5px;
+    background:var(--red-soft);color:#9E2E18;font-weight:700}
+
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 0}
+  .chip{background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:5px 14px;
+    font-size:14.5px;color:#4A443C;cursor:pointer;font-family:inherit;transition:.12s}
+  .chip:hover{border-color:var(--ink)}
+  .chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  /* panels */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:20px 0 0}
+  .card{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:18px 20px}
+  .card h3{margin:0 0 6px;font-size:17px;letter-spacing:.02em}
+  .card p{margin:0;font-size:16.5px;color:#4A443C;line-height:1.7}
+  .card .big{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:26px;font-weight:700;color:var(--red)}
+
+  /* bars compare */
+  .cmp{background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:20px 24px;margin:16px 0 0}
+  .cmp .row{display:grid;grid-template-columns:60px 104px 1fr 84px;gap:10px 14px;align-items:center;
+    padding:9px 0}
+  .cmp .row + .row{border-top:1px dashed var(--line)}
+  .cmp .row.hdt{font-size:13.5px;color:var(--muted);letter-spacing:.04em;padding:0 0 4px;border:none}
+  .cmp .row.hdt .m{color:#8A7F70}
+  .cmp .cap{font-size:13px;color:var(--muted)}
+  .cmp .lab{font-size:16.5px;font-weight:700}
+  .cmp .bar{height:24px;border-radius:5px;max-width:100%}
+  .cmp .bar.p{background:#C9BCA6}
+  .cmp .bar.l{background:var(--red)}
+  .cmp .val{font-family:"SF Mono",ui-monospace,Menlo,monospace;font-size:15.5px;font-weight:700;text-align:right}
+  .cmp .val.p{color:#8A7F70}
+  .cmp .val.l{color:var(--red)}
+  .cmp .foot{grid-column:1 / -1;font-size:15.5px;color:#4A443C;line-height:1.7;padding-top:12px;
+    border-top:1.5px dashed var(--line);margin-top:6px}
+
+  /* cheat */
+  .cheat{background:var(--ink);color:#F7F1E4;border-radius:22px;padding:34px 36px;
+    box-shadow:10px 10px 0 var(--paper-2)}
+  .cheat h2{color:#fff;margin:0 0 6px;font-size:28px;font-weight:800}
+  .cheat .sub2{color:#BDB3A0;font-size:15.5px;margin:0 0 20px}
+  .cheat ul{list-style:none;margin:0;padding:0}
+  .cheat li{display:grid;grid-template-columns:20px 1fr;gap:14px;padding:11px 0;
+    border-top:1px dashed #4A443C;font-size:18px}
+  .cheat li:first-child{border-top:none}
+  .cheat .d{color:var(--gold)}
+  .cheat em{font-style:normal;color:#F0B429;font-family:"SF Mono",ui-monospace,Menlo,monospace}
+
+  .note{border-left:4px solid var(--teal);background:var(--teal-soft);padding:15px 20px;
+    border-radius:0 12px 12px 0;font-size:17px;margin:20px 0 0;color:#233A36}
+  .note b{color:#0B5C55}
+  .warn{border-left-color:var(--red);background:var(--red-soft);color:#4A241B}
+  .warn b{color:#9E2E18}
+
+  .quiz{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:8px 22px}
+  .quiz details{border-top:1px dashed var(--line);padding:14px 0}
+  .quiz details:first-child{border-top:none}
+  .quiz summary{cursor:pointer;font-size:18px;font-weight:700;list-style:none}
+  .quiz summary::-webkit-details-marker{display:none}
+  .quiz summary::before{content:"▸ ";color:var(--red);font-weight:800}
+  .quiz details[open] summary::before{content:"▾ "}
+  .quiz .ans{margin:10px 0 2px;color:#4A443C;font-size:17.5px;line-height:1.75}
+
+  footer{margin-top:64px;padding-top:20px;border-top:1.5px solid var(--line);
+    display:flex;justify-content:space-between;color:var(--muted);font-size:14px;gap:20px;flex-wrap:wrap}
+
+  @media (max-width:980px){
+    .panels-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:820px){
+    .wrap{padding:32px 18px 72px}
+    .strip a{max-height:300px}
+    .panels-grid{grid-template-columns:1fr;gap:14px}
+    .panels-grid .caption, .panels-grid figcaption{font-size:13px}
+    h1{font-size:34px}
+    .nav{font-size:13px}
+    .lede{font-size:19px}
+    h2.sec{font-size:26px}
+    .two{grid-template-columns:1fr}
+    .cmp{padding:16px 14px}
+    .cmp .row{grid-template-columns:48px 1fr 86px 48px;gap:6px 8px}
+    .cmp .row.hdt{display:none}
+    .cmp .lab{font-size:14px}
+    .cmp .cap{display:none}
+    .cheat{padding:24px 20px}
+  }
+  @media print{
+    body{background:#fff}
+    .fig,.tldr,.strip,.cheat,.card{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <nav class="nav">
+    <span><a href="../softmax/index.html">← softmax</a> &nbsp;·&nbsp; <a href="../nll-cross-entropy/index.html">NLL / 交叉熵</a></span>
+    <span class="tag">术语卡 · 弱智版</span>
+    <span><a href="../exp/index.html">exp 是什么 →</a></span>
+  </nav>
+
+  <p class="eyebrow">一句话的事 · 看漫画就懂</p>
+  <h1>机器答错了，<br>到底<em>罚</em>它多少钱？</h1>
+  <p class="lede">
+    罚多少钱，只看一个数：<b>它给「正确答案」留了多少把握</b>。
+    留得多，罚得少；留得少，罚得狠。这个罚款，就叫 <b class="math">−ln p</b>。
+  </p>
+
+  <div class="hero">
+    <img src="panel-1-web.jpg" width="1100" height="550" loading="lazy" decoding="async" alt="小机器人：car 后面接哪个字母呢？它给 27 个候选各分了一格把握">
+    <p>主角是这台小机器人。它每读三个字母，就要押一次「下一个是谁」——押完，老师按它的把握收罚款。</p>
+  </div>
+
+  <div class="tldr">
+    <h2>记住这三句，别的都可以忘</h2>
+    <ol>
+      <li>机器对 27 个字母各说一个把握，加起来 100%。</li>
+      <li>答案揭晓后，<b>只看真答案那一格</b>：它拿了 p，罚款 = −ln p。</li>
+      <li>把握每砍一半，罚款就加 <b>0.69</b>。训练就是让这个罚款变小。</li>
+    </ol>
+    <p class="keyline">一句话：<b>罚的不是「错」，是「错得有多自信」。</b></p>
+  </div>
+
+  <!-- 1 漫画 -->
+  <section id="sec1">
+    <h2 class="sec"><span class="num">01</span>八格漫画，从头讲到尾</h2>
+    <p class="sub">一格讲一句话。八格就是整条逻辑链，从上往下（或从左到右）读完就懂了。</p>
+
+    <div class="strip">
+      <a href="neg-log-poster-web.jpg" target="_blank" rel="noopener" title="点开看大图">
+        <img id="stripImg" src="neg-log-poster-web.jpg" width="1400" height="5600"
+             loading="eager" decoding="async"
+             alt="−ln p 八格漫画：小机器人押把握、只看真答案、罚款公式、罚款表、曲线、砍一半加 0.69、为什么不用的 1−p、训练">
+      </a>
+      <div class="strip-note">点图看完整大图 · 手机上直接往下看逐格版</div>
+    </div>
+
+    <div class="panels-grid" aria-label="八格漫画逐格版">
+      <figure>
+        <img src="panel-1-web.jpg" width="1100" height="550" loading="lazy" decoding="async" alt="第 1 格：机器把 100% 的把握分给 27 个字母">
+        <figcaption><b>1</b> 它先押一个「把握」</figcaption>
+      </figure>
+      <figure>
+        <img src="panel-2-web.jpg" width="1100" height="550" loading="lazy" decoding="async" alt="第 2 格：只有真答案那一格算数">
+        <figcaption><b>2</b> 只有真答案算数</figcaption>
+      </figure>
+      <figure>
+        <img src="panel-3-web.jpg" width="1100" height="550" loading="lazy" decoding="async" alt="第 3 格：罚款等于负 ln 把握">
+        <figcaption><b>3</b> 罚款 = −ln p：0.34 分</figcaption>
+      </figure>
+      <figure>
+        <img src="panel-4-web.jpg" width="1100" height="550" loading="lazy" decoding="async" alt="第 4 格：把几种把握都算一遍">
+        <figcaption><b>4</b> 算一遍：0 / 0.69 / 2.30 / 4.61</figcaption>
+      </figure>
+      <figure>
+        <img src="panel-5-web.jpg" width="1100" height="550" loading="lazy" decoding="async" alt="第 5 格：画成图，左边是悬崖">
+        <figcaption><b>5</b> 越靠近 0，罚得越陡</figcaption>
+      </figure>
+      <figure>
+        <img src="panel-6-web.jpg" width="1100" height="550" loading="lazy" decoding="async" alt="第 6 格：每砍一半，罚款加 0.69">
+        <figcaption><b>6</b> 砍一半，加 0.69</figcaption>
+      </figure>
+      <figure>
+        <img src="panel-7-web.jpg" width="1100" height="550" loading="lazy" decoding="async" alt="第 7 格：为什么不用 1 减 p">
+        <figcaption><b>7</b> 为什么不用 1 − p</figcaption>
+      </figure>
+      <figure>
+        <img src="panel-8-web.jpg" width="1100" height="550" loading="lazy" decoding="async" alt="第 8 格：训练把平均罚款压下去">
+        <figcaption><b>8</b> 训练 = 把罚款压下去</figcaption>
+      </figure>
+    </div>
+    <p class="figcap">图里那个「car → e」是真实例子：模型读过 32033 个名字，看到 car 之后，它给 e 打了 71% 的把握。</p>
+  </section>
+
+  <!-- 2 互动 -->
+  <section id="sec2">
+    <h2 class="sec"><span class="num">02</span>自己拖一下：把握越小，罚得多狠</h2>
+    <p class="sub">拖动滑块，改「机器给真答案的把握」。看右边的罚款怎么变——注意左边那一段，涨得特别快。</p>
+
+    <div class="fig" id="curvefig">
+      <svg id="curve" viewBox="0 0 900 470" role="img" aria-label="负对数曲线：把握越低，罚款越高">
+        <rect x="70" y="36" width="120" height="330" fill="#D2452A" opacity=".05"/>
+        <g stroke="#E6DCCB" stroke-width="1.4" stroke-dasharray="4 6">
+          <line x1="70" y1="366" x2="850" y2="366"/>
+          <line x1="70" y1="300" x2="850" y2="300"/>
+          <line x1="70" y1="234" x2="850" y2="234"/>
+          <line x1="70" y1="168" x2="850" y2="168"/>
+          <line x1="70" y1="102" x2="850" y2="102"/>
+          <line x1="70" y1="36" x2="850" y2="36"/>
+        </g>
+        <line x1="70" y1="36" x2="70" y2="366" stroke="#1B1917" stroke-width="2.4"/>
+        <line x1="70" y1="366" x2="862" y2="366" stroke="#1B1917" stroke-width="2.4"/>
+        <g font-size="15" text-anchor="end" fill="#6E665A" font-family="SF Mono,Menlo,monospace">
+          <text x="56" y="371">0</text><text x="56" y="305">1</text><text x="56" y="239">2</text>
+          <text x="56" y="173">3</text><text x="56" y="107">4</text><text x="56" y="41">5</text>
+        </g>
+        <text x="26" y="200" font-size="16" fill="#1B1917" text-anchor="middle"
+              transform="rotate(-90 26 200)">这一题的罚款  −ln p</text>
+        <g font-size="15" text-anchor="middle" fill="#6E665A" font-family="SF Mono,Menlo,monospace">
+          <text x="70" y="396">0</text><text x="265" y="396">25%</text><text x="460" y="396">50%</text>
+          <text x="655" y="396">75%</text><text x="850" y="396">100%</text>
+        </g>
+        <g stroke="#1B1917" stroke-width="2">
+          <line x1="70" y1="366" x2="70" y2="374"/><line x1="265" y1="366" x2="265" y2="374"/>
+          <line x1="460" y1="366" x2="460" y2="374"/><line x1="655" y1="366" x2="655" y2="374"/>
+          <line x1="850" y1="366" x2="850" y2="374"/>
+        </g>
+        <text x="460" y="428" font-size="16" fill="#1B1917" text-anchor="middle">机器给正确答案的把握 p</text>
+
+        <line x1="70" y1="128" x2="850" y2="128" stroke="#8C7F6A" stroke-width="1.6" stroke-dasharray="7 6"/>
+        <text x="846" y="120" font-size="15" text-anchor="end" fill="#8C7F6A">27 个字母闭眼瞎猜：每题罚 3.30</text>
+
+        <path id="curvePath" d="" fill="none" stroke="#D2452A" stroke-width="5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="marker">
+          <line id="markerLine" x1="497" y1="245" x2="497" y2="366" stroke="#0F7B72" stroke-width="2.4" stroke-dasharray="5 5"/>
+          <circle id="markerDot" cx="497" cy="245" r="10" fill="#0F7B72" stroke="#fff" stroke-width="3"/>
+          <text id="markerTxt" x="497" y="232" font-size="16" font-weight="700" text-anchor="middle" fill="#0F7B72">0.34</text>
+        </g>
+      </svg>
+
+      <div class="slider-box">
+        <label for="p">机器给正确答案的把握 p</label>
+        <input id="p" type="range" min="1" max="1000" value="710" step="1">
+        <div class="readout">罚款 <b id="pen">0.34</b><span class="tag" id="feeltag">押得挺准</span></div>
+      </div>
+      <div class="chips" id="chips">
+        <button class="chip" data-p="1000">100%</button>
+        <button class="chip on" data-p="710">71%（例子）</button>
+        <button class="chip" data-p="500">50%</button>
+        <button class="chip" data-p="100">10%</button>
+        <button class="chip" data-p="10">1%</button>
+        <button class="chip" data-p="1">0.1%</button>
+      </div>
+      <p class="figcap" style="margin:12px 4px 0">
+        读图法：横轴找到这次真答案拿到的把握，竖直向上碰到红线，读高度。
+        左边陡、右边平——「从 10% 掉到 1%」比「从 90% 掉到 80%」贵得多。
+      </p>
+    </div>
+  </section>
+
+  <!-- 3 为什么是 ln -->
+  <section id="sec3">
+    <h2 class="sec"><span class="num">03</span>为什么偏偏是 ln？</h2>
+    <p class="sub">因为 ln 有一条很朴素的性格：<b>按倍率算账，不按差数算账</b>。把握这东西，本来就该按倍率比。</p>
+
+    <div class="two">
+      <div class="card">
+        <h3>砍一半，加 0.69 —— 在哪都一样</h3>
+        <p>100% → 50%，加 0.69；50% → 25%，还是加 0.69；1% → 0.5%，依然加 0.69。<br>
+        信心减半，代价相同。换成 log₂，这一格就是 <b>1 bit</b>。</p>
+      </div>
+      <div class="card">
+        <h3>把握越接近 0，罚得越没有上限</h3>
+        <p>机器说「这绝不可能」，结果真发生了——罚款趋于无穷。<br>
+        所以它很快学会：<b>别把话说死</b>。代码里要先加一点平滑，否则 −ln 0 会变成无穷大。</p>
+      </div>
+    </div>
+
+    <div class="cmp" aria-label="1−p 与 −ln p 的差别">
+      <div class="row hdt"><div>把握 p</div><div class="m">1 − p 罚多少</div><div class="cap">对比</div><div class="m" style="text-align:right;white-space:nowrap">−ln p 罚多少</div></div>
+
+      <div class="row">
+        <div class="lab">1%</div>
+        <div class="bar p" style="width:92%"></div><div class="cap">= 0.99</div>
+        <div class="val l">4.61</div>
+      </div>
+      <div class="row">
+        <div class="lab">0.1%</div>
+        <div class="bar p" style="width:93%"></div><div class="cap">= 0.999</div>
+        <div class="val l">6.91</div>
+      </div>
+
+      <p class="foot">
+        「1%」和「0.1%」在 1−p 眼里只差 0.009，几乎看不出区别；在 −ln p 眼里差 <b>2.30 分</b>。
+        这才是「几乎不敢说」该有的分量。
+      </p>
+    </div>
+
+    <div class="note warn">
+      <b>注意罚的不是「错」：</b>两种说法都错了。但「押九成会下雨」和「押一成会下雨」，丢的面子完全不同。
+      −ln p 罚的是后者：它逼模型在没把握的时候，<b>把概率摊开</b>，而不是嘴硬。
+    </div>
+  </section>
+
+  <!-- 4 自测 -->
+  <section id="sec4">
+    <h2 class="sec"><span class="num">04</span>三个小问题，测一下懂没懂</h2>
+    <p class="sub">先自己答，再点开看。</p>
+    <div class="quiz">
+      <details>
+        <summary>机器给真答案 50% 的把握，罚款是多少？</summary>
+        <p class="ans">0.69 分。因为 −ln(0.5) = 0.69。记法：<b>砍一半，加 0.69</b>。</p>
+      </details>
+      <details>
+        <summary>它给真答案 100% 的把握，罚款是多少？</summary>
+        <p class="ans">0 分。−ln(1) = 0。「我确信的事真的发生了」，没有任何意外，所以不罚。</p>
+      </details>
+      <details>
+        <summary>它给别的 26 个字母都打了 0 分，真答案只给 1%，罚多少？</summary>
+        <p class="ans">4.61 分。别的字母打成什么样<b>完全不影响</b>——只看真答案那一格。这就是 NLL 最反直觉的地方。</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 5 速记 -->
+  <section style="margin-bottom:0">
+    <div class="cheat">
+      <h2>一页速记</h2>
+      <p class="sub2">忘了就回来扫一眼这四行</p>
+      <ul>
+        <li><span class="d">▸</span><div>罚款 = <em>−ln(机器给正确答案的把握)</em></div></li>
+        <li><span class="d">▸</span><div>把握减半 → 罚款 <em>+0.69</em>（换成 log₂ 就是 +1 bit）</div></li>
+        <li><span class="d">▸</span><div>单题罚款 = <em>NLL</em>；一批题取平均 = <em>loss</em></div></li>
+        <li><span class="d">▸</span><div>训练 = 让这个<em>平均罚款</em>变小</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <span>给子夜的解释卡 · 2026-11-12</span>
+    <span><a href="../nll-cross-entropy/index.html" style="color:inherit;text-decoration:none;border-bottom:1.5px solid #D2452A">想再深一层：NLL / 交叉熵 →</a></span>
+  </footer>
+</main>
+
+<script>
+(function(){
+  document.querySelectorAll('img').forEach(function(img){
+    img.addEventListener('error', function(){
+      var box = document.createElement('div');
+      box.style.cssText = 'padding:18px;border:1.5px dashed #D2452A;border-radius:12px;'
+        + 'color:#9E2E18;background:#F7E3DB;font-size:15px;line-height:1.7;margin:8px 0';
+      box.textContent = '图片没加载出来：' + img.getAttribute('src')
+        + '　—— 它应该和 index.html 在同一个文件夹里。';
+      img.replaceWith(box);
+    });
+  });
+})();
+(function(){
+  var input = document.getElementById('p');
+  if(!input) return;
+  var dot = document.getElementById('markerDot');
+  var line = document.getElementById('markerLine');
+  var txt = document.getElementById('markerTxt');
+  var pen = document.getElementById('pen');
+  var feel = document.getElementById('feeltag');
+  var path = document.getElementById('curvePath');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+
+  var X0 = 70, Y0 = 366, W = 780, H = 330, YMAX = 5;
+
+  function px(p){ return X0 + W * p; }
+  function py(loss){ return Y0 - H * Math.min(loss, YMAX) / YMAX; }
+
+  // 曲线路径：p 从 0.01 到 1，按屏幕像素均匀取点
+  var d = [];
+  for(var i = 0; i <= 400; i++){
+    var p = 0.01 + (1 - 0.01) * (i / 400);
+    var loss = -Math.log(p);
+    // 罚款超过顶就贴着上沿继续走，视觉上就是「冲出去了」
+    d.push((i ? 'L' : 'M') + px(p).toFixed(1) + ',' + Math.max(38, py(loss)).toFixed(1));
+  }
+  path.setAttribute('d', d.join(' '));
+
+  function label(loss){
+    if(loss < 0.05) return '完美，不罚';
+    if(loss < 0.4)  return '押得挺准';
+    if(loss < 1.0)  return '还不错';
+    if(loss < 2.0)  return '有点虚';
+    if(loss < 3.0)  return '说得含糊';
+    if(loss < 4.5)  return '很不敢说';
+    return '几乎不敢说';
+  }
+
+  function render(){
+    var p = input.value / 1000;
+    var loss = -Math.log(p);
+    var x = px(p), y = py(loss);
+
+    var yc = Math.max(40, y);
+    dot.setAttribute('cx', x.toFixed(1));
+    dot.setAttribute('cy', yc.toFixed(1));
+    line.setAttribute('x1', x.toFixed(1));
+    line.setAttribute('x2', x.toFixed(1));
+    line.setAttribute('y1', yc.toFixed(1));
+    line.setAttribute('y2', Y0);
+    txt.setAttribute('x', x.toFixed(1));
+    txt.setAttribute('y', (yc - 14).toFixed(1));
+
+    pen.textContent = loss.toFixed(2);
+    txt.textContent = loss.toFixed(2);
+    feel.textContent = label(loss);
+
+    chips.forEach(function(c){
+      c.classList.toggle('on', Math.abs(parseInt(c.dataset.p, 10) - parseInt(input.value, 10)) <= 6);
+    });
+  }
+
+  input.addEventListener('input', render);
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){
+      input.value = c.dataset.p;
+      render();
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
