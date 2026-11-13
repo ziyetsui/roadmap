@@ -5,6 +5,7 @@
 !/scripts/
 /scripts/*
 !/scripts/build-pages.py
+!/scripts/*-inject.html
 !/.github/
 /.github/*
 !/.github/workflows/

@@ -22,6 +22,20 @@ def main():
         dst = OUT / slug
         shutil.copytree(src, dst, ignore=shutil.ignore_patterns('_prev'))
         shutil.copy2(dst / item['html'], dst / 'index.html')
+        # 每集可在 scripts/<slug>-inject.html 放一段要常驻的 HTML：
+        # 手册重新导出后由构建自动补回，避免手改产物被覆盖。
+        extra = ROOT / 'scripts' / f"{slug}-inject.html"
+        if extra.exists():
+            payload = extra.read_text(encoding='utf-8')
+            marker = '<details class="manual-section"'
+            for name in ('index.html', 'manual.html'):
+                f = dst / name
+                if not f.exists():
+                    continue
+                page = f.read_text(encoding='utf-8')
+                if 'id="section-comic"' in page or marker not in page:
+                    continue
+                f.write_text(page.replace(marker, payload + marker, 1), encoding='utf-8')
         title = html.escape(item['title'])
         status = html.escape(STATUS.get(item['status'], item['status']))
         links = f'<a href="{slug}/">在线阅读</a> · <a href="{slug}/{item["pdf"]}">PDF</a> · <a href="{slug}/{item["md"]}">Markdown</a>'

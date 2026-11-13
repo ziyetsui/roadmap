@@ -1,0 +1,22 @@
+<style>
+    .comic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin: 20px 0 8px; }
+    .comic-grid figure { margin: 0; }
+    .comic-grid img { width: 100%; display: block; border: 1px solid #d7ddd9; border-radius: 10px; background: #fff; }
+    .comic-grid figcaption { font-size: 13px; line-height: 1.6; color: #5b6b6a; margin-top: 6px; }
+    .comic-cta { display: inline-block; margin: 4px 0 12px; padding: 10px 18px; border-radius: 999px; background: #1c655c; color: #fff !important; font-weight: 600; }
+    .comic-cta:hover { background: #144b44; }
+  </style>
+  <details class="manual-section" id="section-comic" open><summary><span class="section-title">漫画图解：30 格看懂这门课</span></summary><div class="section-body">
+<p>如果文字看不进去，先看漫画。一格一件事、一句话一个数，不出现代码。全部是助手绘制的教学示意；图上的数字（524,288、2,048、10.83、7.17）来自笔记本的真实输出，但示意图不等于课程截图或 GPU 实测。</p>
+<p><a class="comic-cta" href="comic/">打开完整漫画（6 页，可直接打印）</a></p>
+<div class="comic-grid">
+<figure><a href="comic/"><img src="comic/panel-01.png" alt="第 1 格：它是一台吃字的机器" loading="lazy"></a><figcaption>1 / 一台机器：吃字，然后改一次旋钮。</figcaption></figure>
+<figure><a href="comic/"><img src="comic/panel-04d.png" alt="第 4d 格：一整块就是一勺，2,048 个字" loading="lazy"></a><figcaption>4d / 8 行 × 256 列 = 2,048，这一整块叫「一勺」。</figcaption></figure>
+<figure><a href="comic/"><img src="comic/panel-08.png" alt="第 8 格：两张卡错开读同一盘磁带" loading="lazy"></a><figcaption>8 / 你读一格，我读一格，正好接上。</figcaption></figure>
+<figure><a href="comic/"><img src="comic/panel-q4.png" alt="第三辑第 4 格：答案就在原文里往后挪一格" loading="lazy"></a><figcaption>三辑 4 / 答案不用人写，就在原文里往后挪一格。</figcaption></figure>
+<figure><a href="comic/"><img src="comic/panel-loop-06.png" alt="第二辑第 6 格：训练就是这一圈走一万九千次" loading="lazy"></a><figcaption>二辑 6 / 喂→猜→算错→传回→拧，走 19,073 次。</figcaption></figure>
+<figure><a href="comic/"><img src="comic/panel-q6.png" alt="第三辑第 6 格：一开始全错，平均 10.83" loading="lazy"></a><figcaption>三辑 6 / 刚开始 2,048 道全错，平均错 10.83。</figcaption></figure>
+</div>
+<p>漫画分三辑：前 12 格讲第 12 步的 token 预算与多卡短跑；第 4 格「一勺」单独放大成 6 格（一个字 → 一句话 → 八行 → 一勺 → 为什么这么大 → 然后呢）；第二辑 6 格讲数据喂进去之后机器做了什么（猜下一个字、算 loss、倒着传梯度、只拧一点点）；第三辑 6 格把「一块」拆开——一块 = 2,048 道「猜下一个字」的题，答案就在原文里往后挪一格，一开始全错、平均错 10.83。</p>
+<p>配套的白话长文与 10 张空间图在手册的「步骤 12」正文里；漫画只是同一套解释的图版。</p>
+</div></details>
